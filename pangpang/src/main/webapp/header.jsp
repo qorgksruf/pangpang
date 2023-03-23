@@ -17,7 +17,7 @@
 		            <li> <a href="#">백한결</a> </li>
 		            <li> <a href="#">김성봉</a> </li>
 		            <li> <a href="#">김지호</a> </li>
-		            <li> <a href="#">정소윤</a> </li>
+		            <li> <a href="#">정소연</a> </li>
 		         </ul>
 		      </div>
 		   </div>
