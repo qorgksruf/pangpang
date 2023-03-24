@@ -5,6 +5,7 @@ use pangpang;
 drop table if exists drivecar;
 drop table if exists bookcar;
 drop table if exists carmanage;
+drop table if exists cart;
 drop table if exists payment;
 drop table if exists orderdetail;
 drop table if exists ordermanagement;
@@ -58,15 +59,14 @@ create table product(
 create table stockmanagement(
    stockmanagementno        int   auto_increment primary key,    			-- 재고관리번호 pk
    stockmanagementdate      datetime default now(),                			-- 일자
-   stockmanagementenddate   datetime,                          				-- 예정 폐기 일자                          -- default 입고일로부터 3개월?  -- 매일 해당일자와 폐기 예정일 비교하여 폐기 요청 리스트 생성?
-   stockmanagementtype      varchar(2)  not null,               			-- 구분   ( 입고 / 출고 / 폐기 / 반품 )        -- int 저장이 효율적인가? 
-   stockmanagementcompany   varchar(20) not null,                			-- 업체   ( 입고처/출고처/ 폐기업체)              -- 출고처 = 회원번호? 주문번호?   -- 거래처관리테이블 필요?(입고처..하...)
+   stockmanagementenddate   datetime,                          				-- 예정 폐기 일자                      
+   stockmanagementtype      int  not null,               					-- 구분   ( 입고 / 출고 / 폐기 / 반품 )	-- int 저장이 효율적인가? 
+   stockmanagementcompany   varchar(20) not null,                			-- 업체   ( 입고처/출고처/ 폐기업체)       -- 출고처 = 회원번호? 주문번호?   
    stockmanagementamount   	int   not null,                      			-- 수량
    product_price       		int not null,                       			-- 단가    개당 단가                           
    product_no          		int not null,                        			-- 제품번호 fk
-   member_no          		int not null,                        			-- 담당직원 fk
-   foreign key (product_no) references product( product_no ) on delete no action, 
-   foreign key (member_no)   references member( member_no ) on delete no action 
+   foreign key (product_no) references product( product_no ) on delete no action
+  
 );
 
 -- 입고
@@ -76,17 +76,23 @@ create table stockmanagement(
 -- 폐기
 -- 폐기일 제품명 수량 단가 담당직원 폐기처 
 
-
--- 주문 테이블                                       -- 하나의 주문번호에 여러개의 제품을 구매 ( 주문과 주문상세 분리 ) 
-                                       -- 결제일자가 따로 필요없다면 결제 테이블 분리의 필요성 없는가?
+-- 장바구니 테이블
+create table cart(
+	cart_no         			int auto_increment primary key,    		-- 장바구니번호 pk
+    cart_amount					int not null,                        	-- 제품수량
+	product_no          		int not null,                        	-- 제품코드 fk
+	member_no         			int not null,                        	-- 주문회원 fk   
+	foreign key (product_no)  references product( product_no ) on delete no action, 
+	foreign key (member_no)   references member( member_no ) on delete no action
+);
+-- 주문 테이블    
 create table ordermanagement(
    ordermanagement_no         	int   auto_increment primary key,    	-- 주문번호 pk
    ordermanagement_date       	datetime default now(),              	-- 주문일자      
-   ordermanagement_state      	varchar(20) not null,               	-- 주문상태                                     -- CS상태 분리?
-                                       -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     반송요청/반송중/반송완료/주문취소요청/주문취소완료
-   ordermanagement_address    	varchar(20) not null,                	-- 배송주소        -- 도로명주소?
+   ordermanagement_state      	int	  not null,               			-- 주문상태                                   -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     
+   ordermanagement_address    	varchar(20) not null,                	-- 배송주소       
    member_no         			int not null,                        	-- 주문회원 fk     
-    foreign key (member_no)   references member( member_no ) on delete no action 
+   foreign key (member_no)   references member( member_no ) on delete no action 
 );
 -- 주문상세 테이블
 create table orderdetail(
@@ -114,6 +120,7 @@ CREATE TABLE carmanage (
 	carmanage_no       			int auto_increment primary key,   		-- 차량일련번호 (PK)
 	carmanage_number    			varchar(10),             			-- 차량번호
 	carmanage_name      			varchar(40),              			-- 차량명
+    carmanage_img					varchar(40),              			-- 차량이미지
 	carmanage_use_yn   	 			varchar(1),                 		-- 차량사용여부 (배차때 쓰는 여부)
 	carmanage_start   				datetime default now(),          	-- 차량등록일자
 	carmanage_finish				datetime,							-- 차량폐기일자				
@@ -127,18 +134,18 @@ create table bookcar(
 	bookcar_end_date 	datetime,                            		--  배차종료일자 3/26(2225)
 	bookcar_yn      	varchar(1),                                 --  배차승인여부
 	carmanage_no 		int,                                        --  차량일련번호
-    member_no 		int,                                       		-- 회원번호      	빈칸X 중복O
+    member_no 		int,                                       		--  회원번호      	빈칸X 중복O
 	foreign key(member_no) references member(member_no) on delete cascade, 		-- 멤버 지우면 같이 삭제 
 	foreign key (carmanage_no) references carmanage(carmanage_no) --  차량일련번호fk--   foreign key (mno) references member(mno)    --  사용자일련번호fk -- 배차승인여부?
 );
 
 -- 운행일지
 create table drivecar(
-drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호
-drivecar_str_date 		datetime,                        			-- 운행시작일자
-drivecar_end_dateE 		datetime,                        			-- 운행종료일자
-drivecar_distance 		int,										-- 운행거리
-drivecar_parking 		varchar(50),   								-- 주차위치
-bookcar_no   			int,     									-- 배차일련번호
-foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk
+	drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호
+	drivecar_str_date 		datetime,                        			-- 운행시작일자
+	drivecar_end_dateE 		datetime,                        			-- 운행종료일자
+	drivecar_distance 		int,										-- 운행거리
+	drivecar_parking 		varchar(50),   								-- 주차위치
+	bookcar_no   			int,     									-- 배차일련번호
+	foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk
 ); 
