@@ -12,11 +12,21 @@
 </head>
 <body>
 
-	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
+	<%@ include file = "/header.jsp" %>	
 	
 	<div class="container">
-
+		<!-- 카테고리리스트 출력 구역 4*4 -->
+		<div class="wrap"> 
 		
+			<!-- 1개의 카테고리  -->
+			<div class="category"> 
+				<div class="cimg"> 	<img src="" alt=""></div>
+				<div class="cname"> </div>			
+			</div> <!-- category e -->
+		
+		
+		
+		</div> <!-- wrap e -->
 		
 	</div> <!-- container e -->
 
