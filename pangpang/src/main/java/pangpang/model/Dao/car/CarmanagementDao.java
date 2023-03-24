@@ -1,5 +1,12 @@
 package pangpang.model.Dao.car;
 
-public class CarmanagementDao {
+import pangpang.model.Dao.Dao;
 
+public class CarmanagementDao extends Dao{
+	//싱글톤
+	private static CarmanagementDao dao= new CarmanagementDao();
+	private CarmanagementDao() {}
+	public static CarmanagementDao getInstance() {
+		return dao;
+	}	
 }
