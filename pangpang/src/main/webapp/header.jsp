@@ -13,7 +13,7 @@
 	<!-- 아이콘  -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<!-- 사용자정의   -->
-	<link href="/pangpang/product/css/product_index.css" rel="stylesheet">
+	<link href="/pangpang/css/header.css" rel="stylesheet">
 
 </head>
 <body>
