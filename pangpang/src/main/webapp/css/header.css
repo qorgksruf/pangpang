@@ -17,6 +17,15 @@
    src:url("/hotel/font/Happiness-Sans-Regular.woff");
 }
 
+/* 테마 색상 */
+/* Color Theme Swatches in Hex */
+.Responsive-design-on-devices-1-hex { color: #79DCF2; }
+.Responsive-design-on-devices-2-hex { color: #5697A6; }
+.Responsive-design-on-devices-3-hex { color: #F2F2F2; }
+.Responsive-design-on-devices-4-hex { color: #404040; }
+.Responsive-design-on-devices-5-hex { color: #0D0D0D; }
+
+
 /* 공통 css  */
 * {margin: 0px; padding: 0px;
 	list-style: none;}
