@@ -141,7 +141,7 @@ create table bookcar(
 
 -- 운행일지
 create table drivecar(
-	drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호
+	drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호 
 	drivecar_str_date 		datetime,                        			-- 운행시작일자
 	drivecar_end_dateE 		datetime,                        			-- 운행종료일자
 	drivecar_distance 		int,										-- 운행거리
