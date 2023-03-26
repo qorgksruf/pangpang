@@ -12,44 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.product.ProductDao;
-import pangpang.model.Dto.product.ProductDto;
+import pangpang.model.Dto.product.CategoryDto;
 
-@WebServlet("/product")
-public class Product extends HttpServlet {
+@WebServlet("/category")
+public class Category extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Product() {
+    public Category() {
         super();
-
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		int type = Integer.parseInt(request.getParameter("type"));
-		int cno = Integer.parseInt(request.getParameter("cno"));
-		
+
+		ArrayList<CategoryDto>list = ProductDao.getInstance().getCategory();
 		ObjectMapper mapper = new ObjectMapper();
-		String json = null;
+		String jsonarray = mapper.writeValueAsString(list);
 		
-		if (type == 1) {// 카테고리별 제품 목록 가져오기
-			ArrayList<ProductDto> list = ProductDao.getInstance().getProduct_cate(cno);
-			json = mapper.writeValueAsString(list);
-	
-		}else if (type == 2) {// 제품 1개 가져오기
-			int pno = Integer.parseInt(request.getParameter("pno"));
-			ProductDto dto = ProductDao.getInstance().getProduct(pno);
-			json = mapper.writeValueAsString(dto);
-			
-		}else if (type == 3) {// 검색된 제품 목록 가져오기 
-			String search = request.getParameter("search");
-			ArrayList<ProductDto> list =  ProductDao.getInstance().getProduct_search(search);
-			json = mapper.writeValueAsString(list);
-		}
-		System.out.println(json);
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType(json);
-		response.getWriter().print(json);
+		response.setContentType("appication/json");
+		response.getWriter().print(jsonarray);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

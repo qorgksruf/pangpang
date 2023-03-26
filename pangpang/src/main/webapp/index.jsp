@@ -14,10 +14,14 @@
 	
 	<div class="container">
 
+		<div class="main">	
+			<a href="/pangpang/product/product_index.jsp"><div class="box"> 사용자 </div></a> <!-- 링크 : 사용자 메인 화면 -->
+		
+			<a href="#"><div class="box"> 관리자 </div></a> <!-- 링크 : 관리자 메인 화면 -->	
+		</div>
+
 		
 	</div> <!-- container e -->
-
-
 
 </body>
 </html> 

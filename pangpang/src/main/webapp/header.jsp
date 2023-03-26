@@ -21,16 +21,10 @@
 	
 	<div class="container">
 	
-		<!-- 메인 화면 -->
-		<div class="main">	
-			<div class="box"> 사용자 </div> <!-- 링크 : 사용자 메인 화면 -->
-		
-			<div class="box"> 관리자 </div> <!-- 링크 : 관리자 메인 화면 -->	
-		</div>
-	
 		<!-- 사용자 헤더  -->
 		<div class="wrap">
-			<div class="mainlogo"> <img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></div>
+			<!-- 메인로고  -->
+			<div class="mainlogo"><a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a> </div>
 			<div class="header">
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 회원가입 </button> <!-- 가입시 비밀번호 암호화 -->
@@ -51,7 +45,8 @@
 		
 		<!-- 관리자 헤더  -->
 		<div class="wrap">
-			<div class="mainlogo"> <img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></div>
+			<!-- 메인로고  -->
+			<div class="mainlogo"> <a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a></div>
 			<div class="header">			
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 인사관리 </button> 

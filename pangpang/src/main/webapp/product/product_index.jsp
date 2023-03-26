@@ -15,21 +15,17 @@
 	<%@ include file = "/header.jsp" %>	
 	
 	<div class="container">
+		<h3 class="title"> CATEGORY </h3>
 		<!-- 카테고리리스트 출력 구역 4*4 -->
-		<div class="wrap"> 
-		
-			<!-- 1개의 카테고리  -->
-			<div class="category"> 
-				<div class="cimg"> 	<img src="" alt=""></div>
-				<div class="cname"> </div>			
-			</div> <!-- category e -->
+		<div class="category_wrap"> 
 		
 		
-		
-		</div> <!-- wrap e -->
+		</div> <!-- category_wrap e -->
 		
 	</div> <!-- container e -->
-
+	
+	<script src="/pangpang/product/js/product_index.js" type="text/javascript"></script>
+	
 	
 	
 </body>
