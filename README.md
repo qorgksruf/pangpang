@@ -27,10 +27,10 @@
 # 컨트롤구조도
 ![image](https://user-images.githubusercontent.com/121651809/227865193-32a1f64b-ee1a-4d4f-aa12-4d59538830e3.png)
 
-#패키지 MVC 
+# 패키지 MVC 
 ![image](https://user-images.githubusercontent.com/121651809/227865532-b727a6f7-ac16-4b5a-a577-c566f66c3795.png)
 
-#개인별일정
+# 개인별일정
 ### 김성봉
 | 날짜 | 작업사항 | 
 |:---:|:---:|
