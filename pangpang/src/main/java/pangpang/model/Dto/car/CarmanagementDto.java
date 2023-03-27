@@ -14,6 +14,9 @@ public class CarmanagementDto {
 	public CarmanagementDto() {
 		super();
 	}
+	
+	
+	
 	//풀생성자
 	public CarmanagementDto(int carmanage_no, String carmanage_number, String carmanage_name, String carmanage_img,
 			String carmanage_use_yn, String carmanage_start, String carmanage_finish,
@@ -28,7 +31,17 @@ public class CarmanagementDto {
 		this.carmanage_finish = carmanage_finish;
 		this.carmanage_cumulative_mileage = carmanage_cumulative_mileage;
 	}
-	
+	//업로드 생성자
+	public CarmanagementDto(String carmanage_number, String carmanage_name, String carmanage_img,
+			String carmanage_use_yn, String carmanage_start, String carmanage_finish) {
+		super();
+		this.carmanage_number = carmanage_number;
+		this.carmanage_name = carmanage_name;
+		this.carmanage_img = carmanage_img;
+		this.carmanage_use_yn = carmanage_use_yn;
+		this.carmanage_start = carmanage_start;
+		this.carmanage_finish = carmanage_finish;
+	}
 	public int getCarmanage_no() {
 		return carmanage_no;
 	}

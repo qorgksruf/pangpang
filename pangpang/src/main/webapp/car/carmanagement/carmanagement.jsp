@@ -23,15 +23,15 @@
 
   	<button onclick="regi()" type="button">등록</button>
    <form class="car_formdata">
-	      차번호:       	<input class="carmanage_number" type="text">		</input>   <br>
-	      차량이름:      	<input class="carmanage_name" type="text">			</input>      <br>
-	      차이미지:       	<input class="carmanage_img" type="text">			</input>      <br>
-<!-- 	      	<div class="carmanage_img">
-				<input onchange="premimg(this)" type="file" name="carmanage_img"	 	class="carmanage_img">		
-			</div> -->
-	      사용가능여부:    	<input class="carmanage_use_yn" type="text">		</input>   <br>
-	      차량등록일자:    	<input class="carmanage_start" type="text">			</input>      <br>
-	      차량폐기일자:    	<input class="carmanage_finish" type="text">		</input>   <br>
+	      차번호:       	<input name="carmanage_number" type="text">			</input>   		<br>
+	      차량이름:      	<input name="carmanage_name" type="text">			</input>     	<br>
+	      차이미지:        
+	      	<div class="carmanage_img">
+				<input type="file" class="cimg"	 name="carmanage_img">	<br>
+			</div>
+	      사용가능여부:    	<input name="carmanage_use_yn" type="text">			</input>   		<br>
+	      차량등록일자:    	<input name="carmanage_start" type="text">			</input>     	<br>
+	      차량폐기일자:    	<input name="carmanage_finish" type="text">			</input>   		<br>
 	</form> 
    
    

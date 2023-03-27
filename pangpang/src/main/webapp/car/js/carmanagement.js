@@ -44,6 +44,7 @@ function regi(){
 	let car_formdataData = new FormData(car_formdata);
 		console.log("-----------car_formdataData---------");
 		console.log(car_formdataData);
+		
 	
 /*	let info={
 		 carmanage_number : document.querySelector('.carmanage_number').value,
@@ -56,11 +57,16 @@ function regi(){
    $.ajax({
       url:"/pangpang/carmanage",
       method:"post",
-      //data:{"info":info},
+      data:car_formdataData,
+      contentType : false ,			
+	  processData : false ,	
       success:(r)=>{
-         console.log('통신성공');
          console.log(r);
-
+		if(r=='true'){
+			console.log('통신성공')
+		}else{
+			console.log('통신실패')
+		}
       }
    })//ajax e	
 

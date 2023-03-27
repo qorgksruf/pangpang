@@ -42,5 +42,23 @@ public class CarmanagementDao extends Dao{
 	      }
 	      return list;
 	   }
+	  
+	  public boolean regi(CarmanagementDto dto) {
+		  String sql ="insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_use_yn,carmanage_start,carmanage_finish)values(?,?,?,?,?,?)";
+		  try {
+			  ps= con.prepareStatement(sql);
+			  ps.setString(1, dto.getCarmanage_number());
+			  ps.setString(2, dto.getCarmanage_name());
+			  ps.setString(3, dto.getCarmanage_img());
+			  ps.setString(4, dto.getCarmanage_use_yn());
+			  ps.setString(5, dto.getCarmanage_start());
+			  ps.setString(6, dto.getCarmanage_finish());
+			  ps.executeUpdate();
+			  return true;
+		  }catch (Exception e) {
+			System.out.println(e);
+		}
+		  return false;
+	  }
 	
 }
