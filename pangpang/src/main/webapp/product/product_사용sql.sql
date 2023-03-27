@@ -29,6 +29,15 @@ values ('곰곰 이스라엘 자몽','2kg','봉','자몽.png','새콤하고 쌉�
 영롱한 붉은빛 과육 속 새콤한 자몽의 향을 느껴보세요! 
 이스라엘 자몽 특유의 새콤하고 쌉싸름한 향미는 에이드, 베이킹 등 다양한 재료와 잘 어울려요!',1);
 
+insert into product(product_name,product_option,product_unit,product_img,product_content,category_no) 
+values ('곰곰 돌돌말이 대패 삼겹살','1kg','개','대패삼겹.png','새콤하고 쌉가름한 과즙을 가득 머금은 곰곰 이스라엘 자몽',2);
+insert into product(product_name,product_option,product_unit,product_img,product_content,category_no) 
+values ('곰곰 부채살 바로구이','400g','개','부채살.png','새콤하고 쌉가름한 과즙을 가득 머금은 곰곰 이스라엘 자몽',2);
+insert into product(product_name,product_option,product_unit,product_img,product_content,category_no) 
+values ('곰곰 무항생제 신선한 특란','30','구','특란.png','새콤하고 쌉가름한 과즙을 가득 머금은 곰곰 이스라엘 자몽',2);
+insert into product(product_name,product_option,product_unit,product_img,product_content,category_no) 
+values ('곰곰 맥반석 구운란','30','구','구운란.png','새콤하고 쌉가름한 과즙을 가득 머금은 곰곰 이스라엘 자몽',2);
+
 select * from product;
 
 -- 입고 

@@ -58,7 +58,7 @@
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 제품관리 </button> 
 					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
+						<li><a class="dropdown-item" href="/pangpang/product/item_list.jsp">  품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
 						<li><a class="dropdown-item" href="#">  재고관리	</a></li>	<!-- 입고/ 주문결제완료시 출고처리 / 폐기일자도달 재고 팝업? 폐기 버튼 -->
 						<li><a class="dropdown-item" href="#">  폐기내역	</a></li>   <!-- 폐기내역 출력 -->
 					</ul>
