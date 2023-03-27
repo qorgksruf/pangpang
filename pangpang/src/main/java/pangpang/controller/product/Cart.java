@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.product.ProductDao;
+import pangpang.model.Dto.product.CartDto;
 import pangpang.model.Dto.product.CategoryDto;
 
 @WebServlet("/cart")
@@ -30,11 +31,12 @@ public class Cart extends HttpServlet {
 		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		int mno		= 1; // 추후 변경
 		
-		ArrayList<CategoryDto> list = ProductDao.getInstance().printCart(mno);
+		ArrayList<CartDto> list = ProductDao.getInstance().printCart(mno);
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonarray = mapper.writeValueAsString(list);
+		System.out.println("json"+jsonarray);
 		
-		response.setCharacterEncoding("UTF8");
+		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		response.getWriter().print(jsonarray);
 	}
@@ -42,13 +44,13 @@ public class Cart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 장바구니 등록 [ 제품번호, 수량 ] 
-		int amount 	= Integer.parseInt(request.getParameter("amount")) ;
-		int pno 	= Integer.parseInt(request.getParameter("pno")) ;
+		int amount 	= Integer.parseInt(request.getParameter("amount")) ; System.out.println(amount);
+		int pno 	= Integer.parseInt(request.getParameter("pno")) ;	 System.out.println(pno);
 		// 로그인한 회원 정보 
 		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		int mno		= 1; // 추후 변경
 		
-		boolean result = ProductDao.getInstance().cartIn(amount, pno, mno);
+		boolean result = ProductDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
 		response.getWriter().print(result);
 		
 	}

@@ -17,6 +17,7 @@ public class CartDto {
 	// 생성자
 	// 빈생성자
 	public CartDto() { }
+	
 	// 풀생성자
 	public CartDto(int cart_no, int cart_amount, int product_no, int member_no, String product_name,
 			String product_option, String product_unit, String product_img, String member_id) {
@@ -37,6 +38,46 @@ public class CartDto {
 		return "CartDto [cart_no=" + cart_no + ", cart_amount=" + cart_amount + ", product_no=" + product_no
 				+ ", member_no=" + member_no + ", product_name=" + product_name + ", product_option=" + product_option
 				+ ", product_unit=" + product_unit + ", product_img=" + product_img + ", member_id=" + member_id + "]";
+	}
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+	public String getProduct_option() {
+		return product_option;
+	}
+
+	public void setProduct_option(String product_option) {
+		this.product_option = product_option;
+	}
+
+	public String getProduct_unit() {
+		return product_unit;
+	}
+
+	public void setProduct_unit(String product_unit) {
+		this.product_unit = product_unit;
+	}
+
+	public String getProduct_img() {
+		return product_img;
+	}
+
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
+	}
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
 	public int getCart_no() {

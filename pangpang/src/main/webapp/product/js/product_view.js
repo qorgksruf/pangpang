@@ -38,23 +38,28 @@ function getProduct(pno){
 							<div class="pimg"> <img class="product_img" alt="" src="/pangpang/product/pimg/${r.product_img}"> 	</div>
 							<div class="product_info">
 								<div class="pname"> 	${r.product_name}  									</div>
-								<div class="price"> 	25,000원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png">	<span>팡팡배송</span>		</div>
+								<div class="price"> 	25,000원 
+									<img class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
+									<span class="mini_mark">팡팡배송</span>		
+								</div>
 								<div class="unitprice"> (100g당 280원 )										</div>
-								<div class="date"> 		내일(목) 3/23 도착 보장									</div>			
-								<div class="pcontent"> 	${r.product_content}  								</div>
-								<select class="amount" >
-									<option value="1"> 1 </option>
-									<option value="2"> 2 </option>
-									<option value="3"> 3 </option>
-									<option value="4"> 4 </option>
-								</select>
-								<div> <button class="cartIn" onclick="cartIn()" type="button">${r.product_option} * ${r.product_unit}</button> </div>
+								<div class="date"> 		내일(목) 3/23 도착 보장									</div>											
+								<div class="cart_option"> 
+									<span class="product_option"> ${r.product_option} </span>
+									<select class="amount" >
+										<option value="1"> 1 ${r.product_unit} </option>
+										<option value="2"> 2 ${r.product_unit} </option>
+										<option value="3"> 3 ${r.product_unit} </option>
+										<option value="4"> 4 ${r.product_unit} </option>
+									</select>
+									<button class="cartbtn" onclick="cartIn(${r.product_no})" type="button"> 장바구니 </button> 
+								</div>
 								<div class="extra_info">
 									팡페이 머니 결제시 1% 적립 <br>
 									[팡팡와우 + 팡페이 계좌이체] 결제 시 2% 적립	<br>
 									[팡팡와우 + 팡페이 머니] 결제 시 4% 추가 적립 2899일 남음<br>
-									<button class="pangpang" type="button">팡팡와우 무료 체험 신청하기</button>
 								</div>
+								<button class="pangpang" type="button">팡팡와우 무료 체험 신청하기</button>
 							</div>
 						</div>`;		
 			document.querySelector('.product_view_wrap').innerHTML = html ;
@@ -64,7 +69,7 @@ function getProduct(pno){
 
 // 3. 장바구니 담기
 function cartIn(pno){
-	
+	console.log(pno)
 	let amount = document.querySelector('.amount').value;
 	console.log(amount)
 	
@@ -72,12 +77,10 @@ function cartIn(pno){
 		url 	: "/pangpang/cart",
 		method	: "post",
 		data 	: {"pno":pno, "amount":amount},
-		async	: false,
 		success	: (r)=>{
 			console.log(r)
-			if(r=='true'){alert('장바구니 등록 성공')}
-			else{alert('장바구니 등록 실패[관리자에게 문의해주세요]')}
-			
+			if(r == 'true'){alert('장바구니 등록 성공')}
+			else{alert('장바구니 등록 실패[관리자에게 문의해주세요]')}			
 		}// success e
 	}); // ajax e
 }// cartIn e

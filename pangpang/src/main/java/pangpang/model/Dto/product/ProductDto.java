@@ -31,6 +31,30 @@ public class ProductDto {
 		this.category_name = category_name;
 		this.product_count = product_count;
 	}
+	// 등록용 생성자
+	public ProductDto(String product_name, String product_option, String product_unit, String product_img,
+			String product_content, int category_no) {
+		super();
+		this.product_name = product_name;
+		this.product_option = product_option;
+		this.product_unit = product_unit;
+		this.product_img = product_img;
+		this.product_content = product_content;
+		this.category_no = category_no;
+	}
+	// 수정용 생성자
+	public ProductDto(int product_no, String product_name, String product_option, String product_unit,
+			String product_img, String product_content, int category_no) {
+		super();
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.product_option = product_option;
+		this.product_unit = product_unit;
+		this.product_img = product_img;
+		this.product_content = product_content;
+		this.category_no = category_no;
+	}
+	
 	@Override
 	public String toString() {
 		return "ProductDto [product_no=" + product_no + ", product_name=" + product_name + ", product_option="
@@ -38,6 +62,8 @@ public class ProductDto {
 				+ ", product_content=" + product_content + ", category_no=" + category_no + ", category_name="
 				+ category_name + ", product_count=" + product_count + "]";
 	}
+
+
 	public int getProduct_no() {
 		return product_no;
 	}
