@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+*{ margin: 0px; padding: 0px; }
+
 /* 메인 박스 */
 .main_box{
 	width: 1200px;
@@ -28,11 +30,71 @@
 
 /* 배송정보 박스 */
 .delivery_info_box{
-	width: 60%;
+	width: 100%;
 	border: solid 1px purple;
+	display: flex;
 }
+
+/* 배송지목록 전체박스 */
+.info_table_box{
+	width: 100%;
+	padding: 2%;
+}
+
+/* 배송지목록 테이블 */
+.d_info_table{
+	width: 100%;
+	text-align: center;
+}
+.d_info_table th {
+	text-align: center;
+}
+
 .d_info_table button {
 	background-color: transparent;
 	border: none;
 	width: 30px; height: 30px;
+}
+
+/* 경로설정 박스 */
+.set_starting_box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.set_start_btn_box{
+	display: block;
+	align-items: center;
+}
+/* 시작/목적지 설정 버튼 */
+.set_start_btn_box button {
+	padding: 0px; margin: 0px;
+	width: 20px; height: 10px;
+	border: none;
+	background-color: transparent;
+	font-size: 15px;
+	color: black;
+}
+.btn_item{
+	margin: 10px 0px;
+}
+
+
+
+/* 선택한 배송지 전체박스 */
+.select_item_box{
+	width: 35%;
+	border: solid 1px purple;
+	padding: 2%;
+}
+
+
+/* 선택한 배송지 취소 버튼 */
+.select_delete_btn {
+	padding: 0px; margin: 0px;
+	width: 20px; height: 10px;
+	color: red;
+	border: none;
+	background-color: transparent;
+	font-size: 15px;
 }

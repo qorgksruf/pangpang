@@ -35,14 +35,80 @@
 				<div> 기타정보 </div>
 			</div>
 			<div class="delivery_info_box">
-				<table class="table d_info_table">
-					<tr>
-						<th> 번호 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
-						<th> 주문일자 <button type="button"> <i class="fa-solid fa-angle-down"></i> </button> </th>
-						<th> 주소 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
-					</tr>
-				</table>
+				<div class="info_table_box">
+					<h3> 배송정보 </h3>
+					<table class="table d_info_table">
+						<tr>
+							<th width="15%"> 주문번호 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
+							<th width="30%"> 주문일자 <button type="button"> <i class="fa-solid fa-angle-down"></i> </button> </th>
+							<th width="15%"> 상태 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
+							<th width="40%"> 주소 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
+						</tr>
+						<tr>
+							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 단원구 광덕2로 121 </td>
+						</tr>
+						<tr>
+							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 상록구 한양대학로 80 </td>
+						</tr>
+						<tr>
+							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 단원구 초지로 128 </td>
+						</tr>
+					</table>
+				</div>
 			</div>
+			
+			<div class="set_starting_box">
+			
+				<div class="set_starting">
+					<h3> 출발지/목적지 경유지설정 </h3>
+					<table class="table">
+						<tr>
+							<th> 출발지 </th> <th> 목적지 </th>
+						</tr>
+						<tr>
+							<td>
+								<select>
+									<option> 경기 안산시 단원구 광덕2로 121 </option>
+									<option> 경기 안산시 상록구 한양대학로 80 </option>
+								</select>
+							</td> 
+							<td>
+								<select>
+									<option> 경기 안산시 단원구 광덕2로 121 </option>
+									<option> 경기 안산시 상록구 한양대학로 80 </option>
+								</select>
+							</td> 
+						</tr>
+					</table>
+				</div>
+				
+				
+				<div class="set_start_btn_box">
+					<div class="btn_item">
+						<button type="button"> <i class="fas fa-chevron-left"></i> </button>
+					</div>
+					<div class="btn_item">
+						<button type="button"> <i class="fas fa-chevron-right"></i> </button>
+					</div>
+				</div>
+				
+				
+				<div class="select_item_box">
+					<h3> 선택정보 </h3>
+					<table class="table">
+						<tr>
+							<th width="20%"> 상태 </th> <th width="65%"> 주소 </th> <th width="15%"> 비고 </th>
+						</tr>
+						<tr>
+							<td> 배송대기 </td> <td> 경기 안산시 단원구 광덕2로 121 </td> <td> <button type="button" class="select_delete_btn"> <i class="fas fa-minus-circle"></i> </button>
+						</tr>
+						<tr>
+							<td> 배송대기 </td> <td> 경기 안산시 상록구 한양대학로 80 </td> <td> <button type="button" class="select_delete_btn"> <i class="fas fa-minus-circle"></i> </button>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
 			<div id="map_div"></div>
 		</div>
 		
