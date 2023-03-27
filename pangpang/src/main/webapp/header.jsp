@@ -27,7 +27,7 @@
 			<div class="mainlogo"><a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a> </div>
 			<div class="header">
 				<div class="dropdown">
-					<button type="button" data-bs-toggle="dropdown"> 회원가입 </button> <!-- 가입시 비밀번호 암호화 -->
+					<a href="/pangpang/member/signup.jsp"><button type="button"> 회원가입 </button></a> <!-- 가입시 비밀번호 암호화 -->
 					<ul class="dropdown-menu">	
 						<li><a class="dropdown-item" href="#">  	</a></li> 
 					</ul>
