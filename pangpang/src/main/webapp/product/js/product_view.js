@@ -42,13 +42,13 @@ function getProduct(pno){
 								<div class="unitprice"> (100g당 280원 )										</div>
 								<div class="date"> 		내일(목) 3/23 도착 보장									</div>			
 								<div class="pcontent"> 	${r.product_content}  								</div>
-								<div> <button class="cartIn" onclick="cartIn()" type="button">${r.product_option} * 
-								<select class="amount">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select> ${r.product_unit}</button> </div>
+								<select class="amount" >
+									<option value="1"> 1 </option>
+									<option value="2"> 2 </option>
+									<option value="3"> 3 </option>
+									<option value="4"> 4 </option>
+								</select>
+								<div> <button class="cartIn" onclick="cartIn()" type="button">${r.product_option} * ${r.product_unit}</button> </div>
 								<div class="extra_info">
 									팡페이 머니 결제시 1% 적립 <br>
 									[팡팡와우 + 팡페이 계좌이체] 결제 시 2% 적립	<br>
@@ -65,7 +65,7 @@ function getProduct(pno){
 // 3. 장바구니 담기
 function cartIn(pno){
 	
-	let amount = document.querySelector('.amount').innerHTML;
+	let amount = document.querySelector('.amount').value;
 	console.log(amount)
 	
 	$.ajax({
@@ -75,9 +75,11 @@ function cartIn(pno){
 		async	: false,
 		success	: (r)=>{
 			console.log(r)
-			
-			
+			if(r=='true'){alert('장바구니 등록 성공')}
+			else{alert('장바구니 등록 실패[관리자에게 문의해주세요]')}
 			
 		}// success e
 	}); // ajax e
 }// cartIn e
+
+

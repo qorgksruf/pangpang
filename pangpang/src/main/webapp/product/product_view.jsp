@@ -29,9 +29,9 @@
 			<!-- 사이드 카테고리바 -->
 			<div class="categorylist list-group">
 	
-			</div>
+			</div> <!-- categorylist e -->
 			
-			<!-- 제품리스트 출력 구역 4*4 -->
+			<!-- 제품상세 출력 구역 -->
 			<div class="product_view_wrap"> 
 		
 			</div> <!-- product_view_wrap e -->

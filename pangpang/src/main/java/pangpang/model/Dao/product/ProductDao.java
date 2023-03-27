@@ -112,6 +112,21 @@ public class ProductDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}
+	// 장바구니 출력
+	public ArrayList<CategoryDto> printCart(int mno) {
+		ArrayList<CategoryDto> list = new ArrayList<>(); 
+		String sql = "select * from cart where member_no = "+mno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				CategoryDto dto = new CategoryDto(mno, sql, sql);
+				list.add(dto);
+			}
+			return list;			
+		}catch (Exception e) {System.out.println(e);}		
+		return null;
+	}
 	// 장바구니 취소
 	public boolean cartOut(int pno,int mno) {
 		String sql = "delete from cart where product_no = ? and member_no = ? ";		
