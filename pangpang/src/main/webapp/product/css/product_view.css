@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+
+
+.bind{
+	display: flex;
+}
+
+/* 사이드바 출력 구역 */
+.list-group{
+	width: 200px;
+}
+/* 제품 목록 출력 구역*/
+.product_view_wrap{
+	width: 100%;
+	border: 1px solid black;
+	display: flex;
+	justify-content:space-between;
+	flex-wrap: wrap;
+	margin: 5%;
+}
+/* 제품 1개 */
+.item{
+	width: 100%;
+	margin: 2%;
+	text-align: center;
+	display: flex;
+}
+.product_img{
+	width: 300px;
+	height: 300px;
+}
+.mini_logo{
+	width: 20px;
+	height: 20px;
+}
+.product_info{
+	width: 100%;
+	margin: 2%;
+	text-align: left;	
+}
+.pname{
+	font-family: 'Happiness-Sans-Bold';
+	font-size: 25px;
+	margin: 2% 0px;;
+}
+.cartIn{
+	width: 100%;
+	border: none;
+	background-color:F2F2F2;
+	padding: 2%;
+	margin: 2%;
+}
+.extra_info{
+	font-size:10px;
+	width: 100%;
+	margin: 2%;
+	padding: 2%;
+}
+.pangpang{
+	width: 100%;
+	border: 1px solid #79DCF2;
+	background-color: white;
+	padding: 2%;
+	margin: 2%;
+}

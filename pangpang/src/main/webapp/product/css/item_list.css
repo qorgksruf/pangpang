@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* 상단 메뉴 구역 */
+.topbox{
+	display: flex;
+	justify-content: space-between;
+	margin: 1%;	
+}
+.searchbtn , .registerbtn{
+	width: 100px;
+	height: 30px;
+	background-color: #5697A6;
+	color: white;
+	border: none;
+	border-radius: 50px;
+}
+/* 품목 리스트 출력 구역 */
+.itemlistbox {
+	width: 100%;
+	margin: 1% auto;
+	text-align: center;
+}
+.updatebtn, .deletebtn{
+	width: 50px;
+	height: 20px;
+	background-color: #5697A6;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	align-content: center;
+}

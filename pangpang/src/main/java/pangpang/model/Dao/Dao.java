@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 public class Dao {
 	public	 Connection con ;
 	public	 PreparedStatement ps;
-	public  ResultSet rs;
+	public   ResultSet rs;
 	
 	public Dao() {
 		try {

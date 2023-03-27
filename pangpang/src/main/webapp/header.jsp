@@ -21,16 +21,10 @@
 	
 	<div class="container">
 	
-		<!-- 메인 화면 -->
-		<div class="main">	
-			<div class="box"> 사용자 </div> <!-- 링크 : 사용자 메인 화면 -->
-		
-			<div class="box"> 관리자 </div> <!-- 링크 : 관리자 메인 화면 -->	
-		</div>
-	
 		<!-- 사용자 헤더  -->
 		<div class="wrap">
-			<div class="mainlogo"> <img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></div>
+			<!-- 메인로고  -->
+			<div class="mainlogo"><a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a> </div>
 			<div class="header">
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 회원가입 </button> <!-- 가입시 비밀번호 암호화 -->
@@ -51,7 +45,8 @@
 		
 		<!-- 관리자 헤더  -->
 		<div class="wrap">
-			<div class="mainlogo"> <img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></div>
+			<!-- 메인로고  -->
+			<div class="mainlogo"> <a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a></div>
 			<div class="header">			
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 인사관리 </button> 
@@ -63,7 +58,7 @@
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 제품관리 </button> 
 					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
+						<li><a class="dropdown-item" href="/pangpang/product/item_list.jsp">  품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
 						<li><a class="dropdown-item" href="#">  재고관리	</a></li>	<!-- 입고/ 주문결제완료시 출고처리 / 폐기일자도달 재고 팝업? 폐기 버튼 -->
 						<li><a class="dropdown-item" href="#">  폐기내역	</a></li>   <!-- 폐기내역 출력 -->
 					</ul>

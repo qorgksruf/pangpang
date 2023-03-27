@@ -12,14 +12,20 @@
 </head>
 <body>
 
-	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
+	<%@ include file = "/header.jsp" %>	
 	
 	<div class="container">
-
+		<h3 class="title"> CATEGORY </h3>
+		<!-- 카테고리리스트 출력 구역 4*4 -->
+		<div class="category_wrap"> 
 		
+		
+		</div> <!-- category_wrap e -->
 		
 	</div> <!-- container e -->
-
+	
+	<script src="/pangpang/product/js/product_index.js" type="text/javascript"></script>
+	
 	
 	
 </body>
