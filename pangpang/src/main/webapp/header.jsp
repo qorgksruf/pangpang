@@ -9,7 +9,7 @@
 	<!-- 모든 페이지 공통 css -->
 	<!-- 부트스트랩  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- 아이콘  -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<!-- 사용자정의   -->
@@ -28,9 +28,9 @@
 			<div class="header">
 				<div class="dropdown">
 					<a href="/pangpang/member/signup.jsp"><button type="button"> 회원가입 </button></a> <!-- 가입시 비밀번호 암호화 -->
-					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  	</a></li> 
-					</ul>
+				</div>
+				<div class="dropdown">
+					<a href="/pangpang/member/login.jsp"><button type="button"> 로그인 </button></a> <!-- 가입시 비밀번호 암호화 -->
 				</div>
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 로그인회원 </button>
@@ -98,7 +98,8 @@
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!-- 부트스트랩 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script> 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 			
 	
 </body>

@@ -320,11 +320,8 @@
 					</table>
 				</div>
 			</div>	
-		</form>
-		<div class="rwPromotion">
-          	<span>※ 신라리워즈 가입 고객께는 모바일 카드가 발급 되며 혜택 및 약관은 홈페이지에서 확인 가능합니다.</span>
-      	</div>	
-      	<div class="signup_btn_box">
+		</form>	
+      	<div class="signup_btn_box container" style="text-align: center;">
       		<!-- <a href="/hotel/member/completed.jsp"> --><button onclick="signup()" class="singup_btn btn">가입 신청</button><!-- </a>  -->
       	</div>
 	</div>
