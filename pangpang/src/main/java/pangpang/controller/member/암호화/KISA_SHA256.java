@@ -8,7 +8,7 @@ package pangpang.controller.member.암호화;
 */
 
 public class KISA_SHA256 {
-
+ 
 	// DEFAULT : JAVA = BIG_ENDIAN
 	private static int ENDIAN = Common.BIG_ENDIAN;
 
