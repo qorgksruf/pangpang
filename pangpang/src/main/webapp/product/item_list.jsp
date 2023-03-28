@@ -21,7 +21,7 @@
 				<input  class="keyword" type="text">
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
 			</div>
-			<button class="registerbtn" onclick="product_register()" type="button"> 제품 등록 </button>
+			<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
 		</div>
 		<!-- 품목 출력 구역 -->
 		<div class="itemlistbox">
@@ -31,6 +31,96 @@
 		</div>	
 	
 	</div> <!-- container e -->
+	
+	<!-- 제품 등록 모달 구역 -->
+	<div class="modal_wrap modalregister">	
+		<div class="modal_box">
+			
+			<h3  class="modal_title"> 제품정보등록 </h3>		
+			<div class="modal_content">
+				<form>
+					<div class="title"> 카테고리 
+						<select class="categorylist1">
+						
+						</select>
+					</div>		
+					<div class="title"> 제품명 
+						<input type="text" 	   name="product_name"   class="product_name">
+					</div>		
+					<div class="checkconfirm"></div>	
+					<div class="title"> 제품규격 
+						<input type="text" 	   name="product_option" class="product_option">
+					</div>		
+					<div class="title"> 포장단위 
+						<input type="text" 	   name="product_unit"   class="product_unit">		
+					</div>
+					<div class="title"> 제품상세 
+						<textarea name="product_content"   class="product_content" rows="" cols=""></textarea>		
+					</div>
+					<div class="title"> 제품이미지 
+						<input type="file" 	   name="product_img"   class="product_img">		
+					</div>
+
+					<div class="checkconfirm"></div>
+						<button onclick="item_register()" class="modal_cancel btns" type="button"> 제품등록 </button>
+						<button onclick="closemodal_R()" class="modal_cancel btns" type="button"> 닫기 </button>
+				</form>
+				
+			</div>
+				
+		</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
+	
+	<!-- 제품 수정 모달 구역 -->
+	<div class="modal_wrap modalupdate">	
+		<div class="modal_box">
+			
+			<h3  class="modal_title"> 제품정보수정 </h3>		
+			<div class="modal_content">
+				<form class="registerForm">
+					<div class="title"> 카테고리 
+						<select class="categorylist2">
+						
+						</select>
+					</div>		
+					<div class="title"> 제품명 
+						<input type="text" 	   name="product_name"   class="product_name">
+					</div>		
+					<div class="checkconfirm"></div>	
+					<div class="title"> 제품규격 
+						<input type="text" 	   name="product_option" class="product_option">
+					</div>		
+					<div class="title"> 포장단위 
+						<input type="text" 	   name="product_unit"   class="product_unit">		
+					</div>
+					<div class="title"> 제품상세 
+						<textarea name="product_content"   class="product_content" rows="" cols=""></textarea>		
+					</div>
+					<div class="title"> 제품이미지 
+						<input type="file" 	   name="product_img"   class="product_img">		
+					</div>
+					<div class="checkconfirm"></div>
+						<button onclick="item_uodate()" class="modal_cancel btns" type="button"> 제품수정 </button>
+						<button onclick="closemodal_U()" class="modal_cancel btns" type="button"> 닫기 </button>
+				</form>				
+			</div>
+				
+		</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
+	
+	<!-- 제품 삭제 모달 구역 -->
+	<div class="modal_wrap modaldelete">	
+		<div class="modal_box">
+			
+			<h3  class="modal_title"> 삭제를 진행하시겠습니까? </h3>		
+			<div class="modal_content">
+			
+			</div>
+			<button onclick="closemodal_D()" class="modal_cancel btns" type="button"> 닫기 </button>	
+		</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
+	
+	
 	
 	<script src="/pangpang/product/js/item_list.js" type="text/javascript"></script>
 	

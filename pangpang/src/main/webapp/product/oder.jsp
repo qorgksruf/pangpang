@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 주문 </title>
+<title> 주문/결제 </title>
+	
+	<!-- 사용자정의   -->
+	<link href="/pangpang/product/css/order.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -12,31 +16,17 @@
 	
 	<div class="container">
 
-		<h3> 장바구니 </h3>
+		<h3> 주문/결제 </h3>
 		
-		<div class="wrap"> 
 
-		<table class="cartlist"> 
-			<tr>
-				<th> 전제선택 </th> <th> 상품정보 </th> <th> 상품금액 </th> <th> 배송비 </th> 
-			</tr>
-			<tr>
-				<td><img alt="" src="" ></td><td> 제품명 </td><td> 34,200원 <span> 팡팡배송 </span> </td><td> 무료 </td>
-			</tr>
-			<tr>
-				<td> 내일(목) 도착 보장 <span> 34,220 <select><option>1</option></select> </span><span> 34,220원 </span> </td>
-			</tr>		
-			<tr>
-				<td> 내일(목) 도착 보장 <span> 34,220 <select><option>1</option></select> </span><span> 34,220원 </span> </td>
-			</tr>
-		</table>
 		
 		
 		
 		</div> <!-- wrap e -->
 		
 	</div> <!-- container e -->
-
+	
+	<script src="/pangpang/product/js/order.js" type="text/javascript"></script>
 
 </body>
 </html>

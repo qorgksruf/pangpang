@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+
+.top_menu{
+	display: flex;
+	justify-content: space-between;
+	border-top:1px solid #8e8e8e; 
+	padding: 15px 30px;
+	font-weight: bold;
+	background-color: #F2F2F2;	
+}
+.cart_item{
+	display: flex;
+	padding: 15px;
+}
+.cart_img{
+	width: 100px;
+	height:100px;
+	margin:0px 15px;
+}
+.pname{
+	height: 50px;
+	margin:0px 15px;
+	align-content: center;
+	font-family: 'Happiness-Sans-Bold';
+	border-bottom:1px solid #8e8e8e;
+	font-size: 25px;
+}
+.product_info{
+	width: 600px;
+	margin:0px 30px;
+}
+.pprice, .delivery_price{
+	width: 100px;
+	height:100px;
+	margin:0px 15px;
+	font-weight: bo
+}
+.mini_logo{
+	width: 15px;
+	height: 15px;
+}
+.mini_mark{
+	color: brown;
+	font-size: 10px;
+}
+.product_info_bottom{
+	padding: 15px;
+}
+.now_pricebox{
+	padding: 15px;
+	background-color: #F2F2F2;	
+	text-align: right;
+}
+.ad{
+	border: 1px solid #8e8e8e;
+	background-color: white;
+	padding: 10px;
+}
+.deletebox{
+	display:flex;
+	justify-content:flex-start;
+	align-items:center;
+	padding: 15px;
+}
+.selectAll{
+	margin: 0px 15px;
+}
+.cart_delete_btn{
+	width: 100px;
+	height:30px;
+	background-color: #39cdec;
+	color:white;
+	border: none;
+	margin-left: 5px;
+	border-radius: 15px;
+}
+.extra_info_box{
+	display: flex;
+	justify-content: space-between;
+	align-content:center;
+	padding: 2%;
+}
+.pangpang{
+	width: 20%;
+	border: 1px solid #39cdec;
+	background-color: white;
+	border-radius: 15px;
+}
+.order_price{
+	border: 1px solid #8e8e8e;
+	padding: 15px 30px;
+	font-weight: bold;
+	background-color: #F2F2F2;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.orderbtnbox{
+	text-align: center;
+}
+.orderbtn{
+	width: 200px;
+	height:50px;
+	border: 1px solid #39cdec;
+	background-color: white;
+	border-radius: 15px;
+	margin: 15px;
+}
