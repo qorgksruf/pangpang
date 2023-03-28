@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-*{ margin: 0px; padding: 0px; }
+* { margin: 0px; padding: 0px; }
 
 /* 메인 박스 */
 .main_box{
@@ -12,13 +12,31 @@
 
 /* 멤버 정보 메인박스 */
 .member_info_main{
-	width: 100%; height: 100px;
-	display: flex;
+	width: 100%;
+	display : flex;
 	border: solid 1px green;
+	align-items: center;
+	justify-content: space-between;
 }
-.member_info{
+.info_top{
 	display: flex;
+	height: 70px;
+	align-items: center;
 }
+.info_top h3{
+	margin-right: 20px;
+}
+.notice{
+	
+}
+.personal_info{
+	display: flex;
+	justify-content: space-around;
+}
+
+
+
+
 
 
 /* 차량 배차정보 박스 */
@@ -58,28 +76,19 @@
 
 /* 경로설정 박스 */
 .set_starting_box{
+	width: 100%;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: space-around;
 }
-.set_start_btn_box{
-	display: block;
-	align-items: center;
+.select_item_box{
+	width: 50%;
 }
-/* 시작/목적지 설정 버튼 */
-.set_start_btn_box button {
-	padding: 0px; margin: 0px;
-	width: 20px; height: 10px;
-	border: none;
-	background-color: transparent;
-	font-size: 15px;
-	color: black;
+.map_box{
+	width: 50%;
 }
-.btn_item{
-	margin: 10px 0px;
+.select_table{
+	width: 100%;
 }
-
-
 
 /* 선택한 배송지 전체박스 */
 .select_item_box{
@@ -87,8 +96,6 @@
 	border: solid 1px purple;
 	padding: 2%;
 }
-
-
 /* 선택한 배송지 취소 버튼 */
 .select_delete_btn {
 	padding: 0px; margin: 0px;
@@ -97,4 +104,24 @@
 	border: none;
 	background-color: transparent;
 	font-size: 15px;
+}
+
+
+/* 결과 박스 */
+.result_box{
+	width: 100%;
+	padding: 5%;
+}
+
+
+.result_btn_box{
+	width: 20%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+
+.footer{
+	margin-top: 500px;
 }

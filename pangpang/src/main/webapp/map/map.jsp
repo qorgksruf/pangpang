@@ -20,18 +20,30 @@
 	
 	<div class="map_wrap">
 		<div class="main_box">
-			<div class="member_info_main">
-				<div> 이미지 </div>
-				<div class="member_info">
-					<div> 직급 </div>
-					<div> 이름 </div>
+			<div class="member_info_box">
+				<div class="member_info_main">
+					<div class="info_top">
+						<h3> 배송지 설정 </h3>
+						<div class="notice"> bongseong님, 오늘도 안전운행 하세요! </div>
+					</div>
+					<div>
+						<a href="#"> 회원정보 수정 </a> 
+					</div>
+				</div>
+				<div class="personal_info">
+					<div> 직책 : 배송기사 </div>
+					<div> 아이디 : bongseong </div>
+					<div> 연락처 : 010-1234-5600 </div>
 				</div>
 			</div>
+		
 			<div class="dispatch_main_box">
-				<div> 차량이미지 </div>
-				<div> 차량정보 </div>
-				<div> 시작일자 </div>
-				<div> 종료일자 </div>
+				<div>
+					<img scr="/pangpang/car/img/car2.png">
+				</div>
+				<div> 69우1146 </div>
+				<div> 시작 : 2023-03-28 18:00 </div>
+				<div> 반납 : 2023-03-29 08:00 </div>
 				<div> 기타정보 </div>
 			</div>
 			<div class="delivery_info_box">
@@ -58,58 +70,51 @@
 			</div>
 			
 			<div class="set_starting_box">
-			
-				<div class="set_starting">
-					<h3> 출발지/목적지 경유지설정 </h3>
-					<table class="table">
-						<tr>
-							<th> 출발지 </th> <th> 목적지 </th>
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option> 경기 안산시 단원구 광덕2로 121 </option>
-									<option> 경기 안산시 상록구 한양대학로 80 </option>
-								</select>
-							</td> 
-							<td>
-								<select>
-									<option> 경기 안산시 단원구 광덕2로 121 </option>
-									<option> 경기 안산시 상록구 한양대학로 80 </option>
-								</select>
-							</td> 
-						</tr>
-					</table>
-				</div>
-				
-				
-				<div class="set_start_btn_box">
-					<div class="btn_item">
-						<button type="button"> <i class="fas fa-chevron-left"></i> </button>
-					</div>
-					<div class="btn_item">
-						<button type="button"> <i class="fas fa-chevron-right"></i> </button>
-					</div>
-				</div>
-				
-				
 				<div class="select_item_box">
 					<h3> 선택정보 </h3>
-					<table class="table">
+					<table class="table select_table">
 						<tr>
-							<th width="20%"> 상태 </th> <th width="65%"> 주소 </th> <th width="15%"> 비고 </th>
+							<th width="20%"> 상태 </th> <th width="65%"> 주소 </th> <th width="15%"> 제거 </th>
+						</tr>
+						<tr draggable="true">
+							<td> 배송대기 </td> <td> 경기 안산시 단원구 광덕2로 121 </td> <td> <button type="button" class="select_delete_btn"> <i class="fa-solid fa-minus"></i> </button>
 						</tr>
 						<tr>
-							<td> 배송대기 </td> <td> 경기 안산시 단원구 광덕2로 121 </td> <td> <button type="button" class="select_delete_btn"> <i class="fas fa-minus-circle"></i> </button>
-						</tr>
-						<tr>
-							<td> 배송대기 </td> <td> 경기 안산시 상록구 한양대학로 80 </td> <td> <button type="button" class="select_delete_btn"> <i class="fas fa-minus-circle"></i> </button>
+							<td> 배송대기 </td> <td> 경기 안산시 상록구 한양대학로 80 </td> <td> <button type="button" class="select_delete_btn"> <i class="fa-solid fa-minus"></i> </button>
 						</tr>
 					</table>
+				</div>
+				<div class="map_box">
+					<div id="map_div"></div>
 				</div>
 			</div>
 			
-			<div id="map_div"></div>
+			<div class="result_box">
+				<table class="table">
+					<tr>
+						<th> 출발지 </th> <th>  </th>
+					</tr>
+					<tr>
+						<th> 경유지 </th> <th>  </th>
+					</tr>
+					<tr>
+						<th> 목적지 </th> <th>  </th>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="result_btn_box">
+				<button type="button"> 경로설정 </button>
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="footer">
 		</div>
 		
 	</div>

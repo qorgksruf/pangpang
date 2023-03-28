@@ -4,7 +4,7 @@ public class BookcarDto {
 	private int bookcar_no;
 	private String bookcar_str_date;
 	private String bookcar_end_date;
-	private char bookcar_yn;
+	private String bookcar_yn;
 	private int carmanage_no;
 	private int member_no;
 	//빈생성자
@@ -13,7 +13,7 @@ public class BookcarDto {
 	}
 	
 	//풀생성자
-	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, char bookcar_yn,
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
 			int carmanage_no, int member_no) {
 		super();
 		this.bookcar_no = bookcar_no;
@@ -23,6 +23,7 @@ public class BookcarDto {
 		this.carmanage_no = carmanage_no;
 		this.member_no = member_no;
 	}
+
 
 	public int getBookcar_no() {
 		return bookcar_no;
@@ -48,11 +49,11 @@ public class BookcarDto {
 		this.bookcar_end_date = bookcar_end_date;
 	}
 
-	public char getBookcar_yn() {
+	public String getBookcar_yn() {
 		return bookcar_yn;
 	}
 
-	public void setBookcar_yn(char bookcar_yn) {
+	public void setBookcar_yn(String bookcar_yn) {
 		this.bookcar_yn = bookcar_yn;
 	}
 
@@ -78,9 +79,6 @@ public class BookcarDto {
 				+ bookcar_end_date + ", bookcar_yn=" + bookcar_yn + ", carmanage_no=" + carmanage_no + ", member_no="
 				+ member_no + "]";
 	}
-	
-
-
 	
 	
 }
