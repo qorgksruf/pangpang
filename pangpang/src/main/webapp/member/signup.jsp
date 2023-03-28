@@ -320,33 +320,6 @@
 					</table>
 				</div>
 			</div>	
-			
-			<!-- 테이블 세트 1개 -->
-			<div class="input_box container">
-				<div class="box_title">
-					<div class="input_title  h3">
-						프로모션 코드 / 추천인 아이디 입력
-					</div>
-				</div>
-				
-				<div class="input_table_box">
-					<table  class="input_table table table-success table-striped-columns table-bordered">
-						<tr>
-							<th class="table_mid"> 프로모션 코드</th>
-							<td class="table_mid">
-								<input class="input1 promotioncode form-control" type="text">
-								<span class="point">이벤트 참여 시 제공받은 코드를 입력해주시기 바립니다. </span>
-							</td>
-						</tr>
-						<tr>
-							<th class="table_end"> 추천인 아이디</th>
-							<td class="table_end">
-								<input class="input1 recommenderid form-control" type="password">
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>		
 		</form>
 		<div class="rwPromotion">
           	<span>※ 신라리워즈 가입 고객께는 모바일 카드가 발급 되며 혜택 및 약관은 홈페이지에서 확인 가능합니다.</span>

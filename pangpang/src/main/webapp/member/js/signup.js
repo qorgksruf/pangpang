@@ -1,6 +1,4 @@
-/* 마케팅 동의여부 */
-let marketingSms = document.querySelector('.marketingSms').value;
-let marketingEmail = document.querySelector('.marketingEmail').value;
+console.log('signup')
 
 /* 생일 입력받기 */
 function setbirth(){
@@ -98,7 +96,7 @@ function emailcheck(){
 		let memailj = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/
 		if( memailj.test(member_email) ){ 
 			$.ajax({
-				url : "/hotel/member/confirm" ,
+				url : "/pangpang/member/confirm" ,
 				method : "get" , 
 				data : {"member_email":member_email, "type":1} ,
 				success : (r)=>{ 
@@ -232,7 +230,7 @@ function idcheck(){
 		let idj = /^[a-z0-9]{5,12}$/
 		if(idj.test(member_id)){
 			$.ajax({
-				url : "/hotel/member/confirm" ,
+				url : "/pangpang/member/confirm" ,
 				method : "get" , 
 				data : {"member_id":member_id, "type":2} ,
 				success : (r)=>{ 
@@ -247,6 +245,7 @@ function idcheck(){
 					}
 				}
 			})
+			checkconfirm[4].innerHTML = 'O'
 		}else{ 
 			alert('아이디 형식에 맞게 작성하여 주십시오.')
 		}
@@ -311,19 +310,18 @@ function signup(){
 		member_phone : setphone(),
 		member_id : document.querySelector('.member_id').value,
 		member_pwd : document.querySelector('.member_pwd').value,
-		member_marketingSms : marketingSms,
-		member_marketingEmail : marketingEmail
 	}
+	console.log(info)
 	
-	$.ajax({
-		url : "/hotel/member/info" ,
+	/*$.ajax({
+		url : "/pangpang/member/info" ,
 		method : "post" , 
 		data : info ,
 		success : (r)=>{ 
 			console.log(r)
 			location.href="/hotel/member/signup/completed.jsp?member_id="+document.querySelector('.member_id').value
 		}
-	}) // ajax end	 
+	}) // ajax end	 */
 	
 	/*
 	let signupForm = document.querySelectorAll('.signupForm')[0];
