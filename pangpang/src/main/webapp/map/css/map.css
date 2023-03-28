@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-*{ margin: 0px; padding: 0px; }
+* { margin: 0px; padding: 0px; }
 
 /* 메인 박스 */
 .main_box{
@@ -12,13 +12,31 @@
 
 /* 멤버 정보 메인박스 */
 .member_info_main{
-	width: 100%; height: 100px;
-	display: flex;
+	width: 100%;
+	display : flex;
 	border: solid 1px green;
+	align-items: center;
+	justify-content: space-between;
 }
-.member_info{
+.info_top{
 	display: flex;
+	height: 70px;
+	align-items: center;
 }
+.info_top h3{
+	margin-right: 20px;
+}
+.notice{
+	
+}
+.personal_info{
+	display: flex;
+	justify-content: space-around;
+}
+
+
+
+
 
 
 /* 차량 배차정보 박스 */

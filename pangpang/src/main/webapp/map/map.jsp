@@ -20,18 +20,30 @@
 	
 	<div class="map_wrap">
 		<div class="main_box">
-			<div class="member_info_main">
-				<div> 이미지 </div>
-				<div class="member_info">
-					<div> 직급 </div>
-					<div> 이름 </div>
+			<div class="member_info_box">
+				<div class="member_info_main">
+					<div class="info_top">
+						<h3> 배송지 설정 </h3>
+						<div class="notice"> bongseong님, 오늘도 안전운행 하세요! </div>
+					</div>
+					<div>
+						<a href="#"> 회원정보 수정 </a> 
+					</div>
+				</div>
+				<div class="personal_info">
+					<div> 직책 : 배송기사 </div>
+					<div> 아이디 : bongseong </div>
+					<div> 연락처 : 010-1234-5600 </div>
 				</div>
 			</div>
+		
 			<div class="dispatch_main_box">
-				<div> 차량이미지 </div>
-				<div> 차량정보 </div>
-				<div> 시작일자 </div>
-				<div> 종료일자 </div>
+				<div>
+					<img scr="/pangpang/car/img/car2.png">
+				</div>
+				<div> 69우1146 </div>
+				<div> 시작 : 2023-03-28 18:00 </div>
+				<div> 반납 : 2023-03-29 08:00 </div>
 				<div> 기타정보 </div>
 			</div>
 			<div class="delivery_info_box">
@@ -96,6 +108,11 @@
 			</div>
 			
 		</div>
+		
+		
+		
+		
+		
 		
 		<div class="footer">
 		</div>
