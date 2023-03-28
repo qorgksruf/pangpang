@@ -38,7 +38,7 @@ function getProduct(pno){
 							<div class="pimg"> <img class="product_img" alt="" src="/pangpang/product/pimg/${r.product_img}"> 	</div>
 							<div class="product_info">
 								<div class="pname"> 	${r.product_name}  									</div>
-								<div class="price"> 	25,000원 
+								<div class="price"> 	${r.product_price.toLocaleString()} 원
 									<img class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
 									<span class="mini_mark">팡팡배송</span>		
 								</div>

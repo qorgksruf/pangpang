@@ -79,15 +79,17 @@ public class Product extends HttpServlet {
 		String product_unit 	    = multi.getParameter("product_unit");
 		String product_content 	    = multi.getParameter("product_content");
 		String product_img 	        = multi.getFilesystemName("product_img");	
+		int    product_price		= Integer.parseInt(multi.getParameter("product_price"));
+		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount"));
 
 		boolean result = false;
 		
 		if (type == 1) {      // 제품 등록
-			ProductDto dto = new ProductDto(product_name, product_option, product_unit, product_img, product_content, category_no);
+			ProductDto dto = new ProductDto(product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
 			result = ProductDao.getInstance().item_register(dto);
 		}else if (type == 2) {// 제품 수정
 			int    product_no			= Integer.parseInt(multi.getParameter("product_no"));
-			ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content, category_no);
+			ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
 			result = ProductDao.getInstance().item_update(dto);
 		}
 

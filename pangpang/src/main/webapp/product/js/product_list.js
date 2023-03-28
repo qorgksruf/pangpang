@@ -39,7 +39,7 @@ function getProductList(cno){
 								<div class="pimg"> <a href="/pangpang/product/product_view.jsp?pno=${o.product_no}">
 								<img class="product_img" alt="" src="/pangpang/product/pimg/${o.product_img} "> </a> </div>
 								<div class="pname"> 	${o.product_name}  </div>
-								<div class="price"> 	5400원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span>팡팡배송</span></div>
+								<div class="price"> 	${o.product_price.toLocaleString()}원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span>팡팡배송</span></div>
 								<div class="unitprice"> (100g당 280원 )										</div>
 								<div class="date"> 		내일(목) 3/23 도착 보장									</div>
 							</div>`;

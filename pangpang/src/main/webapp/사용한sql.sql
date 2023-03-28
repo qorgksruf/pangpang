@@ -46,13 +46,15 @@ create table category(
 );
 -- 제품 테이블                                        						-- 보관조건? 재고위치? // 추가 보완 사항?
 create table product(               
-   product_no          int auto_increment primary key,   	 			-- 제품번호 pk
-   product_name        varchar(30) not null,                			-- 제품명
-   product_option      varchar(10) not null,                			-- 규격/옵션         -- 100g / 500ml   
-   product_unit        varchar(10)   not null,                			-- 단위             -- (개/봉/박스/곽/통/캔)   
-   product_img         varchar(10)   not null,                			-- 제품이미지
-   product_content     longtext not null,                  				-- 제품상세설명        -- 원산지 / 보관방법 
-   category_no         int,                               				-- 카테고리번호 fk
+   product_no           int auto_increment primary key,   	 			   -- 제품번호 pk
+   product_name         varchar(30)  not null,                			   -- 제품명
+   product_option       varchar(10)  not null,                			   -- 규격/옵션         -- 100g / 500ml   
+   product_unit         varchar(10)  not null,                			   -- 단위             -- (개/봉/박스/곽/통/캔)   
+   product_img          varchar(100) not null,                			   -- 제품이미지
+   product_content      longtext not null,                  			   -- 제품상세설명        -- 원산지 / 보관방법 
+   product_price		int not null,									   -- 판매가
+   product_discount		int not null,									   -- 최대할인율 
+   category_no          int,                               				   -- 카테고리번호 fk
    foreign key (category_no) references category( category_no ) on delete cascade
 );
 -- 입출고 테이블                                        			-- 제조년월 / 소비기한 / 폐기 예정일은 어떻게? -- 테이블 분리?
@@ -90,7 +92,7 @@ create table ordermanagement(
    ordermanagement_no         	int   auto_increment primary key,    	-- 주문번호 pk
    ordermanagement_date       	datetime default now(),              	-- 주문일자      
    ordermanagement_state      	int	  not null,               			-- 주문상태                                   -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     
-   ordermanagement_address    	varchar(20) not null,                	-- 배송주소       
+   ordermanagement_address    	varchar(100) not null,                	-- 배송주소       
    member_no         			int not null,                        	-- 주문회원 fk     
    foreign key (member_no)   references member( member_no ) on delete no action 
 );
@@ -100,7 +102,7 @@ create table orderdetail(
    orderdetaildamount      	int   not null,                     	-- 주문수량 
    orderdetaildprice        int   not null,                     	-- 주문단가
    ordermanagement_no      	int   not null,                       	-- 주문번호 fk
-   product_no          		int not null,                        	-- 제품코드 fk
+   product_no          		int	  not null,                        	-- 제품코드 fk
    foreign key (product_no) references product( product_no ) on delete no action, 
    foreign key (ordermanagement_no)   references ordermanagement( ordermanagement_no ) on delete cascade
 );

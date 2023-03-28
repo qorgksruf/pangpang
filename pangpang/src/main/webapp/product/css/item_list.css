@@ -66,23 +66,23 @@
 	margin: 2%;
 }
 .modal_content input  {
-	width: 60%;
+	width: 80%;
 	height:45px;
-	margin: 0px 10%;
 	padding-left: 10px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
 	text-align:center;	
+	margin-right: 50px;
 }
 .product_content{
-	width: 60%;
+	width: 80%;
 	height:80px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
 	margin-right: 50px;	
 }
 .modal_content select, option{
-	width: 60%;
+	width: 80%;
 	height:45px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
