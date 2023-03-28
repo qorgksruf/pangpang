@@ -37,8 +37,18 @@ public class Carmanage extends HttpServlet {
 	 */
     // 차량관리 출력구현
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
 
-		ArrayList<CarmanagementDto>result =CarmanagementDao.getInstance().carList();
+		ArrayList<CarmanagementDto>result = null;
+		
+		if (request.getParameter("carmanage_no") != null) {
+			System.out.println("carmanage_no 값 있따 !!! " + request.getParameter("carmanage_no"));
+			result =CarmanagementDao.getInstance().getCarInfo(request.getParameter("carmanage_no"));
+			System.out.println("carmanage_no 결과값 !!! " + result);
+		} else {
+			result =CarmanagementDao.getInstance().carList();
+		}
 		
 		/* CarmanagementDto dto = new CarmanagementDto(); */
 		
@@ -93,6 +103,8 @@ public class Carmanage extends HttpServlet {
 		System.out.println("-------uploadpath-------");
 		System.out.println(uploadpath);
 		
+		System.out.println("doPut request updateFormData " + request.getParameter("updateFormData"));
+		
 		//업로드
 		MultipartRequest multi = new MultipartRequest(
 				request, 						//1.요청방식
@@ -102,16 +114,21 @@ public class Carmanage extends HttpServlet {
 				new DefaultFileRenamePolicy()	//5.동일한 첨부파일명이 존재하면 뒤에 숫자 붙여짐 그래서 판별함
 		);
 		
-		int carmanage_no = Integer.parseInt(request.getParameter("carmanage_no"));
+		int carmanage_no = Integer.parseInt(multi.getParameter("carmanage_no"));
 		String carmanage_img = multi.getFilesystemName("carmanage_img");
 		String carmanage_use_yn =multi.getParameter("carmanage_use_yn");
 		String carmanage_finish =multi.getParameter("carmanage_finish");	
 		
 		CarmanagementDto dto = new CarmanagementDto(carmanage_no, carmanage_img, carmanage_use_yn, carmanage_finish);
+				System.out.println("dto:::::::"+dto);
+		boolean result =CarmanagementDao.getInstance().carupdate(dto);
+		response.getWriter().print(result);
 				
-		System.out.println("CarmanagementDto dto:"+dto);
-		/* boolean result = CarmanagementDao.getInstance().carupdate(dto); */
-		/* response.getWriter().print(result); */
+		/*
+		 * System.out.println("CarmanagementDto dto:"+dto); boolean result =
+		 * CarmanagementDao.getInstance().carupdate(dto);
+		 * response.getWriter().print(result);
+		 */
 	}
 
 	/**
