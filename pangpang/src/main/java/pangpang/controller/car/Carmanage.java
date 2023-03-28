@@ -95,7 +95,12 @@ public class Carmanage extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int carmanage_no = Integer.parseInt(request.getParameter("carmanage_no")); 
+	         System.out.println("-----------cno carmanage.java에서 확인-------------");
+				/* System.out.println(cno); */
+	      boolean result = CarmanagementDao.getInstance().cardelete(carmanage_no);
+	            System.out.println(result);
+	      response.getWriter().print(result);
 	}
 
 }

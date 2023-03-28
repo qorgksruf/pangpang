@@ -1,5 +1,6 @@
 package pangpang.model.Dao.car;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
@@ -43,6 +44,7 @@ public class CarmanagementDao extends Dao{
 	      return list;
 	   }
 	  
+	  //등록버튼구현
 	  public boolean regi(CarmanagementDto dto) {
 		  String sql ="insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_use_yn,carmanage_start,carmanage_finish)values(?,?,?,?,?,?)";
 		  try {
@@ -61,4 +63,21 @@ public class CarmanagementDao extends Dao{
 		  return false;
 	  }
 	
+	  
+	  //삭제
+	     public boolean cardelete(int carmanage_no) {
+	         String sql="delete from carmanage where carmanage_no="+carmanage_no;
+	         try {
+	            ps=con.prepareStatement(sql);
+	            int count=ps.executeUpdate();
+	             if(count==1) {
+	                return true;
+	             }           
+	         }catch (Exception e) {
+	            System.out.println(e);
+	       }
+	         return false;
+	      }
+	  
+	  //수정
 }
