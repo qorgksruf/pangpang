@@ -1,11 +1,8 @@
-package pangpang.controller.member;
+package pangpang.controller.member.암호화;
 
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 

@@ -1,4 +1,4 @@
-package pangpang.controller.member;
+package pangpang.controller.member.암호화;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -42,7 +42,7 @@ public class SHA256 {
 		
 		try {
 			// 1. SHA256 알고리즘 객체 생성
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			MessageDigest md = MessageDigest.getInstance("SHA-256");//직접 만들어보기
 			
 			// 2. pwd와 salt 합친 문자열에 SHA256 적용
 			System.out.println(pwd+salt);
@@ -56,7 +56,6 @@ public class SHA256 {
 			System.out.println(e);
 		}return null;
 	}
-	
 	
 	// byte -> String
 	public String byte_to_String(byte[] temp) {
