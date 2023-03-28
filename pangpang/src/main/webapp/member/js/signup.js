@@ -313,15 +313,14 @@ function signup(){
 	}
 	console.log(info)
 	
-	/*$.ajax({
+	$.ajax({
 		url : "/pangpang/member/info" ,
 		method : "post" , 
 		data : info ,
 		success : (r)=>{ 
 			console.log(r)
-			location.href="/hotel/member/signup/completed.jsp?member_id="+document.querySelector('.member_id').value
 		}
-	}) // ajax end	 */
+	}) // ajax end	 
 	
 	/*
 	let signupForm = document.querySelectorAll('.signupForm')[0];

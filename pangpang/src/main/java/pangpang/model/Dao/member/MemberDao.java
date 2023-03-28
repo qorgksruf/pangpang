@@ -10,7 +10,7 @@ public class MemberDao extends Dao{
 	
 	// 1. 회원가입
 		public boolean signup( MemberDto dto ) {
-			String sql = "insert into member(member_name, member_birth, member_email, member_phone, member_id, member_pwd) values(?,?,?,?,?,?,?,?);";
+			String sql = "insert into member(member_name, member_birth, member_email, member_phone, member_id, member_pwd) values(?,?,?,?,?,?);";
 			try {
 				ps = con.prepareStatement(sql);
 				ps.setString( 1 , dto.getMember_name() );
