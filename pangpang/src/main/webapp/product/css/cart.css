@@ -26,15 +26,24 @@
 	border-bottom:1px solid #8e8e8e;
 	font-size: 25px;
 }
+.stock{
+	justify-content:flex-end;
+	font-size: 10px;
+}
 .product_info{
-	width: 600px;
+	width: 800px;
 	margin:0px 30px;
 }
-.pprice, .delivery_price{
+.product_price{
+	margin-right: 35px;
+}
+.pprice{
 	width: 100px;
 	height:100px;
 	margin:0px 15px;
-	font-weight: bo
+	padding-top: 30px;	
+	font-weight: bold;
+	font-size: 15px;
 }
 .mini_logo{
 	width: 15px;
@@ -45,6 +54,8 @@
 	font-size: 10px;
 }
 .product_info_bottom{
+	display:flex;
+	justify-content:space-between;
 	padding: 15px;
 }
 .now_pricebox{

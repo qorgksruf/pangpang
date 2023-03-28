@@ -72,7 +72,7 @@ public class Product extends HttpServlet {
  				"UTF-8",						// 첨부파일 한글 인코딩
  				new DefaultFileRenamePolicy()	// 동일한 첨부파일명이 존재하면 뒤에 숫자 붙여서 식별
  				);
- 		int    type                 = Integer.parseInt(multi.getParameter("type"));
+ 		
  		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));
  		String product_name 		= multi.getParameter("product_name");		
 		String product_option 		= multi.getParameter("product_option");
@@ -82,29 +82,53 @@ public class Product extends HttpServlet {
 		int    product_price		= Integer.parseInt(multi.getParameter("product_price"));
 		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount"));
 
-		boolean result = false;
-		
-		if (type == 1) {      // 제품 등록
-			ProductDto dto = new ProductDto(product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
-			result = ProductDao.getInstance().item_register(dto);
-		}else if (type == 2) {// 제품 수정
-			int    product_no			= Integer.parseInt(multi.getParameter("product_no"));
-			ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
-			result = ProductDao.getInstance().item_update(dto);
-		}
+
+		ProductDto dto = new ProductDto(product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
+		boolean result = ProductDao.getInstance().item_register(dto);
+	
 
 		response.getWriter().print(result);
 		
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 
+ 		String uploadpath = request.getSession().getServletContext().getRealPath("/product/pimg");
+ 		
+ 		MultipartRequest multi = new MultipartRequest(
+ 				request,						// 요청방식
+ 				uploadpath,						// 첨부파일 가져와서 저장할 서버내 폴더
+ 				(1024*1024*10),					// 첨부파일 허용 범위 용량 //10MB
+ 				"UTF-8",						// 첨부파일 한글 인코딩
+ 				new DefaultFileRenamePolicy()	// 동일한 첨부파일명이 존재하면 뒤에 숫자 붙여서 식별
+ 				);
+
+ 		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));
+ 		String product_name 		= multi.getParameter("product_name");		
+		String product_option 		= multi.getParameter("product_option");
+		String product_unit 	    = multi.getParameter("product_unit");
+		String product_content 	    = multi.getParameter("product_content");
+		String product_img 	        = multi.getFilesystemName("product_img");	
+		int    product_price		= Integer.parseInt(multi.getParameter("product_price"));
+		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount"));
+
+		int    product_no			= Integer.parseInt(multi.getParameter("pno"));
+
+		ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
+		boolean result = ProductDao.getInstance().item_update(dto);
+
+		response.getWriter().print(result);
+		
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int    product_no			= Integer.parseInt(request.getParameter("product_no"));
-		boolean result = ProductDao.getInstance().item_delete(product_no);
+		
+		int    pno			= Integer.parseInt(request.getParameter("pno"));
+		boolean result = ProductDao.getInstance().item_delete(pno);
 		response.getWriter().print(result);
+		
 	}
 
 }

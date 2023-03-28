@@ -109,8 +109,8 @@ public class ProductDao extends Dao{
 			ps.setInt(1, amount);
 			ps.setInt(2, pno);
 			ps.setInt(3, mno);
-			ps.executeUpdate();
-			return true;			
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}			
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}
@@ -135,15 +135,24 @@ public class ProductDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}		
 		return null;
 	}
-	// 장바구니 취소
-	public boolean cartOut(int pno,int mno) {
-		String sql = "delete from cart where product_no = ? and member_no = ? ";		
+	// 장바구니 전체 취소
+	public boolean cartOutAll(int mno) {
+		String sql = "delete from cart where member_no = "+mno;		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, pno);
-			ps.setInt(2, mno);
 			ps.executeUpdate();
-			return true;			
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}			
+		}catch (Exception e) {System.out.println(e);}		
+		return false;
+	}
+	// 장바구니 취소
+	public boolean cartOut(int pno,int mno) {
+		String sql = "delete from cart where product_no = "+pno+" and member_no = "+mno;		
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}		
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}
@@ -155,13 +164,13 @@ public class ProductDao extends Dao{
 			ps.setString(1, dto.getProduct_name());
 			ps.setString(2, dto.getProduct_option());
 			ps.setString(3, dto.getProduct_unit());
-			ps.setString(4, dto.getProduct_content());
-			ps.setString(5, dto.getProduct_img());			
+			ps.setString(4, dto.getProduct_img());
+			ps.setString(5, dto.getProduct_content());			
 			ps.setInt(6, dto.getProduct_price());
 			ps.setInt(7, dto.getProduct_discount());
 			ps.setInt(8, dto.getCategory_no());
-			ps.executeUpdate();
-			return true;			
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}			
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}
@@ -173,25 +182,24 @@ public class ProductDao extends Dao{
 			ps.setString(1, dto.getProduct_name());
 			ps.setString(2, dto.getProduct_option());
 			ps.setString(3, dto.getProduct_unit());
-			ps.setString(4, dto.getProduct_content());
-			ps.setString(5, dto.getProduct_img());
+			ps.setString(4, dto.getProduct_img());
+			ps.setString(5, dto.getProduct_content());
 			ps.setInt(6, dto.getProduct_price());
 			ps.setInt(7, dto.getProduct_discount());
 			ps.setInt(8, dto.getCategory_no());
 			ps.setInt(9, dto.getProduct_no());
-			ps.executeUpdate();
-			return true;			
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}			
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}
 	// 품목 삭제
 	public boolean item_delete(int pno) {
-		String sql = "delete from product where product_no = ? ";		
+		String sql = "delete from product where product_no = "+pno;		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, pno);
-			ps.executeUpdate();
-			return true;			
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}			
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}

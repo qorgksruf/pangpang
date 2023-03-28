@@ -79,7 +79,7 @@ function cartIn(pno){
 		data 	: {"pno":pno, "amount":amount},
 		success	: (r)=>{
 			console.log(r)
-			if(r == 'true'){alert('장바구니 등록 성공')}
+			if(r == 'true'){alert('장바구니 등록 성공'); location.href="/pangpang/product/product_list.jsp?cno=1";}
 			else{alert('장바구니 등록 실패[관리자에게 문의해주세요]')}			
 		}// success e
 	}); // ajax e
