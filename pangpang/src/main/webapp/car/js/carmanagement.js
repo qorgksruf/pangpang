@@ -101,12 +101,15 @@ function cardelete(carmanage_no){
 
 //수정버튼구현
 function carupdate(carmanage_no){
-   console.log(carmanage_no)
-   console.log('수정버튼열림');
+	console.log('수정버튼클릭')
+	let updateForm = document.querySelector('.updateForm')[0];
+	
+	let updateFormData = new FormData(updateForm);
+	updateFormData.set('carmanage_no',carmanage_no)
    $.ajax({
       url:"/pangpang/carmanage",
       method:"put",
-      data:{"carmanage_no":carmanage_no },
+      data:{"updateFormData":updateFormData },
       success:(r)=>{
          console.log('통신');
          console.log(r);

@@ -88,7 +88,30 @@ public class Carmanage extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//현재 서버의 배포된 프로잭트내 폴도 경로 찾기
+		String uploadpath = request.getSession().getServletContext().getRealPath("/car/img");
+		System.out.println("-------uploadpath-------");
+		System.out.println(uploadpath);
+		
+		//업로드
+		MultipartRequest multi = new MultipartRequest(
+				request, 						//1.요청방식
+				uploadpath, 					//2.첨부파일 가져와서 저장할 서버내 폴더
+				1024*1024*10 ,					//3.첨부파일 허용 범위 용량 [바이트단위]//얘는 10메가임
+				"UTF-8",						//4.첨부파일 한글 인코딩 
+				new DefaultFileRenamePolicy()	//5.동일한 첨부파일명이 존재하면 뒤에 숫자 붙여짐 그래서 판별함
+		);
+		
+		int carmanage_no = Integer.parseInt(request.getParameter("carmanage_no"));
+		String carmanage_img = multi.getFilesystemName("carmanage_img");
+		String carmanage_use_yn =multi.getParameter("carmanage_use_yn");
+		String carmanage_finish =multi.getParameter("carmanage_finish");	
+		
+		CarmanagementDto dto = new CarmanagementDto(carmanage_no, carmanage_img, carmanage_use_yn, carmanage_finish);
+				
+		System.out.println("CarmanagementDto dto:"+dto);
+		/* boolean result = CarmanagementDao.getInstance().carupdate(dto); */
+		/* response.getWriter().print(result); */
 	}
 
 	/**
