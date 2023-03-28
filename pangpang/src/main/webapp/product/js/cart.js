@@ -11,7 +11,7 @@ function getCartList(){
 			let html = '';
 			r.forEach((o)=>{
 				html += `<div class="cart_item">
-							<input name="cart" value="${o.cart_no}" type="checkbox" onclick='checkSelectAll(this)'>
+							<input name="cart" value="${o.product_no}" type="checkbox" onclick='checkSelectAll(this)'>
 							<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
 							
 							<div class="product_info">
@@ -20,12 +20,12 @@ function getCartList(){
 									<span>내일(목) 3/28 도착 보장 </span>
 									<span>(서울경기 기준)</span>
 									<span>${o.product_price.toLocaleString()} 원 </span>
-									<select>
-										<option> 1 </option>
-										<option> 2 </option>
-										<option> 3 </option>
+									<select name="amount" class="${o.product_no}" onchage="price(${o.product_no},${o.product_price})">
+										<option value="1"> 1 ${o.product_unit}</option>
+										<option value="2"> 2 ${o.product_unit}</option>
+										<option value="3"> 3 ${o.product_unit}</option>
 									</select>
-									<span>${o.product_price.toLocaleString()} 원 </span>
+									<span class="누적가격">${o.product_price.toLocaleString()} 원 </span>
 									<span> <i class="far fa-times-circle"></i> </span>
 								</div>					
 							</div>
@@ -38,17 +38,29 @@ function getCartList(){
 							<div class="delivery_price"> 무료 </div>
 						</div>`
 			})
-			document.querySelector('.cartlist').innerHTML = html;		
+			document.querySelector('.cartlist').innerHTML = html;	
+					
 		}// success e
 	}); // ajax e	
 }// getCartList e
 
 function SelectAll()  {
-
-  let checkboxes = document.querySelectorAll('input[name="cart"]');
-
-	  checkboxes.forEach((o)=>{o.checked = true;})
-
+	
+	  let count = 0;
+	  let productlist = [];
+	  let amountlist =[];
+	  let checkboxes = document.querySelectorAll('input[name="cart"]');
+	  let select =  document.querySelectorAll('select[name="amount"]'); 
+  
+	  checkboxes.forEach((o)=>{o.checked = true;count++; productlist.push(o.value);})
+	  select.forEach((o)=>{ amountlist.push(o.value);})
+	  
+	  console.log(checkboxes.length)
+	  console.log(count)
+	  console.log(productlist)
+	  console.log(select)
+	  console.log(amountlist)
+	  
 }
 
 // 선택한 제품 장바구니 삭제
