@@ -8,7 +8,7 @@ package pangpang.controller.member.암호화;
 */
 
 public class KISA_SHA256 {
-
+ 
 	// DEFAULT : JAVA = BIG_ENDIAN
 	private static int ENDIAN = Common.BIG_ENDIAN;
 
@@ -222,11 +222,11 @@ public class KISA_SHA256 {
 
 
 	public static class SHA256_INFO {
-		public int uChainVar[] = new int[SHA256_DIGEST_VALUELEN / 4];
-		public int uHighLength;
-		public int uLowLength;
-		public int remainNum;
-		public byte szBuffer[] = new byte[SHA256_DIGEST_BLOCKLEN];
+		public int uChainVar[] = new int[SHA256_DIGEST_VALUELEN / 4];// 32/4
+		public int uHighLength; 	// 메시지 크기가 클때 쓰는 것?
+		public int uLowLength; 		// 메시지 크기 
+		public int remainNum; 		// 남는 숫자?
+		public byte szBuffer[] = new byte[SHA256_DIGEST_BLOCKLEN];// 64/4
 	}
 	
 	public static class Common {
