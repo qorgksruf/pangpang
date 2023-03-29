@@ -50,7 +50,7 @@ public class Cart extends HttpServlet {
 		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		int mno		= 1; // 추후 변경
 		
-		boolean result = ProductDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
+		int result = ProductDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
 		response.getWriter().print(result);
 		
 	}
@@ -61,17 +61,27 @@ public class Cart extends HttpServlet {
 		
 	}
 
-
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		// 장바구니 취소 [ 제품번호 ] 
-		int pno 	= Integer.parseInt(request.getParameter("pno")) ;
+		int type 	= Integer.parseInt(request.getParameter("type"));
+		
 		// 로그인한 회원 정보 
 		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		int mno		= 1; // 추후 변경
 		
-		boolean result = ProductDao.getInstance().cartOut(pno, mno);
-		response.getWriter().print(result);
+		boolean result = false;
+		
+		if(type == 1) {       // 로그인한 회원 전체 제품 장바구니 취소
+			result  = ProductDao.getInstance().cartOutAll(mno);
+			response.getWriter().print(result);
+			
+		}else if(type == 2) { // 로그인한 회원 선택 제품 장바구니 취소 
+			int pno = Integer.parseInt(request.getParameter("pno")); System.out.println(pno);
+			result  = ProductDao.getInstance().cartOut(pno, mno);
+			response.getWriter().print(result);
+		}
+
+		
 
 	}
 

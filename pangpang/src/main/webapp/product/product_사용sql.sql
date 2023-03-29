@@ -1,12 +1,12 @@
 -- 멤버 추가
-insert into member(member_id,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('qweqwe','qwe123','qwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1);
-insert into member(member_id,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('bnmbnm','bnm123','bnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',1);
-insert into member(member_id,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('asdads','asd123','asd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2);
-insert into member(member_id,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('zxczxc','zxc123','zcx@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2);
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
+values ('qweqwe','유재석','qwe123','qwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1);
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
+values ('bnmbnm','강호동','bnm123','bnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',1);
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
+values ('asdads','신동엽','asd123','asd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2);
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
+values ('zxczxc','민경훈','zxc123','zcx@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2);
 
 -- 카테고리 추가
 insert into category(category_name,category_img) values ('과일','과일.png');

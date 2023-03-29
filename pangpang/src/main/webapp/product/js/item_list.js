@@ -18,8 +18,8 @@ function getItemList(){
 							<td> ${o.category_name} </td>	<td> ${o.product_no} </td>	<td> ${o.product_name} </td>	
 							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td><td> ${o.product_count} </td>	
 							<td>
-								<button class="updatebtn" onclick="openmodal_U()" type="button"> 수정 </button>
-								<button class="deletebtn" onclick="openmodal_D()" type="button"> 삭제 </button>
+								<button class="updatebtn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
+								<button class="deletebtn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>
 							</td>		
 						</tr>`;
 			})			
@@ -46,8 +46,8 @@ function search(){
 							<td> ${o.category_name} </td>	<td> ${o.product_no} </td>	<td> ${o.product_name} </td>	
 							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td><td> ${o.product_count} </td>	
 							<td>
-								<button class="updatebtn" onclick="openmodal_U()" type="button"> 수정 </button>
-								<button class="deletebtn" onclick="openmodal_D()" type="button"> 삭제 </button>
+								<button class="updatebtn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
+								<button class="deletebtn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>
 							</td>		
 						</tr>`;
 			})			
@@ -56,7 +56,6 @@ function search(){
 		} // success e
 	}) // ajax e		
 }
-
 
 // 3. 모달 영역
 // 제품 등록용 모달
@@ -82,11 +81,10 @@ function closemodal_R(){
 }
 // 제품 수정용 모달
 function openmodal_U(){
-		// 4. 등록 카테고리 목록 출력
+	// 4. 등록 카테고리 목록 출력
 	$.ajax({
 		url 	: "/pangpang/category",
 		method	: "get",
-		async	: false,
 		success	: (r)=>{
 			console.log(r)
 			let html = ``;
@@ -97,6 +95,7 @@ function openmodal_U(){
 		} // success e
 	}) // ajax e
 	document.querySelector('.modalupdate').style.display='flex';
+
 }
 function closemodal_U(){
 	document.querySelector('.modalupdate').style.display='none';
@@ -104,35 +103,68 @@ function closemodal_U(){
 // 제품 삭제용 모달
 function openmodal_D(){
 	document.querySelector('.modaldelete').style.display='flex';
+
 }
 function closemodal_D(){
 	document.querySelector('.modaldelete').style.display='none';
 }
 
-// 3. 품목 등록
+// 품목 등록
 function item_register(){
 	
 	let registerForm = document.querySelectorAll('.registerForm')[0];// 첫번째 form 가져오기	
 	let registerFormData = new FormData(registerForm);
-
-	console.log(registerFormData)
-	
+	console.log(registerFormData.get("product_price"))
 	$.ajax({
 		url 	: "/pangpang/product",
 		method	: "post",
 		data 	: registerFormData,
-		async	: false,
+		contentType : false,
+        processData : false,
 		success	: (r)=>{
 			console.log(r)
-			if(r == 'true'){alert('품목 등록 성공');}
-			else{alert('품목 등록 실패')}
+			if(r == 'true'){alert('품목 등록 성공');closemodal_U();}
+			else{alert('품목 등록 실패');closemodal_U();}
 		} // success e
 	}) // ajax e		
 }
 
+// 품목 수정
+function item_update(){
 
+	let updateForm = document.querySelectorAll('.updateForm')[0];// 첫번째 form 가져오기	
+	let updateFormData = new FormData(updateForm);
+	updateFormData.set('product_no',pno);
 
+	$.ajax({
+		url 	: "/pangpang/product",
+		method	: "put",
+		data 	: updateFormData,
+		contentType : false,
+        processData : false,
+		success	: (r)=>{
+			console.log(r)
+			if(r == 'true'){alert('품목 수정 성공');closemodal_D();}
+			else{alert('품목 수정 실패');closemodal_D();}
+		} // success e
+	}) // ajax e		
+}
 
+// 제품 삭제
+function item_delete(){
+
+	$.ajax({
+		url 	: "/pangpang/product",
+		method	: "delete",
+		data 	: {"pno":pno},
+		success	: (r)=>{
+			console.log(r)
+			if(r == 'true'){alert('품목 삭제 성공');location.href="/pangpang/product/item_list.jsp";}
+			else{alert('품목 삭제 실패')}
+			
+		} // success e
+	}) // ajax e		
+}
 
 
 

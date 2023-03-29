@@ -68,7 +68,7 @@ create table stockmanagement(
    stockmanagementamount   	int   not null,                      			-- 수량
    product_price       		int not null,                       			-- 단가    개당 단가                           
    product_no          		int not null,                        			-- 제품번호 fk
-   foreign key (product_no) references product( product_no ) on delete no action
+   foreign key (product_no) references product( product_no ) on delete cascade
   
 );
 

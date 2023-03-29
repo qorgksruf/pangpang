@@ -69,6 +69,7 @@ function getProduct(pno){
 
 // 3. 장바구니 담기
 function cartIn(pno){
+	
 	console.log(pno)
 	let amount = document.querySelector('.amount').value;
 	console.log(amount)
@@ -79,8 +80,9 @@ function cartIn(pno){
 		data 	: {"pno":pno, "amount":amount},
 		success	: (r)=>{
 			console.log(r)
-			if(r == 'true'){alert('장바구니 등록 성공')}
-			else{alert('장바구니 등록 실패[관리자에게 문의해주세요]')}			
+			if(r == '1'){alert('장바구니 등록 성공'); location.href="/pangpang/product/product_list.jsp?cno=1";}
+			else if(r == '2'){alert('장바구니 등록 실패[관리자에게 문의해주세요]')}		
+			else if(r == '3'){alert('장바구니에 존재하는 상품입니다.')}	
 		}// success e
 	}); // ajax e
 }// cartIn e
