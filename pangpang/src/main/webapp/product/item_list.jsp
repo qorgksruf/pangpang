@@ -67,7 +67,7 @@
 					</div>
 					<div class="modalbtnbox">
 						 <button onclick="item_register()" class="modal_cancel btns" type="button"> 등록 </button>	
-		  				 <button onclick="closemodal_D()"   class="modal_cancel btns" type="button"> 닫기 </button>
+		  				 <button onclick="closemodal_R()"   class="modal_cancel btns" type="button"> 닫기 </button>
 					</div>
 				</form>
 				
@@ -112,7 +112,7 @@
 					</div>
 					<div class="modalbtnbox">
 						<button onclick="item_update(pno)" class="modal_cancel btns" type="button"> 수정 </button>	
-			   			<button onclick="closemodal_D()"  class="modal_cancel btns" type="button"> 닫기 </button>
+			   			<button onclick="closemodal_U()"  class="modal_cancel btns" type="button"> 닫기 </button>
 					</div>
 				</form>				
 			</div>

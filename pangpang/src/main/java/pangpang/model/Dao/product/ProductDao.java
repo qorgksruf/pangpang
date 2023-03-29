@@ -102,17 +102,25 @@ public class ProductDao extends Dao{
 		return null;		
 	}
 	// 장바구니 추가
-	public boolean cartIn(int amount,int pno,int mno) {
-		String sql = "insert into cart (cart_amount,product_no,member_no) values (?,?,?)";
+	public int cartIn(int amount,int pno,int mno) {
+		// 기존 장바구니 동일 제품 존재 확인
+		String sql = "select c.*, p.* from cart c, product p where c.product_no = p.product_no and c.member_no = "+mno;	
 		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				if(rs.getInt(3)==pno) {return 3;}
+			}
+			// 장바구니 추가
+			sql = "insert into cart (cart_amount,product_no,member_no) values (?,?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, amount);
 			ps.setInt(2, pno);
 			ps.setInt(3, mno);
 			int count = ps.executeUpdate();
-			if(count==1) {return true;}			
+			if(count==1) {return 1;}			
 		}catch (Exception e) {System.out.println(e);}		
-		return false;
+		return 2;
 	}
 	// 장바구니 출력 // 제품 출력
 	public ArrayList<CartDto> printCart(int mno) {
@@ -141,8 +149,8 @@ public class ProductDao extends Dao{
 		try {
 			ps = con.prepareStatement(sql);
 			ps.executeUpdate();
-			int count = ps.executeUpdate();
-			if(count==1) {return true;}			
+			ps.executeUpdate();
+			return true;			
 		}catch (Exception e) {System.out.println(e);}		
 		return false;
 	}

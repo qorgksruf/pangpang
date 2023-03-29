@@ -53,7 +53,7 @@
 					[팡팡와우 + 팡페이 계좌이체] 결제 시 2% 적립	<br>
 					[팡팡와우 + 팡페이 머니] 결제 시 4% 추가 적립 2899일 남음<br>
 				</div>
-				<button class="pangpang" onclick="order()" type="button">결제하기</button> 				
+				<a href="/pangpang/product/order.jsp"><button class="pangpangbtn" type="button"> 결제하기</button></a> 				
 			</div>
 			
 
