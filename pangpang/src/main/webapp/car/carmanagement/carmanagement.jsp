@@ -25,10 +25,9 @@
    </table>
    
    
-   
-      <!-- 등록버튼 모달 -->
+    
+ 	등록모달 
    	<button onclick="onpenModal()" type="button">등록하기</button>
-	<!-- 모달 HTML -->
 	<div class="modal_wrap">
 		<div class="modal_box">
 			<h3 class="modal_title">
@@ -36,6 +35,7 @@
 			</h3>
 			<div class="modal_content">
 				   <form class="car_formdata">
+				   
 				      차번호:       	<input name="carmanage_number" type="text">			  		<br>
 				      차량이름:      	<input name="carmanage_name" type="text">			     	<br>
 				      차이미지:        
@@ -52,26 +52,36 @@
 				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
+	</div>  
+  
+
+     <!-- 수정하기모달 -->
+   	<button onclick="onpenModal2()" style="display: none" type="button">수정하기</button>
+	
+	<div class="modal_wrap2">
+		<div class="modal_box">
+			<h3 class="modal_title">
+				수정하실내용을입력해주세요
+			</h3>
+			<div class="modal_content">
+				<input name="update_number" disabled></input>
+				<input name="update_name" disabled></input>
+				 <form class="updateForm">	      
+					 차량등록일자:    	<input name="update_use_yn" type="text">		<br>	
+		      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
+				</form> 	
+			</div>
+			<div class="modal_btns">
+				<button onclick="carupdate()" class="modal_check" type="button">확인</button>
+				<button onclick="closeModal2()" class="modal_cencel" type="button">닫기</button>
+			</div>
+		</div>
 	</div>
-   
-   
-   
 
-
-   
-	<!--수정버튼구현  -->
-		<h3>수정하기</h3>
-			 <form class="updateForm">	      
-			   	 차이미지:   <div class="update_img">
-							<input type="file" class="cimg"	 name="update_img">	<br>
-						</div>
-				 사용가능여부:    	<input name="update_use_yn" type="text">		<br>	
-	      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
-			 	
-			</form>
-   
-   
-   
+		<!-- 상세보기모달 -->
+  		  	<button onclick="onpenModal(2)" style="display: none" type="button">상세보기</button>
+			<div class="modal_wrap">
+   			</div>
    
       <!--jquery -->
    <script src="http://code.jquery.com/jquery-latest.min.js"></script>   
@@ -82,3 +92,12 @@
 	
 </body>
 </html>
+
+
+
+
+<!--
+
+		
+ 
+ -->

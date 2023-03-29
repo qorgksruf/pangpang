@@ -38,32 +38,37 @@
 			
 			<h3  class="modal_title"> 제품정보등록 </h3>		
 			<div class="modal_content">
-				<form>
+				<form class="registerForm">
 					<div class="title"> 카테고리 
-						<select class="categorylist1">
+						<select class="categorylist1" name="category_no" >
 						
 						</select>
 					</div>		
 					<div class="title"> 제품명 
-						<input type="text" 	   name="product_name"   class="product_name">
-					</div>		
-					<div class="checkconfirm"></div>	
+						<input type="text" 	   name="product_name"   	class="product_name">
+					</div>			
 					<div class="title"> 제품규격 
-						<input type="text" 	   name="product_option" class="product_option">
+						<input type="text" 	   name="product_option" 	class="product_option">
 					</div>		
 					<div class="title"> 포장단위 
-						<input type="text" 	   name="product_unit"   class="product_unit">		
+						<input type="text" 	   name="product_unit"   	class="product_unit">		
 					</div>
 					<div class="title"> 제품상세 
-						<textarea name="product_content"   class="product_content" rows="" cols=""></textarea>		
+						<textarea name="product_content"   				class="product_content" rows="" cols=""></textarea>		
 					</div>
 					<div class="title"> 제품이미지 
-						<input type="file" 	   name="product_img"   class="product_img">		
+						<input type="file" 	   name="product_img"  		class="product_img">		
 					</div>
-
-					<div class="checkconfirm"></div>
-						<button onclick="item_register()" class="modal_cancel btns" type="button"> 제품등록 </button>
-						<button onclick="closemodal_R()" class="modal_cancel btns" type="button"> 닫기 </button>
+					<div class="title"> 판매가격설정
+						<input type="text" 	   name="product_price"   	class="product_price">		
+					</div>
+					<div class="title"> 최대할인율설정 
+						<input type="text" 	   name="product_discount"  class="product_discount">		
+					</div>
+					<div class="modalbtnbox">
+						 <button onclick="item_register()" class="modal_cancel btns" type="button"> 등록 </button>	
+		  				 <button onclick="closemodal_R()"   class="modal_cancel btns" type="button"> 닫기 </button>
+					</div>
 				</form>
 				
 			</div>
@@ -77,31 +82,38 @@
 			
 			<h3  class="modal_title"> 제품정보수정 </h3>		
 			<div class="modal_content">
-				<form class="registerForm">
+				<form class="updateForm">
 					<div class="title"> 카테고리 
 						<select class="categorylist2">
 						
 						</select>
 					</div>		
 					<div class="title"> 제품명 
-						<input type="text" 	   name="product_name"   class="product_name">
+						<input type="text" 	   name="product_name"   	class="product_name">
 					</div>		
 					<div class="checkconfirm"></div>	
 					<div class="title"> 제품규격 
-						<input type="text" 	   name="product_option" class="product_option">
+						<input type="text" 	   name="product_option" 	class="product_option">
 					</div>		
 					<div class="title"> 포장단위 
-						<input type="text" 	   name="product_unit"   class="product_unit">		
+						<input type="text" 	   name="product_unit"   	class="product_unit">		
 					</div>
 					<div class="title"> 제품상세 
 						<textarea name="product_content"   class="product_content" rows="" cols=""></textarea>		
 					</div>
 					<div class="title"> 제품이미지 
-						<input type="file" 	   name="product_img"   class="product_img">		
+						<input type="file" 	   name="product_img"  		class="product_img">		
 					</div>
-					<div class="checkconfirm"></div>
-						<button onclick="item_uodate()" class="modal_cancel btns" type="button"> 제품수정 </button>
-						<button onclick="closemodal_U()" class="modal_cancel btns" type="button"> 닫기 </button>
+					<div class="title"> 판매가격설정
+						<input type="text" 	   name="product_price"   	class="product_price">		
+					</div>
+					<div class="title"> 최대할인율설정 
+						<input type="text" 	   name="product_discount"  class="product_discount">		
+					</div>
+					<div class="modalbtnbox">
+						<button onclick="item_update(pno)" class="modal_cancel btns" type="button"> 수정 </button>	
+			   			<button onclick="closemodal_U()"  class="modal_cancel btns" type="button"> 닫기 </button>
+					</div>
 				</form>				
 			</div>
 				
@@ -110,13 +122,18 @@
 	
 	<!-- 제품 삭제 모달 구역 -->
 	<div class="modal_wrap modaldelete">	
-		<div class="modal_box">
+		<div class="modal_box_delete">
+			<!-- pno 숨겨서 js 전달 -->
+			<input type="hidden" class="pno" value="">
 			
-			<h3  class="modal_title"> 삭제를 진행하시겠습니까? </h3>		
+			<h3  class="modal_title">   해당 품목의 삭제를 진행하시겠습니까? </h3>		
 			<div class="modal_content">
 			
 			</div>
-			<button onclick="closemodal_D()" class="modal_cancel btns" type="button"> 닫기 </button>	
+			<div class="modalbtnbox">
+				<button onclick="item_delete(pno)" class="modal_cancel btns" type="button"> 삭제 </button>	
+		   		<button onclick="closemodal_D()"   class="modal_cancel btns" type="button"> 닫기 </button>
+			</div>	
 		</div>	<!-- modal_box e -->
 	</div>	<!-- modal_wrap e -->
 	

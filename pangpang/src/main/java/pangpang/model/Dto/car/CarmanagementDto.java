@@ -42,9 +42,24 @@ public class CarmanagementDto {
 		this.carmanage_start = carmanage_start;
 		this.carmanage_finish = carmanage_finish;
 	}
+	
+	//수정생성자
+	public CarmanagementDto(int carmanage_no, String carmanage_img, String carmanage_use_yn, String carmanage_finish) {
+		super();
+		this.carmanage_no = carmanage_no;
+		this.carmanage_img = carmanage_img;
+		this.carmanage_use_yn = carmanage_use_yn;
+		this.carmanage_finish = carmanage_finish;
+	}
+	
+	
 	public int getCarmanage_no() {
 		return carmanage_no;
 	}
+
+
+
+
 	public void setCarmanage_no(int carmanage_no) {
 		this.carmanage_no = carmanage_no;
 	}

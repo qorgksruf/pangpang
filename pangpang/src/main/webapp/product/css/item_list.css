@@ -13,7 +13,7 @@
 	color: white;
 	border: none;
 	border-radius: 50px;
-	margin: 5px;
+	margin: 15px;
 }
 /* 품목 리스트 출력 구역 */
 .itemlistbox {
@@ -48,7 +48,13 @@
 .modal_box{
 	text-align: center;align-items: center;
 	background-color: white;
-	width: 50%; height: 80%;
+	width: 50%; height: 90%;
+	padding: 3%; border-radius: 50px;
+}
+.modal_box_delete{
+	text-align: center;align-items: center;
+	background-color: white;
+	width: 45%; height: 30%;
 	padding: 3%; border-radius: 50px;
 }
 .modal_title{
@@ -56,7 +62,7 @@
 	font-size: 23px;
 }
 .modal_content{
-	margin: 5%;
+	margin: 1%;
 	font-size: 20px;
 }
 .title{
@@ -66,8 +72,8 @@
 	margin: 2%;
 }
 .modal_content input  {
-	width: 80%;
-	height:45px;
+	width: 70%;
+	height:35px;
 	padding-left: 10px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
@@ -75,15 +81,15 @@
 	margin-right: 50px;
 }
 .product_content{
-	width: 80%;
+	width: 70%;
 	height:80px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
 	margin-right: 50px;	
 }
 .modal_content select, option{
-	width: 80%;
-	height:45px;
+	width: 70%;
+	height:35px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
 	text-align:center;

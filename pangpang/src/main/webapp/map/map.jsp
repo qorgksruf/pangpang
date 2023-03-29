@@ -36,15 +36,17 @@
 					<div> 연락처 : 010-1234-5600 </div>
 				</div>
 			</div>
-		
+			
 			<div class="dispatch_main_box">
-				<div>
-					<img scr="/pangpang/car/img/car2.png">
+				<div class="img_info_box">
+					<img alt="" src="/pangpang/car/img/car2.png">
 				</div>
-				<div> 69우1146 </div>
-				<div> 시작 : 2023-03-28 18:00 </div>
-				<div> 반납 : 2023-03-29 08:00 </div>
-				<div> 기타정보 </div>
+				<div class="carmanage_number"> 69우1146 </div>
+				<div class="etc_info_box">
+					<div> 시작 : 2023-03-28 18:00 </div>
+					<div> 반납 : 2023-03-29 08:00 </div>
+					<div> 기타정보 </div>
+				</div>
 			</div>
 			<div class="delivery_info_box">
 				<div class="info_table_box">
@@ -108,9 +110,6 @@
 			</div>
 			
 		</div>
-		
-		
-		
 		
 		
 		

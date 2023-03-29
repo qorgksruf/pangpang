@@ -100,6 +100,5 @@ public class MapDao extends Dao {
 		}
 		return list; 
 	}
-		
-		
+	
 }

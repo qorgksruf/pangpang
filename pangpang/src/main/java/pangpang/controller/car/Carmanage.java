@@ -37,8 +37,18 @@ public class Carmanage extends HttpServlet {
 	 */
     // 차량관리 출력구현
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
 
-		ArrayList<CarmanagementDto>result =CarmanagementDao.getInstance().carList();
+		ArrayList<CarmanagementDto>result = null;
+		
+		if (request.getParameter("carmanage_no") != null) {
+			System.out.println("carmanage_no 값 있따 !!! " + request.getParameter("carmanage_no"));
+			result =CarmanagementDao.getInstance().getCarInfo(request.getParameter("carmanage_no"));
+			System.out.println("carmanage_no 결과값 !!! " + result);
+		} else {
+			result =CarmanagementDao.getInstance().carList();
+		}
 		
 		/* CarmanagementDto dto = new CarmanagementDto(); */
 		
@@ -88,7 +98,37 @@ public class Carmanage extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//현재 서버의 배포된 프로잭트내 폴도 경로 찾기
+		String uploadpath = request.getSession().getServletContext().getRealPath("/car/img");
+		System.out.println("-------uploadpath-------");
+		System.out.println(uploadpath);
+		
+		System.out.println("doPut request updateFormData " + request.getParameter("updateFormData"));
+		
+		//업로드
+		MultipartRequest multi = new MultipartRequest(
+				request, 						//1.요청방식
+				uploadpath, 					//2.첨부파일 가져와서 저장할 서버내 폴더
+				1024*1024*10 ,					//3.첨부파일 허용 범위 용량 [바이트단위]//얘는 10메가임
+				"UTF-8",						//4.첨부파일 한글 인코딩 
+				new DefaultFileRenamePolicy()	//5.동일한 첨부파일명이 존재하면 뒤에 숫자 붙여짐 그래서 판별함
+		);
+		
+		int carmanage_no = Integer.parseInt(multi.getParameter("carmanage_no"));
+		String carmanage_img = multi.getFilesystemName("update_img");
+		String carmanage_use_yn =multi.getParameter("carmanage_use_yn");
+		String carmanage_finish =multi.getParameter("carmanage_finish");	
+		
+		CarmanagementDto dto = new CarmanagementDto(carmanage_no, carmanage_img, carmanage_use_yn, carmanage_finish);
+				System.out.println("dto:::::::"+dto);
+		boolean result =CarmanagementDao.getInstance().carupdate(dto);
+		response.getWriter().print(result);
+				
+		/*
+		 * System.out.println("CarmanagementDto dto:"+dto); boolean result =
+		 * CarmanagementDao.getInstance().carupdate(dto);
+		 * response.getWriter().print(result);
+		 */
 	}
 
 	/**

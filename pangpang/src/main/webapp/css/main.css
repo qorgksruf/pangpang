@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+/* 웹폰트 */
+@font-face {
+    font-family: 'Happiness-Sans-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} 
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+   font-family: 'Happiness-Sans-Regular';
+   src:url("/hotel/font/Happiness-Sans-Regular.woff");
+}
+
+/* 테마 색상 */
+/* Color Theme Swatches in Hex */
+.Responsive-design-on-devices-1-hex { color: #79DCF2; }
+.Responsive-design-on-devices-2-hex { color: #5697A6; }
+.Responsive-design-on-devices-3-hex { color: #F2F2F2; }
+.Responsive-design-on-devices-4-hex { color: #404040; }
+.Responsive-design-on-devices-5-hex { color: #0D0D0D; }
+
+
+/* 공통 css  */
+* {margin: 0px; padding: 0px; list-style: none; font-family: 'Happiness-Sans-Regular'; }
+
+/* body */
+
+
+
+/* 메인로그인 전체박스 */
+.main_login_box{
+	width: 1000px; height: 700px;
+	margin: 110px auto;
+	display: flex;
+	box-shadow: 10px 10px 10px #b1b1b1;
+}
+
+/* 좌측 로고 자리*/
+.login_left_box{
+	width: 45%; height: 100%;
+	background-color: #15b8db;
+	display: flex;
+}
+.main_logo_box{
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 150px;
+}
+
+
+/* 우측 로그인 인풋 자리 */
+.login_right_box{
+	width: 55%; height: 100%;
+	background-color: #fafafa;
+}
+.login_info_box{
+	width: 70%;
+	margin: 210px auto;
+}
+.login_info_box p {
+	margin: 10px 0px;
+	font-size: 13px;
+	font-weight:bold;
+	color: #595959; 
+}
+.id_box{
+	margin-bottom: 50px;
+}
+
+.login_input_box{
+	display: flex;
+	border-bottom: solid 1px #15b8db;
+	align-items: center;
+}
+.login_input_box span {
+	color : #15b8db;
+}
+
+.input_box{
+	border: none;
+	background-color: transparent;
+	padding : 10px 20px;
+	width: 100%;
+}
+.input_box:focus{
+	outline : none;
+}
+
+.sign_menu_box a , .sign_menu_box span{
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+}
+.sign_menu_box span{
+	padding: 0px 10px;
+}
+
+.login_btn_box{
+	margin-top: 50px;
+}
+.login_btn{
+	width: 100%; height: 40px;
+	background-color: #15b8db;
+	color: white;
+	font-size: 13px;
+	border: none;
+}
