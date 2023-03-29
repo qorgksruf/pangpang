@@ -1,10 +1,13 @@
 //숨겨진 no 너 왜 계속 null이니
 /*let cno= document.querySelector('.carmanage_no').value ;*/
 
+
+let detailview='';
+console.log("------위임------")
+console.log(detailview)
 carList();
 
 //전체출력
-let detailview='';
 
 function carList(){
 
@@ -12,6 +15,7 @@ function carList(){
    $.ajax({
       url:"/pangpang/carmanage",
       method:"get",
+      async:false,
       success:(r)=>{
          console.log('통신');
          console.log(r);
@@ -37,6 +41,7 @@ function carList(){
                      <td> <button onclick="cardelete(${o.carmanage_no})" type="button">삭제</button></td>
                      <td> <button onclick="view(${o.carmanage_no})" type="button">상세보기</button></td>
                  	<td><div class="detailview" style="background-color: pink; width: 200px;  height: 100px" > </div></td>
+                  	
                   </tr>`               
             })         
             document.querySelector('.carmanage').innerHTML = html;   
@@ -44,6 +49,10 @@ function carList(){
       
    })//ajax e
 }//함수 e
+
+
+console.log("------아래임------")
+console.log(detailview)
 
 
 //등록함수
@@ -99,11 +108,11 @@ function cardelete(carmanage_no){
 }
 
 let temp_carmanage_no = 0;
-
+//수정버튼모달
 function car_update_modal_open (carmanage_no) {
 	console.log("car_update_modal_open !!!");
-	
-	onpenModal2();
+	console.log( carmanage_no );
+	onpenModal2( );
 	
 	temp_carmanage_no = carmanage_no;
 	
@@ -148,7 +157,7 @@ function carupdate(){
 	let updateForm = document.querySelectorAll('.updateForm')[0];
 	let updateFormData = new FormData(updateForm);
 	updateFormData.set('carmanage_no', temp_carmanage_no);
-	updateFormData.set('carmanage_img', document.getElementsByName('update_img')[0].value);
+	/*updateFormData.set('carmanage_img', document.getElementsByName('update_img')[0].value);*/
 	updateFormData.set('carmanage_use_yn', document.getElementsByName('update_use_yn')[0].value);
 	updateFormData.set('carmanage_finish', document.getElementsByName('update_finish')[0].value);
 	
@@ -190,20 +199,26 @@ function carupdate(){
    })      
 }
 
-
+let checkno='';
 
 //상세보기버튼구현
 function view(carmanage_no){
 	console.log('상세보기버튼')
+
 	
-	detailview.forEach((o)=>{
-		if(o.carmanage_no ==carmanage_no ){
-		console.log("-----------------");
+	detailview.forEach((o,i)=>{
+		if(o.carmanage_no == carmanage_no ){
+			onpenModal(2 ,i);
+/*		console.log("-----------------");
 		console.log(o.carmanage_start);
 		console.log(o.carmanage_finish);
-
-		document.querySelector('.detailview').innerHTML = o.carmanage_start +"<br>"+ o.carmanage_finish;
+		document.querySelector('.detailview').innerHTML = o.carmanage_start;*/
+		//document.querySelector('.detailview').innerHTML = o.carmanage_start +"<br>"+ o.carmanage_finish;
+			
 		
 		}
 	})
 }
+
+
+
