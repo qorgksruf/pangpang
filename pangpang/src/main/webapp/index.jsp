@@ -22,6 +22,6 @@
 
 		
 	</div> <!-- container e -->
-
+	<script src="/pangpang/member/js/login.js" type="text/javascript"></script>
 </body>
 </html> 

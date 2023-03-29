@@ -4,12 +4,13 @@ function login(){
 	let member_pwd = document.querySelector('.member_pwd').value
 	
 	$.ajax({
-		url : "/hotel/member/login" ,
+		url : "/pangpang/member/login" ,
 		method : "post" , 
-		data : { "type" : 1, "member_id" : member_id , "member_pwd" : member_pwd} ,
+		data : { "member_id" : member_id , "member_pwd" : member_pwd} ,
 		success : (r)=>{ 
 			console.log(r)
-			if( r == 'true' ){ location.href="/pangpang/index.jsp"; }
+			if( r == 1 ){ location.href="/pangpang/product/product_index.jsp"; }
+			else if(r>1){location.href="/pangpang/index.jsp"; }
 			else{
 				alert('아이디 또는 비밀번호가 틀립니다.')	
 			}
