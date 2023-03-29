@@ -36,21 +36,26 @@ function getAddress(){
 	})	// ajax e
 }
 
+let jusoList = [];
+ 
 // 검색된 주소 데이터 테이블 형식으로 변환 => 출력
 function makeListJson(jsonStr){
 	console.log(jsonStr.result)
 	console.log(jsonStr.juso)
+
+	let index = 0;
 	let htmlStr = "";
 	htmlStr += `<table>`;
 	$(jsonStr.results.juso).each(function(){
-		
+	
 		htmlStr +=`<tr>
-					<td>${this.roadAddr}</td>
+					<td onclick="address_select(${index})">${this.roadAddr}</td>
 				   </tr>`
-
+		index++;
 	});
 	htmlStr += `</table>`;
 	document.querySelector('.resultbox').innerHTML = htmlStr;
+	console.log(jusoList)
 }
 
 // 주소검색시 특수문자, 특정문자열 제거
@@ -62,6 +67,7 @@ function checkSearchedWord(keyword){
 		if(expText.test(keyword) == true){
 			alert("특수문자를 입력 할수 없습니다.") ;
 			return false;
+			
 		}
 		
 		//특정문자열(sql예약어의 앞뒤공백포함) 제거
@@ -90,4 +96,8 @@ function enterkey(){
 	if( window.event.keyCode == 13){getAddress();}
 }
 
+// 선택한 주소 출력 => 상세주소 div 오픈
+function address_select(i){
+	
+}
 

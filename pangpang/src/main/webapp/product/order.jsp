@@ -98,13 +98,19 @@
 				<div class="modal_content">
 					<div class="address_search">
 						<input type="text" class="keyword">
-						<button type="button" onClick="getAddress()"> 주소검색</button>					
+						<button type="button" class="modal_btn" onClick="getAddress()"> 주소검색</button>					
 					</div>
 					<!-- 검색 결과 리스트 출력 영역 -->
 					<div id="list" class="resultbox">
 						검색 결과가 없습니다.					
 					</div>
-					<button onclick="closemodal()" class="modal_cancel btns" type="button"> 닫기 </button>
+					<div class="address_select"></div>
+					<div class="address_detail">
+						상세주소
+						<input type="text">
+					</div>
+					
+					<button onclick="closemodal()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
 				</div>
 					
 				</div>	<!-- modal_box e -->

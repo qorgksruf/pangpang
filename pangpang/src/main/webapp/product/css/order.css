@@ -41,9 +41,9 @@ th{
 	overflow: auto;
 }
 .modal_content input {
-	width: 100%;
+	width: 70%;
 	height:30px;
-	margin: 0px 3%;
+	margin:0px 0px 20px 20px;
 	padding-left: 10%;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;	
@@ -51,10 +51,18 @@ th{
 .address_search{
 	display: flex;
 }
+.address_detail{
+	display: flex;
+}
 .resultbox{
 	width : 400px;
-	height: 400px;
+	height: 300px;
 	margin: 10px;
 	padding:10px;
 	border-top: 1px solid #eeeeee;
+}
+.modal_btn{
+	width: 100px;
+	height: 30px;
+	margin: 0px 10px;
 }
