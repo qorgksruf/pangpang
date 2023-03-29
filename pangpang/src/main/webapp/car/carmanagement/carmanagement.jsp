@@ -27,9 +27,9 @@
    
     
  	등록모달 
-   	<button onclick="onpenModal()" type="button">등록하기</button>
+   	<button onclick="onpenModal(1 , 0)" type="button">등록하기</button>
 	<div class="modal_wrap">
-		<div class="modal_box">
+	<!-- 	<div class="modal_box">
 			<h3 class="modal_title">
 				등록하실내용을입력해주세요
 			</h3>
@@ -51,7 +51,7 @@
 				<button onclick="regi()" class="modal_check" type="button">확인</button>
 				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 			</div>
-		</div>
+		</div> -->
 	</div>  
   
 
@@ -78,10 +78,7 @@
 		</div>
 	</div>
 
-		<!-- 상세보기모달 -->
-  		  	<button onclick="onpenModal(2)" style="display: none" type="button">상세보기</button>
-			<div class="modal_wrap">
-   			</div>
+
    
       <!--jquery -->
    <script src="http://code.jquery.com/jquery-latest.min.js"></script>   
