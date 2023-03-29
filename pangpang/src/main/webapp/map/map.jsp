@@ -113,9 +113,6 @@
 		
 		
 		
-		
-		
-		
 		<div class="footer">
 		</div>
 		
