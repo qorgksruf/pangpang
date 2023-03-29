@@ -9,6 +9,9 @@
 	width : 100x;
 	height: 100px;
 }
+th{
+	background-color: #eeeeee;
+}
 /* 모달 배경 설정*/
 .modal_wrap {
 	position: fixed;				

@@ -44,15 +44,15 @@
 		<h3> 구매자정보 </h3>
 		<table class="table buyer_info">
 			<tr>
-				<th>이름		 </th> 
+				<th  width="10%">이름		 </th> 
 				<td> 유재석 </td>
 			</tr>
 			<tr>
-				<th>이메일	 </th> 
+				<th  width="10%">이메일	 </th> 
 				<td> qweqwe@naver.com </td>
 			</tr>
 			<tr>
-				<th>휴대폰 번호 </th> 
+				<th  width="10%">휴대폰 번호 </th> 
 				<td> 
 					010-1111-1111 <button class="updatebtn" type="button"> 수정 </button> <span>  쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다. </span> <br>
 					<span> * 인증 번호를 못 받았다면 번호 차단 및 스팸 설정을 확인해 주세요. </span>
@@ -63,15 +63,15 @@
 		<h3> 받는사람정보  <button class="updatebtn Rinfo" type="button"> 수정 </button> </h3>
 		<table  class="table receiver_info">
 			<tr>
-				<th> 이름	  </th> 
+				<th width="10%"> 이름	  </th> 
 				<td> 유재석 <span>기본배송지</span></td>
 			</tr>
 			<tr>
-				<th> 배송주소 </th> 
+				<th width="10%"> 배송주소 </th> 
 				<td> <button  type="button" onclick="openmodal()"> 주소 찾기 </button> </td>
 			</tr>
 			<tr>
-				<th> 배송요청사항  </th> 
+				<th width="10%"> 배송요청사항  </th> 
 				<td> 일반 : 문앞 <button  type="button"> 변경 </button>  </td>
 			</tr>				
 		</table>
@@ -79,7 +79,7 @@
 		<h3>  결제정보  </h3>
 		<table  class="table payment_info">
 			<tr>
-				<th> 결제방법  </th> 
+				<th  width="10%"> 결제방법  </th> 
 				<td> <button  type="button"> 선택 </button> </td>
 			</tr>
 			<tr>
@@ -102,8 +102,7 @@
 					</div>
 					<!-- 검색 결과 리스트 출력 영역 -->
 					<div id="list" class="resultbox">
-						검색 결과가 없습니다.
-					
+						검색 결과가 없습니다.					
 					</div>
 					<button onclick="closemodal()" class="modal_cancel btns" type="button"> 닫기 </button>
 				</div>
