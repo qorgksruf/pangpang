@@ -259,6 +259,19 @@
 								</div>
 							</td>
 						</tr>
+						<tr>
+							<th class="table_mid">
+								<div class="box1">
+									<div>
+										<span class="red">*</span> 주소 
+									</div>
+									<span class="confirm red"></span>
+								</div>
+							</th>
+							<td class="table_mid">
+								<input class="name member_address form-control" name="member_address" type="text">
+							</td>
+						</tr>
 					</table>
 				</div>
 			</div>

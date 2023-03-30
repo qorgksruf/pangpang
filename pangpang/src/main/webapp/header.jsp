@@ -33,7 +33,7 @@
 					<a href="/pangpang/member/signup.jsp"><button type="button"> 회원가입 </button></a> <!-- 가입시 비밀번호 암호화 -->
 				</div>
 				<div class="dropdown">
-					<a href="/pangpang/member/login.jsp"><button type="button"> 로그인 </button></a> <!-- 가입시 비밀번호 암호화 -->
+					<a href="/pangpang/main.jsp"><button type="button"> 로그인 </button></a> <!-- 가입시 비밀번호 암호화 -->
 				</div>
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 로그인회원 </button>
@@ -50,14 +50,10 @@
 		<div class="wrap">
 			<!-- 메인로고  -->
 			<div class="mainlogo"> <a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a></div>
-			<div class="header">			
+			<div class="header">
 				<div class="dropdown">
-					<button type="button" data-bs-toggle="dropdown"> 인사관리 </button> 
-					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  회원관리	</a></li>
-						<li><a class="dropdown-item" href="#">  직원관리	</a></li>
-					</ul>
-				</div>
+					<a href="/pangpang/member/member_management.jsp"><button type="button"> 인사관리 </button></a>
+				</div>			
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 제품관리 </button> 
 					<ul class="dropdown-menu">	
@@ -103,7 +99,7 @@
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script> 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-			
+	<script src="/pangpang/js/header.js" type="text/javascript"></script>		
 	
 </body>
 </html>

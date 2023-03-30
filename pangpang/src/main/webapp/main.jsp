@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div class="sign_menu_box">
-						<a href="#"> Sign up </a> <span>  |  </span>
+						<a href="/pangpang/member/signup.jsp"> Sign up </a> <span>  |  </span>
 						<a href="#"> Forgot Password? </a>
 					</div>
 					<div class="login_btn_box">

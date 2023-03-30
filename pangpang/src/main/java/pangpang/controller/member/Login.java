@@ -32,11 +32,11 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
+		
 		// 1. 세션[Object]에 담겨진 회원아이디 호출 
-		String member_id = (String)request.getSession().getAttribute("login");
+		int member_no = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		// 2. 로그인한 회원의 정보 호출 [ 비밀번호 빼고 ] 
-		MemberDto result =  MemberDao.getInstance().getMember(member_id);
+		MemberDto result =  MemberDao.getInstance().getMember(member_no);
 			
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(result);
@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		response.getWriter().print( json );
-		*/
+		
 	}
 
 	/**
