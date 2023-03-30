@@ -7,6 +7,51 @@ function closemodal(){
 	document.querySelector('.modal_wrap').style.display='none';
 }
 
+//------------------------------------------------------------------------------------- 회원정보 불러오기
+function getMemberInfo(){
+	
+}
+
+
+
+//------------------------------------------------------------------------------------- 받는사람 수정
+function update_recieverinfo(){	
+	
+	document.querySelector('.receiver_info').innerHTML = 
+	
+		`<tr>
+			<th width="10%"> 이름	  </th> 
+			<td> <input class="receiver_name"  type="text" ></td>
+		 </tr>
+		 <tr>
+			<th  width="10%">휴대폰 번호 </th> 
+			<td> <input class="receiver_phone" type="text" ></td>
+		 </tr>						
+		 <tr>
+			<th width="10%"> 배송주소 </th> 
+			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal()"> 주소 찾기 </button> </td>
+		 </tr>
+		 <tr>
+			<th width="10%"> 배송요청사항  </th> 
+			<td> 
+				<select>  
+					<option> 문앞 		</option>
+					<option> 경비실 		</option>
+					<option> 무인택배보관함 </option>
+				</select>
+			</td>
+		 </tr>`
+		 
+}
+
+function update_recieverinfo_complete(){
+	
+}
+function update_recieverinfo_cancle(){
+
+}
+
+//------------------------------------------------------------------------------------- 주소검색
 // 주소검색 API
 function getAddress(){
 	
@@ -49,9 +94,10 @@ function makeListJson(jsonStr){
 	$(jsonStr.results.juso).each(function(){
 	
 		htmlStr +=`<tr>
-					<td onclick="address_select(${index})">${this.roadAddr}</td>
+					<td class="address_select${index}" onclick="address_select(${index})">${this.roadAddr}</td>
 				   </tr>`
 		index++;
+		
 	});
 	htmlStr += `</table>`;
 	document.querySelector('.resultbox').innerHTML = htmlStr;
@@ -99,5 +145,22 @@ function enterkey(){
 // 선택한 주소 출력 => 상세주소 div 오픈
 function address_select(i){
 	
+	let selected = 'address_select'+i;
+	document.querySelector('.address_select_input').innerHTML = document.querySelector(`.${selected}`).innerHTML;
+	document.querySelector('.address_select').style.display='flex';
+	document.querySelector('.address_detail').style.display='flex';
+
+}
+
+// 배송지 확정
+function delivery_address(){
+	
+	let address_select = document.querySelector('.address_select_input').innerHTML;
+	let address_detail = document.querySelector('.address_detail_input').value;
+	
+	document.querySelector('.delivery_address').innerHTML = address_select+address_detail;
+	
+	closemodal()
+
 }
 

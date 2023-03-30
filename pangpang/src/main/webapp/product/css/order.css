@@ -66,3 +66,6 @@ th{
 	height: 30px;
 	margin: 0px 10px;
 }
+.address_detail , .address_select {
+	display: none;
+}
