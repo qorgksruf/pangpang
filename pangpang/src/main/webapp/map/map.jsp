@@ -23,30 +23,19 @@
 			<div class="member_info_box">
 				<div class="member_info_main">
 					<div class="info_top">
-						<h3> 배송지 설정 </h3>
-						<div class="notice"> bongseong님, 오늘도 안전운행 하세요! </div>
+						
 					</div>
 					<div>
 						<a href="#"> 회원정보 수정 </a> 
 					</div>
 				</div>
 				<div class="personal_info">
-					<div> 직책 : 배송기사 </div>
-					<div> 아이디 : bongseong </div>
-					<div> 연락처 : 010-1234-5600 </div>
+					
 				</div>
 			</div>
 			
 			<div class="dispatch_main_box">
-				<div class="img_info_box">
-					<img alt="" src="/pangpang/car/img/car2.png">
-				</div>
-				<div class="carmanage_number"> 69우1146 </div>
-				<div class="etc_info_box">
-					<div> 시작 : 2023-03-28 18:00 </div>
-					<div> 반납 : 2023-03-29 08:00 </div>
-					<div> 기타정보 </div>
-				</div>
+				
 			</div>
 			<div class="delivery_info_box">
 				<div class="info_table_box">
@@ -58,7 +47,7 @@
 							<th width="15%"> 상태 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
 							<th width="40%"> 주소 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
 						</tr>
-						<tr>
+						<tr onclick="delivery_item()">
 							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 단원구 광덕2로 121 </td>
 						</tr>
 						<tr>

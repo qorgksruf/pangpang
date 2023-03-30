@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.map.MapDao;
-import pangpang.model.Dto.car.BookcarDto;
-import pangpang.model.Dto.member.MemberDto;
+import pangpang.model.Dao.member.MemberDao;
+import pangpang.model.Dto.map.MapOderDto;
+import pangpang.model.Dto.map.MapcarDto;
 
 @WebServlet("/map")
 public class Map extends HttpServlet {
@@ -23,31 +24,34 @@ public class Map extends HttpServlet {
     public Map() { super(); }
 
 	
+    ObjectMapper mapper = new ObjectMapper();
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int type = Integer.parseInt( request.getParameter("type") );
-		int mno = 0;
+		
+		String json = "";
 		
 		if( type == 1 ) {
-			
-			ArrayList<MemberDto> result = MapDao.getInstance().getMifo();
-			
-			ObjectMapper mapper = new ObjectMapper();
-			String jsonArray = mapper.writeValueAsString( result );
-			
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("application/json");
-			response.getWriter().print( jsonArray );
 		
+			int member_no = MemberDao.getInstance().getMno( (String)request.getSession().getAttribute("login") );
+			System.out.println( member_no );
 			
-		}else if( type == 2 ) {
+			MapcarDto result = MapDao.getInstance().getBCarinfo( member_no );
+			json = mapper.writeValueAsString( result );
 			
-			BookcarDto dto = MapDao.getInstance().getBCarinfo( 5 );
 			
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().print( dto );
+		} else if( type == 2 ) {
+			
+			ArrayList<MapOderDto> result = MapDao.getInstance().getOrderList();
+			json = mapper.writeValueAsString( result );
+			
 		}
 		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print( json );
 		
 	}
 

@@ -16,6 +16,9 @@
 	align-items: center;
 	justify-content: space-between;
 }
+.img_info_box img{
+	width: 100%;
+}
 .info_top{
 	display: flex;
 	height: 70px;
@@ -24,6 +27,7 @@
 .info_top h3{
 	margin-right: 20px;
 }
+
 .notice{
 	
 }
