@@ -39,9 +39,7 @@ function carList(){
                      <td> ${o.carmanage_use_yn} </td>
                      <td> <button onclick="car_update_modal_open(${o.carmanage_no})" type="button">수정</button></td>
                      <td> <button onclick="cardelete(${o.carmanage_no})" type="button">삭제</button></td>
-                     <td> <button onclick="view(${o.carmanage_no})" type="button">상세보기</button></td>
-                 	<td><div class="detailview" style="background-color: pink; width: 200px;  height: 100px" > </div></td>
-                  	
+                     <td> <button onclick="view(${o.carmanage_no})" type="button">상세보기</button></td>           	
                   </tr>`               
             })         
             document.querySelector('.carmanage').innerHTML = html;   
@@ -206,8 +204,15 @@ function view(carmanage_no){
 	console.log('상세보기버튼')
 
 	detailview.forEach((o,i)=>{
-		if(o.carmanage_no == carmanage_no ){
-			onpenModal(2 ,i);
+		if(o.carmanage_no == carmanage_no){
+			console.log(o.carmanage_use_yn)
+			if(o.carmanage_use_yn=='N'){
+				onpenModal(2 ,i);
+				
+			}else if(o.carmanage_use_yn=='Y'){
+				onpenModal(3 ,i);
+			}
+			
 /*		console.log("-----------------");
 		console.log(o.carmanage_start);
 		console.log(o.carmanage_finish);

@@ -40,9 +40,10 @@ function onpenModal( type , i){
 					<div class="modal_content">
 						<input name="update_number" disabled></input>
 						<input name="update_name" disabled></input>
-						 <form class="updateForm">	      
+						<input name="update_use_yn" disabled></input>
+						 <form class="updateForm">     
 							 차량등록일자: ${ detailview[i].carmanage_start } <br>	
-				      		 차량폐기일자:    			<br>
+				      		 차량폐기일자: ${ detailview[i].carmanage_finish } <br>
 						</form> 	
 					</div>
 					<div class="modal_btns">
@@ -54,7 +55,30 @@ function onpenModal( type , i){
 				`
 		document.querySelector('.modal_wrap').innerHTML =html;
 	}
- document.querySelector('.modal_wrap').style.display ='flex';
+	else if(type==3){
+		html=`<div class="modal_box">
+					<h3 class="modal_title">
+						상세정보입니다
+					</h3>
+					<div class="modal_content">
+						<input name="update_number" disabled></input>
+						<input name="update_name" disabled></input>
+						<input name="update_use_yn" disabled></input>
+						 <form class="updateForm">     
+							 차량등록일자: ${ detailview[i].carmanage_start } <br>	
+						</form> 	
+					</div>
+					<div class="modal_btns">
+						<button onclick="carupdate()" class="modal_check" type="button">확인</button>
+						<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+					</div>
+				</div>
+
+				`
+		document.querySelector('.modal_wrap').innerHTML =html;
+	}	
+	
+	 document.querySelector('.modal_wrap').style.display ='flex';
 	
 
 }

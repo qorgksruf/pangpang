@@ -18,6 +18,8 @@
 	<input type="hidden" class="carmanage_no" value="<%=carmanage_no%>"> 
 	
 	
+
+	
    <h3>차량관리페이지</h3>
 
    <table class="carmanage" style="border: 1px solid black;">
@@ -66,7 +68,11 @@
 			<div class="modal_content">
 				<input name="update_number" disabled></input>
 				<input name="update_name" disabled></input>
-				 <form class="updateForm">	      
+				 <form class="updateForm">
+				  차이미지:        
+				      	<div class="carupdate_img">
+							<input type="file" class="cimg"	 name="carupdate_img">	<br>
+						</div>	      
 					 차량등록일자:    	<input name="update_use_yn" type="text">		<br>	
 		      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
 				</form> 	

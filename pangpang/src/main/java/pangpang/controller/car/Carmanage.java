@@ -115,7 +115,9 @@ public class Carmanage extends HttpServlet {
 		);
 		
 		int carmanage_no = Integer.parseInt(multi.getParameter("carmanage_no"));
-		String carmanage_img = multi.getFilesystemName("update_img");
+		String carmanage_img = multi.getFilesystemName("carupdate_img");
+		System.out.println("carmanage_img");
+		System.out.println(carmanage_img);
 		String carmanage_use_yn =multi.getParameter("carmanage_use_yn");
 		String carmanage_finish =multi.getParameter("carmanage_finish");	
 		
