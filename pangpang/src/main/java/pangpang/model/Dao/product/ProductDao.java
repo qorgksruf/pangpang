@@ -35,7 +35,7 @@ public class ProductDao extends Dao{
 	// 전체 제품 출력
 	public ArrayList<ProductDto> getProduct() {
 		ArrayList<ProductDto> plist = new ArrayList<>();
-		String sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p, category c, stockmanagement s  where p.category_no = c.category_no and p.product_no = s.product_no  group by product_no";
+		String sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p, category c, stockmanagement s  where p.category_no = c.category_no and p.product_no = s.product_no group by product_no";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery(); 

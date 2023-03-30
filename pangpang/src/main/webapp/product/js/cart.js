@@ -45,11 +45,8 @@ function getCartList(){
 				totalprice = 0;	
 				let html = '';
 				r.forEach((o)=>{
-					
-					cartList.push(o)
-	
+					cartList.push(o)	
 					totalprice += (o.product_price*o.cart_amount);
-	
 					html += `<div class="cart_item">
 								<input name="cart" value="${o.product_no}" type="checkbox" onclick="check()" >
 								<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
@@ -76,8 +73,7 @@ function getCartList(){
 									${(o.product_price*o.cart_amount).toLocaleString()} 원 <br>
 									<img  class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
 									<span class="mini_mark">팡팡배송</span>
-								</div>
-								
+								</div>								
 							</div>`
 				})
 				document.querySelector('.cartlist').innerHTML = html;
@@ -90,7 +86,7 @@ function getCartList(){
 				r.forEach((o)=>{
 					document.querySelector(`.수량${o.product_no}`).value = o.cart_amount;	
 				})	
-				}
+			}
 
 		}// success e
 	}); // ajax e	
@@ -160,9 +156,7 @@ function check(){
 
 	let checkboxes = document.querySelectorAll('input[name="cart"]');
 	
-	checkboxes.forEach((o)=>{if(o.checked == false){checkboxes[checkboxes.length-1].checked = false;};return; })	
-	
-	
+	checkboxes.forEach((o)=>{if(o.checked == false){checkboxes[checkboxes.length-1].checked = false;};return; })		
 }
 
 // 전체 장바구니 삭제 
@@ -202,8 +196,10 @@ function cartOut(){
 	  
 	  // 장바구니 리스트 랜더링
 	  getCartList()
-	  
+	  order()
 }// cartOut e
 
 // 선택한 제품 주문하기
-
+function order(){
+	
+}

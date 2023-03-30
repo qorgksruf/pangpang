@@ -11,12 +11,13 @@ function getItemList(){
 		success	: (r)=>{
 			console.log(r)
 			let html = `<tr>
-							<th> 카테고리명 </th><th> 제품번호 </th><th> 제품명 </th><th> 제품규격 </th><th> 포장단위 </th><th> 잔여재고 </th><th> 비고 </th>
+							<th> 카테고리명 </th><th> 제품번호 </th><th> 제품이미지 </th><th> 제품명 </th><th> 제품규격 </th><th> 포장단위 </th><th> 잔여재고 </th><th> 비고 </th>
 						</tr>`;						
 			r.forEach((o)=>{
 				html += `<tr>
-							<td> ${o.category_name} </td>	<td> ${o.product_no} </td>	<td> ${o.product_name} </td>	
-							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td><td> ${o.product_count} </td>	
+							<td> ${o.category_name}  </td>	<td> ${o.product_no}   </td> 
+							<td> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> <td> ${o.product_name}  </td> 	
+							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td> <td> ${o.product_count} </td>	
 							<td>
 								<button class="updatebtn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
 								<button class="deletebtn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>
@@ -39,12 +40,13 @@ function search(){
 		success	: (r)=>{
 			console.log(r)
 			let html = `<tr>
-							<th> 카테고리명 </th><th> 제품번호 </th><th> 제품명 </th><th> 제품규격 </th><th> 포장단위 </th><th> 잔여재고 </th><th> 비고 </th>
+							<th> 카테고리명 </th><th> 제품번호 </th><th> 제품이미지 </th><th> 제품명 </th><th> 제품규격 </th><th> 포장단위 </th><th> 잔여재고 </th><th> 비고 </th>
 						</tr>`;						
 			r.forEach((o)=>{
 				html += `<tr>
-							<td> ${o.category_name} </td>	<td> ${o.product_no} </td>	<td> ${o.product_name} </td>	
-							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td><td> ${o.product_count} </td>	
+							<td> ${o.category_name}  </td>	<td> ${o.product_no}   </td> 
+							<td> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> <td> ${o.product_name}  </td> 	
+							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td> <td> ${o.product_count} </td>	
 							<td>
 								<button class="updatebtn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
 								<button class="deletebtn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>

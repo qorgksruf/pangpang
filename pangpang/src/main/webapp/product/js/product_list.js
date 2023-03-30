@@ -46,6 +46,7 @@ function getCategoryList(){
 				html += `<a href="/pangpang/product/product_list.jsp?cno=${o.category_no}" class="list-group-item list-group-item-action"> ${o.category_name} </a>`;
 			})
 			document.querySelector('.categorylist').innerHTML = html ;
+			
 		} // success e
 	}) // ajax e	
 } // getCategory e
@@ -66,11 +67,13 @@ function getProductList(cno){
 								<div class="pimg"> <a href="/pangpang/product/product_view.jsp?pno=${o.product_no}">
 								<img class="product_img" alt="" src="/pangpang/product/pimg/${o.product_img} "> </a> </div>
 								<div class="pname"> 	${o.product_name}  </div>
-								<div class="price"> 	${o.product_price.toLocaleString()}원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span>팡팡배송</span></div>
+								<div class="price"> 	${o.product_price.toLocaleString()}원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span  class="mini_mark">팡팡배송</span></div>
 								<div class="date"> 		${month+"/"+date}(${day})  도착 보장	</div>
-							</div>`;
-			})			
+						</div>`;
+			
+			})				
 			document.querySelector('.product_wrap').innerHTML = html ;
+			
 		} // success e
 	}) // ajax e	
 } // getProductList e
