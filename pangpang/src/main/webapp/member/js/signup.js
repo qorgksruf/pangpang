@@ -219,12 +219,12 @@ function phonecheck(){
 
 /* 아이디 형식 + 중복 검사 */
 function idcheck(){
-	if(checkconfirm[4].innerHTML=='O'){ // 아이디 재선택 
+	if(checkconfirm[5].innerHTML=='O'){ // 아이디 재선택 
 		document.querySelector('.member_id').disabled = false;
 		document.querySelector('.member_id').value = ''
 		document.querySelector('.checkmId').innerHTML = `아이디 중복확인`
-		checkconfirm[4].innerHTML = ''
-		checkconfirm[4].style="color: red"
+		checkconfirm[5].innerHTML = ''
+		checkconfirm[5].style="color: red"
 	}else{
 		let member_id = document.querySelector('.member_id').value
 		let idj = /^[a-z0-9]{5,12}$/
@@ -238,14 +238,14 @@ function idcheck(){
 						alert('사용 가능한 아이디입니다.')
 						document.querySelector('.member_id').disabled = true;
 						document.querySelector('.checkmId').innerHTML = `아이디 재입력`
-						checkconfirm[4].innerHTML = 'O'
-						checkconfirm[4].style="color: #f0f7f5 !important"
+						checkconfirm[5].innerHTML = 'O'
+						checkconfirm[5].style="color: #f0f7f5 !important"
 					}else{
 						alert('사용 중인 아이디입니다.')
 					}
 				}
 			})
-			checkconfirm[4].innerHTML = 'O'
+			checkconfirm[5].innerHTML = 'O'
 		}else{ 
 			alert('아이디 형식에 맞게 작성하여 주십시오.')
 		}
@@ -260,17 +260,17 @@ function pwdcheck(){
 	let member_id = document.querySelector('.member_id').value
 	
 	if(!pwdj.test(member_pwd)){
-		checkconfirm[5].innerHTML = '형식에 맞게 <br>입력해주세요'
-		checkconfirm[5].style="color: red"
+		checkconfirm[6].innerHTML = '형식에 맞게 <br>입력해주세요'
+		checkconfirm[6].style="color: red"
 	}else if(/(\w)\1\1\1/.test(member_pwd)){
-		checkconfirm[5].innerHTML = '연속된 동일문자 사용불가'
-		checkconfirm[5].style="color: red"
+		checkconfirm[6].innerHTML = '연속된 동일문자 사용불가'
+		checkconfirm[6].style="color: red"
 	}else if(member_pwd.search(member_id)>-1){
-		checkconfirm[5].innerHTML = '아이디를 포함한 비밀번호 불가능'
-		checkconfirm[5].style="color: red"
+		checkconfirm[6].innerHTML = '아이디를 포함한 비밀번호 불가능'
+		checkconfirm[6].style="color: red"
 	}else{
-		checkconfirm[5].innerHTML = 'O'
-		checkconfirm[5].style="color: #f0f7f5 !important"
+		checkconfirm[6].innerHTML = 'O'
+		checkconfirm[6].style="color: #f0f7f5 !important"
 	}
 }
 
@@ -279,11 +279,11 @@ function pwdconfirmcheck(){
 	let member_pwd = document.querySelector('.member_pwd').value
 	let member_pwdconfirm = document.querySelector('.member_pwdconfirm').value
 	if(member_pwd==member_pwdconfirm){
-		checkconfirm[6].innerHTML = 'O'
-		checkconfirm[6].style="color: #f0f7f5 !important"
+		checkconfirm[7].innerHTML = 'O'
+		checkconfirm[7].style="color: #f0f7f5 !important"
 	}else{
-		checkconfirm[6].innerHTML = '일치하지 않습니다.'
-		checkconfirm[6].style="color: red"
+		checkconfirm[7].innerHTML = '일치하지 않습니다.'
+		checkconfirm[7].style="color: red"
 	}
 }
 
@@ -310,6 +310,7 @@ function signup(){
 		member_phone : setphone(),
 		member_id : document.querySelector('.member_id').value,
 		member_pwd : document.querySelector('.member_pwd').value,
+		member_address : document.querySelector('.member_address').value
 	}
 	console.log(info)
 	
@@ -319,6 +320,11 @@ function signup(){
 		data : info ,
 		success : (r)=>{ 
 			console.log(r)
+			if(r="true"){
+				alert('회원가입 성공')
+				location.href="/pangpang/main.jsp"
+			}
+			
 		}
 	}) // ajax end	 
 	

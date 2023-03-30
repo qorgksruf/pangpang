@@ -23,7 +23,7 @@ create table member(
 	member_pwd 		varchar(20) not null,                       -- 회원비밀번호    	빈칸X 중복O
 	member_email 	varchar(100) not null unique,               -- 회원이메일      빈칸X 중복X
 	member_phone 	varchar(20) not null,                       -- 회원전화번호   	빈칸X 중복O
-	-- member_address 	longtext not null,                     		-- 회원주소      	빈칸X 중복O
+	member_address 	longtext not null,                     		-- 회원주소      	빈칸X 중복O
 	member_birth 	date not null,                             	-- 회원생일    	빈칸X 중복O
 	member_rank 	int default 1                               -- 회원등급   	빈칸X 중복O
 );
