@@ -4,11 +4,36 @@ console.log(detailview)
 
 function onpenModal( type , i){
 	let html='';
-	if(type=2){
+	if(type==1){
 		html=`
-			<!-- 상세보기모달 -->
-
 				<div class="modal_box">
+				<h3 class="modal_title">
+					등록하실내용을입력해주세요
+				</h3>
+				<div class="modal_content">
+					   <form class="car_formdata">
+					   
+					      차번호:       	<input name="carmanage_number" type="text">			  		<br>
+					      차량이름:      	<input name="carmanage_name" type="text">			     	<br>
+					      차이미지:        
+					      	<div class="carmanage_img">
+								<input type="file" class="cimg"	 name="carmanage_img">	<br>
+							</div>
+					      사용가능여부:    	<input name="carmanage_use_yn" type="text">			 		<br>
+					      차량등록일자:    	<input name="carmanage_start" type="text">			     	<br>
+					      차량폐기일자:    	<input name="carmanage_finish" type="text">			  		<br>
+					</form> 	
+				</div>
+				<div class="modal_btns">
+					<button onclick="regi()" class="modal_check" type="button">확인</button>
+					<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+				</div>
+			</div>
+		`
+		document.querySelector('.modal_wrap').innerHTML =html;
+	}
+	else if(type==2){
+		html=`<div class="modal_box">
 					<h3 class="modal_title">
 						상세정보입니다
 					</h3>
@@ -29,8 +54,9 @@ function onpenModal( type , i){
 				`
 		document.querySelector('.modal_wrap').innerHTML =html;
 	}
+ document.querySelector('.modal_wrap').style.display ='flex';
+	
 
-	document.querySelector('.modal_wrap').style.display ='flex';
 }
 //모달단기함수
 function closeModal(){

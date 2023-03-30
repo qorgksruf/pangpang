@@ -205,7 +205,6 @@ let checkno='';
 function view(carmanage_no){
 	console.log('상세보기버튼')
 
-	
 	detailview.forEach((o,i)=>{
 		if(o.carmanage_no == carmanage_no ){
 			onpenModal(2 ,i);
