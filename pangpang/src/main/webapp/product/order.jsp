@@ -53,29 +53,29 @@
 			</tr>
 			<tr>
 				<th  width="10%">휴대폰 번호 </th> 
-				<td class="member_phone"> 
-					010-1111-1111  <br>
+				<td > 
+					<span class="member_phone">  010-1111-1111 </span> <br>
 					<span> 	* 쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다.  				<br>
 							* 인증 번호를 못 받았다면 번호 차단 및 스팸 설정을 확인해 주세요. 	</span>
 				</td>
 			</tr>			
 		</table>
 		
-		<h3> 받는사람정보  <button class="updatebtn Rinfo" onclick="update_recieverinfo()" type="button"> 수정 </button> </h3>
+		<h3> 받는사람정보  <span class="Rinfo"><button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button></span> </h3>
 		<table  class="table receiver_info">
 			<tr>
 				<th width="10%"> 이름	  </th> 
-				<td class="member_name"> 유재석 <span>기본배송지</span></td>
+				<td class="receiver_name"> 유재석 <span>기본배송지</span></td>
 			</tr>
 			<tr>
 				<th  width="10%">휴대폰 번호 </th> 
-				<td  class="member_phone"> 
+				<td  class="receiver_phone"> 
 					010-1111-1111 
 				</td>
 			</tr>						
 			<tr>
 				<th width="10%"> 배송주소 </th> 
-				<td class="member_phone"> 경기도 안산시 상록구 이젠학원 </td>
+				<td class="receiver_address"> 경기도 안산시 상록구 이젠학원 </td>
 			</tr>
 			<tr>
 				<th width="10%"> 배송요청사항  </th> 
@@ -87,7 +87,7 @@
 		<table  class="table payment_info">
 			<tr>
 				<th  width="10%"> 결제방법  </th> 
-				<td> <button  type="button"> 선택 </button> </td>
+				<td> <button class="pay" type="button"> 선택 </button> </td>
 			</tr>
 			<tr>
 				<th> 쿠폰할인 </th> 
@@ -125,7 +125,7 @@
 
 
 
-	
+	<script src="https://js.bootpay.co.kr/bootpay-4.2.8.min.js" type="application/javascript"></script>
 	<script src="/pangpang/product/js/order.js" type="text/javascript"></script>
 
 </body>
