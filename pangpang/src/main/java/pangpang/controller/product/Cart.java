@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dao.product.ProductDao;
 import pangpang.model.Dto.product.CartDto;
 import pangpang.model.Dto.product.CategoryDto;
@@ -28,8 +29,8 @@ public class Cart extends HttpServlet {
 
 		// 장바구니 출력
 		// 로그인한 회원 정보 
-		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
-		int mno		= 1; // 추후 변경
+		int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
+
 		
 		ArrayList<CartDto> list = ProductDao.getInstance().printCart(mno);
 		ObjectMapper mapper = new ObjectMapper();
@@ -47,8 +48,7 @@ public class Cart extends HttpServlet {
 		int amount 	= Integer.parseInt(request.getParameter("amount")) ; System.out.println(amount);
 		int pno 	= Integer.parseInt(request.getParameter("pno")) ;	 System.out.println(pno);
 		// 로그인한 회원 정보 
-		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
-		int mno		= 1; // 추후 변경
+		int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		
 		int result = ProductDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
 		response.getWriter().print(result);

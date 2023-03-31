@@ -122,10 +122,27 @@
 					
 				</div>	<!-- modal_box e -->
 		</div>	<!-- modal_wrap e -->
+		
+		<!-- 결제방법선택 모달 -->
+		<div class="modal_wrap_pay">	
+				<div class="modal_box">
+				
+				<h3  class="modal_title"> 결제방법 선택 </h3>		
+				<div class="modal_content">
+					<div class="payment_how">
+						<button type="button" class="modal_btn" onClick="requestPay()"> 카드결제	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 계좌이체 	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 카카오페이	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 토스페이	</button>					
+					</div>
+					<button onclick="" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+				</div>
+					
+				</div>	<!-- modal_box e -->
+		</div>	<!-- modal_wrap e -->
 
 
-
-	<script src="https://js.bootpay.co.kr/bootpay-4.2.8.min.js" type="application/javascript"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script src="/pangpang/product/js/order.js" type="text/javascript"></script>
 
 </body>

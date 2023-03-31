@@ -29,7 +29,7 @@ public class Product extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		int type = Integer.parseInt(request.getParameter("type"));
-
+		
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
 		

@@ -229,59 +229,54 @@ function delivery_address(){
 
 }
 //------------------------------------------------------------------------------------- 결제
-document.querySelector('.pay').addEventListener('click',BootPay.request)
-BootPay.request({
-        price: 3000, // 결제할 금액
-        application_id: '',
-        name: '(판매할 아이템이름)', // 아이템 이름,
-        phone: '(구매자 전화번호 ex) 01000000000)',
-        order_id: '(이 결제를 식별할 수 있는 고유 주문 번호)',
-        pg: '(결제창을 띄우려는 PG 회사명 ex) kcp, danal)',
-        method: '(결제수단 정보 ex) card, phone, vbank, bank)',
-        show_agree_window: 0, // 결제 동의창 띄우기 여부 1 - 띄움, 0 - 띄우지 않음
-        items: [ // 결제하려는 모든 아이템 정보 ( 통계 데이터로 쓰이므로 입력해주시면 좋습니다. 입력하지 않아도 결제는 가능합니다.)
-            {
-                item_name: '(판매된 아이템 명)',
-                qty: 1, // 판매한 아이템의 수량
-                unique: '(아이템을 식별할 수 있는 unique key)', 
-                price: 3000 // 아이템 하나의 단가
-            }
-        ],
-        user_info: { // 구매한 고객정보 ( 통계 혹은 PG사에서 요구하는 고객 정보 )
-            email: '(이메일)',
-            phone: '(고객의 휴대폰 정보)',                        
-            username: '구매자성함',
-            addr: '(고객의 거주지역)'
-        }
-    }).error(function (data) { 
-        // 결제가 실패했을 때 호출되는 함수입니다.
-        var msg = "결제 에러입니다.: " + JSON.stringify(data);
-        alert(msg);
-        console.log(data);
-    }).cancel(function (data) {
-        // 결제창에서 결제 진행을 하다가 취소버튼을 눌렀을때 호출되는 함수입니다.
-        var msg = "결제 취소입니다.: " + JSON.stringify(data);
-        alert(msg);
-        console.log(data);
-    }).confirm(function (data) {
-        // 결제가 진행되고 나서 승인 이전에 호출되는 함수입니다.
-        // 일부 결제는 이 함수가 호출되지 않을 수 있습니다. ex) 가상계좌 및 카드 수기결제는 호출되지 않습니다.        
-        // 만약 이 함수를 정의하지 않으면 바로 결제 승인이 일어납니다.
-        if (confirm('결제를 정말 승인할까요?')) {
-            console.log("do confirm data: " + JSON.stringify(data));
-            // 이 함수를 반드시 실행해야 결제가 완전히 끝납니다.
-            // 부트페이로 서버로 결제를 승인함을 보내는 함수입니다.
-            this.transactionConfirm(data);
-        } else {
-            var msg = "결제가 승인거절되었습니다.: " + JSON.stringify(data);
-            alert(msg);
-            console.log(data);
-        }
-    }).done(function (data) {
-        // 결제가 모두 완료되었을 때 호출되는 함수입니다.
-        alert("결제가 완료되었습니다.");
-        console.log(data);
-    }).ready(function (data) {
-        // 가상계좌 번호가 체번(발급) 되었을 때 호출되는 함수입니다.
-        console.log(data);
-    });	
+   
+   let pay=0;
+   
+   function setPay(n){
+	  pay += n; 
+   }
+  //------------------------------------------------------------------------------------------- 회원 식별 번호   
+  const IMP = window.IMP;  // 생략 가능
+  IMP.init("imp47415848"); // 예: imp00000000a
+  //-------------------------------------------------------------------------------------------  
+  function requestPay() {
+	  
+	if(pay == 0){
+		alert('충전할 금액을 선택해주세요.'); return;
+	}	
+	  
+    IMP.request_pay({
+      pg: "kcp.INIBillTst",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000011",   // 주문번호
+      name: "이젠 포인트 결제",
+      amount: pay,                          // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {// 결제 성공 시 로직
+       
+      } else {// 결제 실패 시 로직
+        
+        let info = {
+			mpcomment 	: '포인트 충전',
+			mpamount	: pay,
+			mno			: memberInfo.mno
+		}
+        
+        $.ajax({
+			url		: "/jspweb/point",
+			method 	: "post",
+			data	: info ,
+			success	:(r)=>{
+				if(r=='true'){alert('포인트 충전 완료')}
+			}		
+		})
+        
+        
+      }
+    });
+  }

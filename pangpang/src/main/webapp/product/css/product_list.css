@@ -21,6 +21,12 @@
 	margin: 2%;
 }
 /* 제품 1개 */
+.soldout{
+	width: 20%;
+	margin: 1%;
+	text-align: center;
+	opacity: 60%;
+}
 .item{
 	width: 20%;
 	margin: 1%;
