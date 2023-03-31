@@ -24,20 +24,17 @@
 	
 
 	<div class="container">
-		
-		<h3 class="title">  </h3>
 		<div class="bind">
 			<!-- 사이드 카테고리바 -->
 			<div class="categorylist list-group">
-
-			</div>					
+	
+			</div>	
 			<!-- 제품리스트 출력 구역 4*4 -->
 			<div class="product_wrap"> 
+					
 				
-			
 			</div> <!-- product_wrap e -->
 		</div>
-		
 	</div> <!-- container e -->
 
 	<script src="/pangpang/product/js/product_list.js" type="text/javascript"></script>

@@ -45,34 +45,41 @@
 		<table class="table buyer_info">
 			<tr>
 				<th  width="10%">이름		 </th> 
-				<td> 유재석 </td>
+				<td class="member_name"> 유재석 </td>
 			</tr>
 			<tr>
 				<th  width="10%">이메일	 </th> 
-				<td> qweqwe@naver.com </td>
+				<td class="member_email"> qweqwe@naver.com </td>
 			</tr>
 			<tr>
 				<th  width="10%">휴대폰 번호 </th> 
-				<td> 
-					010-1111-1111 <button class="updatebtn" type="button"> 수정 </button> <span>  쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다. </span> <br>
-					<span> * 인증 번호를 못 받았다면 번호 차단 및 스팸 설정을 확인해 주세요. </span>
+				<td > 
+					<span class="member_phone">  010-1111-1111 </span> <br>
+					<span> 	* 쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다.  				<br>
+							* 인증 번호를 못 받았다면 번호 차단 및 스팸 설정을 확인해 주세요. 	</span>
 				</td>
 			</tr>			
 		</table>
 		
-		<h3> 받는사람정보  <button class="updatebtn Rinfo" type="button"> 수정 </button> </h3>
+		<h3> 받는사람정보  <span class="Rinfo"><button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button></span> </h3>
 		<table  class="table receiver_info">
 			<tr>
 				<th width="10%"> 이름	  </th> 
-				<td> 유재석 <span>기본배송지</span></td>
+				<td class="receiver_name"> 유재석 <span>기본배송지</span></td>
 			</tr>
 			<tr>
+				<th  width="10%">휴대폰 번호 </th> 
+				<td  class="receiver_phone"> 
+					010-1111-1111 
+				</td>
+			</tr>						
+			<tr>
 				<th width="10%"> 배송주소 </th> 
-				<td> <button  type="button" onclick="openmodal()"> 주소 찾기 </button> </td>
+				<td class="receiver_address"> 경기도 안산시 상록구 이젠학원 </td>
 			</tr>
 			<tr>
 				<th width="10%"> 배송요청사항  </th> 
-				<td> 일반 : 문앞 <button  type="button"> 변경 </button>  </td>
+				<td> 일반 : 문앞 </td>
 			</tr>				
 		</table>
 		
@@ -80,7 +87,7 @@
 		<table  class="table payment_info">
 			<tr>
 				<th  width="10%"> 결제방법  </th> 
-				<td> <button  type="button"> 선택 </button> </td>
+				<td> <button class="pay" type="button"> 선택 </button> </td>
 			</tr>
 			<tr>
 				<th> 쿠폰할인 </th> 
@@ -98,21 +105,44 @@
 				<div class="modal_content">
 					<div class="address_search">
 						<input type="text" class="keyword">
-						<button type="button" onClick="getAddress()"> 주소검색</button>					
+						<button type="button" class="modal_btn" onClick="getAddress()"> 주소검색</button>					
 					</div>
 					<!-- 검색 결과 리스트 출력 영역 -->
 					<div id="list" class="resultbox">
 						검색 결과가 없습니다.					
 					</div>
-					<button onclick="closemodal()" class="modal_cancel btns" type="button"> 닫기 </button>
+					<div class="address_select"> 선택주소 <span class="address_select_input"> </span></div>
+					<div class="address_detail">
+						상세주소
+						<input class="address_detail_input" type="text">
+					</div>
+					<button onclick="delivery_address()" class="modal_cancel modal_btn" type="button"> 입력 </button>
+					<button onclick="closemodal()"       class="modal_cancel modal_btn" type="button"> 닫기 </button>
+				</div>
+					
+				</div>	<!-- modal_box e -->
+		</div>	<!-- modal_wrap e -->
+		
+		<!-- 결제방법선택 모달 -->
+		<div class="modal_wrap_pay">	
+				<div class="modal_box">
+				
+				<h3  class="modal_title"> 결제방법 선택 </h3>		
+				<div class="modal_content">
+					<div class="payment_how">
+						<button type="button" class="modal_btn" onClick="requestPay()"> 카드결제	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 계좌이체 	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 카카오페이	</button>
+						<button type="button" class="modal_btn" onClick="requestPay()"> 토스페이	</button>					
+					</div>
+					<button onclick="" class="modal_cancel modal_btn" type="button"> 닫기 </button>
 				</div>
 					
 				</div>	<!-- modal_box e -->
 		</div>	<!-- modal_wrap e -->
 
 
-
-	
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script src="/pangpang/product/js/order.js" type="text/javascript"></script>
 
 </body>

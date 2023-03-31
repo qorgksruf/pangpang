@@ -33,7 +33,7 @@
 					<a href="/pangpang/member/signup.jsp"><button type="button"> 회원가입 </button></a> <!-- 가입시 비밀번호 암호화 -->
 				</div>
 				<div class="dropdown">
-					<a href="/pangpang/member/login.jsp"><button type="button"> 로그인 </button></a> <!-- 가입시 비밀번호 암호화 -->
+					<a href="/pangpang/main.jsp"><button type="button"> 로그인 </button></a> <!-- 가입시 비밀번호 암호화 -->
 				</div>
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 로그인회원 </button>
@@ -41,6 +41,7 @@
 						<li><a class="dropdown-item" href="#">  결제정보등록	</a></li> <!-- 연동계좌 설정시 계좌정보 암호화  / 계좌사용 비밀번호 암호화 ?-->
 						<li><a class="dropdown-item" href="/pangpang/product/cart.jsp">  장바구니		</a></li> <!--  결제  -->
 						<li><a class="dropdown-item" href="#">  MYPAGE		</a></li> <!-- 회원정보 / 로그인한 회원 결제내역 -->
+						<li><a class="dropdown-item" href="/pangpang/member/logout.jsp"">  로그아웃		</a></li> <!-- 로그아웃 -->
 					</ul>
 				</div>
 			</div>
@@ -50,14 +51,10 @@
 		<div class="wrap">
 			<!-- 메인로고  -->
 			<div class="mainlogo"> <a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a></div>
-			<div class="header">			
+			<div class="header">
 				<div class="dropdown">
-					<button type="button" data-bs-toggle="dropdown"> 인사관리 </button> 
-					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  회원관리	</a></li>
-						<li><a class="dropdown-item" href="#">  직원관리	</a></li>
-					</ul>
-				</div>
+					<a href="/pangpang/member/member_management.jsp"><button type="button"> 인사관리 </button></a>
+				</div>			
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 제품관리 </button> 
 					<ul class="dropdown-menu">	
@@ -76,10 +73,10 @@
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 차량관리 </button>  
 					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="#">  보유차량	</a></li>	<!-- 사내 보유 차량 리스트 출력? 사용중 상태 표기 ? -->
-						<li><a class="dropdown-item" href="#">  차량등록	</a></li>	<!-- 신규 사내 차량 등록 -->
-						<li><a class="dropdown-item" href="#">  배차신청	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
-						<li><a class="dropdown-item" href="#"> 	운영관리	</a></li>	<!-- 차량 운행 내역 --> 
+						<li><a class="dropdown-item" href="/pangpang/car/carmanagement/carmanagement.jsp">  차량관리	</a></li>	<!-- 신규 사내 차량 등록 -->
+						<li><a class="dropdown-item" href="/pangpang/car/bookcar/bookcar.jsp">  배차신청	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
+						<li><a class="dropdown-item" href="/pangpang/map/map.jsp"> 	배송지설정	</a></li>	<!-- 지도API 활용한 배송지 경로설정 -->
+						<li><a class="dropdown-item" href="/pangpang/car/drivecar/drivecar.jsp"> 	운영관리	</a></li>	<!-- 차량 운행 내역 --> 
 						<li><a class="dropdown-item" href="#"> 	폐차관리	</a></li>	<!-- 차량 폐기 등록 / 폐기 내역 출력 --> 
 					</ul>
 				</div>
@@ -103,7 +100,7 @@
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script> 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-			
+	<script src="/pangpang/js/header.js" type="text/javascript"></script>		
 	
 </body>
 </html>

@@ -29,12 +29,20 @@ if(day==6){day='토';}
 
 let totalprice = 0;
 let cartList = [];
+
+// 회원제 기능
+if(memberInfo == null){
+	alert('회원제 기능입니다. 로그인 후 사용해주세요.');
+	location.href="/pangpang/main.jsp";
+}else{
+	getCartList();
+}
 // 로그인한 회원 장바구니 제품 출력 
-getCartList()
 function getCartList(){
 	$.ajax({
 		url 	: "/pangpang/cart",
 		method	: "get",
+		async	: false,
 		success	: (r)=>{
 			console.log(r)
 			if( r.length < 1){
@@ -45,11 +53,8 @@ function getCartList(){
 				totalprice = 0;	
 				let html = '';
 				r.forEach((o)=>{
-					
-					cartList.push(o)
-	
+					cartList.push(o)	
 					totalprice += (o.product_price*o.cart_amount);
-	
 					html += `<div class="cart_item">
 								<input name="cart" value="${o.product_no}" type="checkbox" onclick="check()" >
 								<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
@@ -76,8 +81,7 @@ function getCartList(){
 									${(o.product_price*o.cart_amount).toLocaleString()} 원 <br>
 									<img  class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
 									<span class="mini_mark">팡팡배송</span>
-								</div>
-								
+								</div>								
 							</div>`
 				})
 				document.querySelector('.cartlist').innerHTML = html;
@@ -90,8 +94,13 @@ function getCartList(){
 				r.forEach((o)=>{
 					document.querySelector(`.수량${o.product_no}`).value = o.cart_amount;	
 				})	
-				}
-
+				
+				// 전부 체크된 상태로 출력
+				let checkboxes = document.querySelectorAll('input[name="cart"]');
+				checkboxes.forEach((o)=>{o.checked = true;})
+				
+			}
+			
 		}// success e
 	}); // ajax e	
 }// getCartList e
@@ -120,7 +129,9 @@ function totalPrice(){
 
 // 장바구니 수량 변경시 가격 변경 
 function setPrice(pno,pprice){
-	
+	 
+	 let checkboxes = document.querySelectorAll('input[name="cart"]');
+	 
 	let amount = document.querySelector(`.수량${pno}`).value;
 	console.log(amount)
 	
@@ -129,7 +140,12 @@ function setPrice(pno,pprice){
 													<span class="mini_mark">팡팡배송</span>`;	
 													
 	cartList.forEach((o)=>{
-		if(o.product_no == pno){o.cart_amount = amount}
+		checkboxes.forEach((c)=>{
+			if(c.checked = true && c.value == o.product_no ){
+				if(o.product_no == pno){o.cart_amount = amount}
+				else{o.cart_amount = 0;}
+			}
+		})	
 	})
 		
 	totalprice = 0;	
@@ -160,9 +176,7 @@ function check(){
 
 	let checkboxes = document.querySelectorAll('input[name="cart"]');
 	
-	checkboxes.forEach((o)=>{if(o.checked == false){checkboxes[checkboxes.length-1].checked = false;};return; })	
-	
-	
+	checkboxes.forEach((o)=>{if(o.checked == false){checkboxes[checkboxes.length-1].checked = false;};return; })		
 }
 
 // 전체 장바구니 삭제 
@@ -202,8 +216,10 @@ function cartOut(){
 	  
 	  // 장바구니 리스트 랜더링
 	  getCartList()
-	  
+	  order()
 }// cartOut e
 
 // 선택한 제품 주문하기
-
+function order(){
+	
+}

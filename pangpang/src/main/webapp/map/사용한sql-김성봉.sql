@@ -18,25 +18,15 @@ drop table if exists member;
 
 create table member(
 	member_no 		int auto_increment primary key,            	-- 회원번호    	기본키 자동입력
+	member_name     varchar(20) not null,
 	member_id 		varchar(20) not null unique,                -- 회원아이디      빈칸X 중복X
 	member_pwd 		varchar(20) not null,                       -- 회원비밀번호    	빈칸X 중복O
 	member_email 	varchar(100) not null unique,               -- 회원이메일      빈칸X 중복X
 	member_phone 	varchar(20) not null,                       -- 회원전화번호   	빈칸X 중복O
 	member_address 	longtext not null,                     		-- 회원주소      	빈칸X 중복O
 	member_birth 	date not null,                             	-- 회원생일    	빈칸X 중복O
-	member_rank 	int not null                              	-- 회원등급   	빈칸X 중복O
+	member_rank 	int default 1                               -- 회원등급   	빈칸X 중복O
 );
-
-insert into member ( member_id , member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'qweqwe' , '1234' , 'qweqwe@qweqwe.com' , '010-1234-5600' , '경기 안산시 단원구 광덕2로 121' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'asdasd' , '1234' , 'asdasd@asdasd.com' , '010-1234-5601' , '경기 안산시 단원구 광덕3로 201' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'zxczxc' , '1234' , 'zxczxc@zxczxc.com' , '010-1234-5602' , '경기 안산시 상록구 한양대학로 80' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'qweasd' , '1234' , 'qweasd@qweasd.com' , '010-1234-5603' , '경기 안산시 단원구 초지로 128' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'bongseong' , '1234' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 );
 
 
 create table account(
@@ -57,13 +47,15 @@ create table category(
 );
 -- 제품 테이블                                        						-- 보관조건? 재고위치? // 추가 보완 사항?
 create table product(               
-   product_no          int auto_increment primary key,   	 			-- 제품번호 pk
-   product_name        varchar(30) not null,                			-- 제품명
-   product_option      varchar(10) not null,                			-- 규격/옵션         -- 100g / 500ml   
-   product_unit        varchar(10)   not null,                			-- 단위             -- (개/봉/박스/곽/통/캔)   
-   product_img         varchar(10)   not null,                			-- 제품이미지
-   product_content     longtext not null,                  				-- 제품상세설명        -- 원산지 / 보관방법 
-   category_no         int,                               				-- 카테고리번호 fk
+   product_no           int auto_increment primary key,   	 			   -- 제품번호 pk
+   product_name         varchar(30)  not null,                			   -- 제품명
+   product_option       varchar(10)  not null,                			   -- 규격/옵션         -- 100g / 500ml   
+   product_unit         varchar(10)  not null,                			   -- 단위             -- (개/봉/박스/곽/통/캔)   
+   product_img          varchar(100) not null,                			   -- 제품이미지
+   product_content      longtext not null,                  			   -- 제품상세설명        -- 원산지 / 보관방법 
+   product_price		int not null,									   -- 판매가
+   product_discount		int not null,									   -- 최대할인율 
+   category_no          int,                               				   -- 카테고리번호 fk
    foreign key (category_no) references category( category_no ) on delete cascade
 );
 -- 입출고 테이블                                        			-- 제조년월 / 소비기한 / 폐기 예정일은 어떻게? -- 테이블 분리?
@@ -76,7 +68,7 @@ create table stockmanagement(
    stockmanagementamount   	int   not null,                      			-- 수량
    product_price       		int not null,                       			-- 단가    개당 단가                           
    product_no          		int not null,                        			-- 제품번호 fk
-   foreign key (product_no) references product( product_no ) on delete no action
+   foreign key (product_no) references product( product_no ) on delete cascade
   
 );
 
@@ -101,28 +93,17 @@ create table ordermanagement(
    ordermanagement_no         	int   auto_increment primary key,    	-- 주문번호 pk
    ordermanagement_date       	datetime default now(),              	-- 주문일자      
    ordermanagement_state      	int	  not null,               			-- 주문상태                                   -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     
-   ordermanagement_address    	varchar(20) not null,                	-- 배송주소       
+   ordermanagement_address    	varchar(100) not null,                	-- 배송주소       
    member_no         			int not null,                        	-- 주문회원 fk     
    foreign key (member_no)   references member( member_no ) on delete no action 
 );
-
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 1 , '경기 안산시 단원구 광덕2로 121' , 1 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 2 , '경기 안산시 단원구 광덕3로 201' , 2 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 3 , '경기 안산시 상록구 한양대학로 80' , 3 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 4 , '경기 안산시 단원구 초지로 128' , 4 ) ;
-
-
 -- 주문상세 테이블
 create table orderdetail(
    orderdetaildno         	int   auto_increment primary key,   	-- 주문상세번호 pk
    orderdetaildamount      	int   not null,                     	-- 주문수량 
    orderdetaildprice        int   not null,                     	-- 주문단가
    ordermanagement_no      	int   not null,                       	-- 주문번호 fk
-   product_no          		int not null,                        	-- 제품코드 fk
+   product_no          		int	  not null,                        	-- 제품코드 fk
    foreign key (product_no) references product( product_no ) on delete no action, 
    foreign key (ordermanagement_no)   references ordermanagement( ordermanagement_no ) on delete cascade
 );
@@ -149,9 +130,6 @@ CREATE TABLE carmanage (
     carmanage_cumulative_mileage 	bigint								-- 누적주행거리
 );
 
-insert into carmanage ( carmanage_number , carmanage_name ,  carmanage_use_yn )
-values ( '69우1146' , '말리부' , 'Y' ) ;
-
 -- 배차관리 
 create table bookcar(
 	bookcar_no 			int auto_increment primary key,           	--  배차일련번호
@@ -164,9 +142,6 @@ create table bookcar(
 	foreign key (carmanage_no) references carmanage(carmanage_no) --  차량일련번호fk--   foreign key (mno) references member(mno)    --  사용자일련번호fk -- 배차승인여부?
 );
 
-insert into bookcar ( bookcar_str_date , bookcar_end_date , bookcar_yn , carmanage_no , member_no )
-values ( now() , null , 'Y' , 1 , 5 ) ;
-
 -- 운행일지
 create table drivecar(
 	drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호 
@@ -177,3 +152,30 @@ create table drivecar(
 	bookcar_no   			int,     									-- 배차일련번호
 	foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk
 ); 
+
+
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
+values ( 'qweqwe' , '강호동', '1234' , 'qweqwe@qweqwe.com' , '010-1234-5600' , '경기 안산시 단원구 광덕2로 121' , '2000-01-01' , 3 ); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
+values ( 'asdasd' , '김희철', '1234' , 'asdasd@asdasd.com' , '010-1234-5601' , '경기 안산시 단원구 광덕3로 201' , '2000-01-01' , 3 ); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
+values ( 'zxczxc' , '서장훈', '1234' , 'zxczxc@zxczxc.com' , '010-1234-5602' , '경기 안산시 상록구 한양대학로 80' , '2000-01-01' , 3 ); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
+values ( 'qweasd' , '이상민', '1234' , 'qweasd@qweasd.com' , '010-1234-5603' , '경기 안산시 단원구 초지로 128' , '2000-01-01' , 3 ); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
+values ( 'bongseong' , '유재석',  '1234' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 );
+
+insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
+values ( 1 , '경기 안산시 단원구 광덕2로 121' , 1 ) ;
+insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
+values ( 2 , '경기 안산시 단원구 광덕3로 201' , 2 ) ;
+insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
+values ( 3 , '경기 안산시 상록구 한양대학로 80' , 3 ) ;
+insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
+values ( 4 , '경기 안산시 단원구 초지로 128' , 4 ) ;
+
+insert into carmanage ( carmanage_number , carmanage_name ,  carmanage_use_yn )
+values ( '69우1146' , '말리부' , 'Y' ) ;
+
+insert into bookcar ( bookcar_str_date , bookcar_end_date , bookcar_yn , carmanage_no , member_no )
+values ( now() , null , 'Y' , 1 , 5 ) ;

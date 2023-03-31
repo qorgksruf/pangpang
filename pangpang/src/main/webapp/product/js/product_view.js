@@ -1,5 +1,33 @@
 console.log('product_view')
 
+// 도착예정일 구하기   [오후 4시 이전 주문시 내일 도착 / 이후 주문수 모레 도착 ]
+
+// 현재 시간 구하기 
+let today 	= new Date(); 
+let time 	= today.getHours();		// 시간 
+console.log(time)
+if(time<16){ 	
+	today.setDate(today.getDate()+1);
+}else{	
+	today.setDate(today.getDate()+2); 		
+}
+	
+let month 	= today.getMonth()+1;  	// 월
+let date 	= today.getDate();  	// 날짜
+let day 	= today.getDay();  		// 요일	일요일이 0, 월요일이1, 토요일이 6
+
+console.log(today)
+// 요일 문자로 변롼 
+if(day==0){day='일';}
+if(day==1){day='월';}
+if(day==2){day='화';}
+if(day==3){day='수';}
+if(day==4){day='목';}
+if(day==5){day='금';}
+if(day==6){day='토';}
+
+
+
 let pno = document.querySelector('.pno').value;
 console.log(pno);
 
@@ -42,8 +70,7 @@ function getProduct(pno){
 									<img class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
 									<span class="mini_mark">팡팡배송</span>		
 								</div>
-								<div class="unitprice"> (100g당 280원 )										</div>
-								<div class="date"> 		내일(목) 3/23 도착 보장									</div>											
+								<div class="date"> 		${month+"/"+date}(${day})  도착 보장 (서울경기 기준)		</div>											
 								<div class="cart_option"> 
 									<span class="product_option"> ${r.product_option} </span>
 									<select class="amount" >

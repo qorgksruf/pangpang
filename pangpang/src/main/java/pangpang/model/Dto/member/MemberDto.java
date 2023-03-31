@@ -30,25 +30,20 @@ public class MemberDto {
 		this.member_birth = member_birth;
 		this.member_rank = member_rank;
 	}
+	
 
-
-
-	public MemberDto(int member_no, String member_id, String member_pwd, String member_email, String member_phone,
+	public MemberDto(int member_no, String member_name, String member_id, String member_email, String member_phone,
 			String member_address, String member_birth, int member_rank) {
 		super();
 		this.member_no = member_no;
+		this.member_name = member_name;
 		this.member_id = member_id;
-		this.member_pwd = member_pwd;
 		this.member_email = member_email;
 		this.member_phone = member_phone;
 		this.member_address = member_address;
 		this.member_birth = member_birth;
 		this.member_rank = member_rank;
 	}
-
-	
-
-	
 
 
 
