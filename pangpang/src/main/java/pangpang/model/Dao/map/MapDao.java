@@ -47,11 +47,17 @@ public class MapDao extends Dao {
 	
 	
 	// 3. 주문목록 가져오기
-	public synchronized ArrayList<MapOderDto> getOrderList(){
+	public synchronized ArrayList<MapOderDto> getOrderList( int order ){
 		
 		ArrayList<MapOderDto> list = new ArrayList<>();
+		String sql = "";
+		String subsql = ""; 
 		
-		String sql = "select * from ordermanagement where ordermanagement_state = 2";
+		if( order == 1 ) {
+			sql = "select * from ordermanagement where ordermanagement_state = 2";
+		}else if( order == 2 ) {
+			sql = "select * from ordermanagement where ordermanagement_state = 2 order by ordermanagement_no desc";
+		}
 		
 		try {
 			
@@ -65,7 +71,6 @@ public class MapDao extends Dao {
 						new MapOderDto(
 								rs.getInt(1) , rs.getString(2) , 
 								rs.getInt(3) , rs.getString(4) , rs.getInt(5) )
-					
 						);
 			}
 			

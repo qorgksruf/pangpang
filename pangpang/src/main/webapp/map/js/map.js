@@ -2,7 +2,18 @@ console.log('map.js 시작');
 console.log( memberInfo );
 
 
+// --------------------------------- 전역변수 --------------------------------- //
+ 
+// order 정렬 오름차순/내림차순 스위치 전역변수
+let orderTrueFalse = true;
+
+// type 전역변수
 let type = 0;
+
+// 배송정보를 저장할 변수
+let d_info;
+
+// --------------------------------- ----- --------------------------------- // 
 
 // 1. 로그인된 배송기사의 개인정보출력
 memberPrint();
@@ -50,30 +61,161 @@ function bookcarInfo(){
 
 
 // 3. 현재 배송이 필요한 주문목록 출력
-getOrderList();
-function getOrderList(){
+getOrderList(2);
+function getOrderList( order ){
+	
+	let html = `<tr>
+					<th width="10%"> 주문번호 
+						<button type="button" onclick="d_info_orderBy()"> 
+							<span class="orderbtn"> ${ orderTrueFalse ? '<i class="fa-solid fa-angle-down"></i>' : '<i class="fa-solid fa-angle-up"></i>' } </span> 
+						</button> 
+					</th>
+					<th width="25%"> 주문일자 </th>
+					<th width="15%"> 상태  </th>
+					<th width="40%"> 주소  </th>
+					<th width="10%"> 전체선택 <input type="checkbox" value="selectall" onclick="selectAll(this)"> </th> 
+				</tr>`;
 	
 	$.ajax({
 		url : "/pangpang/map",
 		method : "get",
-		data : { type : 2 },
+		data : { "type" : 2 , "order" : order },
+		async : false,
 		success : ( r ) => {
 			console.log('getOrderList() 통신'); console.log( r );
 			
+			d_info = r ;
+			
+			r.forEach( (o) => {
+				
+				html += `<tr>
+						<td> ${ o.ordermanagement_no } </td> <td> ${ o.ordermanagement_date } </td> 
+						<td> ${ o.ordermanagement_state } </td> <td> ${ o.ordermanagement_address } </td> 
+						<td> <input type="checkbox" value="${ o.ordermanagement_no }"></td>
+					</tr>`
+				
+			})
+			
+			document.querySelector('.d_info_table').innerHTML = html ;	
 		}
 	})
-	
 }
 
 
 
 
-// 4. 배송목록에서 선택한 아이템 선택테이블로 이동
-function delivery_item(){
+// 4. 배송정보 정렬 함수
+function d_info_orderBy(){
 	
-	console.log( '클릭됨' ); 
+	if( orderTrueFalse ){
+		orderTrueFalse = false ;
+		getOrderList(1);
+	}else{
+		orderTrueFalse = true ;
+		getOrderList(2);
+	}
+	console.log( orderTrueFalse );
 	
 }
+
+
+
+// 5. 체크박스 전체선택 전체해제
+function selectAll( selectAll ){
+	
+	let checkboxes = document.querySelectorAll('.info_table_box input[type="checkbox"]');
+	
+	checkboxes.forEach( (o) => {
+		o.checked = selectAll.checked
+	});
+}
+
+
+// 선택한 배송지를 담을 배열
+let selectAddr = [];
+
+// 6. 배송지 선택 후 완료버튼을 눌렀을때 >> 선택한 배송지 정보값 가져오기
+function addrSelect() {
+	console.log('클릭됨');
+	console.log( d_info );
+	
+	// check 된 값 가져오기
+	let checkConfirm = document.querySelectorAll('.info_table_box input[type="checkbox"]:checked');
+	
+	// 체크박스에서 선택한 배송목록의 pk 값을 담을 배열
+	let select_no = [];
+	
+	// 가져온 DOM 객체에서 value 값만 추출하여 배열에 담기
+	checkConfirm.forEach( ( o , i) => {
+		console.log( o.value );
+		select_no[i] = o.value ;
+	})
+	
+	
+	// for 반복문을 돌려 ajax 로 가지고온 모든 배송정보와 DOM 객체에서 가져온 체크 value 를 비교여 일치하는것만 배열에 담기
+		// >> 선택한 값만 담기
+	for( let i=0; i<d_info.length; i++ ){
+		for( j=0; j<select_no.length; j++ ){
+			
+			if( d_info[i].ordermanagement_no == select_no[j] ){
+				selectAddr.push( d_info[i] );
+				console.log( d_info[i] );
+			}
+			
+		}
+	}
+	console.log( selectAddr );
+	
+	// 체크한 배송목록 HTML 렌더링
+	selectAddrPrint();
+	
+	// 선택한 체크값 모두 비활성회
+	checkConfirm.forEach( (o) => {
+		o.checked = false;
+	})
+	
+	
+}
+
+function selectAddrPrint(){
+	
+	let html = `<tr>
+					<th> 경유지 </th> <th></th> <th> 삭제 </th>
+				</tr>`;
+	
+	selectAddr.forEach( (o) => {
+		
+		html += `<tr>
+					 <td></td>
+					 <td> ${ o.ordermanagement_address } </td> 
+					 <td> 
+						 <button type="button" onclick="addrDelete(${ o.ordermanagement_no })" class="delbtn"> 
+						 	<i class="fa-solid fa-minus"></i> 
+						 </button>  
+					 </td>
+				</tr>`
+		
+	})
+	
+	document.querySelector('.select_table').innerHTML = html ;
+	
+}
+
+
+
+// 선택된 배송지 제거하기
+function addrDelete( no ){
+	console.log( no + " 클릭됨" )
+	
+	selectAddr.forEach( (o,i) => {
+		
+		if( o.ordermanagement_no == no ){
+			selectAddr.splice( i , 1 );
+			selectAddrPrint();
+		}
+	})
+}
+
 
 
 /* -------------------------- 지도 -------------------------- */ 

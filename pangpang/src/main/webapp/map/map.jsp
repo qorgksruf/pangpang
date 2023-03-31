@@ -25,9 +25,6 @@
 					<div class="info_top">
 						
 					</div>
-					<div>
-						<a href="#"> 회원정보 수정 </a> 
-					</div>
 				</div>
 				<div class="personal_info">
 					
@@ -38,66 +35,62 @@
 				
 			</div>
 			<div class="delivery_info_box">
-				<div class="info_table_box">
+				<div>
 					<h3> 배송정보 </h3>
-					<table class="table d_info_table">
-						<tr>
-							<th width="15%"> 주문번호 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
-							<th width="30%"> 주문일자 <button type="button"> <i class="fa-solid fa-angle-down"></i> </button> </th>
-							<th width="15%"> 상태 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
-							<th width="40%"> 주소 <button type="button"> <i class="fa-solid fa-angle-up"></i> </button> </th>
-						</tr>
-						<tr onclick="delivery_item()">
-							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 단원구 광덕2로 121 </td>
-						</tr>
-						<tr>
-							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 상록구 한양대학로 80 </td>
-						</tr>
-						<tr>
-							<td> 1 </td> <td> 2023-03-27 16:00:09 </td> <td> 결제완료 </td> <td> 경기 안산시 단원구 초지로 128 </td>
-						</tr>
-					</table>
+					<div class="info_table_box">
+						<table class="table d_info_table">
+							
+						</table>
+					</div>
+				</div>
+				<div class="selectbtn">
+					<button type="button" onclick="addrSelect()"> 선택완료 </button>
 				</div>
 			</div>
+		
 			
-			<div class="set_starting_box">
-				<div class="select_item_box">
-					<h3> 선택정보 </h3>
-					<table class="table select_table">
-						<tr>
-							<th width="20%"> 상태 </th> <th width="65%"> 주소 </th> <th width="15%"> 제거 </th>
-						</tr>
-						<tr draggable="true">
-							<td> 배송대기 </td> <td> 경기 안산시 단원구 광덕2로 121 </td> <td> <button type="button" class="select_delete_btn"> <i class="fa-solid fa-minus"></i> </button>
-						</tr>
-						<tr>
-							<td> 배송대기 </td> <td> 경기 안산시 상록구 한양대학로 80 </td> <td> <button type="button" class="select_delete_btn"> <i class="fa-solid fa-minus"></i> </button>
-						</tr>
-					</table>
+			<div>
+				<h3> 운행정보 </h3>
+				<div class="set_starting_box">
+					<div class="select_item_box">
+						<h3> 차고지 선택 </h3>
+						<p> 2개 선택시 출발지/목적지를 설정할 수 있습니다. </p>
+						<p class="notice_info"> [주의] 세개 이상의 차고지를 선택할 수 없습니다. </p>
+						<div class="distribution_center">
+							<input type="checkbox"> 서울
+							<input type="checkbox"> 안산
+							<input type="checkbox"> 부천
+							<input type="checkbox"> 시흥 
+						</div>
+						
+						<div class="start_end_point">
+							<table class="table">
+								<tr>
+									<th> 출발지 </th> <th> 도착지 </th>
+								</tr>
+								<tr>
+									<td> 부천 팡팡물류센터 </td> <td> 부천 팡팡물류센터 </td>
+								</tr>
+							</table>
+						</div>
+						
+						<h3> 경유지 정보 </h3>
+						<div class="select_table_box">
+							<table class="table select_table">
+								
+							</table>
+						</div>
+					</div>
+					
+					<div class="map_box">
+						<div id="map_div"></div>
+					</div>
 				</div>
-				<div class="map_box">
-					<div id="map_div"></div>
-				</div>
-			</div>
-			
-			<div class="result_box">
-				<table class="table">
-					<tr>
-						<th> 출발지 </th> <th>  </th>
-					</tr>
-					<tr>
-						<th> 경유지 </th> <th>  </th>
-					</tr>
-					<tr>
-						<th> 목적지 </th> <th>  </th>
-					</tr>
-				</table>
 			</div>
 			
 			<div class="result_btn_box">
 				<button type="button"> 경로설정 </button>
 			</div>
-			
 		</div>
 		
 		
