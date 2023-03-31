@@ -1,4 +1,5 @@
-
+console.log('order js')
+console.log(memberInfo)
 // 모달 설정 
 function openmodal(){
 	document.querySelector('.modal_wrap').style.display='flex';
@@ -7,14 +8,22 @@ function closemodal(){
 	document.querySelector('.modal_wrap').style.display='none';
 }
 
+getMemberInfo()
 //------------------------------------------------------------------------------------- 회원정보 불러오기
 function getMemberInfo(){
+
+	document.querySelector('.member_name').innerHTML  		= memberInfo.member_name;
+	document.querySelector('.member_email').innerHTML 		= memberInfo.member_email;
+	document.querySelector('.member_phone').innerHTML 		= memberInfo.member_phone;
 	
+	document.querySelector('.receiver_name').innerHTML 		= memberInfo.member_name;
+	document.querySelector('.receiver_phone').innerHTML   	= memberInfo.member_phone;
+	document.querySelector('.receiver_address').innerHTML 	= memberInfo.member_address;
+
 }
 
-
-
 //------------------------------------------------------------------------------------- 받는사람 수정
+// 수정 선택시 수정 입력란 오픈
 function update_recieverinfo(){	
 	
 	document.querySelector('.receiver_info').innerHTML = 
@@ -34,21 +43,77 @@ function update_recieverinfo(){
 		 <tr>
 			<th width="10%"> 배송요청사항  </th> 
 			<td> 
-				<select>  
-					<option> 문앞 		</option>
-					<option> 경비실 		</option>
-					<option> 무인택배보관함 </option>
+				<select class="delivery_option">  
+					<option value="1"> 문앞 		  </option>
+					<option value="2"> 경비실 	  </option>
+					<option value="3"> 무인택배보관함 </option>
 				</select>
 			</td>
 		 </tr>`
-		 
-}
-
-function update_recieverinfo_complete(){
+	
+	// 버튼 변경 [수정] => [완료]/[취소]	 
+	document.querySelector('.Rinfo').innerHTML 
+	= `	<button class="updatebtn" onclick="update_recieverinfo_complete()" type="button"> 완료 </button>
+		<button class="updatebtn" onclick="update_recieverinfo_cancle()"   type="button"> 취소 </button>` 
+		
+	document.querySelector('.receiver_name').value 			= memberInfo.member_name;
+	document.querySelector('.receiver_phone').value   		= memberInfo.member_phone;
+	document.querySelector('.delivery_address').innerHTML 	= memberInfo.member_address;
 	
 }
+// 수정 완료시 입력한 회원 정보 출력
+function update_recieverinfo_complete(){
+	
+	let receiver_name 		= document.querySelector('.receiver_name').value;
+	let receiver_phone 		= document.querySelector('.receiver_phone').value;
+	let delivery_address 	= document.querySelector('.delivery_address').innerHTML;
+	let delivery_option		= document.querySelector('.delivery_option').value;
+	
+	document.querySelector('.receiver_info').innerHTML = 		
+			`<tr>
+				<th width="10%"> 이름	  </th> 
+				<td class="receiver_name">${receiver_name} <span>기본배송지</span></td>
+			</tr>
+			<tr>
+				<th  width="10%">휴대폰 번호 </th> 
+				<td  class="receiver_phone">${receiver_phone}  </td>
+			</tr>						
+			<tr>
+				<th width="10%"> 배송주소 </th> 
+				<td class="receiver_address">${delivery_address}   </td>
+			</tr>
+			<tr>
+				<th width="10%"> 배송요청사항  </th> 
+				<td class="delivery_option"> ${delivery_option==1?'기본: 문앞':delivery_option==2?'경비실':'무인택배보관함'} </td>
+			</tr>`
+	document.querySelector('.Rinfo').innerHTML 
+		= `<button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 			
+}
+// 수정 취소시 기존 로그인 회원 정보 재호출
 function update_recieverinfo_cancle(){
-
+	
+	document.querySelector('.receiver_info').innerHTML = 		
+			`<tr>
+				<th width="10%"> 이름	  </th> 
+				<td class="receiver_name"> <span>기본배송지</span></td>
+			</tr>
+			<tr>
+				<th  width="10%">휴대폰 번호 </th> 
+				<td  class="receiver_phone"> </td>
+			</tr>						
+			<tr>
+				<th width="10%"> 배송주소 </th> 
+				<td class="receiver_address">  </td>
+			</tr>
+			<tr>
+				<th width="10%"> 배송요청사항  </th> 
+				<td> 일반 : 문앞 </td>
+			</tr>`
+			
+	document.querySelector('.Rinfo').innerHTML 
+		= `<button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 
+		
+	getMemberInfo()
 }
 
 //------------------------------------------------------------------------------------- 주소검색
@@ -152,7 +217,7 @@ function address_select(i){
 
 }
 
-// 배송지 확정
+// 주소 확정
 function delivery_address(){
 	
 	let address_select = document.querySelector('.address_select_input').innerHTML;
@@ -163,4 +228,55 @@ function delivery_address(){
 	closemodal()
 
 }
-
+//------------------------------------------------------------------------------------- 결제
+   
+   let pay=0;
+   
+   function setPay(n){
+	  pay += n; 
+   }
+  //------------------------------------------------------------------------------------------- 회원 식별 번호   
+  const IMP = window.IMP;  // 생략 가능
+  IMP.init("imp47415848"); // 예: imp00000000a
+  //-------------------------------------------------------------------------------------------  
+  function requestPay() {
+	  
+	if(pay == 0){
+		alert('충전할 금액을 선택해주세요.'); return;
+	}	
+	  
+    IMP.request_pay({
+      pg: "kcp.INIBillTst",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000011",   // 주문번호
+      name: "이젠 포인트 결제",
+      amount: pay,                          // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {// 결제 성공 시 로직
+       
+      } else {// 결제 실패 시 로직
+        
+        let info = {
+			mpcomment 	: '포인트 충전',
+			mpamount	: pay,
+			mno			: memberInfo.mno
+		}
+        
+        $.ajax({
+			url		: "/jspweb/point",
+			method 	: "post",
+			data	: info ,
+			success	:(r)=>{
+				if(r=='true'){alert('포인트 충전 완료')}
+			}		
+		})
+        
+        
+      }
+    });
+  }

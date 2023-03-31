@@ -6,30 +6,28 @@
 	justify-content: space-between;
 	margin: 1%;	
 }
-.searchbtn , .registerbtn, .btns{
+.searchbtn , .registerbtn{
 	width: 100px;
-	height: 30px;
 	background-color: #5697A6;
 	color: white;
 	border: none;
 	border-radius: 50px;
+	padding :5px;
 	margin: 15px;
 }
 /* 품목 리스트 출력 구역 */
 .itemlistbox {
 	width: 100%;
 	margin: 1% auto;
-	text-align: center;
 }
 .updatebtn, .deletebtn{
-	width: 50px;
-	height: 20px;
+	width: 80px;
 	background-color: #5697A6;
 	color: white;
 	border: none;
-	border-radius: 50px;
 	align-content: center;
 	font-size: 15px;
+	padding :5px;
 	margin: 5px;
 }
 /* 모달 배경 설정*/
@@ -60,6 +58,7 @@
 .modal_title{
 	font-weight: bold;
 	font-size: 23px;
+	margin-bottom: 30px;
 }
 .modal_content{
 	margin: 1%;
@@ -73,7 +72,7 @@
 }
 .modal_content input  {
 	width: 70%;
-	height:35px;
+	height:40px;
 	padding-left: 10px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
@@ -89,7 +88,7 @@
 }
 .modal_content select, option{
 	width: 70%;
-	height:35px;
+	height:40px;
 	border: 1px solid #e8e8e8;
 	border-radius: 20px;
 	text-align:center;
@@ -98,5 +97,5 @@
 input[type=file]::file-selector-button{
 	border: none;
 	background-color:#eeeeee;
-	border-radius: 20px;
+	margin: 8px;
 }
