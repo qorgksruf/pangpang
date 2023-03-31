@@ -91,7 +91,7 @@ function closeFindpwdModal(){
 }
 
 
-
+/*
 // 2. 아이디 찾기 
 function findid(){	console.log( "findid()함수");
 	let member_name = document.querySelector('.member_name').value; 
@@ -139,4 +139,4 @@ function findpwd(){	console.log( "findpwd()함수");
 		}
 	})
 }
-
+*/
