@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.member.MemberDao;
+import pangpang.model.Dao.product.OrderDao;
 import pangpang.model.Dao.product.ProductDao;
 import pangpang.model.Dto.product.CartDto;
 import pangpang.model.Dto.product.CategoryDto;
@@ -32,7 +33,7 @@ public class Cart extends HttpServlet {
 		int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 
 		
-		ArrayList<CartDto> list = ProductDao.getInstance().printCart(mno);
+		ArrayList<CartDto> list = OrderDao.getInstance().printCart(mno);
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonarray = mapper.writeValueAsString(list);
 		System.out.println("json"+jsonarray);
@@ -50,7 +51,7 @@ public class Cart extends HttpServlet {
 		// 로그인한 회원 정보 
 		int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		
-		int result = ProductDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
+		int result = OrderDao.getInstance().cartIn(amount, pno, mno);  System.out.println(result);
 		response.getWriter().print(result);
 		
 	}
@@ -66,22 +67,19 @@ public class Cart extends HttpServlet {
 		int type 	= Integer.parseInt(request.getParameter("type"));
 		
 		// 로그인한 회원 정보 
-		// int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
-		int mno		= 1; // 추후 변경
+		int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login")); System.out.println(mno);
 		
 		boolean result = false;
 		
 		if(type == 1) {       // 로그인한 회원 전체 제품 장바구니 취소
-			result  = ProductDao.getInstance().cartOutAll(mno);
+			result  = OrderDao.getInstance().cartOutAll(mno);
 			response.getWriter().print(result);
 			
 		}else if(type == 2) { // 로그인한 회원 선택 제품 장바구니 취소 
 			int pno = Integer.parseInt(request.getParameter("pno")); System.out.println(pno);
-			result  = ProductDao.getInstance().cartOut(pno, mno);
+			result  = OrderDao.getInstance().cartOut(pno, mno);
 			response.getWriter().print(result);
-		}
-
-		
+		}		
 
 	}
 

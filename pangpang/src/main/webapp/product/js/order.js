@@ -1,11 +1,37 @@
 console.log('order js')
 console.log(memberInfo)
 // 모달 설정 
-function openmodal(){
-	document.querySelector('.modal_wrap').style.display='flex';
+function openmodal_address(){
+	document.querySelector('.openmodal_address').style.display='flex';
 }
-function closemodal(){
-	document.querySelector('.modal_wrap').style.display='none';
+function closemodal_address(){
+	document.querySelector('.openmodal_address').style.display='none';
+}
+
+//------------------------------------------------------------------------------------- 주문제품 불러오기
+
+function printorder(){
+
+	let html = `<tr>
+					<th width="10%"> 제품이름 </th> 
+					<th width="80%"> 제품정보 </th> 
+					<th width="10%"> 제품수량 </th> 
+				</tr>`
+		
+	orderlist.forEach((o)=>{
+		html += `	<tr>
+						<td> 
+							<div><img class="order_img"  src="/pangpang/product/pimg/${o.product_img}" alt=""></div>
+						</td>
+						<td>
+							 ${o.product_name}, ${o.product_option}		
+						</td>
+						<td>
+							 ${o.cart_amount+o.product_unit}
+						</td>
+					</tr>`
+	})
+		document.querySelector('.buyproduct_info').innerHTML = html ;
 }
 
 getMemberInfo()
@@ -38,7 +64,7 @@ function update_recieverinfo(){
 		 </tr>						
 		 <tr>
 			<th width="10%"> 배송주소 </th> 
-			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal()"> 주소 찾기 </button> </td>
+			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button> </td>
 		 </tr>
 		 <tr>
 			<th width="10%"> 배송요청사항  </th> 
@@ -229,54 +255,43 @@ function delivery_address(){
 
 }
 //------------------------------------------------------------------------------------- 결제
-   
-   let pay=0;
-   
-   function setPay(n){
-	  pay += n; 
-   }
+
   //------------------------------------------------------------------------------------------- 회원 식별 번호   
   const IMP = window.IMP;  // 생략 가능
   IMP.init("imp47415848"); // 예: imp00000000a
   //-------------------------------------------------------------------------------------------  
-  function requestPay() {
-	  
-	if(pay == 0){
-		alert('충전할 금액을 선택해주세요.'); return;
-	}	
-	  
-    IMP.request_pay({
-      pg: "kcp.INIBillTst",
-      pay_method: "card",
-      merchant_uid: "ORD20180131-0000011",   // 주문번호
-      name: "이젠 포인트 결제",
-      amount: pay,                          // 숫자 타입
-      buyer_email: "gildong@gmail.com",
-      buyer_name: "홍길동",
-      buyer_tel: "010-4242-4242",
-      buyer_addr: "서울특별시 강남구 신사동",
-      buyer_postcode: "01181"
-    }, function (rsp) { // callback
-      if (rsp.success) {// 결제 성공 시 로직
+  function requestPay(type) {
+
+	let info = {
+		  pg: "kcp.INIBillTst",
+	      pay_method: "card",
+	      merchant_uid: "ORD20180131-0000011",  	// 주문번호
+	      name: "이젠 포인트 결제",
+	      amount: 5000,                          	// 숫자 타입
+	      buyer_email: "gildong@gmail.com",
+	      buyer_name: "홍길동",
+	      buyer_tel: "010-4242-4242",
+	      buyer_addr: "서울특별시 강남구 신사동",
+	      buyer_postcode: "01181"
+	}
+
+	if(type==1){
+		info.pg="kcp.INIBillTst";
+		
+	}else if(type==2){
+		info.pg='kakaopay';
+		
+	}else if(type==3){
+		info.pg='tosspay';
+		
+	}
+
+    IMP.request_pay(info, function (rsp) { 		// callback
+    	if (rsp.success) {						// 결제 성공 시 로직
        
-      } else {// 결제 실패 시 로직
-        
-        let info = {
-			mpcomment 	: '포인트 충전',
-			mpamount	: pay,
-			mno			: memberInfo.mno
-		}
-        
-        $.ajax({
-			url		: "/jspweb/point",
-			method 	: "post",
-			data	: info ,
-			success	:(r)=>{
-				if(r=='true'){alert('포인트 충전 완료')}
-			}		
-		})
-        
-        
-      }
+      	} else {								// 결제 실패 시 로직 = 테스트용이므로 결제 취소시 진행으로
+      		alert('결제가 완료되었습니다.')
+      		location.href="/pangpang/index.jsp"; // 추후 마이페이지 전환?
+       }
     });
   }
