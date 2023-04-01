@@ -5,15 +5,15 @@
 let detailview='';
 console.log("------위임------")
 console.log(detailview)
-carList();
 
 //전체출력
-
+carList();
 function carList(){
 
    console.log("carmanagement.js carList 진입");
    $.ajax({
       url:"/pangpang/carmanage",
+      data:{type:1},
       method:"get",
       async:false,
       success:(r)=>{
@@ -188,7 +188,8 @@ function carupdate(){
          console.log('통신');
          console.log(r);
          if(r=='true'){
-            alert('수정성공')
+            alert('수정성공');
+            carList();
          }else{
             alert('수정실패')
          }

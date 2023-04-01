@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
+import pangpang.model.Dto.car.BookcarDto;
 import pangpang.model.Dto.car.CarmanagementDto;
 
 public class CarmanagementDao extends Dao{
@@ -24,7 +25,7 @@ public class CarmanagementDao extends Dao{
 	         rs=ps.executeQuery();
 	         
 	         while(rs.next()) {
-	            System.out.println("rs 반복");
+	      
 	            CarmanagementDto dto = new CarmanagementDto(
 	                  rs.getInt(1),
 	                  rs.getString(2),
@@ -43,7 +44,7 @@ public class CarmanagementDao extends Dao{
 	      }
 	      return list;
 	   }
-	  
+
 	  public ArrayList<CarmanagementDto> getCarInfo(String carmanage_no){
 		  ArrayList<CarmanagementDto> list = new ArrayList<>();
 		  String sql="SELECT * FROM CARMANAGE WHERE CARMANAGE_NO = " + carmanage_no;

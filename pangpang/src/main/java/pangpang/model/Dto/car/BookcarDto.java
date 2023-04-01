@@ -4,9 +4,23 @@ public class BookcarDto {
 	private int bookcar_no;
 	private String bookcar_str_date;
 	private String bookcar_end_date;
+	
+
+
 	private String bookcar_yn;
 	private int carmanage_no;
 	private int member_no;
+
+	
+	//출력용
+	public BookcarDto(int bookcar_no, String bookcar_yn, int carmanage_no, int member_no) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_yn = bookcar_yn;
+		this.carmanage_no = carmanage_no;
+		this.member_no = member_no;
+	}
+
 	//빈생성자
 	public BookcarDto() {
 		super();
