@@ -38,29 +38,41 @@ function carchoice(){
 }//함수 e
 
 
+
+
 //선택하기함수
 function choice(carmanage_no){
 	console.log(carmanage_no);
-		onpenModal(4);
+		view.forEach((o,i)=>{
+			view[i].carmanage_no
+		if(o.carmanage_no==carmanage_no){
+				onpenModal(4,i);
+		}
+	})
+	
+	
 };
 
 
 console.log(memberInfo);
-console.log(memberInfo.member_id);
+console.log(memberInfo.member_no);
 
 let login=memberInfo;
 
 //배차예약정보 전송버튼
-function confirm(){
+
+function confirm(carmanage_no){
+	console.log("-------차량번호확인-----------")
+	console.log("bookcar.js confirm carmanage_no ::: " + carmanage_no);
+	
 	let book={
 		bookcar_destination : document.querySelector('.bookcar_destination').value,
 		bookcar_str_date : document.querySelector('.bookcar_str_date').value,
 		bookcar_end_date : document.querySelector('.bookcar_end_date').value,	
-		login
+		login,
+		carmanage_no
 	}
-	
-	
-	
+
 	console.log(book);
 	
 	$.ajax({
@@ -70,6 +82,11 @@ function confirm(){
 		success:(r)=>{
 			console.log("통신성공");
 			console.log(r);
+			if(r="true"){
+				alert("배차신청완료");
+			}else{
+				alert("배차신청실패");
+			}
 		}
 	})
 	 	 	

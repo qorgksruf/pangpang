@@ -47,7 +47,7 @@ public class BookcarDao extends Dao{
 		  
 		// 배차신청하기 전 배차예약시간 체크
 		  public boolean bookCheck(int carmanage_no, String bookcar_str_date, String bookcar_end_date) {
-			  boolean result = false;
+			  boolean result = true;
 			  String sql = "SELECT * "
 			  			 + "  FROM BOOKCAR"
 			  			 + " WHERE 1=1"
@@ -65,26 +65,42 @@ public class BookcarDao extends Dao{
 			      while(rs.next()) {
 			    	  System.out.println(rs.getInt(1));
 			    	  System.out.println(rs.getString(6));
-			    	  return true;
+			    	  result =  false;
 			      }
 				  
 			  } catch (Exception e) {
 				  System.out.println("BookcarDao.java bookCheck error 발생 ::: " + e);
 			  }
 			  
-			  return false;
+			  return result;
 		  }
 		  		
 		// 배차예약정보를 최고권위자한테 줘야함
 		public boolean book(String mid, int carmanage_no, String bookcar_destination, String bookcar_str_date, String bookcar_end_date) {
-			
-			
-			String sql="";
+						
+			String sql="insert into bookcar "
+					+ "	(bookcar_no,bookcar_str_date,bookcar_end_date,bookcar_yn,carmanage_no,member_no) "
+					+ "		values (?,?,?,?,?,?);";
 			try {
+				if (bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date)) {
+					ps = con.prepareStatement(sql);
+					ps.setInt(1, 0);
+					ps.setString(2, bookcar_str_date);
+					ps.setString(3, bookcar_end_date);
+					ps.setString(4, "N");
+					ps.setInt(5, carmanage_no);
+					ps.setString(6, "1");
+					
+					ps.executeUpdate();
+					
+					System.out.println("BookcarDao.java book sql ::: " + sql);
+					  return true;
+					  
+				} else {
+					  return false;
+				}
 				
-				bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date);
-				
-				return true;
+			
 			}catch (Exception e) {
 				System.out.println(e);
 			}

@@ -88,7 +88,7 @@ function onpenModal( type , i){
 					      복귀시간:       <input class="bookcar_end_date" type="text">			     	<br>
 				</div>
 				<div class="modal_btns">
-					<button onclick="confirm()" class="modal_check" type="button">확인</button>
+					<button onclick="confirm(${ view[i].carmanage_no })" class="modal_check" type="button">확인</button>
 					<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 				</div>
 			</div>
