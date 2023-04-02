@@ -7,10 +7,6 @@
 	<title>PANGPANG : Map </title>
 	<link href="/pangpang/map/css/map.css" rel="stylesheet">
 	
-	<!-- TMAP API -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=FTgL4h9DokizpClCioLn7EvI4rM9aVhU0GIvct20"></script>
-	
 	<!-- 폰트어썸 -->
 	<script src="https://kit.fontawesome.com/ca0196c650.js" crossorigin="anonymous"></script>
 </head>
@@ -57,10 +53,10 @@
 						<p> 2개 선택시 출발지/목적지를 설정할 수 있습니다. </p>
 						<p class="notice_info"> [주의] 세개 이상의 차고지를 선택할 수 없습니다. </p>
 						<div class="distribution_center">
-							<input type="checkbox"> 서울
-							<input type="checkbox"> 안산
-							<input type="checkbox"> 부천
-							<input type="checkbox"> 시흥 
+							<input type="checkbox" name="distribution"> 서울
+							<input type="checkbox" name="distribution"> 안산
+							<input type="checkbox" name="distribution"> 부천
+							<input type="checkbox" name="distribution"> 시흥 
 						</div>
 						
 						<div class="start_end_point">
@@ -83,13 +79,14 @@
 					</div>
 					
 					<div class="map_box">
+						<p id="result"></p>
 						<div id="map_div"></div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="result_btn_box">
-				<button type="button"> 경로설정 </button>
+				<button onclick="setAddress()" type="button"> 경로설정 </button>
 			</div>
 		</div>
 		
@@ -102,6 +99,13 @@
 
 	
 	
+	
+	<!-- 카카오 지도 js -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10ba1da6842b6225a9594bb0758c576f&libraries=services,clusterer"></script>
+	<!-- TMAP API -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=FTgL4h9DokizpClCioLn7EvI4rM9aVhU0GIvct20"></script>
+	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=FTgL4h9DokizpClCioLn7EvI4rM9aVhU0GIvct20"></script>
 	<!-- 사용자정의 -->
 	<script src="/pangpang/map/js/map.js" type="text/javascript"></script> 
 </body>
