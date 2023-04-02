@@ -9,6 +9,11 @@
 	font-weight: bold;
 	background-color: #F2F2F2;	
 }
+.soldout{
+	opacity: 30%;
+	display: flex;
+	padding: 15px;
+}
 .cart_item{
 	display: flex;
 	padding: 15px;

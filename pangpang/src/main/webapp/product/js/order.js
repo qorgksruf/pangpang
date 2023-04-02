@@ -1,17 +1,21 @@
 console.log('order js')
-console.log(memberInfo)
+
+let totalprice=0;
+
 // 모달 설정 
 function openmodal_address(){
-	document.querySelector('.openmodal_address').style.display='flex';
+	document.querySelector('.modal_wrap_address').style.display='flex';
 }
 function closemodal_address(){
-	document.querySelector('.openmodal_address').style.display='none';
+	document.querySelector('.modal_wrap_address').style.display='none';
 }
-
+let orderlist = JSON.parse(localStorage.getItem("orderlist"));
 //------------------------------------------------------------------------------------- 주문제품 불러오기
-
-function printorder(){
-
+printorder()
+function printorder(){	
+	console.log(orderlist)
+	totalprice=0;
+	
 	let html = `<tr>
 					<th width="10%"> 제품이름 </th> 
 					<th width="80%"> 제품정보 </th> 
@@ -19,6 +23,9 @@ function printorder(){
 				</tr>`
 		
 	orderlist.forEach((o)=>{
+		
+		totalprice += (o.product_price * o.cart_amount);
+
 		html += `	<tr>
 						<td> 
 							<div><img class="order_img"  src="/pangpang/product/pimg/${o.product_img}" alt=""></div>
@@ -31,11 +38,20 @@ function printorder(){
 						</td>
 					</tr>`
 	})
+		
+		if(totalprice<19000){totalprice=totalprice+3000}else{totalprice}
+		
+		html += `<tr>
+					<th colspan="3" class="totalpricebox"> 총 결제 금액 <span class="totalprice"> ${totalprice.toLocaleString()}</span> 원 </th>
+				</tr>`
+		
+	
 		document.querySelector('.buyproduct_info').innerHTML = html ;
 }
 
-getMemberInfo()
+
 //------------------------------------------------------------------------------------- 회원정보 불러오기
+getMemberInfo()
 function getMemberInfo(){
 
 	document.querySelector('.member_name').innerHTML  		= memberInfo.member_name;
@@ -251,30 +267,32 @@ function delivery_address(){
 	
 	document.querySelector('.delivery_address').innerHTML = address_select+address_detail;
 	
-	closemodal()
+	closemodal_address();
 
 }
-//------------------------------------------------------------------------------------- 결제
+ //------------------------------------------------------------------------------------- 결제
 
-  //------------------------------------------------------------------------------------------- 회원 식별 번호   
+  // 회원 식별 번호   
   const IMP = window.IMP;  // 생략 가능
   IMP.init("imp47415848"); // 예: imp00000000a
-  //-------------------------------------------------------------------------------------------  
+   
   function requestPay(type) {
-
+	console.log(orderlist)
+	console.log(totalprice)
 	let info = {
-		  pg: "kcp.INIBillTst",
-	      pay_method: "card",
-	      merchant_uid: "ORD20180131-0000011",  	// 주문번호
-	      name: "이젠 포인트 결제",
-	      amount: 5000,                          	// 숫자 타입
-	      buyer_email: "gildong@gmail.com",
-	      buyer_name: "홍길동",
-	      buyer_tel: "010-4242-4242",
-	      buyer_addr: "서울특별시 강남구 신사동",
-	      buyer_postcode: "01181"
+	      pay_method	: "card",
+	      merchant_uid	: "ORD20180131-0000011",  	// 주문번호
+	      name			: "PANGPANG",				// 상호명
+	      amount		: totalprice,               // 결제금액 
+	      buyer_email	: memberInfo.member_email,
+	      buyer_name	: document.querySelector('.receiver_name').innerHTML,
+	      buyer_tel		: document.querySelector('.receiver_phone').innerHTML,
+	      buyer_addr	: document.querySelector('.receiver_address').innerHTML,
+	      buyer_postcode: "01181",
+	      member_no		: memberInfo.member_no,
+	      orderlist		: JSON.stringify(orderlist)
 	}
-
+	console.log(info);
 	if(type==1){
 		info.pg="kcp.INIBillTst";
 		
@@ -290,8 +308,39 @@ function delivery_address(){
     	if (rsp.success) {						// 결제 성공 시 로직
        
       	} else {								// 결제 실패 시 로직 = 테스트용이므로 결제 취소시 진행으로
-      		alert('결제가 완료되었습니다.')
-      		location.href="/pangpang/index.jsp"; // 추후 마이페이지 전환?
+      		alert('결제가 완료되었습니다.');
+      		// 주문 DB 등록
+      			$.ajax({
+					url 	: "/pangpang/order",
+					method	: "post",
+					async	: false,
+					data	: info,
+					success	: (r)=>{
+						console.log(r)
+						if(r=='true'){
+							cartOutAll();
+							alert('주문이 완료되었습니다.')
+							location.href="/pangpang/index.jsp";
+						}else{
+							alert('주문이 취소되었습니다.[관리자에게 문의]')
+						}
+					}
+				});
        }
     });
   }
+  
+  
+  // 주문 완료 후 전체 장바구니 삭제 
+	function cartOutAll(){
+		
+		$.ajax({
+			url 	: "/pangpang/cart",
+			method	: "delete",
+			async	: false,
+			data	: {"type":1 },
+			success	: (r)=>{
+				console.log('cartoutall'+r)							
+			}// success e
+		}); // ajax e	
+	}// cartOutAll e

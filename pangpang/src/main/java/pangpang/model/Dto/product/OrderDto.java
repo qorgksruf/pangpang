@@ -20,7 +20,7 @@ public class OrderDto {
 	  
 	// 추가 
 	private String 	member_id;
-	private ArrayList<ProductDto> list;
+	private ArrayList<CartDto> list;
 	
 	
 	// 생성자
@@ -30,7 +30,7 @@ public class OrderDto {
 	public OrderDto(int ordermanagement_no, String ordermanagement_date, int ordermanagement_state,
 			String ordermanagement_address, int member_no, int orderdetaildno, int orderdetaildamount,
 			int orderdetaildprice, int product_no, int payment_no, String payment_date, String payment_how,
-			int payment_price, String member_id, ArrayList<ProductDto> list) {
+			int payment_price, String member_id, ArrayList<CartDto> list) {
 		super();
 		this.ordermanagement_no = ordermanagement_no;
 		this.ordermanagement_date = ordermanagement_date;
@@ -50,14 +50,14 @@ public class OrderDto {
 	}
 
 	// 주문 등록
-	public OrderDto(String ordermanagement_address, int member_no, int orderdetaildamount, int orderdetaildprice,
-			int product_no) {
+	public OrderDto(String ordermanagement_address, int member_no, String payment_how,
+			int payment_price, ArrayList<CartDto> list) {
 		super();
 		this.ordermanagement_address = ordermanagement_address;
 		this.member_no = member_no;
-		this.orderdetaildamount = orderdetaildamount;
-		this.orderdetaildprice = orderdetaildprice;
-		this.product_no = product_no;
+		this.payment_how = payment_how;
+		this.payment_price = payment_price;
+		this.list = list;
 	}
 	// 결제 
 	public OrderDto(int ordermanagement_no, String ordermanagement_date, int ordermanagement_state, String payment_how,
@@ -73,20 +73,29 @@ public class OrderDto {
 	// 주문 출력
 	public OrderDto(int ordermanagement_no, String ordermanagement_date, int ordermanagement_state,
 			String ordermanagement_address, int member_no, String payment_date, String payment_how, int payment_price,
-			String member_id, ArrayList<ProductDto> list) {
+			String member_id, ArrayList<CartDto> list) {
 		super();
 		this.ordermanagement_no = ordermanagement_no;
 		this.ordermanagement_date = ordermanagement_date;
 		this.ordermanagement_state = ordermanagement_state;
 		this.ordermanagement_address = ordermanagement_address;
 		this.member_no = member_no;
-		this.payment_date = payment_date;
-		this.payment_how = payment_how;
-		this.payment_price = payment_price;
 		this.member_id = member_id;
 		this.list = list;
 	}
-
+	
+	// 주문 상세 출력
+	public OrderDto(int ordermanagement_no, String payment_date, String payment_how, int payment_price,
+			ArrayList<CartDto> list) {
+		super();
+		this.ordermanagement_no = ordermanagement_no;
+		this.payment_date = payment_date;
+		this.payment_how = payment_how;
+		this.payment_price = payment_price;
+		this.list = list;
+	}	
+	
+	
 	@Override
 	public String toString() {
 		return "OrderDto [ordermanagement_no=" + ordermanagement_no + ", ordermanagement_date=" + ordermanagement_date
@@ -95,6 +104,7 @@ public class OrderDto {
 				+ ", orderdetaildamount=" + orderdetaildamount + ", orderdetaildprice=" + orderdetaildprice
 				+ ", product_no=" + product_no + ", member_id=" + member_id + "]";
 	}
+
 
 	public int getOrdermanagement_no() {
 		return ordermanagement_no;
@@ -208,11 +218,11 @@ public class OrderDto {
 		this.member_id = member_id;
 	}
 
-	public ArrayList<ProductDto> getList() {
+	public ArrayList<CartDto> getList() {
 		return list;
 	}
 
-	public void setList(ArrayList<ProductDto> list) {
+	public void setList(ArrayList<CartDto> list) {
 		this.list = list;
 	}
 
