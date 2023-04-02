@@ -45,6 +45,10 @@ public class CarmanagementDao extends Dao{
 	      return list;
 	   }
 
+	  
+
+	  
+	  
 	  public ArrayList<CarmanagementDto> getCarInfo(String carmanage_no){
 		  ArrayList<CarmanagementDto> list = new ArrayList<>();
 		  String sql="SELECT * FROM CARMANAGE WHERE CARMANAGE_NO = " + carmanage_no;
@@ -71,6 +75,9 @@ public class CarmanagementDao extends Dao{
 		  }
 		  return list;
 	  }
+
+
+	  
 	  
 	  //등록버튼구현
 	  public boolean regi(CarmanagementDto dto) {

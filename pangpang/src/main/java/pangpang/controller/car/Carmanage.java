@@ -73,7 +73,21 @@ public class Carmanage extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
 			response.getWriter().print(jsonArry);
+			
+		}else if(type.equals("3")){	//배차관리 선택을 위한 전체출력
+			
+			System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
+			ArrayList<CarmanagementDto>result = null;		
+			
+			result =BookcarDao.getInstance().carListy();
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);				
+	
 		}
+		
 
 	}
 
