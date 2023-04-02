@@ -33,6 +33,7 @@ public class bookcar extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String mid=(String)request.getSession().getAttribute("login");
 				System.out.println(mid);
+			int	   carmanage_no = 1;
 			String bookcar_destination=request.getParameter("bookcar_destination");
 				System.out.println(bookcar_destination);
 			String bookcar_str_date=request.getParameter("bookcar_str_date");
@@ -40,7 +41,7 @@ public class bookcar extends HttpServlet {
 			String bookcar_end_date=request.getParameter("bookcar_end_date");
 				System.out.println(bookcar_end_date );
 				
-			boolean result=BookcarDao.getInstance().book(mid,bookcar_destination,bookcar_str_date,bookcar_end_date);
+			boolean result=BookcarDao.getInstance().book(mid, 1,bookcar_destination,bookcar_str_date,bookcar_end_date);
 			
 				System.out.println(result);
 			

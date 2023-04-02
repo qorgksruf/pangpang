@@ -1,5 +1,6 @@
 package pangpang.model.Dao.car;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
@@ -42,12 +43,47 @@ public class BookcarDao extends Dao{
 		            System.out.println("carmanagementDao의 전체출력"+e);
 		      }
 		      return list;
-		   }	  
+		   }
+		  
+		// 배차신청하기 전 배차예약시간 체크
+		  public boolean bookCheck(int carmanage_no, String bookcar_str_date, String bookcar_end_date) {
+			  boolean result = false;
+			  String sql = "SELECT * "
+			  			 + "  FROM BOOKCAR"
+			  			 + " WHERE 1=1"
+			  			 + "   AND CARMANAGE_NO = 1"
+			  			 + "   AND BOOKCAR_YN = 'Y'"
+			  			 + "   AND ((BOOKCAR_STR_DATE <= DATE(\""+ bookcar_str_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_str_date + "\"))"
+			  			 		+ "OR (BOOKCAR_STR_DATE <= DATE(\""+ bookcar_end_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_end_date + "\")));";
+			  
+			  try {
+				  System.out.println("bookCheck sql ::: " + sql);
+				  
+				  ps=con.prepareStatement(sql);
+			      rs=ps.executeQuery();
+			      
+			      while(rs.next()) {
+			    	  System.out.println(rs.getInt(1));
+			    	  System.out.println(rs.getString(6));
+			    	  return true;
+			      }
+				  
+			  } catch (Exception e) {
+				  System.out.println("BookcarDao.java bookCheck error 발생 ::: " + e);
+			  }
+			  
+			  return false;
+		  }
 		  		
 		// 배차예약정보를 최고권위자한테 줘야함
-		public boolean book(String mid, String bookcar_destination, String bookcar_str_date, String bookcar_end_date) {
+		public boolean book(String mid, int carmanage_no, String bookcar_destination, String bookcar_str_date, String bookcar_end_date) {
+			
+			
 			String sql="";
 			try {
+				
+				bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date);
+				
 				return true;
 			}catch (Exception e) {
 				System.out.println(e);

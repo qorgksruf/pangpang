@@ -59,6 +59,8 @@ function confirm(){
 		login
 	}
 	
+	
+	
 	console.log(book);
 	
 	$.ajax({
