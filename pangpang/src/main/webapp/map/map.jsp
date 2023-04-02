@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>PANGPANG : Map </title>
+	<link href="/pangpang/map/css/modal.css" rel="stylesheet">
 	<link href="/pangpang/map/css/map.css" rel="stylesheet">
 	
 	<!-- 폰트어썸 -->
@@ -32,7 +33,7 @@
 			</div>
 			<div class="delivery_info_box">
 				<div>
-					<h3> 배송정보 </h3>
+					<h3 class="set_title"> 배송정보 </h3>
 					<div class="info_table_box">
 						<table class="table d_info_table">
 							
@@ -46,27 +47,24 @@
 		
 			
 			<div>
-				<h3> 운행정보 </h3>
+				<h3 class="set_title"> 운행정보 </h3>
 				<div class="set_starting_box">
 					<div class="select_item_box">
 						<h3> 차고지 선택 </h3>
+						<p> 한개의 센터를 선택한 경우 출발지/목적지가 동일하게 설정됩니다.</p>
 						<p> 2개 선택시 출발지/목적지를 설정할 수 있습니다. </p>
+						<br>
 						<p class="notice_info"> [주의] 세개 이상의 차고지를 선택할 수 없습니다. </p>
 						<div class="distribution_center">
-							<input type="checkbox" name="distribution"> 서울
-							<input type="checkbox" name="distribution"> 안산
-							<input type="checkbox" name="distribution"> 부천
-							<input type="checkbox" name="distribution"> 시흥 
+							<input type="checkbox" name="distribution" value="1"> 서울
+							<input type="checkbox" name="distribution" value="2"> 안산
+							<input type="checkbox" name="distribution" value="3"> 부천
+							<input type="checkbox" name="distribution" value="4"> 시흥
 						</div>
 						
 						<div class="start_end_point">
-							<table class="table">
-								<tr>
-									<th> 출발지 </th> <th> 도착지 </th>
-								</tr>
-								<tr>
-									<td> 부천 팡팡물류센터 </td> <td> 부천 팡팡물류센터 </td>
-								</tr>
+							<table class="table s_e_table">
+								
 							</table>
 						</div>
 						
@@ -92,6 +90,24 @@
 		
 		
 		
+		<!-- 모달 HTML -->
+		<div class="modal_wrap">
+			<div class="modal_box">
+				<h3 class="modal_title">
+					출발 / 도착지 선택
+				</h3>
+				<div class="modal_content">
+					
+				</div>
+				<div class="modal_btns">
+					<button class="modal_check" onclick="centerAddr()" type="button">확인</button>
+					<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+				</div>
+			</div>
+		</div>
+		
+		
+		
 		<div class="footer">
 		</div>
 		
@@ -108,5 +124,7 @@
 	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=FTgL4h9DokizpClCioLn7EvI4rM9aVhU0GIvct20"></script>
 	<!-- 사용자정의 -->
 	<script src="/pangpang/map/js/map.js" type="text/javascript"></script> 
+	<!-- 사용자정의 : 모달 -->
+	<script src="/pangpang/map/js/modal.js" type="text/javascript"></script>
 </body>
 </html>

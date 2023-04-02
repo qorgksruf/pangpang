@@ -17,6 +17,11 @@
 	margin: 0 auto;
 }
 
+/* h3 설정 */
+.set_title{
+	padding: 0px 20px;
+}
+
 
 /* 멤버 정보 메인박스 */
 .member_info_main{
@@ -184,7 +189,7 @@
 
 /* 지도 */
 .map_box{
-	margin-top: 170px;
+	margin-top: 200px;
 }
 
 

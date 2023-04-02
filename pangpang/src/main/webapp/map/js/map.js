@@ -19,7 +19,7 @@ let d_info;
 memberPrint();
 function memberPrint(){
 	
-	let notihtml = `<h3> 배송지 설정 </h3>
+	let notihtml = `<h3 class="set_title"> 배송지 설정 </h3>
 					<div class="notice"> ${ memberInfo.member_name }님, 오늘도 안전운행 하세요! </div>`
 	
 	document.querySelector('.info_top').innerHTML = notihtml;
@@ -133,7 +133,7 @@ function selectAll( selectAll ){
 
 // 선택한 배송지를 담을 배열
 let selectAddr = [];
-
+let addrSelectTF = false;
 // 6. 배송지 선택 후 완료버튼을 눌렀을때 >> 선택한 배송지 정보값 가져오기
 function addrSelect() {
 	console.log('클릭됨');
@@ -174,7 +174,7 @@ function addrSelect() {
 		o.checked = false;
 	})
 	
-	
+	addrSelectTF = true;
 }
 
 function selectAddrPrint(){
@@ -210,17 +210,97 @@ function addrDelete( no ){
 		if( o.ordermanagement_no == no ){
 			selectAddr.splice( i , 1 );
 			selectAddrPrint();
+			addrConversion();
 		}
 	})
+	
+	if( selectAddr == null ){
+		addrSelectTF = false;
+	}
 }
 
 
 
-// 차고지 선택
-let distribution = document.getElementsByName('distribution')
-distribution.forEach( (o) => {
-	console.log( o );
-})
+// 차고지 선택이벤트
+let count = 0;
+let dist_center = [];
+
+$(document).ready(function() {
+    $('input[type=checkbox][name=distribution]').change(function() {
+        if ($(this).is(':checked')) {
+			
+            dist_center.push( this.value );
+            count++;
+            
+            if( count == 2 ){
+				console.log( this.value );
+				openModal( dist_center );
+			}
+			if( count > 2 ){
+				count = 2;
+				alert('새게 이상의 차고지를 선택할 수 없습니다.')
+				$(this).prop("checked" , false );
+				dist_center.splice( this.value , 1 );
+				return;
+			}
+        }
+        else {
+            console.log(`${this.value} is unchecked`);
+            count--;
+        }
+    });
+});
+
+
+let centerAddrTF = false;	// 물류센터[ 출발지 / 도착지 ] 설정여부 확인 boolean 값
+var startAddress = 0;		// 출발지 주소담을 변수
+var endAddress = 0;			// 목적지 주소담을 변수
+
+// 모달창에서 출발지/목적지 선택 후 확인버튼을 눌렀을대 동작함수 [ html 에 출발지 목적지 설정정보 구성 및 지도표시 ]
+function centerAddr(){
+	console.log( selectCenterInfo )
+	
+	// 출발지 / 목적지 가져오기[ select value 값 ]
+	let start = document.querySelector('.start_point').value
+	let end = document.querySelector('.end_point').value
+	
+	// 가져온 value 값으로 비교하여 주소값 대입하기
+	if( start == '서울 팡팡물류센터' ){
+		startAddress = '서울특별시 송파구 송파대로 55'
+	}else if( start == '안산 팡팡물류센터' ){
+		startAddress = '경기도 안산시 시화호수로 835'
+	}else if( start == '부천 팡팡물류센터' ){
+		startAddress = '경기도 부천시 신흥로511번길 112'
+	}else if( start == '시흥 팡팡물류센터' ){
+		startAddress = '경기도 시흥시 만해로 43'
+	}
+	
+	if( end == '서울 팡팡물류센터' ){
+		endAddress = '서울특별시 송파구 송파대로 55'
+	}else if( end == '안산 팡팡물류센터' ){
+		endAddress = '경기도 안산시 시화호수로 835'
+	}else if( end == '부천 팡팡물류센터' ){
+		endAddress = '경기도 부천시 신흥로511번길 112'
+	}else if( end == '시흥 팡팡물류센터' ){
+		endAddress = '경기도 시흥시 만해로 43'
+	}
+
+	console.log( start + " " +end )
+	console.log( startAddress + " " +endAddress )
+	
+	let html = `<tr>
+					<th> 출발지 </th> <th> 도착지 </th>
+				</tr>
+				<tr>
+					<td> ${start} </td> <td> ${end} </td>
+				</tr>`;
+	document.querySelector('.s_e_table').innerHTML = html ;
+	
+	// 출발지/목적지 설정 후 true 값으로 변환
+	centerAddrTF = true;
+	addrConversion();
+	closeModal();
+}
 	
 
 
@@ -229,7 +309,36 @@ distribution.forEach( (o) => {
 var geocoder = new kakao.maps.services.Geocoder();
 var coords = [];
 
+var startAddress_coord = ""; // 주소 -> 좌표값 변환된것 담을 변수
+var endAddress_coord = "";
+
 function addrConversion() {
+	
+	// 출발지 좌표변환
+	geocoder.addressSearch( startAddress, function(result, status) {
+		
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		
+		        startAddress_coord =  new kakao.maps.LatLng(result[0].y, result[0].x) ;
+		        console.log( "start : " + startAddress_coord );
+		        console.log( startAddress_coord.Ma );
+		        console.log( startAddress_coord.La );
+		     
+		    } 
+		    
+	});
+	
+	// 도착지 좌표변환
+	geocoder.addressSearch( endAddress, function(result, status) {
+		
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		
+		        endAddress_coord =  new kakao.maps.LatLng(result[0].y, result[0].x); 
+		        console.log( "end : " + endAddress_coord );
+		    } 
+	});
 	
 	for( let i=0; i<selectAddr.length; i++ ){
 	// 주소로 좌표를 검색합니다
@@ -255,7 +364,7 @@ initTmap();
 function initTmap(){
 	// 1. 지도 띄우기
 	map = new Tmapv2.Map("map_div", {
-		center: new Tmapv2.LatLng(37.56701114710962, 126.9973611831669),
+		center: new Tmapv2.LatLng(37.3218778, 126.8308848),
 		width : "100%",
 		height : "500px",
 		zoom : 15,
@@ -265,10 +374,21 @@ function initTmap(){
 }
 
 function setAddress(){
+	
+	// 차고지 / 경유지 미선택 유효성검사
+	if( !centerAddrTF ){
+		alert('출발/도착 차고지 선택 후 실행해주세요')
+		return;
+	}
+	if( !addrSelectTF ){
+		alert('경유지 선택 후 실행해주세요')
+		return;
+	}
+	
 	// 시작, 도착 심볼찍기
 	// 시작
 	marker_s = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.568085523663385, 126.98605733268329),
+		position : new Tmapv2.LatLng( startAddress_coord.Ma , startAddress_coord.La ),
 		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
 		iconSize : new Tmapv2.Size(24, 38),
 		map:map
@@ -276,53 +396,38 @@ function setAddress(){
 	
 	// 도착 
 	marker_e = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56445848334345, 127.00973587385866),
+		position : new Tmapv2.LatLng( endAddress_coord.Ma , endAddress_coord.La ),
 		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
 		iconSize : new Tmapv2.Size(24, 38),
 		map:map
 	});
 	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56626352138058, 126.98735015742581),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_1.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
+	for( let i=0; i<coords.length; i++ ){
+		
+		marker = new Tmapv2.Marker({
+			position : new Tmapv2.LatLng( coords[i].Ma , coords[i].La ),
+			icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_1.png",
+			iconSize : new Tmapv2.Size(24, 38),
+			map:map
+		});
+		
+	}
 	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56568310756034, 127.00221495976581),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_2.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
+	var waypoint = []
 	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.570369, 126.992153),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_3.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
+	for( let i=0; i<coords.length; i++ ){
+		waypoint.push({
+				"viaPointId": 'test'+i,
+		      	"viaPointName": "test"+i,
+		      	"viaX": `${coords[i].La}`,
+		      	"viaY": `${coords[i].Ma}`
+			}
+		)
+	}
 	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56335290252303, 127.00352387777271),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_4.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
+	console.log( waypoint );
+	console.log( JSON.stringify( waypoint ));
 	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.570721714117965, 127.00186090818215),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_5.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
-	
-	marker = new Tmapv2.Marker({
-		position : new Tmapv2.LatLng(37.56515390827723, 126.99066536776698),
-		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_6.png",
-		iconSize : new Tmapv2.Size(24, 38),
-		map:map
-	});
 	
 	var headers = {}; 
 	headers["appKey"]="FTgL4h9DokizpClCioLn7EvI4rM9aVhU0GIvct20";
@@ -337,53 +442,16 @@ function setAddress(){
 				  "reqCoordType": "WGS84GEO",
 				  "resCoordType" : "EPSG3857",
 				  "startName": "출발",
-				  "startX": "126.98605733268329",
-				  "startY": "37.568085523663385",
+				  "startX": `${startAddress_coord.La}`,
+				  "startY": `${startAddress_coord.Ma}`,
 				  "startTime": "201711121314",
 				  "endName": "도착",
-				  "endX": "127.00973587385866",
-				  "endY": "37.56445848334345",
+				  "endX": `${endAddress_coord.La}`,
+				  "endY": `${endAddress_coord.Ma}`,
 				  "searchOption" : "0",
-				  "viaPoints": [
-				    {
-				      "viaPointId": "test01",
-				      "viaPointName": "test01",
-				      "viaX": "126.98735015742581",
-				      "viaY": "37.56626352138058",
-				    },
-				    {
-				      "viaPointId": "test02",
-				      "viaPointName": "test02",
-				      "viaX": "127.00221495976581",
-				      "viaY": "37.56568310756034",
-				    },
-				    {
-				      "viaPointId": "test03",
-				      "viaPointName": "test03",
-				      "viaX": "126.992153",
-				      "viaY": "37.570369",
-				    },
-				    {
-				      "viaPointId": "test04",
-				      "viaPointName": "test04",
-				      "viaX": "127.00352387777271",
-				      "viaY": "37.56335290252303",
-				    },
-				    {
-				      "viaPointId": "test05",
-				      "viaPointName": "test05",
-				      "viaX": "127.00186090818215",
-				      "viaY": "37.570721714117965",
-				    },
-				    {
-				      "viaPointId": "test06",
-				      "viaPointName": "test06",
-				      "viaX": "126.99066536776698", 
-				      "viaY": "37.56515390827723",
-				    }
-				  ]
+				  "viaPoints": waypoint
 		}),
-		success:function(response){
+		success:function( response ){
 			var resultData = response.properties;
 			var resultFeatures = response.features;
 			
