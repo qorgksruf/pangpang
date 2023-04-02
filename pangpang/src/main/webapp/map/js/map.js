@@ -496,10 +496,4 @@ function setAddress(){
 	});
 }	
 
-
-
-
-
-
-        
         
