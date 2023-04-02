@@ -50,9 +50,8 @@ public class BookcarDao extends Dao{
 			  boolean result = true;
 			  String sql = "SELECT * "
 			  			 + "  FROM BOOKCAR"
-			  			 + " WHERE 1=1"
-			  			 + "   AND CARMANAGE_NO = 1"
-			  			 + "   AND BOOKCAR_YN = 'Y'"
+			  			 + " WHERE CARMANAGE_NO = " + carmanage_no
+			  			 + "   -- AND BOOKCAR_YN = 'Y'" // 배차승인 완료된 애들만 체크를 한다면 앞에 있는 '--' 를 빼주세요
 			  			 + "   AND ((BOOKCAR_STR_DATE <= DATE(\""+ bookcar_str_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_str_date + "\"))"
 			  			 		+ "OR (BOOKCAR_STR_DATE <= DATE(\""+ bookcar_end_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_end_date + "\")));";
 			  

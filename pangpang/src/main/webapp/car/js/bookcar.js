@@ -82,7 +82,7 @@ function confirm(carmanage_no){
 		success:(r)=>{
 			console.log("통신성공");
 			console.log(r);
-			if(r="true"){
+			if(r=="true"){
 				alert("배차신청완료");
 			}else{
 				alert("배차신청실패");
