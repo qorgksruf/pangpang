@@ -1,4 +1,4 @@
-package pangpang.controller.member.암호화;
+package pangpang.controller.member.암호화.test;
 
 public class 초깃값_설정 {
 	public static void main(String[] args) {
