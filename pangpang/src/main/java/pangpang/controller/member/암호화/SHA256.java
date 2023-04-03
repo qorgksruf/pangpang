@@ -19,7 +19,7 @@ public class SHA256 {
 		String result = sha256.getEncrypt(pwd, salt);
 		System.out.println("result : "+result);
 	}
-	
+	 
 	
 	// 솔트 만들기
 	public String getSalt() {

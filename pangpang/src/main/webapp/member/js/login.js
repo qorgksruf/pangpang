@@ -18,31 +18,26 @@ function login(){
 	})
 }
 
-/* 모달 */
 function onpenFindidModal( ){
-	let html = `<div style="width: 100%;">
-					<div class="findid_box" style="display: flex;flex-direction: column;align-items: center;">
-						<div>
-							<table>
-								<tr>
-									<th>이름</th>
-									<td>
-										<input class="member_name" type="text">
-									</td>
-								</tr>
-								<tr>
-									<th>이메일</th>
-									<td>
-										<input class="member_email" type="text">
-									</td>
-								</tr>
-							</table>
-						</div>
-						<div>
-							<button onclick="findid()"type="button">확인</button>
-						</div>
+	let html = `<div class="modal_content">
+						<table class="modal_table">
+							<tr>
+								<th class="modal_table_th">이름</th>
+								<td class="modal_table_td">
+									<input class="input1 member_name" type="text">
+								</td>
+							</tr>
+							<tr>
+								<th class="modal_table_th">이메일</th>
+								<td class="modal_table_td">
+									<input class="input1 member_email" type="text">
+								</td>
+							</tr>
+						</table>
 					</div>
-				</div>`
+					<div class="modal_btns">
+						<button onclick="findid()" class="findid_btn" type="button">확인</button>
+					</div>`
 	document.querySelector('.findid_box').innerHTML=html
 	document.querySelector('.findid_box').style = ''
 	document.querySelector('.findid_modal_wrap').style.display ='flex';
@@ -53,35 +48,31 @@ function closeFindidModal(){
 
 /* 모달 */
 function onpenFindpwdModal( ){
-	let html = `<div style="width: 100%;">
-					<div class="findpwd_box" style="display: flex;flex-direction: column;align-items: center;">
-						<div>
-							<table>
-								<tr>
-									<th>아이디</th>
-									<td>
-										<input class="member_idpwd" type="text">
-									</td>
-								</tr>
-								<tr>
-									<th>이름</th>
-									<td>
-										<input class="member_namepwd" type="text">
-									</td>
-								</tr>
-								<tr>
-									<th>이메일</th>
-									<td>
-										<input class="member_emailpwd" type="text">
-									</td>
-								</tr>
-							</table>
-						</div>
-						<div>
-							<button onclick="findpwd()" type="button">확인</button>
-						</div>
+	let html = `<div class="modal_content con2">
+						<table class="modal_table">
+							<tr>
+								<th class="modal_table_th">아이디</th>
+								<td class="modal_table_td">
+									<input class="input1 member_idpwd" type="text">
+								</td>
+							</tr>
+							<tr>
+								<th class="modal_table_th">이름</th>
+								<td class="modal_table_td">
+									<input class="input1 member_namepwd" type="text">
+								</td>
+							</tr>
+							<tr>
+								<th class="modal_table_th">이메일</th>
+								<td class="modal_table_td">
+									<input class="input1 member_emailpwd" type="text">
+								</td>
+							</tr>
+						</table>
 					</div>
-				</div>`
+					<div class="modal_btns">
+						<button onclick="findpwd()" class="findpwd_btn" type="button">확인</button>
+					</div>`
 	document.querySelector('.findpwd_box').innerHTML=html
 	document.querySelector('.findpwd_box').style = ''
 	document.querySelector('.findpwd_modal_wrap').style.display ='flex';
@@ -91,7 +82,7 @@ function closeFindpwdModal(){
 }
 
 
-/*
+
 // 2. 아이디 찾기 
 function findid(){	console.log( "findid()함수");
 	let member_name = document.querySelector('.member_name').value; 
@@ -99,7 +90,7 @@ function findid(){	console.log( "findid()함수");
 	let style ='width: 100%; height: 310px !important; display: flex;align-items: center; justify-content: center;font-size: 20px;'
 	
 	$.ajax({
-		url : "/hotel/member/find" ,
+		url : "/pangpang/member/find" ,
 		method : "get" , 
 		data : { "type" : 1 , "member_name" : member_name , "member_email" : member_email} ,
 		success : (r) => {
@@ -125,7 +116,7 @@ function findpwd(){	console.log( "findpwd()함수");
 		"member_email" : document.querySelector('.member_emailpwd').value
 	}; console.log( info );
 	$.ajax({
-		url : "/hotel/member/find",
+		url : "/pangpang/member/find",
 		method : "get",
 		data : info , 
 		success : (r) => {	console.log('통신'); console.log(r);
@@ -139,4 +130,4 @@ function findpwd(){	console.log( "findpwd()함수");
 		}
 	})
 }
-*/
+

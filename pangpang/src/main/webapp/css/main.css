@@ -112,3 +112,113 @@
 	font-size: 13px;
 	border: none;
 }
+
+
+
+
+/* 아이디찾기 모달 */
+/* 모달 배경 만들기 */
+.modal_wrap{
+	background-color: rgb(255 255 255 / 50%);
+	position: fixed;
+	top : 0; left: 0;
+	width: 100%; height: 100%;
+	display: flex;
+	justify-content: center; align-items: center;
+	display: none;
+}
+
+/* 모달 상자 만들기 */
+.modal_box{
+	background-color: white;
+	width: 500px;
+	height : 350px;
+	border: 5px solid #15b8db;
+	position: relative;
+	border-top: none;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+.modal_title_box{
+	background-color: #15b8db;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	font-family: 'Happiness-Sans-Regular';
+	font-weight: bold;
+	align-items: center;
+	border: 5px solid #15b8db;
+	font-size: 18px;
+	justify-content: space-between;
+}
+.modal_content{
+	width: 400px;
+	height: 150px;
+	background-color: #F2F2F2;
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.modal_table{
+	width: 300px;
+	font-size: 15px;
+    color: #999999;
+}
+.modal_table_th{
+	width: 90px;
+	height: 36px;
+}
+.modal_table_td{
+	width: 210px;
+	height: 36px;
+}
+.input1{
+	width: 210px;
+	height: 26px;
+	margin: 1px 0px;
+	padding: 5px 4px;
+	border: 1px solid #d1d1d1;
+	font-size: 13px;
+	font-family: 'Happiness-Sans-Regular';
+	font-weight: bold;
+}
+.modal_btns{
+	width: 400px;
+	height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close_findid{
+	display: flex;
+    justify-content: center;
+    background-color: #429393;
+    border: 1px solid #429393;
+}
+
+.findid_btn, .findpwd_btn{
+	width: 80px;
+	height: 30px;
+	border: none;
+	background-color: #429393;
+	color: white;
+	font-size: 12px;
+}
+
+/* 비밀번호찾기 모달 */
+.box2{
+	height: 400px;
+}
+.con2{
+	height: 200px;
+}
+
+/* .resultbox{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */

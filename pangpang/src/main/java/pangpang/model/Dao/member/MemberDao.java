@@ -27,7 +27,7 @@ public class MemberDao extends Dao{
 			}catch (Exception e) {System.out.println(e);}
 			return false;
 		}
-		
+		 
 	// 2. 이메일 중복검사
 	public boolean getEmail( String member_email ) {
 		String sql = "select * from member where member_email='"+member_email+"';";
@@ -137,5 +137,77 @@ public class MemberDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
+	
+	// 9. 아이디 찾기
+	public String findid( String member_name , String member_email ) {
+		String sql = "select member_id from member where member_name='"+member_name+"' and member_email='"+member_email+"';";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
 		
+	// 10. 비밀번호 재발급
+	public String findpwd( String member_name , String member_email , String member_id , String updatePwd ) {
+		String sql = "select member_no from member where member_name = '"+member_name+"' and member_email = '"+member_email+"' and member_id = '"+member_id+"';";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) {  // 만약에 동일한 아이디와 이메일 일치한 레코드가 있으면 [ 찾았다. ]
+				sql = "update member set member_pwd = ? where member_no = ?";
+				ps = con.prepareStatement(sql);
+				ps.setString( 1 , updatePwd );		// 임시비밀번호로 업데이트
+				ps.setInt( 2 ,  rs.getInt( 1 ) );	// select 에서 찾은 레코드의 회원번호 
+				int result = ps.executeUpdate();	// 업데이트한 레코드 개수 반환
+				if( result == 1 ) { // 업데이트한 레코드가 1개 이면 
+					// -- 이메일전송 테스트 되는경우 만 -- //
+					//new MemberDto().sendEmail( memail, updatePwd ); // 임시비밀번호를 이메일로 보내기 
+					//return "true";
+					// -- 이메일전송 테스트 안되는 경우 -- //
+					return updatePwd;
+				}
+			}
+		}catch (Exception e) {System.out.println(e);} 
+		return "false";
+	}
+	// 11. 회원탈퇴
+	public boolean delete( String member_id , String member_pwd ) {
+		String sql = "delete from member where member_id = ? and member_pwd = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , member_id );	ps.setString( 2 , member_pwd );
+			int count = ps.executeUpdate();
+			if( count == 1 ) { return true; } 
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
+	
+	// 12. 관리자가 회원 탈퇴 시키기
+	public boolean dropMember( int member_no ) {
+		String sql = "delete from member where member_no = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , member_no );
+			int count = ps.executeUpdate();
+			if( count == 1 ) { return true; } 
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
+	// 13. 비밀번호 변경
+		public boolean updatepwd(String member_npwd,String member_id,String member_pwd) {
+			String sql = "update member set member_pwd=? where member_id=? and member_pwd=?;";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setString( 1 , member_npwd );
+				ps.setString( 2 , member_id );
+				ps.setString( 3 , member_pwd );
+				int cnt = ps.executeUpdate();
+				if(cnt==1) {return true;}
+			}catch (Exception e) {System.out.println(e);}
+			return false;
+		}
 }

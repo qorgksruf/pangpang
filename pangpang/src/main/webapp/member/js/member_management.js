@@ -54,7 +54,7 @@ function getmemberlist(){
 							<td>${o.member_rank}</td>
 							<td>
 								<button type="button" class="btn" style="width: 100px;" onclick="onpenModal(${o.member_no})">수정</button>
-								<button type="button" class="btn" style="width: 100px;">삭제</button>
+								<button type="button" class="btn" style="width: 100px;" onclick="drop(${o.member_no})">삭제</button>
 							</td>
 						</tr>`
 			})
@@ -67,6 +67,7 @@ function getmemberlist(){
 
 function update(){
 	let info = {
+		type:1,
 		member_no : document.querySelector('.member_no').value,
 		member_name : document.querySelector('.member_name').value,
 		member_birth : document.querySelector('.member_birth').value,
@@ -84,8 +85,11 @@ function update(){
 		data : info ,
 		success : (r)=>{ 
 			console.log(r)
-			if(r="true"){
+			if(r=="true"){
 				alert('수정 성공')
+				location.reload();
+			}else{
+				alert('수정실패')
 				location.reload();
 			}
 			
@@ -93,3 +97,17 @@ function update(){
 	}) // ajax end	*/ 
 }
 
+function drop(member_no){
+	$.ajax({
+		url : "/pangpang/member/info" ,
+		method : "delete" , 
+		data : { "type":2 , "member_no":member_no } ,
+		success : (r)=>{ 
+			console.log(r)
+			if(r=="true"){
+				alert('회원탈퇴 성공')
+				getmemberlist()
+			}
+		}
+	})
+}

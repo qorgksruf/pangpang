@@ -40,7 +40,7 @@
 					<ul class="dropdown-menu">	
 						<li><a class="dropdown-item" href="#">  결제정보등록	</a></li> <!-- 연동계좌 설정시 계좌정보 암호화  / 계좌사용 비밀번호 암호화 ?-->
 						<li><a class="dropdown-item" href="/pangpang/product/cart.jsp">  장바구니		</a></li> <!--  결제  -->
-						<li><a class="dropdown-item" href="#">  MYPAGE		</a></li> <!-- 회원정보 / 로그인한 회원 결제내역 -->
+						<li><a class="dropdown-item" href="/pangpang/member/mypage.jsp">  MYPAGE		</a></li> <!-- 회원정보 / 로그인한 회원 결제내역 -->
 						<li><a class="dropdown-item" href="/pangpang/member/logout.jsp"">  로그아웃		</a></li> <!-- 로그아웃 -->
 					</ul>
 				</div>
