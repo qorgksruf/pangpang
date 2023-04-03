@@ -23,7 +23,7 @@ public class 초깃값_설정 {
 		//}System.out.println(get_32bit(2));
 		
 		//System.out.printf( "%x \n" , get_32bit(2)  );
-		double a = Math.sqrt(2);
+		double a = Math.sqrt(5);
 		double b = a-(int)a;
 		
 		String binaryString = Long.toBinaryString(Double.doubleToRawLongBits(b));

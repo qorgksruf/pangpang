@@ -99,9 +99,10 @@ public class Pre_Processing {
         for(int i = 0 ; i<subStringArray.length ; i++) {
         	 int binaryToDecimal = Integer.parseInt(subStringArray[i], 2);
         	 System.out.println(binaryToDecimal);
-        	 String binaryString = Integer.toBinaryString(binaryToDecimal);
-        	 System.out.println(binaryString);
+        	 ///String binaryString = Integer.toBinaryString(binaryToDecimal);
+        	// System.out.println(binaryString);
         }
-    
+        
+        
     }
 }
