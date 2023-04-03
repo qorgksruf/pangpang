@@ -26,7 +26,7 @@ function carList(){
                            <th width="10%"> 차량이름 </th>
                            <th width="10%"> 차량이미지</th>
                            <th width="10%"> 차량사용여부 </th>
-                           <th width="10%"> 비고 </th>
+                           <th width="10%" colspan="3"> 비고 </th>
                      </tr>`
             r.forEach((o,i)=>{
                html +=`                  
