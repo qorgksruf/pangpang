@@ -69,8 +69,7 @@ function confirm(carmanage_no){
 		bookcar_destination : document.querySelector('.bookcar_destination').value,
 		bookcar_str_date : document.querySelector('.bookcar_str_date').value,
 		bookcar_end_date : document.querySelector('.bookcar_end_date').value,	
-		login,
-		carmanage_no
+		carmanage_no : carmanage_no
 	}
 
 	console.log(book);

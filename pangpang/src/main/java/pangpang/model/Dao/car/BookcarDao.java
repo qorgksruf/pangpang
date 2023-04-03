@@ -75,20 +75,19 @@ public class BookcarDao extends Dao{
 		  }
 		  		
 		// 배차예약정보를 최고권위자한테 줘야함
-		public boolean book(String mid, int carmanage_no, String bookcar_destination, String bookcar_str_date, String bookcar_end_date) {
+		public boolean book(int mno, int carmanage_no, String bookcar_destination, String bookcar_str_date, String bookcar_end_date) {
 						
 			String sql="insert into bookcar "
-					+ "	(bookcar_no,bookcar_str_date,bookcar_end_date,bookcar_yn,carmanage_no,member_no) "
-					+ "		values (?,?,?,?,?,?);";
+					+ "	(bookcar_str_date,bookcar_end_date,bookcar_yn,carmanage_no,member_no) "
+					+ "		values (?,?,?,?,?);";
 			try {
 				if (bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date)) {
 					ps = con.prepareStatement(sql);
-					ps.setInt(1, 0);
-					ps.setString(2, bookcar_str_date);
-					ps.setString(3, bookcar_end_date);
-					ps.setString(4, "N");
-					ps.setInt(5, carmanage_no);
-					ps.setString(6, "1");
+					ps.setString(1, bookcar_str_date);
+					ps.setString(2, bookcar_end_date);
+					ps.setString(3, "N");
+					ps.setInt(4, carmanage_no);
+					ps.setInt(5, mno);
 					
 					ps.executeUpdate();
 					

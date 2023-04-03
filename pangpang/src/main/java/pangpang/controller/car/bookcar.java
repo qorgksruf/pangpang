@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.car.BookcarDao;
+import pangpang.model.Dao.member.MemberDao;
 
 /**
  * Servlet implementation class bookcar
@@ -32,7 +33,9 @@ public class bookcar extends HttpServlet {
     //입력받은 정보
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String mid=(String)request.getSession().getAttribute("login");
-				System.out.println(mid);
+				System.out.println("mid:::"+mid);
+			int mno=MemberDao.getInstance().getMno(mid);	
+				System.out.println("mno:::"+mno);
 			int	carmanage_no =Integer.parseInt(request.getParameter("carmanage_no"));
 	
 			String bookcar_destination=request.getParameter("bookcar_destination");
@@ -42,10 +45,11 @@ public class bookcar extends HttpServlet {
 			String bookcar_end_date=request.getParameter("bookcar_end_date");
 				System.out.println(bookcar_end_date );
 				
-			boolean result=BookcarDao.getInstance().book(mid, carmanage_no ,bookcar_destination,bookcar_str_date,bookcar_end_date);
+			boolean result=BookcarDao.getInstance().book(mno, carmanage_no ,bookcar_destination,bookcar_str_date,bookcar_end_date);
 			
-				System.out.println(result);
-		
+				System.out.println("bookcar 확인 김성봉개짜증나:::::"+result);
+				
+				response.getWriter().print(result);
 				/*
 				 * ObjectMapper mapper = new ObjectMapper(); String jsonArry=
 				 * mapper.writeValueAsString(result); response.setCharacterEncoding("UTF-8");
