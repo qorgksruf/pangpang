@@ -28,7 +28,6 @@ public class Map extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		int type = Integer.parseInt( request.getParameter("type") );
 		
 		String json = "";
@@ -44,8 +43,12 @@ public class Map extends HttpServlet {
 			
 		} else if( type == 2 ) {
 			
-			ArrayList<MapOderDto> result = MapDao.getInstance().getOrderList();
+			int order = Integer.parseInt( request.getParameter("order") );
+			
+			ArrayList<MapOderDto> result = MapDao.getInstance().getOrderList( order );
 			json = mapper.writeValueAsString( result );
+			
+		} else if( type == 3 ) {
 			
 		}
 		

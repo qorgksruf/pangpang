@@ -2,10 +2,24 @@
 
 * { margin: 0px; padding: 0px; }
 
+/* 테마 색상 */
+/* Color Theme Swatches in Hex */
+.Responsive-design-on-devices-1-hex { color: #79DCF2; }
+.Responsive-design-on-devices-2-hex { color: #5697A6; }
+.Responsive-design-on-devices-3-hex { color: #F2F2F2; }
+.Responsive-design-on-devices-4-hex { color: #404040; }
+.Responsive-design-on-devices-5-hex { color: #0D0D0D; }
+
+
 /* 메인 박스 */
 .main_box{
 	width: 1200px;
 	margin: 0 auto;
+}
+
+/* h3 설정 */
+.set_title{
+	padding: 0px 20px;
 }
 
 
@@ -28,17 +42,11 @@
 	margin-right: 20px;
 }
 
-.notice{
-	
-}
 .personal_info{
 	display: flex;
 	justify-content: space-around;
 	margin: 30px 0px;
 }
-
-
-
 
 
 
@@ -74,14 +82,32 @@
 /* 배송정보 박스 */
 .delivery_info_box{
 	width: 100%;
-	display: flex;
 }
 
 /* 배송지목록 전체박스 */
 .info_table_box{
 	width: 100%;
 	padding: 2%;
+	height: 565px;
+	overflow : scroll;
 }
+.info_table_box::-webkit-scrollbar{
+	width: 8px;
+}
+.info_table_box::-webkit-scrollbar-thumb{
+	height: 50px; /* 스크롤바의 길이 */
+    background: #79DCF2; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.info_table_box::-webkit-scrollbar-track{
+	background: transparent;
+}
+
+.selectbtn{
+	width: 20%;
+	margin: 20px auto;
+}
+
 
 /* 배송지목록 테이블 */
 .d_info_table{
@@ -104,9 +130,7 @@
 	display: flex;
 	justify-content: space-around;
 }
-.select_item_box{
-	width: 50%;
-}
+
 .map_box{
 	width: 50%;
 }
@@ -114,13 +138,47 @@
 	width: 100%;
 }
 
+
+/* 차고지 정보 체크박스 div */
+.distribution_center{
+	margin-bottom: 40px;
+}
 /* 선택한 배송지 전체박스 */
 .select_item_box{
-	width: 35%;
-	padding: 2%;
+	width: 50%;
+	height: 500px;
+	padding: 0px 2%;
 }
+.select_item_box p{
+	font-size: 12px;
+	padding : 0px; margin: 0px;
+}
+.notice_info{
+	color : #ff4a4a;
+	font-size: 9px !important;
+	margin-bottom: 10px !important;
+}
+
+.select_table_box{
+	overflow : scroll;
+	height: 80%;
+}
+
+
+.select_table_box::-webkit-scrollbar{
+	width: 8px;
+}
+.select_table_box::-webkit-scrollbar-thumb{
+	height: 50px; /* 스크롤바의 길이 */
+    background: #79DCF2; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.select_table_box::-webkit-scrollbar-track{
+	background: transparent;
+}
+
 /* 선택한 배송지 취소 버튼 */
-.select_delete_btn {
+.delbtn {
 	padding: 0px; margin: 0px;
 	width: 20px; height: 10px;
 	border: none;
@@ -129,17 +187,20 @@
 	color: #ff3e3e;
 }
 
+/* 지도 */
+.map_box{
+	margin-top: 200px;
+}
+
 
 /* 결과 박스 */
 .result_box{
 	width: 100%;
 	padding: 5%;
 }
-
-
 .result_btn_box{
 	width: 20%;
-	margin: 0 auto;
+	margin: 100px auto;
 	text-align: center;
 }
 

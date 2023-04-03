@@ -45,6 +45,9 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/pangpang/member/js/login.js" type="text/javascript"></script>

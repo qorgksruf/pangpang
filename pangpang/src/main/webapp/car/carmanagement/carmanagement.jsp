@@ -8,13 +8,13 @@
 
 	<!-- 모달   -->
 	<link href="/pangpang/car/css/Modal.css" rel="stylesheet">
-
+	<link href="/pangpang/car/css/carmanagement.css" rel="stylesheet">
 </head>
 <body>
 	
 	 <%@ include file="/header.jsp" %> 
 	
-	<%String carmanage_no=	request.getParameter("c armanage_no");%>
+	<%String carmanage_no=	request.getParameter("carmanage_no");%>
 	<input type="hidden" class="carmanage_no" value="<%=carmanage_no%>"> 
 	
 	
@@ -22,7 +22,7 @@
 	
    <h3>차량관리페이지</h3>
 
-   <table class="carmanage" style="border: 1px solid black;">
+   <table class="table carmanage">
       
    </table>
    
