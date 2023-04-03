@@ -48,10 +48,10 @@
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
-				<select>
-					<option> 제품번호 	</option>
-					<option> 시행일자 	</option>
-					<option> 대상업체 	</option>
+				<select class="key">
+					<option value="product_no"> 제품번호 	</option>
+					<option value="stockmanagementdate"> 시행일자 	</option>
+					<option value="stockmanagementcompany"> 대상업체 	</option>
 				</select>
 				<input  class="keyword" type="text">
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
