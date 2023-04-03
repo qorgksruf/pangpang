@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>재고 관리 페이지</title>
 
 	<!-- 사용자정의   -->
 	<link href="/pangpang/product/css/stockmanagement.css" rel="stylesheet">
@@ -18,28 +18,28 @@
 	
 		<h3> 입력 </h3>
 		<!-- 재고 입력 구역 -->
-		<div >
-			<table class="table table-hover inputtable" >
+		<div class="inputbox">
+			<table class="table table-hover inputtable">
 				<tr>
-					<th width="10%"> 제품번호 </th> <th width="10%"> 구분 </th><th width="10%"> 업체      </th><th width="20%"> 시행일자 </th>
-					<th width="5%" > 수량    </th> <th width="5%" > 단가 </th><th width="20%"> 예정 폐기일 </th><th width="10%"> 비고    </th>
+					<th> 제품번호</th> <th> 구분 </th><th> 업체      </th><th> 시행일자 </th>
+					<th> 수량  </th> <th> 단가 </th><th> 예정 폐기일 </th><th> 비고    </th>
 				</tr>
 				<tr>
-					<td> <input type="text"> </td> 
+					<td> <input class="product_no_input" type="text">  </td> 
 					<td>  
-						<select>
-							<option> 구분 </option>
-							<option> 입고 </option>
-							<option> 출고 </option>
-							<option> 폐기 </option>
+						<select class="stocktype_input">
+							<option value="0"> 구분 </option>
+							<option value="1"> 입고 </option>
+							<option value="2"> 출고 </option>
+							<option value="3"> 폐기 </option>
 						</select>
 					</td>
-					<td> <input type="text"> </td>
-					<td> <input type="datetime-local"> </td>
-					<td> <input type="text"> </td>
-					<td> <input type="text"> </td>
-					<td> <input type="datetime-local"> </td>
-					<td> 비고 </td>
+					<td> <input class="company_input" 		type="text"> </td>
+					<td> <input class="stock_date_input" 	type="datetime-local"> </td>
+					<td> <input class="stock_amount_input" 	type="text"> </td>
+					<td> <input class="stock_price_input" 	type="text"> </td>
+					<td> <input class="drop_date_input" 	type="datetime-local"> </td>
+					<td> <button class="setbtn" onclick="setStock()" type="button"> 등록 </button> </td>
 				</tr>				
 			</table>
 		</div>	
@@ -61,9 +61,7 @@
 		<!-- 재고 내역 출력 구역 -->
 		<div class="stocklistbox">
 			<table class="stocklist table table-hover" >
-				<tr>
-					<th> 관리번호 </th><th> 제품번호 </th> <th> 구분 </th><th> 업체 </th><th> 일자 </th><th> 수량 </th><th> 단가 </th><th> 예정 폐기일 </th><th> 비고 </th>
-				</tr>
+
 			</table>
 		</div>	
 		<!-- 페이지버튼 출력 구역 -->

@@ -27,7 +27,7 @@ th{
 .modal_box{
 	text-align: center;align-items: center;
 	background-color: white;
-	width: 30%; height: 70%;
+	width: 30%; 
 	padding: 1%; border-radius: 50px;
 }
 .modal_box_delete{

@@ -57,7 +57,23 @@ public class Stock extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
 		
+		int 	stockmanagementtype  	= Integer.parseInt(request.getParameter("stockmanagementtype"));
+		String 	stockmanagementcompany	= request.getParameter("stockmanagementcompany");
+		int 	stockmanagementamount	= Integer.parseInt(request.getParameter("stockmanagementamount"));
+		String 	stockmanagementdate		= request.getParameter("stockmanagementdate");
+		String 	stockmanagementenddate	= request.getParameter("stockmanagementenddate");
+		int 	product_price			= Integer.parseInt(request.getParameter("product_price"));
+		int 	product_no				= Integer.parseInt(request.getParameter("product_no"));
+		
+		StockDto dto = new StockDto(stockmanagementdate, stockmanagementenddate, stockmanagementtype, 
+				stockmanagementcompany, stockmanagementamount, product_price, product_no);
+		
+		boolean result = StockDao.getInstance().setStock(dto);
+		response.getWriter().print(result);
+				
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,6 +82,9 @@ public class Stock extends HttpServlet {
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int 	stockmanagementno  	= Integer.parseInt(request.getParameter("stockmanagementno"));
+		boolean result = StockDao.getInstance().deleteStock(stockmanagementno);
+		response.getWriter().print(result);		
 	}
 
 }

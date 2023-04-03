@@ -112,7 +112,11 @@ public class OrderDao extends Dao{
 				sql = "select o.*, member_id from ordermanagement o natural join member where ordermanagement_state = "+type+" order by ordermanagement_no desc limit "+startrow+","+listsize;
 			}
 		}else { // 검색된 주문
-			sql = "select o.*, member_id from ordermanagement o natural join member where "+key+" like '%"+keyword+"%' order by ordermanagement_no desc limit "+startrow+","+listsize;
+			if(type==0) {
+				sql = "select o.*, member_id from ordermanagement o natural join member where "+key+" like '%"+keyword+"%' order by ordermanagement_no desc limit "+startrow+","+listsize;
+			}else {
+				sql = "select o.*, member_id from ordermanagement o natural join member where "+key+" like '%"+keyword+"%' and ordermanagement_state = "+type+" order by ordermanagement_no desc limit "+startrow+","+listsize;	
+			}			
 		}
 
 		try {

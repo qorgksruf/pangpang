@@ -46,13 +46,13 @@
 .modal_box{
 	text-align: center;align-items: center;
 	background-color: white;
-	width: 50%; height: 90%;
+	width: 40%; 
 	padding: 3%; border-radius: 50px;
 }
 .modal_box_delete{
 	text-align: center;align-items: center;
 	background-color: white;
-	width: 45%; height: 30%;
+	width: 45%; 
 	padding: 3%; border-radius: 50px;
 }
 .modal_title{

@@ -58,4 +58,34 @@ public class StockDao extends Dao{
 		return null;	
 	}
 
+	// 입고 등록
+	public boolean setStock(StockDto dto) {
+		
+		String sql = "insert into stockmanagement (stockmanagementdate , stockmanagementenddate , stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no) "
+				+ "values (?,?,?,?,?,?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getStockmanagementdate());
+			ps.setString(2, dto.getStockmanagementenddate());
+			ps.setInt(3, dto.getStockmanagementtype());
+			ps.setString(4, dto.getStockmanagementcompany());
+			ps.setInt(5, dto.getStockmanagementamount());
+			ps.setInt(6, dto.getProduct_price());
+			ps.setInt(7, dto.getProduct_no());
+			int count = ps.executeUpdate();
+			if(count == 1 ) {return true;}
+		}catch (Exception e) { System.out.println(e);}
+		return false;
+	}
+	// 재고 내역 삭제
+	public boolean deleteStock(int stockmanagementno) {
+		
+		String sql = "delete from stockmanagement where stockmanagementno = "+stockmanagementno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if(count == 1 ) {return true;}
+		}catch (Exception e) { System.out.println(e);}
+		return false;
+	}
 }

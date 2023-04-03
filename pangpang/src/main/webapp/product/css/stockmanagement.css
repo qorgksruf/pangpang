@@ -3,9 +3,15 @@
 th{
 	background-color: #eeeeee;
 }
-.inputtable input{
-	width: 120px;
+input[type=text]{
+	width: 80px;
+}
+input[type=datetime-local]{
+	width: 200px;
 }
 .topbox{
 	margin: 1%;
+}
+.setbtn{
+	width: 100px;
 }

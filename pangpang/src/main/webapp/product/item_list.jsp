@@ -21,7 +21,10 @@
 				<input  class="keyword" type="text">
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
 			</div>
-			<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
+			<div>
+				<button class="registerbtn" onclick="openmodal_R()" type="button"> 카테고리 등록 </button>
+				<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
+			</div>
 		</div>
 		<!-- 품목 출력 구역 -->
 		<div class="itemlistbox">

@@ -40,7 +40,7 @@ function getOrderList(page){
 								</select>
 							</th>
 							
-							<th> 배송주소 </th><th> 주문회원 </th><th> 상세보기 </th><th> 상태변경 </th>
+							<th> 배송주소 </th><th> 주문회원 </th><th> 상세보기 </th>
 						</tr>`;	
 			
 			r.orderList.forEach((o)=>{
@@ -56,7 +56,6 @@ function getOrderList(page){
 							<td> ${o.ordermanagement_address} 	</td>
 							<td> ${o.member_id} 			  	</td>
 							<td> <button onclick="openmodal(${ o.ordermanagement_no})" type="button"> 상세보기 </button></td>
-							<td> <button type="button"> 상태변경 </button></td>
 						</tr>`;
 				});
 			document.querySelector('.orderlist').innerHTML = html ;
@@ -86,11 +85,8 @@ function search(){
 	pageObject.keyword = document.querySelector('.keyword').value;
 	console.log(pageObject)
 	getOrderList(1);
-}
-function reset(){
-	pageObject.key     = '';
-	pageObject.keyword = '';
-	getOrderList(1);
+	pageObject.key     = "key";
+	pageObject.keyword = "keyword";
 }
 
 

@@ -116,7 +116,7 @@ function item_register(){
 	
 	let registerForm = document.querySelectorAll('.registerForm')[0];// 첫번째 form 가져오기	
 	let registerFormData = new FormData(registerForm);
-	console.log(registerFormData.get("product_price"))
+	
 	$.ajax({
 		url 	: "/pangpang/product",
 		method	: "post",

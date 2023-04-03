@@ -32,8 +32,17 @@ public class StockDto {
 		this.product_no = product_no;
 	}
 
-
-
+	public StockDto(String stockmanagementdate, String stockmanagementenddate, int stockmanagementtype,
+			String stockmanagementcompany, int stockmanagementamount, int product_price, int product_no) {
+		super();
+		this.stockmanagementdate = stockmanagementdate;
+		this.stockmanagementenddate = stockmanagementenddate;
+		this.stockmanagementtype = stockmanagementtype;
+		this.stockmanagementcompany = stockmanagementcompany;
+		this.stockmanagementamount = stockmanagementamount;
+		this.product_price = product_price;
+		this.product_no = product_no;
+	}
 	@Override
 	public String toString() {
 		return "StockDto [stockmanagementno=" + stockmanagementno + ", stockmanagementdate=" + stockmanagementdate

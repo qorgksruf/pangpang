@@ -256,7 +256,6 @@ function address_select(i){
 	document.querySelector('.address_select_input').innerHTML = document.querySelector(`.${selected}`).innerHTML;
 	document.querySelector('.address_select').style.display='flex';
 	document.querySelector('.address_detail').style.display='flex';
-
 }
 
 // 주소 확정
@@ -265,7 +264,7 @@ function delivery_address(){
 	let address_select = document.querySelector('.address_select_input').innerHTML;
 	let address_detail = document.querySelector('.address_detail_input').value;
 	
-	document.querySelector('.delivery_address').innerHTML = address_select+address_detail;
+	document.querySelector('.delivery_address').innerHTML = address_select+","+address_detail;
 	
 	closemodal_address();
 

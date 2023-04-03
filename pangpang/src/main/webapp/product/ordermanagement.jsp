@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> 주문 관리 페이지 </title>
 
 	<!-- 사용자정의   -->
 	<link href="/pangpang/product/css/ordermanagement.css" rel="stylesheet">
