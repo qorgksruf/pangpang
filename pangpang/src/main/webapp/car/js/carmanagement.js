@@ -119,7 +119,7 @@ function car_update_modal_open (carmanage_no) {
 	$.ajax({
 		url:"/pangpang/carmanage",
 		method:"get",
-		data:{"carmanage_no": temp_carmanage_no },
+		data:{"type": 1, "carmanage_no": temp_carmanage_no },
 		success:(r)=>{
 			console.log("car_update_modal_open ::: ");
 			console.log(r);
@@ -128,6 +128,8 @@ function car_update_modal_open (carmanage_no) {
 			document.getElementsByName('update_name')[0].value = r[0].carmanage_name
 			document.getElementsByName('update_use_yn')[0].value = r[0].carmanage_use_yn;
 			document.getElementsByName('update_finish')[0].value = r[0].carmanage_finish;
+			document.querySelector('.cimg').innerHTML=r[0].carmanage_img;
+			
 		}
 	})
 }

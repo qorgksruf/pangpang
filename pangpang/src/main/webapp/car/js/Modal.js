@@ -106,6 +106,7 @@ function closeModal(){
 }
 
 function onpenModal2(){
+	
 	document.querySelector('.modal_wrap2').style.display ='flex';
 }
 //모달단기함수
