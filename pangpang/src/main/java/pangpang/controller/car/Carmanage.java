@@ -13,8 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
+import pangpang.model.Dao.car.BookcarDao;
 import pangpang.model.Dao.car.CarmanagementDao;
+import pangpang.model.Dto.car.BookcarDto;
 import pangpang.model.Dto.car.CarmanagementDto;
 
 /**
@@ -38,26 +39,56 @@ public class Carmanage extends HttpServlet {
     // 차량관리 출력구현
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
+		String type=request.getParameter("type");
+	
+		if(type.equals("1")) { //carmanagement 전체출력
+			System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
+			ArrayList<CarmanagementDto>result = null;
+			if (request.getParameter("carmanage_no") != null) {
+				System.out.println("carmanage_no 값 있따 !!! " + request.getParameter("carmanage_no"));
+				result =CarmanagementDao.getInstance().getCarInfo(request.getParameter("carmanage_no"));
+				System.out.println("carmanage_no 결과값 !!! " + result);
+			} else {
+				result =CarmanagementDao.getInstance().carList();
+			}
+			/* CarmanagementDto dto = new CarmanagementDto(); */
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);				
+	
+		}else if(type.equals("2")) { //bookcar전체출력
 
-		ArrayList<CarmanagementDto>result = null;
-		
-		if (request.getParameter("carmanage_no") != null) {
-			System.out.println("carmanage_no 값 있따 !!! " + request.getParameter("carmanage_no"));
-			result =CarmanagementDao.getInstance().getCarInfo(request.getParameter("carmanage_no"));
-			System.out.println("carmanage_no 결과값 !!! " + result);
-		} else {
-			result =CarmanagementDao.getInstance().carList();
+			String mid=(String)request.getSession().getAttribute("login");
+			System.out.println("--------------");	
+			System.out.println(mid);
+			
+			
+			ArrayList<BookcarDto>result =BookcarDao.getInstance().bookcarlist();
+			System.out.println("bookcar result확인:::"+result);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);
+			
+		}else if(type.equals("3")){	//배차관리 선택을 위한 전체출력
+			
+			System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
+			ArrayList<CarmanagementDto>result = null;		
+			
+			result =BookcarDao.getInstance().carListy();
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);				
+	
 		}
 		
-		/* CarmanagementDto dto = new CarmanagementDto(); */
-		
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonArry= mapper.writeValueAsString(result);
-		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().print(jsonArry);
+
 	}
 
 	/**
@@ -139,7 +170,7 @@ public class Carmanage extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int carmanage_no = Integer.parseInt(request.getParameter("carmanage_no")); 
 	         System.out.println("-----------cno carmanage.java에서 확인-------------");
-				/* System.out.println(cno); */
+				 System.out.println(carmanage_no); 
 	      boolean result = CarmanagementDao.getInstance().cardelete(carmanage_no);
 	            System.out.println(result);
 	      response.getWriter().print(result);

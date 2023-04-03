@@ -12,9 +12,9 @@
 </head>
 <body>
 	
-	<%-- <%@ include file="/header.jsp" %> --%>
+	 <%@ include file="/header.jsp" %> 
 	
-	<%String carmanage_no=	request.getParameter("carmanage_no");%>
+	<%String carmanage_no=	request.getParameter("c armanage_no");%>
 	<input type="hidden" class="carmanage_no" value="<%=carmanage_no%>"> 
 	
 	
@@ -73,7 +73,7 @@
 				      	<div class="carupdate_img">
 							<input type="file" class="cimg"	 name="carupdate_img">	<br>
 						</div>	      
-					 차량등록일자:    	<input name="update_use_yn" type="text">		<br>	
+					 차량등록여부:    	<input name="update_use_yn" type="text">		<br>	
 		      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
 				</form> 	
 			</div>
