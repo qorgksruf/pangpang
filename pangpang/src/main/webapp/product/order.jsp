@@ -19,7 +19,7 @@
 		<h3> 주문/결제 </h3>
 		
 		<h3> 구매제품정보 </h3>
-		<table class="table buyer_info">
+		<table class="table buyproduct_info">
 			<tr>
 				<th width="10%"> 제품이름 </th> 
 				<th width="80%"> 제품정보 </th> 
@@ -87,18 +87,18 @@
 		<table  class="table payment_info">
 			<tr>
 				<th  width="10%"> 결제방법  </th> 
-				<td> <button class="pay" type="button"> 선택 </button> </td>
-			</tr>
-			<tr>
-				<th> 쿠폰할인 </th> 
-				<td> <button  type="button"> 찾기 </button> </td>
-			</tr>				
+				<td> 
+					<button type="button" class="modal_btn" onClick="requestPay(1)"> 카드결제		</button>
+					<button type="button" class="modal_btn" onClick="requestPay(2)"> 카카오페이	</button>
+					<button type="button" class="modal_btn" onClick="requestPay(3)"> 토스페이		</button>	
+				</td>
+			</tr>			
 		</table>
 
 	</div> <!-- container e -->
 
 		<!-- 도로명 주소검색 모달 -->
-		<div class="modal_wrap">	
+		<div class="modal_wrap_address">	
 				<div class="modal_box">
 				
 				<h3  class="modal_title"> 도로명 주소검색 </h3>		
@@ -116,34 +116,16 @@
 						상세주소
 						<input class="address_detail_input" type="text">
 					</div>
-					<button onclick="delivery_address()" class="modal_cancel modal_btn" type="button"> 입력 </button>
-					<button onclick="closemodal()"       class="modal_cancel modal_btn" type="button"> 닫기 </button>
+					<button onclick="delivery_address()"   class="modal_cancel modal_btn" type="button"> 입력 </button>
+					<button onclick="closemodal_address()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
 				</div>
 					
 				</div>	<!-- modal_box e -->
 		</div>	<!-- modal_wrap e -->
-		
-		<!-- 결제방법선택 모달 -->
-		<div class="modal_wrap_pay">	
-				<div class="modal_box">
-				
-				<h3  class="modal_title"> 결제방법 선택 </h3>		
-				<div class="modal_content">
-					<div class="payment_how">
-						<button type="button" class="modal_btn" onClick="requestPay()"> 카드결제	</button>
-						<button type="button" class="modal_btn" onClick="requestPay()"> 계좌이체 	</button>
-						<button type="button" class="modal_btn" onClick="requestPay()"> 카카오페이	</button>
-						<button type="button" class="modal_btn" onClick="requestPay()"> 토스페이	</button>					
-					</div>
-					<button onclick="" class="modal_cancel modal_btn" type="button"> 닫기 </button>
-				</div>
-					
-				</div>	<!-- modal_box e -->
-		</div>	<!-- modal_wrap e -->
+
 
 
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script src="/pangpang/product/js/order.js" type="text/javascript"></script>
-
 </body>
 </html>

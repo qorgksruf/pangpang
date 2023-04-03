@@ -48,6 +48,19 @@ public class CartDto {
 		this.member_no = member_no;
 	}
 
+	// 출력용
+	public CartDto(int cart_amount, int product_no, String product_name, String product_option, String product_unit,
+			String product_img, int product_price) {
+		super();
+		this.cart_amount = cart_amount;
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.product_option = product_option;
+		this.product_unit = product_unit;
+		this.product_img = product_img;
+		this.product_price = product_price;
+	}
+
 	@Override
 	public String toString() {
 		return "CartDto [cart_no=" + cart_no + ", cart_amount=" + cart_amount + ", product_no=" + product_no

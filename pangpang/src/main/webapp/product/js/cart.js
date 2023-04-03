@@ -29,7 +29,7 @@ if(day==6){day='토';}
 
 let totalprice = 0;
 let cartList = [];
-
+let checkboxes = document.querySelectorAll('input[name="cart"]');
 // 회원제 기능
 if(memberInfo == null){
 	alert('회원제 기능입니다. 로그인 후 사용해주세요.');
@@ -53,36 +53,67 @@ function getCartList(){
 				totalprice = 0;	
 				let html = '';
 				r.forEach((o)=>{
-					cartList.push(o)	
-					totalprice += (o.product_price*o.cart_amount);
-					html += `<div class="cart_item">
-								<input name="cart" value="${o.product_no}" type="checkbox" onclick="check()" >
-								<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
-								
-								<div class="product_info">
-									<div class="pname"> ${o.product_name} <span class="stock"> 잔여수량 : ${o.stock+o.product_unit}</span></div>
-									<div class="product_info_bottom"> 
-										<div>
-											${month+"/"+date}(${day})  도착 보장 (서울경기 기준)
-										</div>
-										<div>
-											${o.product_price.toLocaleString()} 원 
-											<select name="amount" class="수량${o.product_no}" onchange="setPrice(${o.product_no},${o.product_price})">
-												<option value="1"> 1 ${o.product_unit}</option>
-												<option value="2"> 2 ${o.product_unit}</option>
-												<option value="3"> 3 ${o.product_unit}</option>
-												<option value="4"> 4 ${o.product_unit}</option>
-											</select>
-										</div>
-									</div>					
-								</div>
-			
-								<div class="pprice pprice${o.product_no}">
-									${(o.product_price*o.cart_amount).toLocaleString()} 원 <br>
-									<img  class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
-									<span class="mini_mark">팡팡배송</span>
-								</div>								
-							</div>`
+					if(o.stock==0){
+						html += `<div class="soldout">
+									<input type="checkbox"  disabled checked>
+									<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
+									
+									<div class="product_info">
+										<div class="pname"> ${o.product_name} <span class="stock"> 잔여수량 : ${o.stock+o.product_unit}</span></div>
+										<div class="product_info_bottom"> 
+											<div>
+												${month+"/"+date}(${day})  도착 보장 (서울경기 기준)
+											</div>
+											<div>
+												${o.product_price.toLocaleString()} 원 
+												<select name="amount" class="수량${o.product_no}" onchange="setPrice(${o.product_no},${o.product_price})">
+													<option value="1"> 1 ${o.product_unit}</option>
+												</select>
+											</div>
+										</div>					
+									</div>
+				
+									<div class="pprice pprice${o.product_no}">
+										${(o.product_price*o.cart_amount).toLocaleString()} 원 <br>
+										<img  class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
+										<span class="mini_mark">팡팡배송</span>
+									</div>								
+								</div>`
+						
+					}else{
+						cartList.push(o)	
+						totalprice += (o.product_price*o.cart_amount);
+						html += `<div class="cart_item">
+									<input name="cart" value="${o.product_no}" type="checkbox" onclick="check()" onchange="setPrice(${o.product_no},${o.product_price})" >
+									<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
+									
+									<div class="product_info">
+										<div class="pname"> ${o.product_name} <span class="stock"> 잔여수량 : ${o.stock+o.product_unit}</span></div>
+										<div class="product_info_bottom"> 
+											<div>
+												${month+"/"+date}(${day})  도착 보장 (서울경기 기준)
+											</div>
+											<div>
+												${o.product_price.toLocaleString()} 원 
+												<select name="amount" class="수량${o.product_no}" onchange="setPrice(${o.product_no},${o.product_price})">
+													<option value="1"> 1 ${o.product_unit}</option>
+													<option value="2"> 2 ${o.product_unit}</option>
+													<option value="3"> 3 ${o.product_unit}</option>
+													<option value="4"> 4 ${o.product_unit}</option>
+												</select>
+											</div>
+										</div>					
+									</div>
+				
+									<div class="pprice pprice${o.product_no}">
+										${(o.product_price*o.cart_amount).toLocaleString()} 원 <br>
+										<img  class="mini_logo" alt="" src="/pangpang/product/pimg/PANG.png">
+										<span class="mini_mark">팡팡배송</span>
+									</div>								
+								</div>`
+						
+					}
+
 				})
 				document.querySelector('.cartlist').innerHTML = html;
 				
@@ -96,7 +127,7 @@ function getCartList(){
 				})	
 				
 				// 전부 체크된 상태로 출력
-				let checkboxes = document.querySelectorAll('input[name="cart"]');
+				checkboxes = document.querySelectorAll('input[name="cart"]');
 				checkboxes.forEach((o)=>{o.checked = true;})
 				
 			}
@@ -129,9 +160,9 @@ function totalPrice(){
 
 // 장바구니 수량 변경시 가격 변경 
 function setPrice(pno,pprice){
-	 
-	 let checkboxes = document.querySelectorAll('input[name="cart"]');
-	 
+	 	 
+	checkboxes = document.querySelectorAll('input[name="cart"]'); 	 
+	 	 
 	let amount = document.querySelector(`.수량${pno}`).value;
 	console.log(amount)
 	
@@ -140,18 +171,15 @@ function setPrice(pno,pprice){
 													<span class="mini_mark">팡팡배송</span>`;	
 													
 	cartList.forEach((o)=>{
-		checkboxes.forEach((c)=>{
-			if(c.checked = true && c.value == o.product_no ){
-				if(o.product_no == pno){o.cart_amount = amount}
-				else{o.cart_amount = 0;}
-			}
-		})	
+		if(o.product_no == pno){o.cart_amount = amount}
 	})
 		
 	totalprice = 0;	
 		
-	cartList.forEach((o)=>{
-		totalprice +=  (o.product_price*o.cart_amount)
+	cartList.forEach((o,i)=>{
+		if(checkboxes[i].checked){
+			totalprice +=  (o.product_price*o.cart_amount)
+		}					
 	})	
 	
 	totalPrice()																	
@@ -160,7 +188,7 @@ function setPrice(pno,pprice){
 // 전체 선택 / 전체 선택 해제
 function SelectAll() {
 
-	  let checkboxes = document.querySelectorAll('input[name="cart"]');
+	  checkboxes = document.querySelectorAll('input[name="cart"]');
   	  
   	  if(checkboxes[checkboxes.length-1].checked){
 		  checkboxes.forEach((o)=>{o.checked = true;})
@@ -185,6 +213,7 @@ function cartOutAll(){
 	$.ajax({
 		url 	: "/pangpang/cart",
 		method	: "delete",
+		async	: false,
 		data	: {"type":1 },
 		success	: (r)=>{
 			console.log(r)
@@ -197,15 +226,17 @@ function cartOutAll(){
 
 // 선택한 제품 장바구니 삭제
 function cartOut(){		
-
-	  let checkboxes = document.querySelectorAll('input[name="cart"]');
+	 
 	  console.log(checkboxes)
 	  
-	  for(let i =0 ; i<(checkboxes.length-1) ; i++ ){
+	  for(let i =0 ; i<(checkboxes.length-1) ; i++ ){	
+		  console.log(checkboxes[i].checked)	 
+		  console.log(checkboxes[i].value)
 		  if(checkboxes[i].checked){
 			$.ajax({
 				url 	: "/pangpang/cart",
 				method	: "delete",
+				async	: false,
 				data	: {"type":2, "pno":checkboxes[i].value},
 				success	: (r)=>{
 					console.log(r)	; if(r=='true'){console.log('장바구니 삭제 성공')}			
@@ -216,10 +247,23 @@ function cartOut(){
 	  
 	  // 장바구니 리스트 랜더링
 	  getCartList()
-	  order()
+	  
 }// cartOut e
 
 // 선택한 제품 주문하기
 function order(){
+	let orderlist = [];
+	checkboxes = document.querySelectorAll('input[name="cart"]');
+	cartList.forEach((o,i)=>{
+		if(checkboxes[i].checked){
+			orderlist.push(o)
+		}			
+	});	
+	console.log(orderlist)
 	
+	// Json Object를 저장하기
+	localStorage.setItem("orderlist", JSON.stringify(orderlist));
+	
+	location.href="/pangpang/product/order.jsp";
 }
+

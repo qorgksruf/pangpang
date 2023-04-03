@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+th{
+	background-color: #eeeeee;
+}
+input[type=text]{
+	width: 80px;
+}
+input[type=datetime-local]{
+	width: 200px;
+}
+.topbox{
+	margin: 1%;
+}
+.setbtn{
+	width: 100px;
+}

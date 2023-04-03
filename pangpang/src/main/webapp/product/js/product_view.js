@@ -93,9 +93,13 @@ function getProduct(pno){
 		} // success e
 	})	
 } // getProductList e
-
+ 
 // 3. 장바구니 담기
 function cartIn(pno){
+	
+	if(memberInfo == null){
+		alert('회원제 기능입니다. 로그인 후 사용해주세요.'); return ;
+	}
 	
 	console.log(pno)
 	let amount = document.querySelector('.amount').value;

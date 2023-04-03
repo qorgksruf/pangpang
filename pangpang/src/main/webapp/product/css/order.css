@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+/*품절상품 투명도*/
+.soldout{
+	opacity: 60%;
+}
 .updatebtn{
 	width: 100px;
 	height:20px;
@@ -12,8 +16,18 @@
 th{
 	background-color: #eeeeee;
 }
+.totalpricebox{
+	text-align: right;
+	font-weight: normal;
+}
+.totalprice{
+	text-align: right;
+	margin: 0px 10px;
+	font-weight: bold;
+	font-size: 20px;
+}
 /* 모달 배경 설정*/
-.modal_wrap {
+.modal_wrap_address ,.modal_wrap_pay{
 	position: fixed;				
 	top:0 ; left:0;
 	width:100% ; height: 100%;

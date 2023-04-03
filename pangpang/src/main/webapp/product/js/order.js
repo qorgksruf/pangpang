@@ -1,15 +1,57 @@
 console.log('order js')
-console.log(memberInfo)
+
+let totalprice=0;
+
 // 모달 설정 
-function openmodal(){
-	document.querySelector('.modal_wrap').style.display='flex';
+function openmodal_address(){
+	document.querySelector('.modal_wrap_address').style.display='flex';
 }
-function closemodal(){
-	document.querySelector('.modal_wrap').style.display='none';
+function closemodal_address(){
+	document.querySelector('.modal_wrap_address').style.display='none';
+}
+let orderlist = JSON.parse(localStorage.getItem("orderlist"));
+//------------------------------------------------------------------------------------- 주문제품 불러오기
+printorder()
+function printorder(){	
+	console.log(orderlist)
+	totalprice=0;
+	
+	let html = `<tr>
+					<th width="10%"> 제품이름 </th> 
+					<th width="80%"> 제품정보 </th> 
+					<th width="10%"> 제품수량 </th> 
+				</tr>`
+		
+	orderlist.forEach((o)=>{
+		
+		totalprice += (o.product_price * o.cart_amount);
+
+		html += `	<tr>
+						<td> 
+							<div><img class="order_img"  src="/pangpang/product/pimg/${o.product_img}" alt=""></div>
+						</td>
+						<td>
+							 ${o.product_name}, ${o.product_option}		
+						</td>
+						<td>
+							 ${o.cart_amount+o.product_unit}
+						</td>
+					</tr>`
+	})
+		
+		if(totalprice<19000){totalprice=totalprice+3000}else{totalprice}
+		
+		html += `<tr>
+					<th colspan="3" class="totalpricebox"> 총 결제 금액 <span class="totalprice"> ${totalprice.toLocaleString()}</span> 원 </th>
+				</tr>`
+		
+	
+		document.querySelector('.buyproduct_info').innerHTML = html ;
 }
 
-getMemberInfo()
+
 //------------------------------------------------------------------------------------- 회원정보 불러오기
+getMemberInfo()
 function getMemberInfo(){
 
 	document.querySelector('.member_name').innerHTML  		= memberInfo.member_name;
@@ -38,7 +80,7 @@ function update_recieverinfo(){
 		 </tr>						
 		 <tr>
 			<th width="10%"> 배송주소 </th> 
-			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal()"> 주소 찾기 </button> </td>
+			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button> </td>
 		 </tr>
 		 <tr>
 			<th width="10%"> 배송요청사항  </th> 
@@ -214,7 +256,6 @@ function address_select(i){
 	document.querySelector('.address_select_input').innerHTML = document.querySelector(`.${selected}`).innerHTML;
 	document.querySelector('.address_select').style.display='flex';
 	document.querySelector('.address_detail').style.display='flex';
-
 }
 
 // 주소 확정
@@ -223,60 +264,82 @@ function delivery_address(){
 	let address_select = document.querySelector('.address_select_input').innerHTML;
 	let address_detail = document.querySelector('.address_detail_input').value;
 	
-	document.querySelector('.delivery_address').innerHTML = address_select+address_detail;
+	document.querySelector('.delivery_address').innerHTML = address_select+","+address_detail;
 	
-	closemodal()
+	closemodal_address();
 
 }
-//------------------------------------------------------------------------------------- 결제
-   
-   let pay=0;
-   
-   function setPay(n){
-	  pay += n; 
-   }
-  //------------------------------------------------------------------------------------------- 회원 식별 번호   
+ //------------------------------------------------------------------------------------- 결제
+
+  // 회원 식별 번호   
   const IMP = window.IMP;  // 생략 가능
   IMP.init("imp47415848"); // 예: imp00000000a
-  //-------------------------------------------------------------------------------------------  
-  function requestPay() {
-	  
-	if(pay == 0){
-		alert('충전할 금액을 선택해주세요.'); return;
-	}	
-	  
-    IMP.request_pay({
-      pg: "kcp.INIBillTst",
-      pay_method: "card",
-      merchant_uid: "ORD20180131-0000011",   // 주문번호
-      name: "이젠 포인트 결제",
-      amount: pay,                          // 숫자 타입
-      buyer_email: "gildong@gmail.com",
-      buyer_name: "홍길동",
-      buyer_tel: "010-4242-4242",
-      buyer_addr: "서울특별시 강남구 신사동",
-      buyer_postcode: "01181"
-    }, function (rsp) { // callback
-      if (rsp.success) {// 결제 성공 시 로직
+   
+  function requestPay(type) {
+	console.log(orderlist)
+	console.log(totalprice)
+	let info = {
+	      pay_method	: "card",
+	      merchant_uid	: "ORD20180131-0000011",  	// 주문번호
+	      name			: "PANGPANG",				// 상호명
+	      amount		: totalprice,               // 결제금액 
+	      buyer_email	: memberInfo.member_email,
+	      buyer_name	: document.querySelector('.receiver_name').innerHTML,
+	      buyer_tel		: document.querySelector('.receiver_phone').innerHTML,
+	      buyer_addr	: document.querySelector('.receiver_address').innerHTML,
+	      buyer_postcode: "01181",
+	      member_no		: memberInfo.member_no,
+	      orderlist		: JSON.stringify(orderlist)
+	}
+	console.log(info);
+	if(type==1){
+		info.pg="kcp.INIBillTst";
+		
+	}else if(type==2){
+		info.pg='kakaopay';
+		
+	}else if(type==3){
+		info.pg='tosspay';
+		
+	}
+
+    IMP.request_pay(info, function (rsp) { 		// callback
+    	if (rsp.success) {						// 결제 성공 시 로직
        
-      } else {// 결제 실패 시 로직
-        
-        let info = {
-			mpcomment 	: '포인트 충전',
-			mpamount	: pay,
-			mno			: memberInfo.mno
-		}
-        
-        $.ajax({
-			url		: "/jspweb/point",
-			method 	: "post",
-			data	: info ,
-			success	:(r)=>{
-				if(r=='true'){alert('포인트 충전 완료')}
-			}		
-		})
-        
-        
-      }
+      	} else {								// 결제 실패 시 로직 = 테스트용이므로 결제 취소시 진행으로
+      		alert('결제가 완료되었습니다.');
+      		// 주문 DB 등록
+      			$.ajax({
+					url 	: "/pangpang/order",
+					method	: "post",
+					async	: false,
+					data	: info,
+					success	: (r)=>{
+						console.log(r)
+						if(r=='true'){
+							cartOutAll();
+							alert('주문이 완료되었습니다.')
+							location.href="/pangpang/index.jsp";
+						}else{
+							alert('주문이 취소되었습니다.[관리자에게 문의]')
+						}
+					}
+				});
+       }
     });
   }
+  
+  
+  // 주문 완료 후 전체 장바구니 삭제 
+	function cartOutAll(){
+		
+		$.ajax({
+			url 	: "/pangpang/cart",
+			method	: "delete",
+			async	: false,
+			data	: {"type":1 },
+			success	: (r)=>{
+				console.log('cartoutall'+r)							
+			}// success e
+		}); // ajax e	
+	}// cartOutAll e
