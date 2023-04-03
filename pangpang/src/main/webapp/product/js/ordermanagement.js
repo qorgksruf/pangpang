@@ -113,7 +113,19 @@ function detail(ordermanagement_no){
 		async	: false,
 		success	: (r)=>{
 			console.log(r)
-			let html = 	`<tr>
+			
+			let html =``;
+			
+			r.list.forEach((o)=>{
+				html += `<tr>
+							<td rowspan="2"> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> 
+							<td> ${o.product_name}</td>
+						</tr>
+						<tr>
+							 <td> ${o.product_price.toLocaleString()} 원 <span> ${o.cart_amount+o.product_unit} </span> </td>
+						</tr>`
+			})
+			html += 	`<tr>
 							<td> 결제정보 </td> 
 							<td> ${r.payment_how+" / "+r.payment_date+" / "+r.payment_price.toLocaleString()} 원 </td>
 						</tr>					
@@ -127,15 +139,7 @@ function detail(ordermanagement_no){
 						<tr>
 							<td> 배달완료 : 2023-04-02 00:00:05 </td>
 						</tr>`			
-			r.list.forEach((o)=>{
-				html += `<tr>
-							<td rowspan="2"> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> 
-							<td> ${o.product_name}</td>
-						</tr>
-						<tr>
-							 <td> ${o.product_price.toLocaleString()} 원 <span> ${o.cart_amount+o.product_unit} </span> </td>
-						</tr>`
-			})
+
 			document.querySelector('.orderdetail').innerHTML = html;
 			
 		}// success e

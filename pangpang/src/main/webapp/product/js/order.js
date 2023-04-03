@@ -324,8 +324,8 @@ function delivery_address(){
 							alert('주문이 취소되었습니다.[관리자에게 문의]')
 						}
 					}
-				});
-       }
+			});
+       	}
     });
   }
   

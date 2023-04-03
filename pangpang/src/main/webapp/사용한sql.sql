@@ -41,43 +41,36 @@ create table account(
 -- 제품관리 ---------------------------------------------------------------------------------
 -- 제품 카테고리 테이블
 create table category(
-   category_no          int   auto_increment primary key,    			-- 카테고리번호 pk
-   category_name        varchar(30) not null ,                 			-- 카테고리명
-   category_img         varchar(30) not null                  			-- 카테고리대표이미지
+   category_no          	int   auto_increment primary key,    		-- 카테고리번호 pk
+   category_name        	varchar(30) not null ,                 		-- 카테고리명
+   category_img         	varchar(30) not null                  		-- 카테고리대표이미지
 );
--- 제품 테이블                                        						-- 보관조건? 재고위치? // 추가 보완 사항?
+-- 제품 테이블                                        						
 create table product(               
-   product_no           int auto_increment primary key,   	 			   -- 제품번호 pk
-   product_name         varchar(30)  not null,                			   -- 제품명
-   product_option       varchar(10)  not null,                			   -- 규격/옵션         -- 100g / 500ml   
-   product_unit         varchar(10)  not null,                			   -- 단위             -- (개/봉/박스/곽/통/캔)   
-   product_img          varchar(100) not null,                			   -- 제품이미지
-   product_content      longtext not null,                  			   -- 제품상세설명        -- 원산지 / 보관방법 
-   product_price		int not null,									   -- 판매가
-   product_discount		int not null,									   -- 최대할인율 
-   category_no          int,                               				   -- 카테고리번호 fk
+   product_no           	int auto_increment primary key,   	 		-- 제품번호 pk
+   product_name         	varchar(30)  not null,                		-- 제품명
+   product_option       	varchar(10)  not null,                		-- 규격/옵션         -- 100g / 500ml   
+   product_unit         	varchar(10)  not null,                		-- 단위             -- (개/봉/박스/곽/통/캔)   
+   product_img          	varchar(100) not null,                		-- 제품이미지
+   product_content      	longtext not null,                  		-- 제품상세설명        -- 원산지 / 보관방법 
+   product_price			int not null,								-- 판매가
+   product_discount			int not null,								-- 최대할인율 
+   category_no          	int,                               			-- 카테고리번호 fk
    foreign key (category_no) references category( category_no ) on delete cascade
 );
--- 입출고 테이블                                        			-- 제조년월 / 소비기한 / 폐기 예정일은 어떻게? -- 테이블 분리?
+-- 입출고 테이블                                        			
 create table stockmanagement(
-   stockmanagementno        int   auto_increment primary key,    			-- 재고관리번호 pk
-   stockmanagementdate      datetime default now(),                			-- 일자
-   stockmanagementenddate   datetime,                          				-- 예정 폐기 일자                      
-   stockmanagementtype      int  not null,               					-- 구분   ( 입고 / 출고 / 폐기 / 반품 )	-- int 저장이 효율적인가? 
-   stockmanagementcompany   varchar(20) not null,                			-- 업체   ( 입고처/출고처/ 폐기업체)       -- 출고처 = 회원번호? 주문번호?   
-   stockmanagementamount   	int   not null,                      			-- 수량
-   product_price       		int not null,                       			-- 단가    개당 단가                           
-   product_no          		int not null,                        			-- 제품번호 fk
+   stockmanagementno        int   auto_increment primary key,    		-- 재고관리번호 pk
+   stockmanagementdate      datetime default now(),                		-- 일자
+   stockmanagementenddate   datetime,                          			-- 예정 폐기 일자                      
+   stockmanagementtype      int  not null,               				-- 구분   ( 입고 / 출고 / 폐기 / 반품 )	
+   stockmanagementcompany   varchar(20) not null,                		-- 업체   ( 입고처/출고처/ 폐기업체)       -- 출고처 = 회원번호  
+   stockmanagementamount   	int   not null,                      		-- 수량
+   product_price       		int not null,                       		-- 단가    개당 단가                           
+   product_no          		int not null,                        		-- 제품번호 fk
    foreign key (product_no) references product( product_no ) on delete cascade
   
 );
-
--- 입고
--- 입고일 제품명 수량 단가 담당직원 거래처 폐기일?제조일?
--- 출고 
--- 출고일 제품명 수량 단가 담당직원 판매처 
--- 폐기
--- 폐기일 제품명 수량 단가 담당직원 폐기처 
 
 -- 장바구니 테이블
 create table cart(
@@ -92,28 +85,28 @@ create table cart(
 create table ordermanagement(
    ordermanagement_no         	int   auto_increment primary key,    	-- 주문번호 pk
    ordermanagement_date       	datetime default now(),              	-- 주문일자      
-   ordermanagement_state      	int	  not null,               			-- 주문상태                                   -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     
+   ordermanagement_state      	int	  not null,               			-- 주문상태   -- 결제확인중/결제확인/배송지연/배송중/배송완료/거래완료/     
    ordermanagement_address    	varchar(100) not null,                	-- 배송주소       
    member_no         			int not null,                        	-- 주문회원 fk     
    foreign key (member_no)   references member( member_no ) on delete no action 
 );
 -- 주문상세 테이블
 create table orderdetail(
-   orderdetaildno         	int   auto_increment primary key,   	-- 주문상세번호 pk
-   orderdetaildamount      	int   not null,                     	-- 주문수량 
-   orderdetaildprice        int   not null,                     	-- 주문단가
-   ordermanagement_no      	int   not null,                       	-- 주문번호 fk
-   product_no          		int	  not null,                        	-- 제품코드 fk
+   orderdetaildno         		int   auto_increment primary key,   	-- 주문상세번호 pk
+   orderdetaildamount      		int   not null,                     	-- 주문수량 
+   orderdetaildprice        	int   not null,                     	-- 주문단가
+   ordermanagement_no      		int   not null,                       	-- 주문번호 fk
+   product_no          			int	  not null,                        	-- 제품코드 fk
    foreign key (product_no) references product( product_no ) on delete no action, 
    foreign key (ordermanagement_no)   references ordermanagement( ordermanagement_no ) on delete cascade
 );
 -- 결제 테이블 
 create table payment(
-   payment_no         	int   auto_increment primary key,   	-- 결제번호 pk
-   payment_date      	datetime default now(),               	-- 결제일자      
-   payment_how         	varchar(20) not null,               	-- 결제방법      ( 무통장거래 / 신용카드 / 네이버페이 / 카카오페이 )
-   payment_price    	int   not null,                     	-- 결제금액   
-   ordermanagement_no   int   ,                              	-- 주문번호 fk 
+   payment_no         			int   auto_increment primary key,   	-- 결제번호 pk
+   payment_date      			datetime default now(),               	-- 결제일자      
+   payment_how         			varchar(20) not null,               	-- 결제방법      ( 무통장거래 / 신용카드 / 네이버페이 / 카카오페이 )
+   payment_price    			int   not null,                     	-- 결제금액   
+   ordermanagement_no   		int   ,                              	-- 주문번호 fk 
    foreign key (ordermanagement_no)   references ordermanagement( ordermanagement_no ) on delete cascade
 );
 
@@ -558,7 +551,8 @@ insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stock
 values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,31);  
 insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
 values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,32);  
- 
+insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
+values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,33); 
 -- 출고
 insert into stockmanagement(stockmanagementdate ,stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
 values ('2023-03-26',2,'GOMGOM',-2,5000,1);  

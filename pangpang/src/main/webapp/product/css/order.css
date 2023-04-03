@@ -26,6 +26,9 @@ th{
 	font-weight: bold;
 	font-size: 20px;
 }
+.address_select_input{
+	margin-left: 20px;
+}
 /* 모달 배경 설정*/
 .modal_wrap_address ,.modal_wrap_pay{
 	position: fixed;				

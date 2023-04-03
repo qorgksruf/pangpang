@@ -12,6 +12,10 @@
 .list-group{
 	width: 200px;
 }
+.list-group-item.active{
+	background-color: #79DCF2 !important;
+	border-color: #79DCF2 !important;
+}
 /* 제품 목록 출력 구역*/
 .product_wrap{
 	width: 100%;
@@ -25,7 +29,12 @@
 	width: 20%;
 	margin: 1%;
 	text-align: center;
-	opacity: 60%;
+	opacity:60%;
+}
+.soldoutmark{
+	margin: 2%;
+	font-weight: bold;
+	color:red;
 }
 .item{
 	width: 20%;
