@@ -1,16 +1,19 @@
 package pangpang.controller.member.암호화;
 
+import java.util.Arrays;
 
 public class Pre_Processing {
 
+	// 바이트 -> 바이너리
 	private static void getBits(StringBuilder sb, byte b) {
         for (int i = 0; i < 8; i++) {
             sb.append((b & 128) == 0 ? 0 : 1);
             b <<= 1;
         }
-        sb.append(' ');
+        //sb.append(' ');
     }
- 
+	
+	// 평문 -> 바이너리 (스트링 -> 바이트) 한글자씩 잘라서 바이트로 바꾸고 getBits에서 바이너리로 만듬
     public static String toBinary(String s) {
         byte[] bytes = s.getBytes();
         StringBuilder sb = new StringBuilder();
@@ -21,28 +24,50 @@ public class Pre_Processing {
         return sb.toString().trim();
     }
     
+    // 빈자리 패딩
     public static String padding(String binary,int plengrh) {
     	StringBuilder sb = new StringBuilder();
     	sb.append(binary); 
-    	sb.append(' ');
+    	//sb.append(' ');
     	for(int i = 1 ; i<=(512-plengrh-64);i++) {
     		sb.append(0);
     		if(i%8==0) {
-    			 sb.append(' '); 
+    			//sb.append(' '); 
     		}
     	}
     	return sb.toString().trim();
 	}
-
+    
+    // 문자의 길이 이진수로 만들기(10진수 -> 2진수)
     public static String toBinary(int n)
     {
         if (n == 0) {
-            return "";
+           return "";
         }
         return toBinary(n / 2) + (n % 2);
     }
  
-   
+    public static String[] substring(String pre_processing) {
+    	// 32비트로 자르기
+        // 배열의 크기를 구합니다.
+        int strArraySize = (int) Math.ceil((double)pre_processing.length() / 32);
+
+        // 배열을 선언합니다. 32비트로 잘린 pre_processing 들어가는 자리
+        String[] subStringArray = new String[strArraySize];
+
+        // 문자열을 순회하여 특정 길이만큼 분할된 문자열을 배열에 할당합니다.
+        int index = 0;
+        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += 32) {
+        	subStringArray[index++] =
+    		  	pre_processing.substring(startIndex, Math.min(startIndex + 32, pre_processing.length()));
+      			
+        }
+        return subStringArray;
+	}
+    
+    
+    
+    
     public static void main(String[] args) {
     	// 평문 문자
         String ptext = "abc";
@@ -66,5 +91,17 @@ public class Pre_Processing {
         String pre_processing = padding+blengrh;
         System.out.println(pre_processing);
         
+        //32bit로 자르기
+        String[] subStringArray = substring(pre_processing);
+        System.out.println(Arrays.toString(subStringArray));
+        
+        
+        for(int i = 0 ; i<subStringArray.length ; i++) {
+        	 int binaryToDecimal = Integer.parseInt(subStringArray[i], 2);
+        	 System.out.println(binaryToDecimal);
+        	 String binaryString = Integer.toBinaryString(binaryToDecimal);
+        	 System.out.println(binaryString);
+        }
+    
     }
 }

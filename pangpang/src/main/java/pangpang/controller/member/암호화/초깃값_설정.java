@@ -16,13 +16,19 @@ public class 초깃값_설정 {
 		    for i in H_pn_list:
 		        print(get_dp_32bit(i))*/
 		
-		double[] H_list = {2,3,5,7,11,13,17,19};	
+		//double[] H_list = {2,3,5,7,11,13,17,19};	
 		
-		for(int i=0;i<H_list.length;i++) {
+		//for(int i=0;i<H_list.length;i++) {
 			
-		}System.out.println(get_32bit(2));
+		//}System.out.println(get_32bit(2));
 		
 		//System.out.printf( "%x \n" , get_32bit(2)  );
+		double a = Math.sqrt(2);
+		double b = a-(int)a;
+		
+		String binaryString = Long.toBinaryString(Double.doubleToRawLongBits(b));
+   	 	System.out.println(binaryString);
+		
 		
 	} 
 	
