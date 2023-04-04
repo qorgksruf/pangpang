@@ -65,12 +65,21 @@ public class made2 {
 		int h = hash [7];
 		
 		for(int i = 0; i<=63 ; i++) {
-			int sl = rightRotate(e, 6)^rightRotate(e, 11)^rightRotate(e, 25);
+			int s0 = rightRotate(a, 2)^leftRotate(a, 13)^rightRotate(a, 22);
+			int s1 = rightRotate(b, 4)^leftRotate(b, 16)^rightRotate(b, 27);
+			int s2 = rightRotate(c, 8)^leftRotate(c, 12)^rightRotate(c, 24);
+			int s3 = rightRotate(d, 2)^leftRotate(d, 14)^rightRotate(d, 26);
+			int s4 = rightRotate(e, 6)^leftRotate(e, 17)^rightRotate(e, 25);
+			int s5 = rightRotate(f, 5)^leftRotate(f, 13)^rightRotate(f, 28);
+			int s6 = rightRotate(g, 3)^leftRotate(g, 11)^rightRotate(g, 23);
+			int s7 = rightRotate(h, 7)^leftRotate(h, 10)^rightRotate(h, 24);
+			
+			
 			int ch = (e&f)^((~e)&g);
-			int temp1 = h+sl+ch+k[i]+w[i];
-			int s0 = rightRotate(a, 2)^rightRotate(a, 13)^rightRotate(a, 22);
+			int temp1 = h+s1+ch+k[i]+w[i];
 			int maj = (a&b)^(a&c)^(b&c);
 			int temp2 = s0+maj;
+			
 			
 			h=g;
 			g=f;
@@ -107,9 +116,10 @@ public class made2 {
 			w[i]=arr[i];
 		}
 		for(int i=16 ; i<=63 ; i++) {
-			int s0 = (rightRotate(w[i-15], 7)) ^ (rightRotate(w[i-15], 18)) ^ (w[i-15]>>3);
-			int s1 = (rightRotate(w[i-2], 17)) ^ (rightRotate(w[i-2], 19)) ^ (w[i-2]>>10);
-			w[i]= w[i-16] + s0 + w[i-7] + s1;
+			int s0 = (leftRotate(w[i-15], 5)) ^ (rightRotate(w[i-15], 25)) ^ (w[i-15]>>8);
+			int s1 = (leftRotate(w[i-1], 12)) ^ (rightRotate(w[i-1], 14)) ^ (w[i-1]>>15);
+			w[i]= w[i-16] + s0 + w[i-5] + s1;
+			System.out.println(w[i]);
 		}
 		
 		return w;
