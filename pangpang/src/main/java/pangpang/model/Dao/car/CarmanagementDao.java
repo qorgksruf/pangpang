@@ -57,7 +57,7 @@ public class CarmanagementDao extends Dao{
 			  ps=con.prepareStatement(sql);
 			  rs=ps.executeQuery();
 			  
-			  while(rs.next()) {
+			  if(rs.next()) {
 				  CarmanagementDto dto = new CarmanagementDto(
 		                  rs.getInt(1),
 		                  rs.getString(2),

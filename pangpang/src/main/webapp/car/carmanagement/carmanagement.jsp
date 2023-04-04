@@ -71,7 +71,8 @@
 				 <form class="updateForm">
 				  차이미지:        
 				      	<div class="carupdate_img">
-							<input type="file" class="cimg"	 name="carupdate_img">	<br>
+							<div class="cimg"	name="carupdate_img">
+							</div> 	<br>
 						</div>	      
 					 차량등록여부:    	<input name="update_use_yn" type="text">		<br>	
 		      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
