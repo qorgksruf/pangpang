@@ -47,21 +47,34 @@ public class BookcarDao extends Dao{
 		  
 		// 배차신청하기 전 배차예약시간 체크
 		  public boolean bookCheck(int carmanage_no, String bookcar_str_date, String bookcar_end_date) {
+			  
 			  boolean result = true;
+			  
+			  /*
 			  String sql = "SELECT * "
 			  			 + "  FROM BOOKCAR"
 			  			 + " WHERE CARMANAGE_NO = " + carmanage_no
 			  			 + "   -- AND BOOKCAR_YN = 'Y'" // 배차승인 완료된 애들만 체크를 한다면 앞에 있는 '--' 를 빼주세요
 			  			 + "   AND ((BOOKCAR_STR_DATE <= DATE(\""+ bookcar_str_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_str_date + "\"))"
 			  			 		+ "OR (BOOKCAR_STR_DATE <= DATE(\""+ bookcar_end_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_end_date + "\")));";
+			  */
+			  
+			  String sql = "select * from bookcar where carmanage_no = ? and (bookcar_str_date between ? and ? ) or (bookcar_end_date between ? and ? )";
 			  
 			  try {
 				  System.out.println("bookCheck sql ::: " + sql);
 				  
 				  ps=con.prepareStatement(sql);
-			      rs=ps.executeQuery();
+				  
+				  ps.setInt(1, carmanage_no);
+				  ps.setString(2, bookcar_str_date);
+				  ps.setString(3, bookcar_end_date);
+				  ps.setString(4, bookcar_str_date);
+				  ps.setString(5, bookcar_end_date);
+				  
+			      rs = ps.executeQuery();
 			      
-			      while(rs.next()) {
+			      if( rs.next() ) {
 			    	  System.out.println(rs.getInt(1));
 			    	  System.out.println(rs.getString(6));
 			    	  result =  false;
@@ -80,8 +93,13 @@ public class BookcarDao extends Dao{
 			String sql="insert into bookcar "
 					+ "	(bookcar_str_date,bookcar_end_date,bookcar_yn,carmanage_no,member_no) "
 					+ "		values (?,?,?,?,?);";
+			
+			boolean result = bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date);
+			
 			try {
-				if (bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date)) {
+				
+				if ( result ) {
+					
 					ps = con.prepareStatement(sql);
 					ps.setString(1, bookcar_str_date);
 					ps.setString(2, bookcar_end_date);

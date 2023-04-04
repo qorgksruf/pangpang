@@ -20,7 +20,6 @@ function onpenModal( type , i){
 							</div>
 					      사용가능여부:    	<input name="carmanage_use_yn" type="text">			 		<br>
 					      차량등록일자:    	<input name="carmanage_start" type="text">			     	<br>
-					      차량폐기일자:    	<input name="carmanage_finish" type="text">			  		<br>
 					</form> 	
 				</div>
 				<div class="modal_btns">
@@ -37,9 +36,6 @@ function onpenModal( type , i){
 						상세정보입니다
 					</h3>
 					<div class="modal_content">
-						<input name="update_number" disabled></input>
-						<input name="update_name" disabled></input>
-						<input name="update_use_yn" disabled></input>
 						 <form class="updateForm">     
 							 차량등록일자: ${ detailview[i].carmanage_start } <br>	
 				      		 차량폐기일자: ${ detailview[i].carmanage_finish } <br>
@@ -60,9 +56,6 @@ function onpenModal( type , i){
 						입력하세요
 					</h3>
 					<div class="modal_content">
-						<input name="update_number" disabled></input>
-						<input name="update_name" disabled></input>
-						<input name="update_use_yn" disabled></input>
 						 <form class="updateForm">     
 							 차량등록일자: ${ detailview[i].carmanage_start } <br>	
 						</form> 	

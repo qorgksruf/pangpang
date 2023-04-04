@@ -3,3 +3,8 @@
 .carmanagement {
 	text-align: center;
 }
+
+.carmanage_finish{
+	display: none;
+}
+

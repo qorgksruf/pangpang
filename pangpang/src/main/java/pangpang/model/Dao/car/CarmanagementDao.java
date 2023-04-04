@@ -17,7 +17,7 @@ public class CarmanagementDao extends Dao{
 
 	   
 	   //전체차량 출력
-	  public ArrayList<CarmanagementDto>carList(){
+	  public synchronized ArrayList<CarmanagementDto>carList(){
 	      ArrayList<CarmanagementDto>list = new ArrayList<>();
 	      String sql="select * from carmanage";
 	      try {
@@ -49,7 +49,7 @@ public class CarmanagementDao extends Dao{
 
 	  
 	  
-	  public ArrayList<CarmanagementDto> getCarInfo(String carmanage_no){
+	  public synchronized ArrayList<CarmanagementDto> getCarInfo( int carmanage_no ){
 		  ArrayList<CarmanagementDto> list = new ArrayList<>();
 		  String sql="SELECT * FROM CARMANAGE WHERE CARMANAGE_NO = " + carmanage_no;
 		  
@@ -57,7 +57,7 @@ public class CarmanagementDao extends Dao{
 			  ps=con.prepareStatement(sql);
 			  rs=ps.executeQuery();
 			  
-			  while(rs.next()) {
+			  if( rs.next() ) {
 				  CarmanagementDto dto = new CarmanagementDto(
 		                  rs.getInt(1),
 		                  rs.getString(2),
@@ -80,7 +80,7 @@ public class CarmanagementDao extends Dao{
 	  
 	  
 	  //등록버튼구현
-	  public boolean regi(CarmanagementDto dto) {
+	  public synchronized boolean regi(CarmanagementDto dto) {
 		  String sql ="insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_use_yn,carmanage_start,carmanage_finish)values(?,?,?,?,?,?)";
 		  try {
 			  ps= con.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class CarmanagementDao extends Dao{
 
 	  
 	  //수정버튼구현
-	  public boolean carupdate(CarmanagementDto dto) {
+	  public synchronized boolean carupdate(CarmanagementDto dto) {
 		  String sql ="update carmanage set carmanage_img=?, carmanage_use_yn=? ,carmanage_finish=? where carmanage_no="+dto.getCarmanage_no();
 		  try {
 			  ps= con.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class CarmanagementDao extends Dao{
 		 */
 	  
 	  //삭제
-	     public boolean cardelete(int carmanage_no) {
+	     public synchronized boolean cardelete(int carmanage_no) {
 	         String sql="delete from carmanage where carmanage_no="+carmanage_no;
 	         try {
 	            ps=con.prepareStatement(sql);
