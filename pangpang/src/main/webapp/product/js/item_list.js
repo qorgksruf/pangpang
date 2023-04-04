@@ -73,9 +73,10 @@ function getItemList(page){
 }
 // 2. 검색된 품목 리스트 출력
 function search(){	
-	pageObject.key		= document.querySelector('.key').value;
+	pageObject.key		= document.querySelector('.key').value;     
 	pageObject.keyword 	= document.querySelector('.keyword').value;
 	document.querySelector('.keyword').value = '';
+	console.log(pageObject)
 	getItemList(1)
 	pageObject.key		= "key";
 	pageObject.keyword 	= "keyword";
@@ -117,6 +118,7 @@ function openmodal_U(product_no){
 	$.ajax({
 		url 	: "/pangpang/category",
 		method	: "get",
+		async	: false,
 		success	: (r)=>{
 			console.log(r)
 			let html = ``;
@@ -197,9 +199,18 @@ function item_update(product_no){
 
 	let updateForm = document.querySelectorAll('.updateForm')[0];// 첫번째 form 가져오기	
 	let updateFormData = new FormData(updateForm);
-	updateFormData.set('product_no',product_no);
+	updateFormData.append("product_no",product_no);
 	console.log(updateFormData)
+	for (var key of updateFormData.keys()) {
+
+	  console.log(key);
 	
+	}
+	for (var value of updateFormData.values()) {
+
+	  console.log(value);
+	
+	}
 	$.ajax({
 		url 	: "/pangpang/product",
 		method	: "put",

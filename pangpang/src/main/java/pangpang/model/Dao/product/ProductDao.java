@@ -59,14 +59,14 @@ public class ProductDao extends Dao{
 		if(key.equals("key") && keyword.equals("keyword")) {
 			if(type==1) {		// 전체 제품 출력
 				sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p, category c, stockmanagement s  "
-						+ "where p.category_no = c.category_no and p.product_no = s.product_no group by product_no limit "+startrow+","+listsize;
+						+ "where p.category_no = c.category_no and p.product_no = s.product_no group by s.product_no limit "+startrow+","+listsize;
 			}else if(type==2) {	// 카테고리별 제품 출력
 				sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p, category c, stockmanagement s "
-						+ "where p.category_no = c.category_no and p.product_no = s.product_no and p.category_no = "+cno+" group by product_no limit "+startrow+","+listsize;
+						+ "where p.category_no = c.category_no and p.product_no = s.product_no and p.category_no = "+cno+" group by s.product_no limit "+startrow+","+listsize;
 			}			
 		}else { // 검색된 제품 출력 
-			sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p ,category c "
-					+ "where p.category_no = c.category_no and p.product_no = s.product_no and "+key+" '%"+keyword+"%' group by product_no limit "+startrow+","+listsize;
+			sql = "select p.*, c.category_name, sum(s.stockmanagementamount) stock from product p ,category c , stockmanagement s "
+					+ "where p.category_no = c.category_no and p.product_no = s.product_no and "+key+" like '%"+keyword+"%' group by s.product_no limit "+startrow+","+listsize;
 		}
 			
 		try {
@@ -132,7 +132,7 @@ public class ProductDao extends Dao{
 	}
 	// 품목 수정
 	public boolean item_update(ProductDto dto) {
-		String sql = "insert into product (product_name,product_option,product_unit,product_img,product_content,product_price,product_discount,category_no) values (?,?,?,?,?,?,?,?) where product_no = ? ";
+		String sql = "update product set product_name = ? ,product_option = ? ,product_unit = ? ,product_img = ? ,product_content = ? ,product_price = ? ,product_discount = ? ,category_no = ? where product_no = ? ";
 		try {
 			ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, dto.getProduct_name());
@@ -160,7 +160,7 @@ public class ProductDao extends Dao{
 		return false;
 	}
 	
-
+	
 	
 	
 	

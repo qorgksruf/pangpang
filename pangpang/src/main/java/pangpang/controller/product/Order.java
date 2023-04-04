@@ -36,7 +36,7 @@ public class Order extends HttpServlet {
 		String json = null;
 		ObjectMapper mapper = new ObjectMapper();
 		
-		if(type==-2) { //주문상세 출력
+		if(type == -2) { //주문상세 출력
 			int ordermanagement_no = Integer.parseInt(request.getParameter("ordermanagement_no"));					
 			OrderDto dto = OrderDao.getInstance().getOrderDetail(ordermanagement_no);
 			json = mapper.writeValueAsString(dto);

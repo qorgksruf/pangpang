@@ -92,7 +92,7 @@ function getProductList(cno){
 					
 				}else{
 					html += `<div class="item"> 
-									<div class="pimg"> <a href="/pangpang/product/product_view.jsp?pno=${o.product_no}">
+									<div class="pimg"> <a href="/pangpang/product/product_view.jsp?cno=${cno}&pno=${o.product_no}">
 									<img class="product_img" alt="" src="/pangpang/product/pimg/${o.product_img} "> </a> </div>
 									<div class="pname"> 	${o.product_name}  </div>
 									<div class="price"> 	${o.product_price.toLocaleString()}원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span  class="mini_mark">팡팡배송</span></div>

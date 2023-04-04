@@ -27,13 +27,13 @@ if(day==5){day='금';}
 if(day==6){day='토';}
 
 
-
+let cno = document.querySelector('.cno').value;
 let pno = document.querySelector('.pno').value;
 console.log(pno);
 
 // 1. 사이드바 카테고리 리스트 출력
-getCategoryList() 
-function getCategoryList(){
+getCategoryList(cno) 
+function getCategoryList(cno){
 	
 	$.ajax({
 		url 	: "/pangpang/category",
@@ -43,7 +43,11 @@ function getCategoryList(){
 			console.log(r)
 			let html = ``;
 			r.forEach((o)=>{
-				html += `<a href="/pangpang/product/product_list.jsp?cno=${o.category_no}" class="list-group-item list-group-item-action"> ${o.category_name} </a>`;
+				if(o.category_no==cno){
+					html += `<a href="/pangpang/product/product_list.jsp?cno=${o.category_no}" class="list-group-item list-group-item-action active" aria-current="true"> ${o.category_name} </a>`;	
+				}else{
+					html += `<a href="/pangpang/product/product_list.jsp?cno=${o.category_no}" class="list-group-item list-group-item-action"> ${o.category_name} </a>`;
+				}
 			})
 			document.querySelector('.categorylist').innerHTML = html ;
 		} // success e

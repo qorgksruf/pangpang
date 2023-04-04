@@ -20,14 +20,13 @@ s
 		<div class="topbox"> 
 			<div class="searchbox">
 				<select class="key">
-					<option value=""> 제품번호 </option>
-					<option value=""> 제품이름 </option>
+					<option value="p.product_no">   제품번호 </option>
+					<option value="p.product_name"> 제품이름 </option>
 				</select>
 				<input  class="keyword" type="text">
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
 			</div>
 			<div>
-				<button class="registerbtn" onclick="openmodal_R()" type="button"> 카테고리 등록 </button>
 				<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
 			</div>
 		</div>
@@ -98,30 +97,30 @@ s
 			<div class="modal_content">
 				<form class="updateForm">
 					<div class="title"> 카테고리 
-						<select class="categorylist2">
+						<select class="categorylist2" name="category_no" >
 						
 						</select>
 					</div>		
 					<div class="title"> 제품명 
-						<input type="text" 	   name="product_name"   	class="product_name_U">
+						<input type="text" 	   name="product_name_U"   	class="product_name_U">
 					</div>			
 					<div class="title"> 제품규격 
-						<input type="text" 	   name="product_option" 	class="product_option_U">
+						<input type="text" 	   name="product_option_U" 	class="product_option_U">
 					</div>		
 					<div class="title"> 포장단위 
-						<input type="text" 	   name="product_unit"   	class="product_unit_U">		
+						<input type="text" 	   name="product_unit_U"   	class="product_unit_U">		
 					</div>
 					<div class="title"> 제품상세 
-						<textarea name="product_content"   class="product_content_U" rows="" cols=""></textarea>		
+						<textarea name="product_content_U"   			class="product_content_U" rows="" cols=""></textarea>		
 					</div>
 					<div class="title"> 제품이미지 
-						<input type="file" 	   name="product_img"  		class="product_img_U">		
+						<input type="file" 	   name="product_img_U"  	class="product_img_U">		
 					</div>
 					<div class="title"> 판매가격설정
-						<input type="text" 	   name="product_price"   	class="product_price_U">		
+						<input type="text" 	   name="product_price_U"   class="product_price_U">		
 					</div>
 					<div class="title"> 최대할인율설정 
-						<input type="text" 	   name="product_discount"  class="product_discount_U">		
+						<input type="text" 	   name="product_discount_U"  class="product_discount_U">		
 					</div>
 					<div class="modalbtnbox_U">
 

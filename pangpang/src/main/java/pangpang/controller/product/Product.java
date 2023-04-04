@@ -117,18 +117,19 @@ public class Product extends HttpServlet {
  				new DefaultFileRenamePolicy()	// 동일한 첨부파일명이 존재하면 뒤에 숫자 붙여서 식별
  				);
 
- 		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));
- 		String product_name 		= multi.getParameter("product_name");		
-		String product_option 		= multi.getParameter("product_option");
-		String product_unit 	    = multi.getParameter("product_unit");
-		String product_content 	    = multi.getParameter("product_content");
-		String product_img 	        = multi.getFilesystemName("product_img");	
-		int    product_price		= Integer.parseInt(multi.getParameter("product_price"));
-		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount"));
-
-		int    product_no			= Integer.parseInt(multi.getParameter("pno"));
+ 		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));	System.out.println(category_no);
+ 		String product_name 		= multi.getParameter("product_name_U");						System.out.println(product_name);
+		String product_option 		= multi.getParameter("product_option_U");					System.out.println(product_option);
+		String product_unit 	    = multi.getParameter("product_unit_U");						System.out.println(product_unit);
+		String product_content 	    = multi.getParameter("product_content_U");					System.out.println(product_content);
+		String product_img 	        = multi.getFilesystemName("product_img_U");					System.out.println(product_img);
+		int    product_price		= Integer.parseInt(multi.getParameter("product_price_U"));	System.out.println(product_price);
+		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount_U"));System.out.println(product_discount);
+		
+		int    product_no			= Integer.parseInt(multi.getParameter("product_no"));		System.out.println(product_no);
 
 		ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
+		
 		boolean result = ProductDao.getInstance().item_update(dto);
 
 		response.getWriter().print(result);
