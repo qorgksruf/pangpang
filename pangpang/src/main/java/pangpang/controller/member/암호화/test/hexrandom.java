@@ -20,11 +20,11 @@ public class hexrandom {
 		 
 			     
 		// 선생님이 만들어주신 것
-		long[] haxarray = new long[64];
-		String[] haxarray2 = new String[64];
-		String[] binary = new String[64];
+		long[] haxarray = new long[8];
+		String[] haxarray2 = new String[8];
+		String[] binary = new String[8];
 		      
-		for( int i = 0 ; i<=63 ; i++ ) {
+		for( int i = 0 ; i<=7 ; i++ ) {
 			       
 			String Hexadecimal = getSalt();
 			haxarray2[i]=Hexadecimal;

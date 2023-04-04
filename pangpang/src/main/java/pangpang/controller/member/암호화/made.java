@@ -1,16 +1,20 @@
 package pangpang.controller.member.암호화;
 
+import java.security.SecureRandom;
+import java.util.Arrays;
+
 public class made {
 	
 	// 초기값 H 7개 랜덤값
-	private static final int[] h = {
-			0x01d16bfc, 
-			0x5eb29b60, 
-			0x20bee500, 
-			0x78b81490, 
-			0xf62052c4, 
-			0xcf499ae1, 
-			0xb401d4b5
+	private static final int[] hash = {
+			0x7a6e4943, 
+			0x49f5d96a, 
+			0xa9e54be4, 
+			0xe9ee22de, 
+			0xe11bcaee, 
+			0x92b1f31f, 
+			0x86071c3e, 
+			0x2523b2c6
 	};
 	
 	// 초기값 K 63개 랜덤값
@@ -30,11 +34,254 @@ public class made {
 	
 	
 	public static void main(String[] args) {
-		int h2 = h[2]<<1;
-		System.out.println(Long.toBinaryString(h2));
+		//평문
+		String pwd = "abc";
+		System.out.println("pwd : "+pwd);
+		
+		// 솔트
+		String salt = "a9815071d4c7f4bd013a29a823cdad511fa03a30";
+				//getRandom(20);
+		System.out.println("salt : "+salt);
+		
+		// pre_processing
+		int[] pre_processing = pre_processing(pwd,salt);
+		System.out.println(Arrays.toString(pre_processing));
+		
+		int[] w = madeW(pre_processing);
+		System.out.println(Arrays.toString(w));
+		
+		String result = Compression(w);
+		System.out.println(result);
 	}
 	
+	public static String Compression(int[] w) {
+		int a = hash [0];
+		int b = hash [1];
+		int c = hash [2];
+		int d = hash [3];
+		int e = hash [4];
+		int f = hash [5];
+		int g = hash [6];
+		int h = hash [7];
+		System.out.println("a :"+a);	
+		System.out.println("b :"+b);		
+		System.out.println("c :"+c);		
+		System.out.println("d :"+d);		
+		System.out.println("e :"+e);		
+		System.out.println("f :"+f);		
+		System.out.println("g :"+g);
+		System.out.println("h :"+h);
+		
+		for(int i = 0; i<=63 ; i++) {
+			int sl = rightRotate(e, 6)^rightRotate(e, 11)^rightRotate(e, 25);
+			int ch = (e&f)^((~e)&g);
+			int temp1 = h+sl+ch+k[i]+w[i];
+			int s0 = rightRotate(a, 2)^rightRotate(a, 13)^rightRotate(a, 22);
+			int maj = (a&b)^(a&c)^(b&c);
+			int temp2 = s0+maj;
+			
+			h=g;
+			g=f;
+			f=e;
+			e=d+temp1;
+			d=c;
+			c=b;
+			b=a;
+			a=temp1+temp2;	
+		}
+		
+		hash[0] += a;
+		hash[1] += b;
+		hash[2] += c;
+		hash[3] += d;
+		hash[4] += e;
+		hash[5] += f;
+		hash[6] += g;
+		hash[7] += h;
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i<=7 ; i++) {
+			sb.append(Integer.toHexString(hash[i]));
+		}
+		
+		return sb.toString().trim();
+	}
 	
+	// W값 만들기
+	public static int[] madeW(int[] arr) {
+		int[] w = new int[64];
+		
+		for(int i=0;i<=15;i++) {
+			w[i]=arr[i];
+		}
+		for(int i=16 ; i<=63 ; i++) {
+			int s0 = (rightRotate(w[i-15], 7)) ^ (rightRotate(w[i-15], 18)) ^ (w[i-15]>>3);
+			int s1 = (rightRotate(w[i-2], 17)) ^ (rightRotate(w[i-2], 19)) ^ (w[i-2]>>10);
+			w[i]= w[i-16] + s0 + w[i-7] + s1;
+		}
+		
+		return w;
+	}
 	
+	//비트의 길이
+	static final int INT_BITS = 32;
+	
+	//왼쪽 회전
+	static int leftRotate(int n, int d) {
+	    return (n << d) | (n >> (INT_BITS - d));
+	}
+	
+	//오른쪽 회전
+	static int rightRotate(int n, int d) {
+	    return (n >> d) | (n << (INT_BITS - d));
+	}
+	
+	// pre_processing
+	public static int[] pre_processing(String plaintext, String salt) {
+		// 평문 + 솔트 
+        String ptext = plaintext+salt;
+        
+        // 평문 문자를 바이너리로 변환 했을때 길이
+        int plengrh = ptext.length()*8;
+        
+        // 평문 문자를 바이너리로 바꿈       
+        String binary = toBinary(ptext);
+        	//System.out.println(toBinary(ptext));
+        
+        // 남은 공간을 0으로 채움
+        String padding = padding(binary,plengrh);
+        	//System.out.println(padding(binary,plengrh));
+ 
+        // 문자의 길이를 이진수로 바꿈 (총 길이는 64bit)
+        String blengrh = String.format("%0" + 64 + "d", Integer.valueOf(toBinary(plengrh)));
+        	//System.out.println("blengrh"+blengrh);
+        
+        // 최종 pre_processing 값
+        String pre_processing = padding+blengrh;
+        	//System.out.println(pre_processing);
+        
+        // 32bit로 자르기
+        String[] subStringArray = substring(pre_processing);
+        	//System.out.println(Arrays.toString(subStringArray));
+        
+        // int로 바꾸기
+        int[] subIntArray = new int[subStringArray.length];
+        for(int i = 0 ; i<subStringArray.length ; i++) {
+        	 int binaryToDecimal = Integer.parseInt(subStringArray[i], 2);
+        	 subIntArray[i]=binaryToDecimal;
+        }
+		return subIntArray;
+	}
+
+	// 평문 -> 바이너리 (스트링 -> 바이트) 한글자씩 잘라서 바이트로 바꾸고 getBits에서 바이너리로 만듬
+    public static String toBinary(String s) {
+        byte[] bytes = s.getBytes();
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            //System.out.println(b);
+        	getBits(sb, b);
+        }
+        return sb.toString().trim();
+    }
+	
+	// 바이트 -> 바이너리
+	private static void getBits(StringBuilder sb, byte b) {
+        for (int i = 0; i < 8; i++) {
+            sb.append((b & 128) == 0 ? 0 : 1);
+            b <<= 1;
+        }
+        //sb.append(' ');
+    }
+    
+    // 빈자리 0으로 채우기
+    public static String padding(String binary,int plengrh) {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(binary); 
+    	//sb.append(' ');
+    	for(int i = 1 ; i<=(512-plengrh-64);i++) {
+    		sb.append(0);
+    		if(i%8==0) {
+    			//sb.append(' '); 
+    		}
+    	}
+    	return sb.toString().trim();
+	}
+    
+    // 문자의 길이 이진수로 만들기(10진수 -> 2진수)
+    public static String toBinary(int n)
+    {
+        if (n == 0) {
+           return "";
+        }
+        return toBinary(n / 2) + (n % 2);
+    }
+    
+    public static String[] substring(String pre_processing) {
+    	// 32비트로 자르기
+        // 배열의 크기를 구합니다.
+        int strArraySize = (int) Math.ceil((double)pre_processing.length() / 32);
+
+        // 배열을 선언합니다. 32비트로 잘린 pre_processing 들어가는 자리
+        String[] subStringArray = new String[strArraySize];
+
+        // 문자열을 순회하여 특정 길이만큼 분할된 문자열을 배열에 할당합니다.
+        int index = 0;
+        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += 32) {
+        	subStringArray[index++] =
+    		  	pre_processing.substring(startIndex, Math.min(startIndex + 32, pre_processing.length()));
+      			
+        }
+        return subStringArray;
+	}
+	
+    //salt 만들기
+    // 랜덤바이트 만들기
+ 	public static String getRandom(int n) {
+ 		
+ 		// 1. SecureRandom,byte 객체 생성
+ 		SecureRandom random = new SecureRandom();
+ 		byte[] randombyte = new byte[n];
+ 		
+ 		// 2. 난수 생성
+ 		random.nextBytes(randombyte);
+ 		
+ 		// 3. byte -> String
+ 		return byte_to_String(randombyte);
+ 		
+ 	}
+ 	
+ 	// byte -> String
+ 	public static String byte_to_String(byte[] temp) {
+ 		StringBuilder sb = new StringBuilder();
+ 		for(byte b : temp) {
+ 			sb.append(String.format("%02x", b));
+ 		}
+ 		return sb.toString();
+ 	}
+    
+    // 초기값 만들기
+	// H 만드는 방법
+	public static void hexrandomH() {
+		String[] haxarrayH = new String[8];
+		
+		for( int i = 0 ; i<=7 ; i++) {
+			String Hexadecimal = getRandom(4);
+			haxarrayH[i]= Hexadecimal;
+		}
+		
+		System.out.println(Arrays.toString(haxarrayH));
+	}
+	
+	// K 만드는 방법
+	public static void hexrandomK() {
+		String[] haxarrayK = new String[64];
+		
+		for( int i = 0 ; i<=63 ; i++) {
+			String Hexadecimal = getRandom(4);
+			haxarrayK[i]= Hexadecimal;
+		}
+		
+		System.out.println(Arrays.toString(haxarrayK));
+	}
 	
 }
