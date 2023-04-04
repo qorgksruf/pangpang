@@ -74,20 +74,33 @@ public class made2 {
 			int s6 = rightRotate(g, 3)^leftRotate(g, 11)^rightRotate(g, 23);
 			int s7 = rightRotate(h, 7)^leftRotate(h, 10)^rightRotate(h, 24);
 			
+			int ch1 = (e&f)^((~e)&g);
+			int temp1 = h+s4+ch1+k[i]+w[i];
+			int maj1 = (a&b)^(a&c)^(b&c);
+			int temp2 = s0+maj1;
 			
-			int ch = (e&f)^((~e)&g);
-			int temp1 = h+s1+ch+k[i]+w[i];
-			int maj = (a&b)^(a&c)^(b&c);
-			int temp2 = s0+maj;
+			int ch2 = (f&g)^((~f)&h);
+			int temp3 = a+s5+ch2+k[i]+w[i];
+			int maj2 = (b&c)^(b&d)^(c&d);
+			int temp4 = s1+maj2;
 			
+			int ch3 = (g&h)^((~g)&a);
+			int temp5 = b+s6+ch3+k[i]+w[i];
+			int maj3 = (c&d)^(c&e)^(d&e);
+			int temp6 = s2+maj3;
 			
-			h=g;
-			g=f;
-			f=e;
+			int ch4 = (h&a)^((~h)&b);
+			int temp7 = c+s7+ch4+k[i]+w[i];
+			int maj4 = (d&e)^(d&f)^(e&f);
+			int temp8 = s3+maj4;
+			
+			h=g+temp7;
+			g=f+temp5;
+			f=e+temp3;
 			e=d+temp1;
-			d=c;
-			c=b;
-			b=a;
+			d=temp7+temp8;
+			c=temp5+temp6;
+			b=temp3+temp4;
 			a=temp1+temp2;	
 		}
 		
@@ -119,7 +132,7 @@ public class made2 {
 			int s0 = (leftRotate(w[i-15], 5)) ^ (rightRotate(w[i-15], 25)) ^ (w[i-15]>>8);
 			int s1 = (leftRotate(w[i-1], 12)) ^ (rightRotate(w[i-1], 14)) ^ (w[i-1]>>15);
 			w[i]= w[i-16] + s0 + w[i-5] + s1;
-			System.out.println(w[i]);
+			//System.out.println(w[i]);
 		}
 		
 		return w;
