@@ -40,11 +40,11 @@ function getstockList(page){
 							<th width="10%"> 비고 </th>
 						</tr>`;	
 						
-			if(r.length<1){
+			if(r.stockList.length<1){
 				html += `<tr><td colspan="9">검색된 내용이 없습니다.</td></tr>`
 				
 			}else{
-				r.forEach((o)=>{
+				r.stockList.forEach((o)=>{
 					html += `<tr>
 								<td> ${ o.stockmanagementno} 		</td>
 								<td> ${ o.product_no} 				</td>

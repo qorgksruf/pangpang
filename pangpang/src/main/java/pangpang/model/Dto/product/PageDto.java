@@ -15,7 +15,7 @@ public class PageDto {
 	
 	private ArrayList<OrderDto>  	orderList;	// 주문 목록 
 	private ArrayList<ProductDto>   itemList;	// 제품 목록 
-	private ArrayList<ProductDto>   stockList;	// 재고 목록 
+	private ArrayList<StockDto>   stockList;	// 재고 목록 
 	
 	public PageDto() { }
 
@@ -47,7 +47,7 @@ public class PageDto {
 		this.itemList = itemList;
 	}
 
-	public PageDto(int page, int listsize, int startrow, int totalsize, int totalpage, ArrayList<ProductDto> stockList ,int btnsize, int startbtn,
+	public PageDto(int page, int listsize, int startrow, int totalsize, int totalpage, ArrayList<StockDto> stockList ,int btnsize, int startbtn,
 			int endbtn) {
 		super();
 		this.page = page;
@@ -149,11 +149,11 @@ public class PageDto {
 		this.itemList = itemList;
 	}
 
-	public ArrayList<ProductDto> getStockList() {
+	public ArrayList<StockDto> getStockList() {
 		return stockList;
 	}
 
-	public void setStockList(ArrayList<ProductDto> stockList) {
+	public void setStockList(ArrayList<StockDto> stockList) {
 		this.stockList = stockList;
 	}
 	

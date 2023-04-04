@@ -293,7 +293,7 @@ function delivery_address(){
 	}
 	console.log(info);
 	if(type==1){
-		info.pg="kcp.INIBillTst";
+		info.pg="html5_inicis";
 		
 	}else if(type==2){
 		info.pg='kakaopay';
@@ -319,13 +319,13 @@ function delivery_address(){
 						if(r=='true'){
 							cartOutAll();
 							alert('주문이 완료되었습니다.')
-							location.href="/pangpang/index.jsp";
+							location.href="/pangpang/product/product_list.jsp?cno=1";
 						}else{
 							alert('주문이 취소되었습니다.[관리자에게 문의]')
 						}
 					}
-				});
-       }
+			});
+       	}
     });
   }
   

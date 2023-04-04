@@ -42,7 +42,6 @@ function getOrderList(page){
 							
 							<th> 배송주소 </th><th> 주문회원 </th><th> 상세보기 </th>
 						</tr>`;	
-			
 			r.orderList.forEach((o)=>{
 				html += `<tr>
 							<td> ${ o.ordermanagement_no} 		</td>
@@ -68,7 +67,7 @@ function getOrderList(page){
 			}
 			html += page >= r.totalpage ? ``:
 				`<li class="page-item"><a class="page-link" onclick="getOrderList(${page+1})"> &raquo;  </a> </li>`
-				
+	
 			document.querySelector('.pagination').innerHTML = html;
 		}// success e
 	}); // ajax e	
@@ -105,7 +104,7 @@ function closemodal(){
 
 // 주문상세 출력
 function detail(ordermanagement_no){
-	
+	console.log(ordermanagement_no)
 	$.ajax({
 		url 	: "/pangpang/order",
 		method	: "get",
@@ -113,29 +112,37 @@ function detail(ordermanagement_no){
 		async	: false,
 		success	: (r)=>{
 			console.log(r)
-			let html = 	`<tr>
+			
+			let html =`<tr><td colspan="3"> 제품정보 </td></tr>`;
+			
+			r.list.forEach((o)=>{
+				html += `<tr>
+							<td rowspan="2"> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> 
+							<td colspan="2"> ${o.product_name}</td>
+						</tr>
+						<tr>
+							<td colspan="2"> ${o.product_price.toLocaleString()} 원 <span> ${o.cart_amount+o.product_unit} </span> </td>
+						</tr>`
+			})
+			html += 	`<tr>
 							<td> 결제정보 </td> 
-							<td> ${r.payment_how+" / "+r.payment_date+" / "+r.payment_price.toLocaleString()} 원 </td>
+							<td colspan="2"> ${r.payment_how+" / "+r.payment_date+" / "+r.payment_price.toLocaleString()} 원 </td>
 						</tr>					
 						<tr>
 							<td  rowspan="3"> 배송정보 </td> 
 							<td> 담당자    </td>
+							<td> <button width="50px"  type="button" > 확인 </button></td>
 						</tr>
 						<tr>
 							<td> 배달시작 : 2023-04-02 00:00:05 </td>
+							<td><button width="50px"  type="button" > 확인 </button> </td>
 						</tr>						
 						<tr>
 							<td> 배달완료 : 2023-04-02 00:00:05 </td>
+							<td><button width="50px"  type="button" > 확인 </button></td>
+							
 						</tr>`			
-			r.list.forEach((o)=>{
-				html += `<tr>
-							<td rowspan="2"> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> 
-							<td> ${o.product_name}</td>
-						</tr>
-						<tr>
-							 <td> ${o.product_price.toLocaleString()} 원 <span> ${o.cart_amount+o.product_unit} </span> </td>
-						</tr>`
-			})
+
 			document.querySelector('.orderdetail').innerHTML = html;
 			
 		}// success e

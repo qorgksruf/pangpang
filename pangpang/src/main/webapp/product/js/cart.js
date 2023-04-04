@@ -246,7 +246,7 @@ function cartOut(){
 	  }// for e
 	  
 	  // 장바구니 리스트 랜더링
-	  getCartList()
+	  location.href="/pangpang/product/cart.jsp";
 	  
 }// cartOut e
 
@@ -254,6 +254,7 @@ function cartOut(){
 function order(){
 	let orderlist = [];
 	checkboxes = document.querySelectorAll('input[name="cart"]');
+
 	cartList.forEach((o,i)=>{
 		if(checkboxes[i].checked){
 			orderlist.push(o)

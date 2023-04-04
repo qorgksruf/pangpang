@@ -10,19 +10,23 @@
 
 </head>
 <body>
-
+s
 	<%@ include file = "/header.jsp" %>	
 	
 	<div class="container">
 	
+		<h3> 품목 관리 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
+				<select class="key">
+					<option value="p.product_no">   제품번호 </option>
+					<option value="p.product_name"> 제품이름 </option>
+				</select>
 				<input  class="keyword" type="text">
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
 			</div>
 			<div>
-				<button class="registerbtn" onclick="openmodal_R()" type="button"> 카테고리 등록 </button>
 				<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
 			</div>
 		</div>
@@ -32,7 +36,13 @@
 	
 			</table>
 		</div>	
-	
+		<!-- 페이지버튼 출력 구역 -->
+		<nav class="Page navigation example">
+			 <ul class="pagination">
+			    
+			  </ul>		
+		</nav>
+		
 	</div> <!-- container e -->
 	
 	<!-- 제품 등록 모달 구역 -->
@@ -87,35 +97,33 @@
 			<div class="modal_content">
 				<form class="updateForm">
 					<div class="title"> 카테고리 
-						<select class="categorylist2">
+						<select class="categorylist2" name="category_no" >
 						
 						</select>
 					</div>		
 					<div class="title"> 제품명 
-						<input type="text" 	   name="product_name"   	class="product_name">
-					</div>		
-					<div class="checkconfirm"></div>	
+						<input type="text" 	   name="product_name_U"   	class="product_name_U">
+					</div>			
 					<div class="title"> 제품규격 
-						<input type="text" 	   name="product_option" 	class="product_option">
+						<input type="text" 	   name="product_option_U" 	class="product_option_U">
 					</div>		
 					<div class="title"> 포장단위 
-						<input type="text" 	   name="product_unit"   	class="product_unit">		
+						<input type="text" 	   name="product_unit_U"   	class="product_unit_U">		
 					</div>
 					<div class="title"> 제품상세 
-						<textarea name="product_content"   class="product_content" rows="" cols=""></textarea>		
+						<textarea name="product_content_U"   			class="product_content_U" rows="" cols=""></textarea>		
 					</div>
 					<div class="title"> 제품이미지 
-						<input type="file" 	   name="product_img"  		class="product_img">		
+						<input type="file" 	   name="product_img_U"  	class="product_img_U">		
 					</div>
 					<div class="title"> 판매가격설정
-						<input type="text" 	   name="product_price"   	class="product_price">		
+						<input type="text" 	   name="product_price_U"   class="product_price_U">		
 					</div>
 					<div class="title"> 최대할인율설정 
-						<input type="text" 	   name="product_discount"  class="product_discount">		
+						<input type="text" 	   name="product_discount_U"  class="product_discount_U">		
 					</div>
-					<div class="modalbtnbox">
-						<button onclick="item_update(pno)" class="modal_cancel btns" type="button"> 수정 </button>	
-			   			<button onclick="closemodal_U()"  class="modal_cancel btns" type="button"> 닫기 </button>
+					<div class="modalbtnbox_U">
+
 					</div>
 				</form>				
 			</div>
@@ -126,17 +134,7 @@
 	<!-- 제품 삭제 모달 구역 -->
 	<div class="modal_wrap modaldelete">	
 		<div class="modal_box_delete">
-			<!-- pno 숨겨서 js 전달 -->
-			<input type="hidden" class="pno" value="">
-			
-			<h3  class="modal_title">   해당 품목의 삭제를 진행하시겠습니까? </h3>		
-			<div class="modal_content">
-			
-			</div>
-			<div class="modalbtnbox">
-				<button onclick="item_delete(pno)" class="modal_cancel btns" type="button"> 삭제 </button>	
-		   		<button onclick="closemodal_D()"   class="modal_cancel btns" type="button"> 닫기 </button>
-			</div>	
+	
 		</div>	<!-- modal_box e -->
 	</div>	<!-- modal_wrap e -->
 	

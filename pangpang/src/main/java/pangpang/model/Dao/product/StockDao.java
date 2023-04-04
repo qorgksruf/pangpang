@@ -88,4 +88,21 @@ public class StockDao extends Dao{
 		}catch (Exception e) { System.out.println(e);}
 		return false;
 	}
+	
+	// 폐기 대상 출력 
+	public ArrayList<StockDto> getDropList() {
+		ArrayList<StockDto> list = new ArrayList<>();
+		String sql = "select product_no pno,"
+				+ "((select sum(stockmanagementamount) sale  from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '2023-03-31' and product_no = pno)"
+				+ "+(select sum(stockmanagementamount) input from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '2023-03-31' and product_no = pno)) dropamount "
+				+ "from stockmanagement group by product_no";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				
+			}
+		}catch(Exception e) {System.out.println(e);}
+		return null;
+	}
 }

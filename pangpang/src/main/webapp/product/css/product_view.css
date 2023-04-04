@@ -10,6 +10,10 @@
 .list-group{
 	width: 200px;
 }
+.list-group-item.active{
+	background-color: #79DCF2 !important;
+	border-color: #79DCF2 !important;
+}
 /* 제품 목록 출력 구역*/
 .product_view_wrap{
 	width: 100%;

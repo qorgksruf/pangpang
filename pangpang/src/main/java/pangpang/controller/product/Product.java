@@ -14,6 +14,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pangpang.model.Dao.product.ProductDao;
+import pangpang.model.Dao.product.StockDao;
+import pangpang.model.Dto.product.PageDto;
 import pangpang.model.Dto.product.ProductDto;
 
 @WebServlet("/product")
@@ -33,24 +35,34 @@ public class Product extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
 		
-		if (type == 1) {// 전체 제품 목록 가져오기
-			ArrayList<ProductDto> list = ProductDao.getInstance().getProduct();
-			json = mapper.writeValueAsString(list);
-	
-		}else if (type == 2) {// 카테고리별 제품 목록 가져오기
-			int cno = Integer.parseInt(request.getParameter("cno"));
-			ArrayList<ProductDto> list = ProductDao.getInstance().getProduct_cate(cno);
-			json = mapper.writeValueAsString(list);
-	
-		}else if (type == 3) {// 제품 1개 가져오기
+		if (type == 3) {// 제품 1개 가져오기
 			int pno = Integer.parseInt(request.getParameter("pno"));
 			ProductDto dto = ProductDao.getInstance().getProduct(pno);
 			json = mapper.writeValueAsString(dto);
+		}else {// 전체 제품 목록 가져오기// 카테고리별 제품 목록 가져오기// 검색 제품 목록 가져오기
+			int cno = Integer.parseInt(request.getParameter("cno"));
+			// --- 검색 처리 --- //		
+			String key     = request.getParameter("key");
+			String keyword = request.getParameter("keyword");						System.out.println(key+keyword);
+			// --- page 처리 --- //
+			int page     = Integer.parseInt(request.getParameter("page"));			System.out.println(page);
+			int listsize = Integer.parseInt(request.getParameter("listsize")) ;		System.out.println(listsize);
+			int startrow = (page-1)*listsize; 		
+			// --- page 버튼 만들기 --- //
+			// 1. 전체페이지수 , 2.페이지당 표시할 개수 3. 시작버튼 번호 
+			int totalsize = ProductDao.getInstance().totalsizeP(cno, key, keyword);
+			int totalpage = totalsize % listsize == 0 ? totalsize/listsize : totalsize/listsize+1 ;		
+			// 최대 페이지버튼 출력수 
+			int btnsize   = 3 ; 								
+			int startbtn  = ((page-1)/btnsize)* btnsize+1;	    
+			int endbtn    = startbtn + (btnsize - 1);					
+			// * 단 마지막 페이지버튼수가 총 페이지 수보다 커지면 X     
+			if(endbtn > totalpage) endbtn = totalpage ;
 			
-		}else if (type == 4) {// 검색된 제품 목록 가져오기 
-			String keyword = request.getParameter("keyword");
-			ArrayList<ProductDto> list =  ProductDao.getInstance().getProduct_search(keyword);
-			json = mapper.writeValueAsString(list);
+			
+			ArrayList<ProductDto> list = ProductDao.getInstance().getProductList(type, cno, key, keyword, startrow, listsize);
+			PageDto dto = new PageDto(list, page, listsize, startrow, totalsize, totalpage, btnsize, startbtn, endbtn);
+			json = mapper.writeValueAsString(dto);
 		}
 		
 		System.out.println(json);
@@ -105,18 +117,19 @@ public class Product extends HttpServlet {
  				new DefaultFileRenamePolicy()	// 동일한 첨부파일명이 존재하면 뒤에 숫자 붙여서 식별
  				);
 
- 		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));
- 		String product_name 		= multi.getParameter("product_name");		
-		String product_option 		= multi.getParameter("product_option");
-		String product_unit 	    = multi.getParameter("product_unit");
-		String product_content 	    = multi.getParameter("product_content");
-		String product_img 	        = multi.getFilesystemName("product_img");	
-		int    product_price		= Integer.parseInt(multi.getParameter("product_price"));
-		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount"));
-
-		int    product_no			= Integer.parseInt(multi.getParameter("pno"));
+ 		int    category_no			= Integer.parseInt(multi.getParameter("category_no"));	System.out.println(category_no);
+ 		String product_name 		= multi.getParameter("product_name_U");						System.out.println(product_name);
+		String product_option 		= multi.getParameter("product_option_U");					System.out.println(product_option);
+		String product_unit 	    = multi.getParameter("product_unit_U");						System.out.println(product_unit);
+		String product_content 	    = multi.getParameter("product_content_U");					System.out.println(product_content);
+		String product_img 	        = multi.getFilesystemName("product_img_U");					System.out.println(product_img);
+		int    product_price		= Integer.parseInt(multi.getParameter("product_price_U"));	System.out.println(product_price);
+		int    product_discount		= Integer.parseInt(multi.getParameter("product_discount_U"));System.out.println(product_discount);
+		
+		int    product_no			= Integer.parseInt(multi.getParameter("product_no"));		System.out.println(product_no);
 
 		ProductDto dto = new ProductDto(product_no, product_name, product_option, product_unit, product_img, product_content,product_price,product_discount, category_no);
+		
 		boolean result = ProductDao.getInstance().item_update(dto);
 
 		response.getWriter().print(result);

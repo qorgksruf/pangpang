@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.product.OrderDao;
 import pangpang.model.Dao.product.StockDao;
+import pangpang.model.Dto.product.PageDto;
 import pangpang.model.Dto.product.StockDto;
 
 
@@ -47,9 +48,10 @@ public class Stock extends HttpServlet {
 		if(endbtn > totalpage) endbtn = totalpage ;
 		
 		ArrayList<StockDto> list = StockDao.getInstance().getStockList(type,key,keyword,startrow,listsize);
+		PageDto dto = new PageDto(page, listsize, startrow, totalsize, totalpage, list, btnsize, startbtn, endbtn);
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonarray = mapper.writeValueAsString(list);
+		String jsonarray = mapper.writeValueAsString(dto);
 		
 		response.setCharacterEncoding("UTF-8");				
 		response.setContentType("appication/json");

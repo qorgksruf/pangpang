@@ -16,11 +16,13 @@
 
 	<%
 		// 1. jsp 이용한 http url 변수 호출
+		String cno = request.getParameter("cno");
 		String pno = request.getParameter("pno");
 	%>
 	 <!-- java 코드 HTML 출력  -->
 	<!-- pno 숨겨서 js 전달 -->
-	<input type="hidden" class="pno" value="<%= pno%>">
+	<input type="hidden" class="cno" value="<%=cno%>">
+	<input type="hidden" class="pno" value="<%=pno%>">
 	
 	<div class="container">
 	

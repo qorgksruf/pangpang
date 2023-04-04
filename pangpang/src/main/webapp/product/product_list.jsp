@@ -20,7 +20,7 @@
 	%>
 	 <!-- java 코드 HTML 출력  -->
 	<!-- cno 숨겨서 js 전달 -->
-	<input type="hidden" class="cno" value="<%= cno%>">
+	<input type="hidden" class="cno" value="<%=cno%>">
 	
 
 	<div class="container">
