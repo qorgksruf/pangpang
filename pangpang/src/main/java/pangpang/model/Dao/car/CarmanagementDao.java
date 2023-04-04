@@ -57,11 +57,7 @@ public class CarmanagementDao extends Dao{
 			  ps=con.prepareStatement(sql);
 			  rs=ps.executeQuery();
 			  
-<<<<<<< HEAD
-			  if(rs.next()) {
-=======
 			  if( rs.next() ) {
->>>>>>> branch 'seongbong' of https://github.com/qorgksruf/pangpang
 				  CarmanagementDto dto = new CarmanagementDto(
 		                  rs.getInt(1),
 		                  rs.getString(2),
