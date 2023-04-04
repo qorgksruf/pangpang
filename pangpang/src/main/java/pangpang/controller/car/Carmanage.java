@@ -42,13 +42,19 @@ public class Carmanage extends HttpServlet {
 		String type=request.getParameter("type");
 	
 		if(type.equals("1")) { //carmanagement 전체출력
+			
 			System.out.println("[GET] carmanage_no ::: " + request.getParameter("carmanage_no"));
 			ArrayList<CarmanagementDto>result = null;
-			if (request.getParameter("carmanage_no") != null) {
-				System.out.println("carmanage_no 값 있따 !!! " + request.getParameter("carmanage_no"));
-				result =CarmanagementDao.getInstance().getCarInfo(request.getParameter("carmanage_no"));
+			
+			if ( request.getParameter("carmanage_no") != null ) {
+				
+				int carmanage_no = Integer.parseInt( request.getParameter("carmanage_no") );
+				System.out.println("carmanage_no 값 있따 !!! " + carmanage_no );
+				result =CarmanagementDao.getInstance().getCarInfo( carmanage_no );
 				System.out.println("carmanage_no 결과값 !!! " + result);
+				
 			} else {
+				
 				result =CarmanagementDao.getInstance().carList();
 			}
 			/* CarmanagementDto dto = new CarmanagementDto(); */
@@ -146,9 +152,8 @@ public class Carmanage extends HttpServlet {
 		);
 		
 		int carmanage_no = Integer.parseInt(multi.getParameter("carmanage_no"));
-		String carmanage_img = multi.getFilesystemName("carupdate_img");
-		System.out.println("carmanage_img");
-		System.out.println(carmanage_img);
+		String carmanage_img = multi.getParameter("carmanage_img");
+			System.out.println("carmanage_img : " + carmanage_img );
 		String carmanage_use_yn =multi.getParameter("carmanage_use_yn");
 		String carmanage_finish =multi.getParameter("carmanage_finish");	
 		

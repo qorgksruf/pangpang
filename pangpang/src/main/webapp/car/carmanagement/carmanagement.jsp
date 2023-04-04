@@ -66,16 +66,29 @@
 				수정하실내용을입력해주세요
 			</h3>
 			<div class="modal_content">
-				<input name="update_number" disabled></input>
-				<input name="update_name" disabled></input>
+				<div class="namebox">
+					<input name="carmanage_number" disabled></input>
+					<input name="carmanage_name" disabled></input>
+				</div>
 				 <form class="updateForm">
-				  차이미지:        
-				      	<div class="carupdate_img">
-							<div class="cimg"	name="carupdate_img">
-							</div> 	<br>
-						</div>	      
-					 차량등록여부:    	<input name="update_use_yn" type="text">		<br>	
-		      		 차량폐기일자:    	<input name="update_finish" type="text">		<br>
+	
+				 	<table class="table updatetable">
+				 		<tr>
+				 			<td> 차이미지 </td> <td> <div name="carmanage_img" class="carmanage_img"></div> </td>
+				 		</tr>
+				 		<tr>
+				 			<td> 차량등록여부 </td> 
+				 			<td> 
+					 			<select class="carmanage_use_yn" name="carmanage_use_yn" onchange="selectChange()">
+					 				<option value="Y">Y</option>
+					 				<option value="N">N</option>
+					 			</select> 
+				 			</td>
+				 		</tr>
+				 		<tr class="carmanage_finish">
+				 			<td> 차량폐기일자 </td> <td> <input name="carmanage_finish" type="text"> </td>
+				 		</tr>
+		      		</table>
 				</form> 	
 			</div>
 			<div class="modal_btns">

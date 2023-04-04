@@ -35,7 +35,7 @@ function carList(){
                      <td style="display: none;"> ${o.carmanage_no} </td>
                      <td> ${o.carmanage_number} </td>
                      <td> ${o.carmanage_name} </td>
-                     <td><img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
+                     <td><img src="/pangpang/car/img/${ o.carmanage_img == null ? 'default.png' : o.carmanage_img }" width="100%"> </td>
                      <td> ${o.carmanage_use_yn} </td>
                      <td> <button onclick="car_update_modal_open(${o.carmanage_no})" type="button">수정</button></td>
                      <td> <button onclick="cardelete(${o.carmanage_no})" type="button">삭제</button></td>
@@ -74,7 +74,7 @@ function regi(){
          console.log(r);
       if(r=='true'){
          console.log('통신성공')
-         carList();
+         location.href="/pangpang/car/carmanagement/carmanagement.jsp"
       }else{
          console.log('통신실패')
       }
@@ -109,8 +109,9 @@ let temp_carmanage_no = 0;
 //수정버튼모달
 function car_update_modal_open (carmanage_no) {
 	console.log("car_update_modal_open !!!");
+	
+	onpenModal2();
 	console.log( carmanage_no );
-	onpenModal2( );
 	
 	temp_carmanage_no = carmanage_no;
 	
@@ -119,19 +120,38 @@ function car_update_modal_open (carmanage_no) {
 	$.ajax({
 		url:"/pangpang/carmanage",
 		method:"get",
-		data:{"type": 1, "carmanage_no": temp_carmanage_no },
+		data:{"carmanage_no": carmanage_no , type : 1 },
 		success:(r)=>{
 			console.log("car_update_modal_open ::: ");
 			console.log(r);
+			console.log( r[0].carmanage_img + "이미지입니다.")
 			
-			document.getElementsByName('update_number')[0].value = r[0].carmanage_number;
-			document.getElementsByName('update_name')[0].value = r[0].carmanage_name
-			document.getElementsByName('update_use_yn')[0].value = r[0].carmanage_use_yn;
-			document.getElementsByName('update_finish')[0].value = r[0].carmanage_finish;
-			document.querySelector('.cimg').innerHTML=r[0].carmanage_img;
+			if( r[0].carmanage_use_yn == 'N' ){
+				document.querySelector('.carmanage_finish').style.display = "inline-block";
+			}else{
+				document.querySelector('.carmanage_finish').style.display = "none";
+			}
 			
+			document.getElementsByName('carmanage_number')[0].value = r[0].carmanage_number;
+			document.getElementsByName('carmanage_name')[0].value = r[0].carmanage_name
+			document.getElementsByName('carmanage_use_yn')[0].value = r[0].carmanage_use_yn;
+			document.getElementsByName('carmanage_finish')[0].value = r[0].carmanage_finish;
+			document.querySelector('.carmanage_img').innerHTML = r[0].carmanage_img;
 		}
 	})
+}
+
+function selectChange(){
+	
+	let value = document.querySelector('.carmanage_use_yn').value;
+		console.log( value );
+	
+	if( value == 'N' ){
+		document.querySelector('.carmanage_finish').style.display = "inline-block";
+	}else{
+		document.querySelector('.carmanage_finish').style.display = "none";
+	}
+	
 }
 
 
@@ -156,14 +176,19 @@ function carupdate(){
 	
 	let updateForm = document.querySelectorAll('.updateForm')[0];
 	let updateFormData = new FormData(updateForm);
-	updateFormData.set('carmanage_no', temp_carmanage_no);
-	/*updateFormData.set('carmanage_img', document.getElementsByName('update_img')[0].value);*/
-	updateFormData.set('carmanage_use_yn', document.getElementsByName('update_use_yn')[0].value);
-	updateFormData.set('carmanage_finish', document.getElementsByName('update_finish')[0].value);
 	
+	let carmanage_img = document.querySelector('.carmanage_img').innerHTML
+		console.log( carmanage_img );
+	
+	updateFormData.set('carmanage_no', temp_carmanage_no);
+	updateFormData.set('carmanage_img', carmanage_img )
+	
+	// updateFormData.set('carmanage_img', document.getElementsByName('update_img')[0].value);
+	// updateFormData.set('carmanage_use_yn', document.getElementsByName('update_use_yn')[0].value);
+	// updateFormData.set('carmanage_finish', document.getElementsByName('update_finish')[0].value);
 	
 	console.log("console.log(updateFormData) 확인")
-	console.log(updateFormData)
+	console.log( updateFormData )
 	
 /*	console.log(" updateFormData ::: ");
 	console.log(updateFormData);
@@ -191,7 +216,7 @@ function carupdate(){
          console.log(r);
          if(r=='true'){
             alert('수정성공');
-            carList();
+            location.href="/pangpang/car/carmanagement/carmanagement.jsp"
          }else{
             alert('수정실패')
          }
