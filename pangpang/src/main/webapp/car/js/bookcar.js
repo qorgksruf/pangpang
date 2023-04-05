@@ -83,6 +83,7 @@ function confirm(carmanage_no){
 			console.log(r);
 			if(r=="true"){
 				alert("배차신청완료");
+				booklist();
 			}else{
 				alert("배차신청실패");
 			}
@@ -95,7 +96,6 @@ function confirm(carmanage_no){
 
 //배차관리테이블출력
 //console.log(memberInfo.member_no) //로그인한 회원정보 호출
-
 let info={
 	type:2,
 	login:memberInfo.member_no

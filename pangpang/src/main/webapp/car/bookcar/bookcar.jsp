@@ -34,9 +34,9 @@
 		</div>
 
 		<!-- 배차확인용테이블 -->
-<!-- - 		<table class="booktable" style="border: 1px solid black;">
+		<table class="booktable" style="border: 1px solid black;">
 
-		</table> -->
+		</table> 
 		
 		
 	<!--jquery -->

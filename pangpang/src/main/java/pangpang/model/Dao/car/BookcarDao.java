@@ -128,7 +128,10 @@ public class BookcarDao extends Dao{
 		   //배차테이블 전체출력 한번 만들어보기만 함 (테스트용임)
 		  public ArrayList<BookcarDto>bookcarlist(){
 		      ArrayList<BookcarDto>list = new ArrayList<>();
-		      String sql="select * from bookcar;";
+		      String sql="select *from bookcar;\r\n"
+		      		+ "select * from member;\r\n"
+		      		+ "select*from carmanage;\r\n"
+		      		+ "select *from bookcar b, carmanage c, member m;;";
 		      try {
 		         ps=con.prepareStatement(sql);
 		         rs=ps.executeQuery();
