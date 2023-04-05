@@ -92,9 +92,12 @@ public class made1 {
 		hash[6] += g;
 		hash[7] += h;
 		
+		System.out.println(Arrays.toString(hash));
+		
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i<=7 ; i++) {
 			sb.append(Integer.toHexString(hash[i]));
+			System.out.println(Integer.toHexString(hash[i]));
 		}
 		
 		return sb.toString().trim();
@@ -154,7 +157,7 @@ public class made1 {
         	//System.out.println(pre_processing);
         
         // 32bit로 자르기
-        String[] subStringArray = substring(pre_processing);
+        String[] subStringArray = substring(pre_processing,32);
         	//System.out.println(Arrays.toString(subStringArray));
         
         // int로 바꾸기
@@ -209,19 +212,19 @@ public class made1 {
         return toBinary(n / 2) + (n % 2);
     }
     
-    public static String[] substring(String pre_processing) {
+    public static String[] substring(String pre_processing, int length) {
     	// 32비트로 자르기
         // 배열의 크기를 구합니다.
-        int strArraySize = (int) Math.ceil((double)pre_processing.length() / 32);
+        int strArraySize = (int) Math.ceil((double)pre_processing.length() / length);
 
         // 배열을 선언합니다. 32비트로 잘린 pre_processing 들어가는 자리
         String[] subStringArray = new String[strArraySize];
 
         // 문자열을 순회하여 특정 길이만큼 분할된 문자열을 배열에 할당합니다.
         int index = 0;
-        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += 32) {
+        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += length) {
         	subStringArray[index++] =
-    		  	pre_processing.substring(startIndex, Math.min(startIndex + 32, pre_processing.length()));
+    		  	pre_processing.substring(startIndex, Math.min(startIndex + length, pre_processing.length()));
       			
         }
         return subStringArray;

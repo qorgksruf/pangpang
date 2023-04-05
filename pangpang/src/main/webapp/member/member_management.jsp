@@ -38,6 +38,7 @@
 				</td>
 			</tr>
 		</table>
+		<button type="button" onclick="start()">시작</button>
 	</div>
 	<!-- 모달 HTML -->
 	<div class="modal_wrap">
