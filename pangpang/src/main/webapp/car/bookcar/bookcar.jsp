@@ -18,7 +18,7 @@
 		<div class="container">
 				
 			
- 			<table class="carchoice" style="border: 1px solid black;">
+ 			<table class="table carchoice">
 			
 			
 			</table> 
@@ -34,7 +34,7 @@
 		</div>
 
 		<!-- 배차확인용테이블 -->
-		<table class="booktable" style="border: 1px solid black;">
+		<table class="table booktable">
 
 		</table> 
 		

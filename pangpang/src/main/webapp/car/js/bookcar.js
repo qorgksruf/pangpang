@@ -112,28 +112,29 @@ function booklist(){
 		success:(r)=>{
 			console.log("통신성공");
 			console.log(r);
-            let html = `<tr> 
-            			   <th width="30%"> 회원번호pk </th>    
-                           <th width="30%"> 차량일련번호pk </th>
-                           <th width="30%"> 배차pk </th>
-                           <th width="30%"> 배차시작시간 </th>
-                           <th width="30%"> 배차끝시간 </th>
-                           <th width="30%"> 배차승인여부 </th>
+			  let html = `<tr> 
+                        <th width="10%"> 번호</th>    
+                           <th width="10%"> 사원명 </th>
+                           <th width="10%"> 차일련번호 </th>
+                           <th width="25%"> 차이미지 </th>
+                           <th width="10%"> 배차시작날짜 </th>
+                           <th width="10%"> 배차종료날짜 </th>
+                           <th width="25%"> 비고 </th>
                      </tr>`
-            r.forEach((o)=>{
+            r.forEach((o, i)=>{
                html +=`                  
                   <tr>
-                  	<td> ${o.member_no} </td>   
-                  	<td> ${o.carmanage_no} </td>
-                     <td> ${o.bookcar_no} </td>
+                	 <td> ${i+1} </td> 
+                 	 <td> ${o.member_name} </td> 
+                     <td> ${o.carmanage_number} </td>   
+                     <td> <img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
                      <td> ${o.bookcar_str_date} </td>
-                     <td> ${o.bookcar_end_date} </td>
-                   	 <td> ${o.bookcar_yn} </td>
-                     <td> <button onclick="bookcarmemo()" type="button">메모보기</button>
-                   		<button onclick="application()" type="button">신청하기</button> </td>           	
-                  </tr>` 				
-			})       
-			document.querySelector('.booktable').innerHTML=html;
+                     <td> ${o.bookcar_end_date} </td>   
+                     <td> <button onclick="bookcarmemo()" type="button">수락</button>
+                         <button onclick="application()" type="button">반려</button> </td>              
+                  </tr>`             
+         })       
+         document.querySelector('.booktable').innerHTML=html;
 		}
 	})
 	
