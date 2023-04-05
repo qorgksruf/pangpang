@@ -40,7 +40,7 @@ function getOrderList(page){
 								</select>
 							</th>
 							
-							<th> 배송주소 </th><th> 주문회원 </th><th> 상세보기 </th>
+							<th> 배송주소 </th><th> 주문회원 </th><th> 상세보기 </th><th> 상태변경 </th>
 						</tr>`;	
 			r.orderList.forEach((o)=>{
 				html += `<tr>
@@ -55,6 +55,17 @@ function getOrderList(page){
 							<td> ${o.ordermanagement_address} 	</td>
 							<td> ${o.member_id} 			  	</td>
 							<td> <button onclick="openmodal(${ o.ordermanagement_no})" type="button"> 상세보기 </button></td>
+							<td> 
+								<select class="ordermanagement_state_change${o.ordermanagement_no}">
+									<option value="1">  결제확인중  </option>
+									<option value="2">  결제확인 	 </option>
+									<option value="3">  배송지연 	 </option>
+									<option value="4">  배송중 	 </option>
+									<option value="5">  배송완료 	 </option>
+									<option value="6">  거래완료 	 </option>
+								</select>
+								<button onclick="updateState(${ o.ordermanagement_no})" type="button"> 변경 </button>					
+							</td>
 						</tr>`;
 				});
 			document.querySelector('.orderlist').innerHTML = html ;
@@ -136,6 +147,23 @@ function detail(ordermanagement_no){
 
 }
 
+// 주문상태변경
+function updateState(ordermanagement_no){
 
+	let state = document.querySelector(`.ordermanagement_state_change${ordermanagement_no}`).value;
+
+	$.ajax({
+		url 	: "/pangpang/order",
+		method	: "put",
+		data 	: {"ordermanagement_no":ordermanagement_no, "state":state},
+		async	: false,
+		success	: (r)=>{
+			console.log(r)
+			if(r=='true'){alert('변경 성공하였습니다.');getOrderList(1);}
+			else{alert('변경 실패하였습니다.')}
+		}
+	});
+	
+}
 
 
