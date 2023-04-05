@@ -208,16 +208,30 @@ public class MemberDao extends Dao{
 	}
 	
 	// 13. 비밀번호 변경
-		public boolean updatepwd(String member_npwd,String member_id,String member_pwd) {
-			String sql = "update member set member_pwd=? where member_id=? and member_pwd=?;";
-			try {
-				ps = con.prepareStatement(sql);
-				ps.setString( 1 , member_npwd );
-				ps.setString( 2 , member_id );
-				ps.setString( 3 , member_pwd );
-				int cnt = ps.executeUpdate();
-				if(cnt==1) {return true;}
-			}catch (Exception e) {System.out.println(e);}
-			return false;
-		}
+	public boolean updatepwd(String member_npwd,String member_id,String member_pwd) {
+		String sql = "update member set member_pwd=? where member_id=? and member_pwd=?;";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , member_npwd );
+			ps.setString( 2 , member_id );
+			ps.setString( 3 , member_pwd );
+			int cnt = ps.executeUpdate();
+			if(cnt==1) {return true;}
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	// 14. 마지막 로그인 날짜
+	public String logindate( String member_id ) {
+		String sql = "select member_login from member where member_id='"+member_id+"';";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
+	
 }

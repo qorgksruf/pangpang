@@ -1,6 +1,11 @@
 package pangpang.controller.member;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.MemberDto;
+import pangpang.model.Dto.member.SaltDto;
 
 
 /**
@@ -56,21 +62,67 @@ public class Login extends HttpServlet {
 		String member_pwd = request.getParameter("member_pwd");
 		String member_id = request.getParameter("member_id");
 		
+		// 저장된 솔트 꺼내기
+		ArrayList<SaltDto> salts = new ArrayList<>();
 		
+		try {
+			File file = new File("c:/java/salt.txt");
+	        FileReader file_reader = new FileReader(file);
+	        BufferedReader bufReader = new BufferedReader(file_reader);
+	        String line = "";
+	        
+	        while ((line = bufReader.readLine()) != null) {
+	          System.out.println("한줄 : " +line);
+	          String[] saltArr = line.split(",");
+	          SaltDto dto = new SaltDto(saltArr[0], saltArr[1]);
+	          salts.add(dto);
+	        }
+	        bufReader.close();
+				
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
-		madesha.sha(member_pwd, member_id);
-			// 2. DAO 호출해서 요청데이터를 보내서 결과 얻기 
-			String result = MemberDao.getInstance().login( member_id , member_pwd );
-			if( result != null ) {
-				request.getSession().setAttribute( "login", member_id );
-				request.getSession().setAttribute( "rank", result );
+		// 마지막로그인 날짜 가져오기
+		String logindate = MemberDao.getInstance().logindate(member_id);
+		//System.out.println("logindate : "+logindate);
+		
+		// 솔트리스트에서 해당하는 솔트 찾기
+		int cnt = 0;
+		for(int i = 0 ; i<salts.size();i++) {
+			System.out.println("날짜비교 : " + salts.get(i).getSdate().compareTo(logindate));
+			if(salts.get(i).getSdate().compareTo(logindate)<0) {
+				cnt=i;
+			}else if(salts.get(i).getSdate().compareTo(logindate)>0){
+				cnt=i-1;
+				break;
+			}else {
+				cnt=i;
+				break;
 			}
-		System.out.println( request.getSession().getAttribute("login"));
-		System.out.println( request.getSession().getAttribute("rank"));
+		}
+		System.out.println("cnt :"+cnt);
+		String salt = salts.get(cnt).getSalt();
+		System.out.println(salt);
+		String sha = madesha.sha(member_pwd, salt);
+		System.out.println(sha);
+		
 		// 2. DAO 호출해서 요청데이터를 보내서 결과 얻기 
-		result = MemberDao.getInstance().login( member_id , member_pwd );
-		// 3. Dao 받은 결과를 AJAX에게 전달 
-		response.getWriter().print(result);
+		String result = MemberDao.getInstance().login( member_id , sha );
+		if( result != null ) {
+			request.getSession().setAttribute( "login", member_id );
+			request.getSession().setAttribute( "rank", result );
+			System.out.println(salts.get(salts.size()-1).getSalt());
+			String salt2 = salts.get(salts.size()-1).getSalt();
+			String sha2 = madesha.sha(member_pwd, salt2);
+			boolean result2 = MemberDao.getInstance().updatepwd(sha2, member_id, sha);
+			if(result2) {
+				// 3. Dao 받은 결과를 AJAX에게 전달 
+				response.getWriter().print(result);
+			}
+		}
+		System.out.println( request.getSession().getAttribute("login"));
+		System.out.println( request.getSession().getAttribute("rank"));	
 	}
 
 	/**

@@ -35,11 +35,11 @@ public class made2 {
 	
 	public static void main(String[] args) {
 		//평문
-		String pwd = "abc";
+		String pwd = "bnm123";
 		System.out.println("pwd : "+pwd);
 		
 		// 솔트
-		String salt = "a9815071d4c7f4bd013a29a823cdad511fa03a30";
+		String salt = "800996ecdbd5afd8d9f47a9d635120f5ca158417";
 				//getRandom(20);
 		System.out.println("salt : "+salt);
 		
@@ -66,12 +66,38 @@ public class made2 {
 		int h = hash [7];
 		
 		for(int i = 0; i<=63 ; i++) {
+			int sl = rightRotate(e, 6)^rightRotate(e, 11)^rightRotate(e, 25);
+			int ch = (e&f)^((~e)&g);
+			int temp1 = h+sl+ch+k[i]+w[i];
+			int s0 = rightRotate(a, 2)^rightRotate(a, 13)^rightRotate(a, 22);
+			int maj = (a&b)^(a&c)^(b&c);
+			int temp2 = s0+maj;
 			
+			h=g;
+			g=f;
+			f=e;
+			e=d+temp1;
+			d=c;
+			c=b;
+			b=a;
+			a=temp1+temp2;	
 		}
+		
+		hash[0] += a;
+		hash[1] += b;
+		hash[2] += c;
+		hash[3] += d;
+		hash[4] += e;
+		hash[5] += f;
+		hash[6] += g;
+		hash[7] += h;
+		
+		//System.out.println(Arrays.toString(hash));
 		
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i<=7 ; i++) {
 			sb.append(Integer.toHexString(hash[i]));
+			//System.out.println(Integer.toHexString(hash[i]));
 		}
 		
 		return sb.toString().trim();

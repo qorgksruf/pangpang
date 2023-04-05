@@ -36,10 +36,10 @@ public class madesha {
 	public static String sha(String password, String salt){
 		// pre_processing
 		int[] pre_processing = pre_processing(password,salt);
-		System.out.println(Arrays.toString(pre_processing));
+		//System.out.println(Arrays.toString(pre_processing));
 		
 		int[] w = madeW(pre_processing);
-		System.out.println(Arrays.toString(w));
+		//System.out.println(Arrays.toString(w));
 		
 		String result = Compression(w);
 		System.out.println(result);
@@ -84,12 +84,12 @@ public class madesha {
 		hash[6] += g;
 		hash[7] += h;
 		
-		System.out.println(Arrays.toString(hash));
+		//System.out.println(Arrays.toString(hash));
 		
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i<=7 ; i++) {
 			sb.append(Integer.toHexString(hash[i]));
-			System.out.println(Integer.toHexString(hash[i]));
+			//System.out.println(Integer.toHexString(hash[i]));
 		}
 		
 		return sb.toString().trim();
