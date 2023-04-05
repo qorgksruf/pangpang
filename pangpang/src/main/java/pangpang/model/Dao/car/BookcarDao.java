@@ -96,6 +96,8 @@ public class BookcarDao extends Dao{
 			
 			boolean result = bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date);
 			
+			System.out.println("book bookCheck result ::: " + result);
+			
 			try {
 				
 				if ( result ) {
@@ -103,7 +105,7 @@ public class BookcarDao extends Dao{
 					ps = con.prepareStatement(sql);
 					ps.setString(1, bookcar_str_date);
 					ps.setString(2, bookcar_end_date);
-					ps.setString(3, "N");
+					ps.setString(3, null);
 					ps.setInt(4, carmanage_no);
 					ps.setInt(5, mno);
 					
@@ -129,7 +131,7 @@ public class BookcarDao extends Dao{
 		  public ArrayList<BookcarDto>bookcarlist(){
 		      ArrayList<BookcarDto>list = new ArrayList<>();
 		      String sql="select b.*, c.carmanage_img, c.carmanage_number, m.member_name from member m, carmanage c, bookcar b\r\n"
-		      			+ "where c.carmanage_no =b.carmanage_no and m.member_no= b.member_no and bookcar_yn=\"N\"; ";
+		      			+ "where c.carmanage_no =b.carmanage_no and m.member_no= b.member_no and bookcar_yn is null; ";
 		      try {
 		         ps=con.prepareStatement(sql);
 		         rs=ps.executeQuery();
@@ -152,6 +154,22 @@ public class BookcarDao extends Dao{
 		      }
 		      return list;
 		   }
+		  
+		  public void bookcarUpdate(String bookcar_yn, int bookcar_no) {
+			  String sql = "UPDATE BOOKCAR SET BOOKCAR_YN = \"" + bookcar_yn + "\" WHERE BOOKCAR_NO = "+bookcar_no;
+			  
+			  try {
+				  	ps=con.prepareStatement(sql);
+
+				  	System.out.println("BookcarDao.java bookcarUpdate sql ::: " + sql);
+				  
+				  	ps.executeUpdate();
+					
+				  
+			} catch (Exception e) {
+				System.out.println("bookcarUpdate의 전체출력"+e);
+			}
+		  }
 		
 		
 		

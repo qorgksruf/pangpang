@@ -28,6 +28,12 @@ public class BookcarDto {
 		super();
 	}
 	
+	public BookcarDto(int bookcar_no, String bookcar_yn) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_yn = bookcar_yn;
+	}
+
 	//풀생성자
 	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
 			int carmanage_no, int member_no) {

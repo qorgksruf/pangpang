@@ -63,8 +63,15 @@ public class bookcar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String bookcar_yn = request.getParameter("bookCar_yn");
+		System.out.println("bookcar.java doPost bookCar_yn ::: " + bookcar_yn);
+		
+		int bookcar_no = Integer.parseInt(request.getParameter("bookCar_no")) ;
+		System.out.println("bookcar.java doPost bookCar_no ::: " + bookcar_no);
+		
+		BookcarDao.getInstance().bookcarUpdate(bookcar_yn, bookcar_no);
+		
+		System.out.println("-- doPost 종료 --");
 	}
 
 }
