@@ -43,6 +43,13 @@ public class StockDto {
 		this.product_price = product_price;
 		this.product_no = product_no;
 	}
+	
+	public StockDto(int stockmanagementamount, int product_no) {
+		super();
+		this.stockmanagementamount = stockmanagementamount;
+		this.product_no = product_no;
+	}
+	
 	@Override
 	public String toString() {
 		return "StockDto [stockmanagementno=" + stockmanagementno + ", stockmanagementdate=" + stockmanagementdate

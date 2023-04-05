@@ -71,10 +71,7 @@
 			
 			<h3> 주문목록 </h3>
 			<table  class="table receiver_info">
-				<tr>
-					<th width="10%"> 주문번호	  </th> 
-					<td class="receiver_name">  123456 </td>
-				</tr>
+					
 			</table>
 		</div>
 	<script type="text/javascript" src="/pangpang/member/js/mypage.js"></script>

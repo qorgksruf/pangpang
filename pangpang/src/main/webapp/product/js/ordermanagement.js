@@ -127,20 +127,6 @@ function detail(ordermanagement_no){
 			html += 	`<tr>
 							<td> 결제정보 </td> 
 							<td colspan="2"> ${r.payment_how+" / "+r.payment_date+" / "+r.payment_price.toLocaleString()} 원 </td>
-						</tr>					
-						<tr>
-							<td  rowspan="3"> 배송정보 </td> 
-							<td> 담당자    </td>
-							<td> <button width="50px"  type="button" > 확인 </button></td>
-						</tr>
-						<tr>
-							<td> 배달시작 : 2023-04-02 00:00:05 </td>
-							<td><button width="50px"  type="button" > 확인 </button> </td>
-						</tr>						
-						<tr>
-							<td> 배달완료 : 2023-04-02 00:00:05 </td>
-							<td><button width="50px"  type="button" > 확인 </button></td>
-							
 						</tr>`			
 
 			document.querySelector('.orderdetail').innerHTML = html;

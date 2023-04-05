@@ -1,8 +1,10 @@
 package pangpang.model.Dao.product;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
+import pangpang.model.Dto.product.CartDto;
 import pangpang.model.Dto.product.OrderDto;
 import pangpang.model.Dto.product.StockDto;
 
@@ -90,19 +92,41 @@ public class StockDao extends Dao{
 	}
 	
 	// 폐기 대상 출력 
-	public ArrayList<StockDto> getDropList() {
+	public ArrayList<StockDto> getDropList(String date) {
 		ArrayList<StockDto> list = new ArrayList<>();
-		String sql = "select product_no pno,"
-				+ "((select sum(stockmanagementamount) sale  from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '2023-03-31' and product_no = pno)"
-				+ "+(select sum(stockmanagementamount) input from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '2023-03-31' and product_no = pno)) dropamount "
-				+ "from stockmanagement group by product_no";
+		String sql = "select product_no pno, "
+				+ "((select ifnull(sum(stockmanagementamount),0) input from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '"+date+"' and product_no = pno)"
+				+ "+(select ifnull(sum(stockmanagementamount),0) sale  from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '"+date+"' and product_no = pno)"
+				+ "+(select ifnull(sum(stockmanagementamount),0) drop  from stockmanagement where stockmanagementtype = 3 and stockmanagementdate    < '"+date+"' and product_no = pno)) dropamount "
+				+ "from stockmanagement group by product_no;";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				
+				if(rs.getInt(2) != 0) {
+						StockDto dto = new StockDto(rs.getInt(2), rs.getInt(1));
+						list.add(dto);
+				}
 			}
+			return list;
 		}catch(Exception e) {System.out.println(e);}
 		return null;
+	}
+	
+	// 폐기 처리
+	public boolean drop(ArrayList<StockDto>list) {
+		String sql = "";
+		try{
+			for(StockDto d : list) {
+				System.out.println(d);
+				sql = "insert into stockmanagement (stockmanagementtype,stockmanagementcompany,stockmanagementamount,product_price,product_no) "
+					+ "values (3, \"(주)이젠위생\" , -"+d.getStockmanagementamount()+",1000,"+d.getProduct_no()+")";
+				
+				ps = con.prepareStatement(sql);	
+				ps.executeUpdate(sql);					
+			}
+		return true;
+		}catch(Exception e) {System.out.println(e);}
+		return false;
 	}
 }

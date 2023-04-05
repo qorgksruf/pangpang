@@ -58,25 +58,24 @@
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 제품관리 </button> 
 					<ul class="dropdown-menu">	
-						<li><a class="dropdown-item" href="/pangpang/product/item_list.jsp">  품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
+						<li><a class="dropdown-item" href="/pangpang/product/item_list.jsp">  		품목관리	</a></li>   <!-- 카테고리/제품 CRUD -->
 						<li><a class="dropdown-item" href="/pangpang/product/stockmanagement.jsp">  재고관리	</a></li>	<!-- 입고/ 주문결제완료시 출고처리 / 폐기일자도달 재고 팝업? 폐기 버튼 -->
-						<li><a class="dropdown-item" href="#">  폐기내역	</a></li>   <!-- 폐기내역 출력 -->
+						<li><a class="dropdown-item" href="/pangpang/product/dropmanagement.jsp">   폐기내역	</a></li>   <!-- 폐기내역 출력 -->
 					</ul>
 				</div>	
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 주문관리 </button> 
 					<ul class="dropdown-menu">	
 						<li><a class="dropdown-item" href="/pangpang/product/ordermanagement.jsp">  주문관리	</a></li>	<!-- 주문 내역 출력 / 상태 변경  -->
-						<li><a class="dropdown-item" href="#">  배송관리	</a></li>	<!-- 배송 내역 출력 / 배송 차량 정보 및 배송 경로 / ????? 운행내역에 포함 ???? -->
 					</ul>
 				</div>	
 				<div class="dropdown">
 					<button type="button" data-bs-toggle="dropdown"> 차량관리 </button>  
 					<ul class="dropdown-menu">	
 						<li><a class="dropdown-item" href="/pangpang/car/carmanagement/carmanagement.jsp">  차량관리	</a></li>	<!-- 신규 사내 차량 등록 -->
-						<li><a class="dropdown-item" href="/pangpang/car/bookcar/bookcar.jsp">  배차신청	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
-						<li><a class="dropdown-item" href="/pangpang/map/map.jsp"> 	배송지설정	</a></li>	<!-- 지도API 활용한 배송지 경로설정 -->
-						<li><a class="dropdown-item" href="/pangpang/car/drivecar/drivecar.jsp"> 	운영관리	</a></li>	<!-- 차량 운행 내역 --> 
+						<li><a class="dropdown-item" href="/pangpang/car/bookcar/bookcar.jsp">  			배차신청	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
+						<li><a class="dropdown-item" href="/pangpang/map/map.jsp"> 							배송지설정	</a></li>	<!-- 지도API 활용한 배송지 경로설정 -->
+						<li><a class="dropdown-item" href="/pangpang/car/drivecar/drivecar.jsp"> 			운영관리	</a></li>	<!-- 차량 운행 내역 --> 
 						<li><a class="dropdown-item" href="#"> 	폐차관리	</a></li>	<!-- 차량 폐기 등록 / 폐기 내역 출력 --> 
 					</ul>
 				</div>

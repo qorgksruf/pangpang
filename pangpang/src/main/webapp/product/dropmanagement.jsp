@@ -12,14 +12,11 @@
 	
 	<div class="container">
 		<h3> 금일 폐기 대상 목록 </h3>
+		<button type="button" onclick="drop()"> 폐기 </button>
 		<!-- 폐기 대상 출력 구역 -->
 		<div class="droplistbox">
 			<table class="droplist table table-hover" >
-				<tr>
-					<th width="10%"> 제품번호 		</th> 
-					<th width="10%"> 수량 		</th>
-					<th width="10%"> 비고 		</th>
-				</tr>
+
 			</table>
 		</div>	
 	</div> <!-- container e -->

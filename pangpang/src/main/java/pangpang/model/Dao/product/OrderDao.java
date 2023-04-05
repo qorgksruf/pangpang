@@ -105,7 +105,7 @@ public class OrderDao extends Dao{
 		String sql = "";
 		if(key.equals("key") && keyword.equals("keyword")) {
 			if(type==-1) { 		// -1: 로그인 회원 주문			
-				sql = "select o.*, member_id from ordermanagement o natural join member where member_no = "+mno+" order by ordermanagement_no desc limit "+startrow+","+listsize;
+				sql = "select o.*, member_id from ordermanagement o natural join member where member_no = "+mno+" order by ordermanagement_no desc ";
 			}else if(type==0) { //  0: 전체 주문
 				sql = "select o.*, member_id from ordermanagement o natural join member order by ordermanagement_no desc limit "+startrow+","+listsize;
 			}else{              //  1: 결제확인중/2:결제확인/3:배송지연/4:배송중/5:배송완료/6:거래완료/  

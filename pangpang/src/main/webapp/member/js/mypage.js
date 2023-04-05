@@ -100,3 +100,83 @@ function updatepwd(){
 		} // success end 
 	}) // ajax end 
 }
+
+
+// * pageObject : 현재페이지, 검색, 전송타입 보관된 객체 
+let pageObject = {
+	page 	 : 1,
+	key 	 : "key",
+	keyword  : "keyword", 
+	type 	 : -1,
+	listsize : 10,
+	mno		 : 0,
+}
+getOrderList()
+// 주문 내역 
+function getOrderList(){
+	pageObject.mno = memberInfo.member_no;	
+	$.ajax({
+		url 	: "/pangpang/order",
+		method	: "get",
+		data 	: pageObject,
+		success	: (r)=>{
+			console.log(r)
+			let html = ``;
+			r.orderList.forEach((o)=>{
+				 html += `<table class="item">
+				 		<tr>
+							<th width="10%"> 주문번호	  </th> 
+							<td >  ${o.ordermanagement_no} </td>
+						</tr>
+						<tr>
+							<th width="10%"> 주문일자	  </th> 
+							<td >  ${o.ordermanagement_date} </td>
+						</tr>				
+						<tr>
+							<th width="10%"> 주문상태	  </th> 
+							<td > ${ o.ordermanagement_state==1?'결제확인중':
+									o.ordermanagement_state==2?'결제확인':
+									o.ordermanagement_state==3?'배송지연':
+									o.ordermanagement_state==4?'배송중':
+									o.ordermanagement_state==5?'배송완료':'거래완료'
+							} </td>
+						</tr>`;
+								
+				$.ajax({
+					url 	: "/pangpang/order",
+					method	: "get",
+					data 	: {"type":-2,"ordermanagement_no":o.ordermanagement_no},
+					async	: false,
+					success	: (r)=>{
+						console.log(r)
+						
+						r.list.forEach((o)=>{
+							html += `<tr>
+										<td rowspan="2"> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> 
+										<td > ${o.product_name}</td>
+									</tr>
+									<tr>
+										<td > ${o.product_price.toLocaleString()} 원 <span> ${o.cart_amount+o.product_unit} </span> </td>
+									</tr>`
+						})
+						
+						html += 	`<tr>
+										<th> 결제정보 </th> 
+										<td > ${r.payment_how+" / "+r.payment_date+" / "+r.payment_price.toLocaleString()} 원 </td>
+									</tr>
+									</table>`
+																			
+						}// success e
+					}); // ajax e
+					
+			})
+			document.querySelector('.receiver_info').innerHTML = html;
+		}// success e
+	});	// ajax e
+}		
+			
+			
+			
+			
+			
+			
