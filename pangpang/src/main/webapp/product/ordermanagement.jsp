@@ -28,7 +28,7 @@
 				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
 			</div>
 		</div>
-		<!-- 품목 출력 구역 -->
+		<!-- 주문 내역 출력 구역 -->
 		<div class="orderlistbox">
 			<table class="orderlist table table-hover" >
 
