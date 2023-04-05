@@ -26,14 +26,14 @@ public class ScheduledThread extends Thread{
 			public void run(){
 				try {
 					Date date = new Date();
-					final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+					final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 					System.out.println(simpleDateFormat.format(date));
 					String date2 = simpleDateFormat.format(date);
 					
 					String salt = getRandom(20);
 					
 					OutputStream output = new FileOutputStream("c:/java/salt.txt", true);
-				    String str = salt+","+date2+"/";
+				    String str = salt+","+date2+"\n";
 				    System.out.println(str);
 				    byte[] by=str.getBytes();
 				    output.write(by);
@@ -43,7 +43,7 @@ public class ScheduledThread extends Thread{
 					e.printStackTrace();
 					// 에러 발생시 Executor를 중지시킨다
 					exec.shutdown() ;
-				}
+				} 
 			}
 		}, 0, sleepSec, TimeUnit.SECONDS);
 	}

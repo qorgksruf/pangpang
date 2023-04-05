@@ -64,7 +64,7 @@ public class MemberDao extends Dao{
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				Date date = new Date();
-				final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+				final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 				System.out.println(simpleDateFormat.format(date));
 				sql = "update member set member_login='"+simpleDateFormat.format(date)+"'where member_id='"+member_id+"';";
 				ps = con.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class MemberDao extends Dao{
 	
 	
 	
-	
+	 
 	// 5. 로그인한 회원 정보찾기
 	public MemberDto getMember( int member_no ) {
 		String sql = "select member_no, member_name, member_id, member_email, member_phone, member_address, member_birth, member_rank "
