@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.MemberDto;
 
@@ -53,15 +54,16 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. AJAX에게 데이터 요청
 		String member_pwd = request.getParameter("member_pwd");
-		String member_id = "";
+		String member_id = request.getParameter("member_id");
 		
-			member_id = request.getParameter("member_id");
+		
+		
+		madesha.sha(member_pwd, member_id);
 			// 2. DAO 호출해서 요청데이터를 보내서 결과 얻기 
 			String result = MemberDao.getInstance().login( member_id , member_pwd );
 			if( result != null ) {
 				request.getSession().setAttribute( "login", member_id );
 				request.getSession().setAttribute( "rank", result );
-				
 			}
 		System.out.println( request.getSession().getAttribute("login"));
 		System.out.println( request.getSession().getAttribute("rank"));

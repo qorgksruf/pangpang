@@ -3,7 +3,7 @@ package pangpang.controller.member.암호화;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
-public class made1 {
+public class madesha {
 	
 	// 초기값 H 7개 랜덤값
 	private static final int[] hash = {
@@ -33,18 +33,9 @@ public class made1 {
 	};
 	
 	
-	public static void main(String[] args) {
-		//평문
-		String pwd = "abc";
-		System.out.println("pwd : "+pwd);
-		
-		// 솔트
-		String salt = "a9815071d4c7f4bd013a29a823cdad511fa03a30";
-				//getRandom(20);
-		System.out.println("salt : "+salt);
-		
+	public static String sha(String password, String salt){
 		// pre_processing
-		int[] pre_processing = pre_processing(pwd,salt);
+		int[] pre_processing = pre_processing(password,salt);
 		System.out.println(Arrays.toString(pre_processing));
 		
 		int[] w = madeW(pre_processing);
@@ -52,7 +43,8 @@ public class made1 {
 		
 		String result = Compression(w);
 		System.out.println(result);
-		//e80963d4ddca64f2e4c2c79b703266ecda10762293082ea59e01a70f3ff6f983
+		
+		return result;
 	}
 	
 	public static String Compression(int[] w) {
