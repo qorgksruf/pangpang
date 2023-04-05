@@ -91,7 +91,7 @@ function getOrderList( order ){
 				html += `<tr>
 						<td> ${ o.ordermanagement_no } </td> <td> ${ o.ordermanagement_date } </td> 
 						<td> ${ o.ordermanagement_state } </td> <td> ${ o.ordermanagement_address } </td> 
-						<td> <input type="checkbox" value="${ o.ordermanagement_no }"></td>
+						<td> <input type="checkbox" name="addrcheck" value="${ o.ordermanagement_no }"></td>
 					</tr>`
 				
 			})
@@ -129,6 +129,30 @@ function selectAll( selectAll ){
 		o.checked = selectAll.checked
 	});
 }
+
+
+
+// 5-2 체크박스 유효성 검사
+let checkcount = 0;
+$(document).ready(function() {
+    $('input[type=checkbox][name=addrcheck]').change(function() {
+        if ($(this).is(':checked')) {
+		
+            checkcount++;
+            
+            if( checkcount > 7 ){
+				alert(' 7곳 이상의 배송지를 선택하실 수 없습니다.');
+				count = 7;
+				$(this).prop("checked" , false );
+				return;
+			}
+        }
+        else {
+            console.log(`${this.value} is unchecked`);
+            checkcount--;
+        }
+    });
+});
 
 
 // 선택한 배송지를 담을 배열
@@ -225,6 +249,7 @@ function addrDelete( no ){
 let count = 0;
 let dist_center = [];
 
+// 차고지선택 체크박스 유효성검사
 $(document).ready(function() {
     $('input[type=checkbox][name=distribution]').change(function() {
         if ($(this).is(':checked')) {
@@ -232,6 +257,23 @@ $(document).ready(function() {
             dist_center.push( this.value );
             count++;
             
+            if( count == 1 ){
+	            let html = `<tr>
+						<th> 출발지 </th> <th> 도착지 </th>
+					</tr>
+					<tr>
+						<td> ${toCenterName( this.value ).name} </td> <td> ${toCenterName( this.value ).name} </td>
+					</tr>`;
+	            
+	         	document.querySelector('.s_e_table').innerHTML = html;
+	         
+	         	toCenterAddr( this.value );
+	         	addrConversion();
+	         	centerAddrTF = true;
+	         	console.log( startAddress_coord ); console.log( endAddress_coord );
+	         	return;
+         	}
+             
             if( count == 2 ){
 				console.log( this.value );
 				openModal( dist_center );
@@ -247,9 +289,41 @@ $(document).ready(function() {
         else {
             console.log(`${this.value} is unchecked`);
             count--;
+            document.querySelector('.s_e_table').innerHTML = "";
+            startAddress = "";
+            endAddress = "";
         }
     });
 });
+
+
+function toCenterName( o ){
+	if( o == 1 ){
+			return {value : 1 , name : '서울 팡팡물류센터' }
+		}else if( o == 2 ){
+			return {value : 2 , name : '안산 팡팡물류센터' }
+		}else if( o == 3 ){
+			return {value : 3 , name : '부천 팡팡물류센터' }
+		}else if( o == 4 ){
+			return {value : 4 , name : '시흥 팡팡물류센터' }
+		}
+}
+
+function toCenterAddr( value ){
+	if( value == 1 ){
+		startAddress = '서울특별시 송파구 송파대로 55'
+		endAddress = '서울특별시 송파구 송파대로 55'
+	}else if( value == 2 ){
+		startAddress = '경기도 안산시 시화호수로 835'
+		endAddress = '경기도 안산시 시화호수로 835'
+	}else if( value == 3 ){
+		startAddress = '경기도 부천시 신흥로511번길 112'
+		endAddress = '경기도 부천시 신흥로511번길 112'
+	}else if( value == 4 ){
+		startAddress = '경기도 시흥시 만해로 43'
+		endAddress = '경기도 시흥시 만해로 43'
+	}
+}
 
 
 let centerAddrTF = false;	// 물류센터[ 출발지 / 도착지 ] 설정여부 확인 boolean 값

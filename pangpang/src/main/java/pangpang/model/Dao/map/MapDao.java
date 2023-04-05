@@ -21,7 +21,7 @@ public class MapDao extends Dao {
 	public synchronized MapcarDto getBCarinfo( int mno ){
 		
 		String sql = "select b.* , c.carmanage_number , c.carmanage_name , c.carmanage_img from bookcar b , carmanage c "
-				+ " where b.carmanage_no = c.carmanage_no  and bookcar_yn = 'Y' and member_no = ?";
+				+ " where b.carmanage_no = c.carmanage_no and b.bookcar_yn = 'Y' and b.member_no = ?";
 		
 		try {
 			
@@ -34,7 +34,8 @@ public class MapDao extends Dao {
 			if( rs.next() ) {
 				
 				//int String String String int int 
-				return new MapcarDto( rs.getInt(1), rs.getString(2), rs.getString(3), 
+				return new MapcarDto( 
+						rs.getInt(1), rs.getString(2), rs.getString(3), 
 						rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7) , 
 						rs.getString(8) , rs.getString(9) );
 			}
@@ -70,7 +71,7 @@ public class MapDao extends Dao {
 				list.add(
 						new MapOderDto(
 								rs.getInt(1) , rs.getString(2) , 
-								rs.getInt(3) , rs.getString(4) , rs.getInt(5) )
+								rs.getInt(3) , rs.getString(4).split(",")[0] , rs.getInt(5) )
 						);
 			}
 			
