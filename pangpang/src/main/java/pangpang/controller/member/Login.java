@@ -61,6 +61,7 @@ public class Login extends HttpServlet {
 			if( result != null ) {
 				request.getSession().setAttribute( "login", member_id );
 				request.getSession().setAttribute( "rank", result );
+				
 			}
 		System.out.println( request.getSession().getAttribute("login"));
 		System.out.println( request.getSession().getAttribute("rank"));

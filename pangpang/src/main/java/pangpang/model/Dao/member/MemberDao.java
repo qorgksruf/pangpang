@@ -1,5 +1,7 @@
 package pangpang.model.Dao.member;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
@@ -61,7 +63,15 @@ public class MemberDao extends Dao{
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				return rs.getString(1);
+				Date date = new Date();
+				final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+				System.out.println(simpleDateFormat.format(date));
+				sql = "update member set member_login='"+simpleDateFormat.format(date)+"'where member_id='"+member_id+"';";
+				ps = con.prepareStatement(sql);
+				int cnt = ps.executeUpdate();
+				if(cnt == 1) {
+					return rs.getString(1);
+				}
 			}
 		}catch (Exception e) {System.out.println(e);}
 		return null;

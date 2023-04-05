@@ -25,7 +25,8 @@ create table member(
 	member_phone 	varchar(20) not null,                       -- 회원전화번호   	빈칸X 중복O
 	member_address 	longtext not null,                     		-- 회원주소      	빈칸X 중복O
 	member_birth 	date not null,                             	-- 회원생일    	빈칸X 중복O
-	member_rank 	int default 1                               -- 회원등급   	빈칸X 중복O
+	member_rank 	int default 1,                               -- 회원등급   	빈칸X 중복O
+	member_login 	date default now()							-- 최근로그인날짜
 );
 
 
