@@ -144,7 +144,7 @@ public class BookcarDao extends Dao{
 		        			 rs.getInt(5),
 		        			 rs.getInt(6),
 		        			 rs.getString(7), 
-		        			 rs.getString(8),
+		        			 rs.getString(8), 
 		        			 rs.getString(9));
 		        	 list.add(dto);
 		        	 };
