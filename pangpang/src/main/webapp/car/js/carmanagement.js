@@ -39,7 +39,8 @@ function carList(){
                      <td> ${o.carmanage_use_yn} </td>
                      <td> <button onclick="car_update_modal_open(${o.carmanage_no})" type="button">수정</button></td>
                      <td> <button onclick="cardelete(${o.carmanage_no})" type="button">삭제</button></td>
-                     <td> <button onclick="view(${o.carmanage_no})" type="button">상세보기</button></td>           	
+                     <td> <button onclick="view(${o.carmanage_no})" type="button">상세보기</button></td>
+                             	
                   </tr>`               
             })         
             document.querySelector('.carmanage').innerHTML = html;   

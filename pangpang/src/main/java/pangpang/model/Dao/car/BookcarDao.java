@@ -59,7 +59,7 @@ public class BookcarDao extends Dao{
 			  			 		+ "OR (BOOKCAR_STR_DATE <= DATE(\""+ bookcar_end_date + "\") AND BOOKCAR_END_DATE >= DATE(\""+ bookcar_end_date + "\")));";
 			  */
 			  
-			  String sql = "select * from bookcar where carmanage_no = ? and (bookcar_str_date between ? and ? ) or (bookcar_end_date between ? and ? )";
+			  String sql = "select * from bookcar where carmanage_no = ? and ((bookcar_str_date between ? and ? ) or (bookcar_end_date between ? and ? ))";
 			  
 			  try {
 				  System.out.println("bookCheck sql ::: " + sql);
@@ -96,6 +96,8 @@ public class BookcarDao extends Dao{
 			
 			boolean result = bookCheck(carmanage_no, bookcar_str_date, bookcar_end_date);
 			
+			System.out.println("book bookCheck result ::: " + result);
+			
 			try {
 				
 				if ( result ) {
@@ -103,7 +105,7 @@ public class BookcarDao extends Dao{
 					ps = con.prepareStatement(sql);
 					ps.setString(1, bookcar_str_date);
 					ps.setString(2, bookcar_end_date);
-					ps.setString(3, "N");
+					ps.setString(3, null);
 					ps.setInt(4, carmanage_no);
 					ps.setInt(5, mno);
 					
@@ -128,10 +130,8 @@ public class BookcarDao extends Dao{
 		   //배차테이블 전체출력 한번 만들어보기만 함 (테스트용임)
 		  public ArrayList<BookcarDto>bookcarlist(){
 		      ArrayList<BookcarDto>list = new ArrayList<>();
-		      String sql="select *from bookcar;\r\n"
-		      		+ "select * from member;\r\n"
-		      		+ "select*from carmanage;\r\n"
-		      		+ "select *from bookcar b, carmanage c, member m;;";
+		      String sql="select b.*, c.carmanage_img, c.carmanage_number, m.member_name from member m, carmanage c, bookcar b\r\n"
+		      			+ "where c.carmanage_no =b.carmanage_no and m.member_no= b.member_no and bookcar_yn is null; ";
 		      try {
 		         ps=con.prepareStatement(sql);
 		         rs=ps.executeQuery();
@@ -139,19 +139,42 @@ public class BookcarDao extends Dao{
 		        	 BookcarDto dto = new BookcarDto(
 		        			 rs.getInt(1), 
 		        			 rs.getString(2),
-		        			 rs.getString(3),
+		        			 rs.getString(3), 
 		        			 rs.getString(4),
-		        			 rs.getInt(5), 
-		        			 rs.getInt(6));
+		        			 rs.getInt(5),
+		        			 rs.getInt(6),
+		        			 rs.getString(7), 
+		        			 rs.getString(8), 
+		        			 rs.getString(9),
+		        			 rs.getString(10)
+		        			 );
 		        	 list.add(dto);
-		         }
-		         
+		        	 };
 		         System.out.println("bookcarlist list ::: " + list);
 		      }catch (Exception e) {
 		            System.out.println("BookcarDao의 전체출력"+e);
 		      }
 		      return list;
 		   }
+		  
+		  public void bookcarUpdate(String bookcar_yn, int bookcar_no,String reason) {
+			  String sql = "UPDATE BOOKCAR SET BOOKCAR_YN = ? , reason = ? WHERE BOOKCAR_NO = ?";
+			  
+			  try {
+				  	ps=con.prepareStatement(sql);
+				  	ps.setString(1, bookcar_yn);
+				  	ps.setString(2, reason);
+				  	ps.setInt(3, bookcar_no);
+				  	System.out.println("BookcarDao.java bookcarUpdate sql ::: " + sql);
+				  	ps.executeUpdate();
+					
+				  
+			} catch (Exception e) {
+				System.out.println("bookcarUpdate의 전체출력"+e);
+			}
+			  
+			 return ;
+		  }
 		
 		
 		
