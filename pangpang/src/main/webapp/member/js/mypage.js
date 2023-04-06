@@ -139,6 +139,7 @@ function getMember(){
 			document.querySelector('.member_rank').value = r.member_rank;
 			document.querySelector('.member_birth').value = r.member_birth;
 			getAccount()
+			getOrderList()
 		}
 	})
 }
@@ -371,7 +372,7 @@ function addAccount(){
 			console.log(r)
 			if( r == 'true'){
 				alert('계좌 등록 성공');
-				
+				location.reload();
 			}else{ alert('계좌 등록 실패') }
 		} // success end 
 	}) // ajax end 
@@ -412,7 +413,7 @@ let pageObject = {
 	listsize : 10,
 	mno		 : 0,
 }
-getOrderList()
+
 // 주문 내역 
 function getOrderList(){
 	pageObject.mno = memberInfo.member_no;	
