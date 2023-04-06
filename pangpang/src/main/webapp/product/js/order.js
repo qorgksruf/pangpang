@@ -301,6 +301,9 @@ function delivery_address(){
 	}else if(type==3){
 		info.pg='tosspay';
 		
+	}else if(type==4){
+		info.pg='pangpangpay';
+		
 	}
 
     IMP.request_pay(info, function (rsp) { 		// callback

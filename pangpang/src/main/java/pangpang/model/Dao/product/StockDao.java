@@ -1,11 +1,9 @@
 package pangpang.model.Dao.product;
 
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
-import pangpang.model.Dto.product.CartDto;
-import pangpang.model.Dto.product.OrderDto;
 import pangpang.model.Dto.product.StockDto;
 
 public class StockDao extends Dao{
@@ -94,7 +92,7 @@ public class StockDao extends Dao{
 	// 폐기 대상 출력 
 	public ArrayList<StockDto> getDropList(String date) {
 		ArrayList<StockDto> list = new ArrayList<>();
-		String sql = "select product_no pno, "
+		String sql = "select product_no pno, (select product_name from product where product_no = pno) pname,"
 				+ "((select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '"+date+"' and product_no = pno)"
 				+ "+(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '"+date+"' and product_no = pno)"
 				+ "+(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 3 and stockmanagementdate    < '"+date+"' and product_no = pno)) dropamount "
@@ -103,8 +101,8 @@ public class StockDao extends Dao{
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				if(rs.getInt(2) != 0) {
-						StockDto dto = new StockDto(rs.getInt(2), rs.getInt(1));
+				if(rs.getInt(3) != 0) {
+						StockDto dto = new StockDto(rs.getInt(1), rs.getString(2), rs.getInt(3));
 						list.add(dto);
 				}
 			}

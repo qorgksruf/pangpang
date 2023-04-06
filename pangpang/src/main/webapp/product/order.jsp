@@ -89,8 +89,9 @@
 				<th  width="10%"> 결제방법  </th> 
 				<td> 
 					<button type="button" class="modal_btn" onClick="requestPay(1)"> 카드결제		</button>
-					<button type="button" class="modal_btn" onClick="requestPay(2)"> 카카오페이	</button>
+					<button type="button" class="modal_btn" onClick="requestPay(2)"> 카카오페이		</button>
 					<button type="button" class="modal_btn" onClick="requestPay(3)"> 토스페이		</button>	
+					<button type="button" class="modal_btn" onClick="requestPay(4)"> 팡팡페이		</button>	
 				</td>
 			</tr>			
 		</table>

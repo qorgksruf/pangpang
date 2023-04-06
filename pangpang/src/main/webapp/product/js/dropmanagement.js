@@ -12,16 +12,18 @@ function getDropList(){
 		success	: (r)=>{
 			droplist = r;
 			let html = `<tr> 
-							<th width="10%"> 제품번호 		</th> 
-							<th width="10%"> 수량 		</th>
+							<th> 제품번호 		</th> 
+							<th> 제품이름		</th> 
+							<th> 수량 		</th>
 						</tr>`;
 			if(droplist==null){
 				html += `<tr><td colspan="2"> 금일 폐기 대상이 없습니다. </td></tr>`
 			}else{
 				droplist.forEach((o)=>{
 					html += `<tr>
-								<th width="10%"> ${o.product_no}</th> 
-								<th width="10%"> ${o.stockmanagementamount}</th>				
+								<th> ${o.product_no}</th> 
+								<th> ${o.product_name}</th> 
+								<th> ${o.stockmanagementamount}</th>				
 							</tr>`
 				})
 				document.querySelector('.droplist').innerHTML = html ;				

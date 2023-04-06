@@ -74,6 +74,10 @@
 					
 			</table>
 		</div>
+		
+		
+		
+		
 	<script type="text/javascript" src="/pangpang/member/js/mypage.js"></script>
 </body>
 </html>
