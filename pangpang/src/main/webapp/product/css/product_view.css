@@ -61,6 +61,8 @@
 }
 .date{
 	margin: 3%;
+	font-weight: bold;
+	color: #5697A6;
 }
 .amount{
 	margin: 0px 50px; 

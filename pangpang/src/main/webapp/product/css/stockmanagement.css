@@ -1,7 +1,22 @@
 @charset "UTF-8";
 
 th{
-	background-color: #eeeeee;
+	background-color: #5697A6;
+	color : white;
+}
+.inputbox td{
+	background-color:#F2F2F2;
+}
+
+.stocklistbox button{
+	width:100px;
+	border: none;
+	background-color: #5697A6;
+	color:white;
+}
+.stockmanagementtype{
+	background-color: #5697A6;
+	border: none;
 }
 input[type=text]{
 	width: 80px;
@@ -10,7 +25,8 @@ input[type=datetime-local]{
 	width: 200px;
 }
 .topbox{
-	margin: 1%;
+	padding: 1%;
+	background-color: #F2F2F2;
 }
 .setbtn{
 	width: 100px;
