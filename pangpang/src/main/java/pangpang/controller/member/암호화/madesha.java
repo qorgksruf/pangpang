@@ -99,7 +99,7 @@ public class madesha {
 		for(int i = 0 ; i<=7 ; i++) {
 			sb.append(Integer.toHexString(ha[i]));
 			//System.out.println(Integer.toHexString(hash[i]));
-		}
+		} 
 		
 		return sb.toString().trim();
 	}
