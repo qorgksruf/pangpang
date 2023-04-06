@@ -32,12 +32,12 @@
 				
 				
 		</div>
-
-		<!-- 배차확인용테이블 -->
+<!-- 
+		배차확인용테이블
 		<table class="table booktable">
 
 		</table> 
-		
+		 -->
 		
 	<!--jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>   

@@ -131,7 +131,8 @@ create table bookcar(
 	bookcar_end_date 	datetime,                            		--  배차종료일자 3/26(2225)
 	bookcar_yn      	varchar(1),                                 --  배차승인여부
 	carmanage_no 		int,                                        --  차량일련번호
-    member_no 		int,                                       		--  회원번호      	빈칸X 중복O
+    member_no 			int,                                       		--  회원번호      	빈칸X 중복O
+    reason				varchar(30),
 	foreign key(member_no) references member(member_no) on delete cascade, 		-- 멤버 지우면 같이 삭제 
 	foreign key (carmanage_no) references carmanage(carmanage_no) --  차량일련번호fk--   foreign key (mno) references member(mno)    --  사용자일련번호fk -- 배차승인여부?
 );

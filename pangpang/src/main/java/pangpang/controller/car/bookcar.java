@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pangpang.model.Dao.car.BookcarDao;
+import pangpang.model.Dao.car.CarmanagementDao;
 import pangpang.model.Dao.member.MemberDao;
 
 /**
@@ -47,7 +48,7 @@ public class bookcar extends HttpServlet {
 				
 			boolean result=BookcarDao.getInstance().book(mno, carmanage_no ,bookcar_destination,bookcar_str_date,bookcar_end_date);
 			
-				System.out.println("bookcar 확인 김성봉개짜증나:::::"+result);
+				System.out.println("bookcar 확인"+result);
 				
 				response.getWriter().print(result);
 				/*
@@ -65,13 +66,19 @@ public class bookcar extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bookcar_yn = request.getParameter("bookCar_yn");
 		System.out.println("bookcar.java doPost bookCar_yn ::: " + bookcar_yn);
-		
+		String reason=request.getParameter("reason");
+			System.out.println("bookcar.java.doPost.reason"+reason);
 		int bookcar_no = Integer.parseInt(request.getParameter("bookCar_no")) ;
 		System.out.println("bookcar.java doPost bookCar_no ::: " + bookcar_no);
 		
-		BookcarDao.getInstance().bookcarUpdate(bookcar_yn, bookcar_no);
+		BookcarDao.getInstance().bookcarUpdate(bookcar_yn, bookcar_no,reason);
 		
 		System.out.println("-- doPost 종료 --");
+		
+		/*
+		 * String result = BookcarDao.getInstance().bookcarUpdate(bookcar_yn,
+		 * bookcar_no); response.getWriter().print(result);
+		 */
 	}
 
 }

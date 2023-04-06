@@ -19,6 +19,7 @@ function carchoice(){
                            <th width="10%"> 차량이름 </th>
                            <th width="10%"> 차량이미지</th>>
                            <th width="10%"> 비고 </th>
+                     
                      </tr>`
             r.forEach((o,i)=>{
                html +=`                  
@@ -28,7 +29,7 @@ function carchoice(){
                      <td> ${o.carmanage_number} </td>
                      <td> ${o.carmanage_name} </td>
                      <td><img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
-                     <td> <button onclick="choice(${o.carmanage_no})" type="button">선택하기</button></td>          	
+                     <td> <button onclick="choice(${o.carmanage_no})" type="button">선택하기</button></td>     
                   </tr>`               
             })         
             document.querySelector('.carchoice').innerHTML = html;   
@@ -83,84 +84,10 @@ function confirm(carmanage_no){
 			console.log(r);
 			if(r=="true"){
 				alert("배차신청완료");
-				booklist();
 			}else{
 				alert("배차신청실패");
 			}
 		}
 	})
 	 	 	
-}
-
-
-
-//배차관리테이블출력
-//console.log(memberInfo.member_no) //로그인한 회원정보 호출
-let info={
-	type:2,
-	login:memberInfo.member_no
-}
-
-booklist();
-let html='';
-function booklist(){
-	console.log("booklist진입")
-	$.ajax({
-		url:"/pangpang/carmanage",
-		async:false,
-		method:"get",
-		data:info,
-		success:(r)=>{
-			console.log("통신성공");
-			console.log(r);
-			document.querySelector('.booktable').innerHTML='';
-			  let html = `<tr> 
-                        <th width="10%"> 번호</th>    
-                           <th width="10%"> 사원명 </th>
-                           <th width="10%"> 차일련번호 </th>
-                           <th width="25%"> 차이미지 </th>
-                           <th width="10%"> 배차시작날짜 </th>
-                           <th width="10%"> 배차종료날짜 </th>
-                           <th width="25%"> 비고 </th>
-                     </tr>`
-            r.forEach((o, i)=>{
-               html +=`                  
-                  <tr>
-                	 <td> ${i+1} </td> 
-                 	 <td> ${o.member_name} </td> 
-                     <td> ${o.carmanage_number} </td>   
-                     <td> <img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
-                     <td> ${o.bookcar_str_date} </td>
-                     <td> ${o.bookcar_end_date} </td>   
-                     <td> <button onclick="bookCar(${o.bookcar_no}, 'Y')" type="button">수락</button>
-                         <button onclick="bookCar(${o.bookcar_no}, 'N')" type="button">반려</button> </td>              
-                  </tr>`             
-         })       
-         document.querySelector('.booktable').innerHTML=html;
-		}
-	})
-	
-}
-
-// 수락/반려 버튼 이벤트
-function bookCar(bookCar_no, bookCar_yn) {
-	console.log("bookCar진입")
-	
-	let bookCarInfo = {
-		bookCar_no: bookCar_no,
-		bookCar_yn: bookCar_yn
-	};
-	
-	$.ajax({
-		url:"/pangpang/bookcar",
-		method:"post",
-		async:false,
-		data:bookCarInfo,
-		success:(r)=>{
-			console.log("bookCar 종료");
-			
-			booklist();
-		}
-	})
-	
 }
