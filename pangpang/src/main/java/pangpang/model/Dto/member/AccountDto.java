@@ -6,19 +6,25 @@ public class AccountDto {
 	private String account_number;
 	private int member_no; 
 	
-	private String member_id;
-	
 	public AccountDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AccountDto(int account_no, String account_bank, String account_number, int member_no, String member_id) {
+	public AccountDto(int account_no, String account_bank, String account_number, int member_no) {
 		super();
 		this.account_no = account_no;
 		this.account_bank = account_bank;
 		this.account_number = account_number;
 		this.member_no = member_no;
-		this.member_id = member_id;
+		
+	}
+
+	
+	
+	public AccountDto(String account_bank, String account_number) {
+		super();
+		this.account_bank = account_bank;
+		this.account_number = account_number;
 	}
 
 	public int getAccount_no() {
@@ -53,19 +59,15 @@ public class AccountDto {
 		this.member_no = member_no;
 	}
 
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-
 	@Override
 	public String toString() {
 		return "AccountDto [account_no=" + account_no + ", account_bank=" + account_bank + ", account_number="
-				+ account_number + ", member_no=" + member_no + ", member_id=" + member_id + "]";
+				+ account_number + ", member_no=" + member_no + "]";
 	}
+
+	
+
+	
 	
 	
 }	

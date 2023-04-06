@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import pangpang.model.Dao.Dao;
+import pangpang.model.Dto.member.AccountDto;
 import pangpang.model.Dto.member.MemberDto;
 
 public class MemberDao extends Dao{
@@ -57,24 +58,18 @@ public class MemberDao extends Dao{
 	}
 	
 	// 4. 로그인
-	public String login( String member_id , String member_pwd ) {
+	public int login( String member_id , String member_pwd ) {
 		String sql = "select member_rank from member where member_id='"+member_id+"' and member_pwd='"+member_pwd+"';";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				Date date = new Date();
-				final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-				System.out.println(simpleDateFormat.format(date));
-				sql = "update member set member_login='"+simpleDateFormat.format(date)+"'where member_id='"+member_id+"';";
-				ps = con.prepareStatement(sql);
-				int cnt = ps.executeUpdate();
-				if(cnt == 1) {
-					return rs.getString(1);
-				}
+				System.out.println("rs실행");
+				System.out.println(rs.getInt(1));
+				return rs.getInt(1);
 			}
 		}catch (Exception e) {System.out.println(e);}
-		return null;
+		return 0;
 	}
 	
 	
@@ -168,7 +163,11 @@ public class MemberDao extends Dao{
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if( rs.next() ) {  // 만약에 동일한 아이디와 이메일 일치한 레코드가 있으면 [ 찾았다. ]
-				sql = "update member set member_pwd = ? where member_no = ?";
+				Date date = new Date();
+				final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+				System.out.println(simpleDateFormat.format(date));
+				
+				sql = "update member set member_pwd = ?,member_login='"+simpleDateFormat.format(date)+"' where member_no = ?";
 				ps = con.prepareStatement(sql);
 				ps.setString( 1 , updatePwd );		// 임시비밀번호로 업데이트
 				ps.setInt( 2 ,  rs.getInt( 1 ) );	// select 에서 찾은 레코드의 회원번호 
@@ -209,7 +208,11 @@ public class MemberDao extends Dao{
 	
 	// 13. 비밀번호 변경
 	public boolean updatepwd(String member_npwd,String member_id,String member_pwd) {
-		String sql = "update member set member_pwd=? where member_id=? and member_pwd=?;";
+		Date date = new Date();
+		final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		System.out.println(simpleDateFormat.format(date));
+		
+		String sql = "update member set member_pwd=?,member_login='"+simpleDateFormat.format(date)+"' where member_id=? and member_pwd=?;";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString( 1 , member_npwd );
@@ -234,4 +237,46 @@ public class MemberDao extends Dao{
 		return null;
 	}
 	
+	// 15. 비밀번호 가져오기
+	public String getpwd(int member_no) {
+		String sql = "select member_pwd from member where member_no='"+member_no+"';";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
+	
+	// 16. 계좌 등록하기
+	public boolean addAccount(String account_bank,String account_number, int member_no) {
+		String sql = "insert into account(account_bank,account_number,member_no) values(?,?,?);";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, account_bank);
+			ps.setString(2, account_number);
+			ps.setInt(3, member_no);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}return false;
+	}
+	
+	// 17. 계좌 가져오기 
+	public ArrayList<AccountDto> getAccount(int member_no) {
+		ArrayList<AccountDto> list = new ArrayList<>();
+		String sql = "select account_bank,account_number from account where member_no='"+member_no+"';";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				AccountDto dto = new AccountDto(rs.getString(1), rs.getString(2));
+				list.add(dto);
+			}return list;
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
 }

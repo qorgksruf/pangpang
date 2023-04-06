@@ -147,16 +147,26 @@ create table drivecar(
 	foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk
 ); 
 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'qwe' , '강호동', '1234' , 'qweqwe@qweqwe.com' , '010-1234-5600' , '경기 안산시 단원구 광덕2로 121' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'asd' , '김희철', '1234' , 'asdasd@asdasd.com' , '010-1234-5601' , '경기 안산시 단원구 광덕3로 201' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'zxc' , '서장훈', '1234' , 'zxczxc@zxczxc.com' , '010-1234-5602' , '경기 안산시 상록구 한양대학로 80' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'qweasd' , '이상민', '1234' , 'qweasd@qweasd.com' , '010-1234-5603' , '경기 안산시 단원구 초지로 128' , '2000-01-01' , 3 ); 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank )
-values ( 'bongseong' , '유재석',  '1234' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 );
+-- 멤버 추가
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('qweqwe','유재석','12779a78df86e6d163ea083b5a66d7fc967f2d83a57ddf6feaa94e0f99f0b4ce','qwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-05 17:25:42');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('bnmbnm','강호동','a8813b2ab1c29f872fc52fe4d96cf4b9c1cf72f8f025700893aaadf9d70f6727','bnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-05 17:25:42');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('asdads','신동엽','ce425ac0e9bd05c1cf4551603d72834bf4b73ca905caea46fe484bb106db756','asd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2,'2023-04-05 17:25:42');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('zxczxc','민경훈','b2e46a1495fc27aa2973dd8b2b26266e91b0b3154cdddd8cd505f8e57ea69331','zcx@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2,'2023-04-05 17:25:42');
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ( 'qwe' , '강호동', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'qweqwe@qweqwe.com' , '010-1234-5600' , '경기 안산시 단원구 광덕2로 121' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ( 'asd' , '김희철', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'asdasd@asdasd.com' , '010-1234-5601' , '경기 안산시 단원구 광덕3로 201' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ( 'zxc' , '서장훈', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'zxczxc@zxczxc.com' , '010-1234-5602' , '경기 안산시 상록구 한양대학로 80' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ( 'qweasd' , '이상민', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'qweasd@qweasd.com' , '010-1234-5603' , '경기 안산시 단원구 초지로 128' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ( 'bongseong' , '유재석',  '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 ,'2023-04-05 17:25:42');
+
 
 insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
 values ( 1 , '경기 안산시 단원구 광덕2로 121' , 1 ) ;
@@ -231,15 +241,7 @@ insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_us
 values('짱1234','포터','포터.jpg','Y','2015-02-11','2020-06-11');
 
 
--- 멤버 추가
-insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('qweqwe','유재석','qwe123','qwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1);
-insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('bnmbnm','강호동','bnm123','bnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',1);
-insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('asdads','신동엽','asd123','asd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2);
-insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank) 
-values ('zxczxc','민경훈','zxc123','zcx@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2);
+
 
 -- 카테고리 추가
 insert into category(category_name,category_img) values ('과일','과일.png');
@@ -395,8 +397,7 @@ insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stock
 values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,31);  
 insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
 values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,32);  
-insert into stockmanagement(stockmanagementdate , stockmanagementenddate , stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
-values ('2023-03-26','2023-04-01',1,'GOMGOM',70,4000,33); 
+
 -- 출고
 insert into stockmanagement(stockmanagementdate ,stockmanagementtype , stockmanagementcompany , stockmanagementamount  , product_price ,product_no)
 values ('2023-03-26',2,'GOMGOM',-2,5000,1);  

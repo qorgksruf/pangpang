@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.spi.FileSystemProvider;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pangpang.controller.member.암호화.GetSalt;
 import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.MemberDto;
@@ -61,27 +63,9 @@ public class Login extends HttpServlet {
 		// 1. AJAX에게 데이터 요청
 		String member_pwd = request.getParameter("member_pwd");
 		String member_id = request.getParameter("member_id");
-		
+		System.out.println(member_pwd);
 		// 저장된 솔트 꺼내기
-		ArrayList<SaltDto> salts = new ArrayList<>();
-		
-		try {
-			File file = new File("c:/java/salt.txt");
-	        FileReader file_reader = new FileReader(file);
-	        BufferedReader bufReader = new BufferedReader(file_reader);
-	        String line = "";
-	        
-	        while ((line = bufReader.readLine()) != null) {
-	          System.out.println("한줄 : " +line);
-	          String[] saltArr = line.split(",");
-	          SaltDto dto = new SaltDto(saltArr[0], saltArr[1]);
-	          salts.add(dto);
-	        }
-	        bufReader.close();
-				
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		ArrayList<SaltDto> salts = GetSalt.getSalt();
 		
 		// 마지막로그인 날짜 가져오기
 		String logindate = MemberDao.getInstance().logindate(member_id);
@@ -105,16 +89,18 @@ public class Login extends HttpServlet {
 		String salt = salts.get(cnt).getSalt();
 		System.out.println(salt);
 		String sha = madesha.sha(member_pwd, salt);
-		System.out.println(sha);
+		System.out.println("sha : "+sha);
 		
 		// 2. DAO 호출해서 요청데이터를 보내서 결과 얻기 
-		String result = MemberDao.getInstance().login( member_id , sha );
-		if( result != null ) {
+		int result = MemberDao.getInstance().login( member_id , sha );
+		System.out.println("result : "+result);
+		if( result != 0 ) {
 			request.getSession().setAttribute( "login", member_id );
 			request.getSession().setAttribute( "rank", result );
 			System.out.println(salts.get(salts.size()-1).getSalt());
 			String salt2 = salts.get(salts.size()-1).getSalt();
 			String sha2 = madesha.sha(member_pwd, salt2);
+			System.out.println(sha2);
 			boolean result2 = MemberDao.getInstance().updatepwd(sha2, member_id, sha);
 			if(result2) {
 				// 3. Dao 받은 결과를 AJAX에게 전달 

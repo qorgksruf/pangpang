@@ -6,7 +6,11 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import pangpang.controller.member.암호화.test.SHA256;
+
 public class AES256 {
+	
+	/*
 	public static void main(String[] args) throws Exception {
 		SHA256 sha256 = new SHA256();
 		String pwd = "cceeun.tistory";
@@ -23,8 +27,9 @@ public class AES256 {
 		System.out.println("decrypt : "+decrypt);
 		
 	}
+	*/
 	
-	public String encrypt( String key, String text) throws Exception {
+	public static String encrypt( String key, String text) throws Exception {
 		// 1. Cipher 객체 인스턴스화 하기 
 			// AES/ECB/PKCS5Padding 변환은 getInstance 메서드에 Cipher 객체를 AES 암호화, CBC operation mode, PKCS5 padding scheme로 초기화하라고 요청한다. 
 		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
@@ -47,7 +52,7 @@ public class AES256 {
 		return Base64.getEncoder().encodeToString(encrypted);
 	}
 	
-	public String decrypt(String key, String cipherText) throws Exception {
+	public static String decrypt(String key, String cipherText) throws Exception {
 		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
         IvParameterSpec ivParamSpec = new IvParameterSpec((key.substring(0,16)).getBytes());

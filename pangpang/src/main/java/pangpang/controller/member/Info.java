@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pangpang.controller.member.암호화.GetSalt;
+import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.MemberDto;
+import pangpang.model.Dto.member.SaltDto;
 
 /**
  * Servlet implementation class Info
@@ -33,6 +36,7 @@ public class Info extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		int type = Integer.parseInt(request.getParameter("type"));
 		String json = "";
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -67,7 +71,16 @@ public class Info extends HttpServlet {
 		String member_pwd = request.getParameter("member_pwd");
 		String member_address = request.getParameter("member_address");
 		
-		MemberDto dto = new MemberDto(0, member_name, member_id, member_pwd, member_email, member_phone, member_address, member_birth, 0);
+		// 저장된 솔트 꺼내기
+		ArrayList<SaltDto> salts = GetSalt.getSalt();
+		
+		// 최신 솔트 이용하여 암호화 하기
+		String salt = salts.get(salts.size()-1).getSalt();
+		System.out.println(salt);
+		String sha = madesha.sha(member_pwd, salt);
+		System.out.println(sha);
+		
+		MemberDto dto = new MemberDto(0, member_name, member_id, sha, member_email, member_phone, member_address, member_birth, 0);
 				
 		System.out.println(dto);
 		
@@ -102,8 +115,40 @@ public class Info extends HttpServlet {
 			String member_pwd = request.getParameter("member_pwd");
 			String member_id = (String)request.getSession().getAttribute("login");
 			
+			// 저장된 솔트 꺼내기
+			ArrayList<SaltDto> salts = GetSalt.getSalt();
+			
+			// 마지막로그인 날짜 가져오기
+			String logindate = MemberDao.getInstance().logindate(member_id);
+			//System.out.println("logindate : "+logindate);
+			
+			// 솔트리스트에서 해당하는 솔트 찾기
+			int cnt = 0;
+			for(int i = 0 ; i<salts.size();i++) {
+				System.out.println("날짜비교 : " + salts.get(i).getSdate().compareTo(logindate));
+				if(salts.get(i).getSdate().compareTo(logindate)<0) {
+					cnt=i;
+				}else if(salts.get(i).getSdate().compareTo(logindate)>0){
+					cnt=i-1;
+					break;
+				}else {
+					cnt=i;
+					break;
+				}
+			}
+			System.out.println("cnt :"+cnt);
+			String salt = salts.get(cnt).getSalt();
+			System.out.println(salt);
+			String sha = madesha.sha(member_pwd, salt);
+			System.out.println("sha : "+sha);
+			
+			System.out.println(salts.get(salts.size()-1).getSalt());
+			String salt2 = salts.get(salts.size()-1).getSalt();
+			String sha2 = madesha.sha(member_npwd, salt2);
+			System.out.println(sha2);
+			
 			System.out.println(member_npwd+"/"+member_pwd+"/"+member_id);
-			result = MemberDao.getInstance().updatepwd(member_npwd,member_id,member_pwd);
+			result = MemberDao.getInstance().updatepwd(sha2,member_id,sha);
 		}
 		
 		
@@ -119,12 +164,39 @@ public class Info extends HttpServlet {
 		int type = Integer.parseInt(request.getParameter("type"));
 		boolean result = false;
 		
-		if( type==1 ) {
+		if( type==1 ) { //본인이 탈퇴
 			String member_id = (String)request.getSession().getAttribute("login");
 			String member_pwd = request.getParameter("member_pwd");
 			
-			result = MemberDao.getInstance().delete(member_id,member_pwd);
-		}else if( type==2 ) {
+			// 저장된 솔트 꺼내기
+			ArrayList<SaltDto> salts = GetSalt.getSalt();
+			
+			// 마지막로그인 날짜 가져오기
+			String logindate = MemberDao.getInstance().logindate(member_id);
+			//System.out.println("logindate : "+logindate);
+			
+			// 솔트리스트에서 해당하는 솔트 찾기
+			int cnt = 0;
+			for(int i = 0 ; i<salts.size();i++) {
+				System.out.println("날짜비교 : " + salts.get(i).getSdate().compareTo(logindate));
+				if(salts.get(i).getSdate().compareTo(logindate)<0) {
+					cnt=i;
+				}else if(salts.get(i).getSdate().compareTo(logindate)>0){
+					cnt=i-1;
+					break;
+				}else {
+					cnt=i;
+					break;
+				}
+			}
+			System.out.println("cnt :"+cnt);
+			String salt = salts.get(cnt).getSalt();
+			System.out.println(salt);
+			String sha = madesha.sha(member_pwd, salt);
+			System.out.println("sha : "+sha);
+			
+			result = MemberDao.getInstance().delete(member_id,sha);
+		}else if( type==2 ) {//관리자가 삭제
 			int member_no = Integer.parseInt(request.getParameter("member_no"));
 			
 			result = MemberDao.getInstance().dropMember(member_no);

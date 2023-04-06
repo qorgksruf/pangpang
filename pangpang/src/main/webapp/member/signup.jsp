@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link href="/pangpang/member/css/signup.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
@@ -269,7 +270,7 @@
 								</div>
 							</th>
 							<td class="table_mid">
-								<input class="name member_address form-control" name="member_address" type="text">
+								<span class="member_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button> 
 							</td>
 						</tr>
 					</table>
@@ -338,6 +339,32 @@
       		<!-- <a href="/hotel/member/completed.jsp"> --><button onclick="signup()" class="singup_btn btn">가입 신청</button><!-- </a>  -->
       	</div>
 	</div>
+	
+	<!-- 도로명 주소검색 모달 -->
+	<div class="modal_wrap_address">	
+			<div class="modal_box">
+			
+			<h3  class="modal_title"> 도로명 주소검색 </h3>		
+			<div class="modal_content">
+				<div class="address_search">
+					<input type="text" class="keyword">
+					<button type="button" class="modal_btn" onClick="getAddress()"> 주소검색</button>					
+				</div>
+				<!-- 검색 결과 리스트 출력 영역 -->
+				<div id="list" class="resultbox">
+					검색 결과가 없습니다.					
+				</div>
+				<div class="address_select"> 선택주소 <span class="address_select_input"> </span></div>
+				<div class="address_detail">
+					상세주소
+					<input class="address_detail_input" type="text">
+				</div>
+				<button onclick="delivery_address()"   class="modal_cancel modal_btn" type="button"> 입력 </button>
+				<button onclick="closemodal_address()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+			</div>
+				
+			</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
 	
 	<script src="/pangpang/member/js/signup.js" type="text/javascript"></script>
 </body>

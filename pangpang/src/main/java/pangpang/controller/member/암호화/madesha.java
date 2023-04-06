@@ -32,7 +32,6 @@ public class madesha {
 			0x724cd749, 0x0d03ca03, 0xdde63401, 0x1d26f9e9
 	};
 	
-	
 	public static String sha(String password, String salt){
 		// pre_processing
 		int[] pre_processing = pre_processing(password,salt);
@@ -48,14 +47,24 @@ public class madesha {
 	}
 	
 	public static String Compression(int[] w) {
-		int a = hash [0];
-		int b = hash [1];
-		int c = hash [2];
-		int d = hash [3];
-		int e = hash [4];
-		int f = hash [5];
-		int g = hash [6];
-		int h = hash [7];
+		int[] ha = new int [8];
+		ha[0] = hash [0];
+		ha[1] = hash [1];
+		ha[2] = hash [2];
+		ha[3] = hash [3];
+		ha[4] = hash [4];
+		ha[5] = hash [5];
+		ha[6] = hash [6];
+		ha[7] = hash [7];
+		
+		int a = ha[0];
+		int b = ha[1];
+		int c = ha[2];
+		int d = ha[3];
+		int e = ha[4];
+		int f = ha[5];
+		int g = ha[6];
+		int h = ha[7];
 		
 		for(int i = 0; i<=63 ; i++) {
 			int sl = rightRotate(e, 6)^rightRotate(e, 11)^rightRotate(e, 25);
@@ -75,25 +84,26 @@ public class madesha {
 			a=temp1+temp2;	
 		}
 		
-		hash[0] += a;
-		hash[1] += b;
-		hash[2] += c;
-		hash[3] += d;
-		hash[4] += e;
-		hash[5] += f;
-		hash[6] += g;
-		hash[7] += h;
+		ha[0] += a;
+		ha[1] += b;
+		ha[2] += c;
+		ha[3] += d;
+		ha[4] += e;
+		ha[5] += f;
+		ha[6] += g;
+		ha[7] += h;
 		
 		//System.out.println(Arrays.toString(hash));
 		
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i<=7 ; i++) {
-			sb.append(Integer.toHexString(hash[i]));
+			sb.append(Integer.toHexString(ha[i]));
 			//System.out.println(Integer.toHexString(hash[i]));
 		}
 		
 		return sb.toString().trim();
 	}
+	
 	
 	// W값 만들기
 	public static int[] madeW(int[] arr) {
@@ -149,7 +159,7 @@ public class madesha {
         	//System.out.println(pre_processing);
         
         // 32bit로 자르기
-        String[] subStringArray = substring(pre_processing,32);
+        String[] subStringArray = substring(pre_processing);
         	//System.out.println(Arrays.toString(subStringArray));
         
         // int로 바꾸기
@@ -204,19 +214,19 @@ public class madesha {
         return toBinary(n / 2) + (n % 2);
     }
     
-    public static String[] substring(String pre_processing, int length) {
+    public static String[] substring(String pre_processing) {
     	// 32비트로 자르기
         // 배열의 크기를 구합니다.
-        int strArraySize = (int) Math.ceil((double)pre_processing.length() / length);
+        int strArraySize = (int) Math.ceil((double)pre_processing.length() / 32);
 
         // 배열을 선언합니다. 32비트로 잘린 pre_processing 들어가는 자리
         String[] subStringArray = new String[strArraySize];
 
         // 문자열을 순회하여 특정 길이만큼 분할된 문자열을 배열에 할당합니다.
         int index = 0;
-        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += length) {
+        for(int startIndex = 0; startIndex < pre_processing.length(); startIndex += 32) {
         	subStringArray[index++] =
-    		  	pre_processing.substring(startIndex, Math.min(startIndex + length, pre_processing.length()));
+    		  	pre_processing.substring(startIndex, Math.min(startIndex + 32, pre_processing.length()));
       			
         }
         return subStringArray;

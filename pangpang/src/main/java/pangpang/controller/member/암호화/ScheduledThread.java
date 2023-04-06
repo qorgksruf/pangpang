@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +15,7 @@ public class ScheduledThread extends Thread{
 	public void run(){
 		
 		// 실행간격 지정(3초)
-		int sleepSec = 10 ;
+		int sleepSec = 600;
 		
 		// 주기적인 작업을 위한 
 		final ScheduledThreadPoolExecutor  exec = new ScheduledThreadPoolExecutor(1);

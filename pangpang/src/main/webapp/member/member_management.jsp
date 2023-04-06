@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link href="/pangpang/member/modal.css" rel="stylesheet">
+	<link href="/pangpang/member/css/modal.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->

@@ -1,4 +1,4 @@
-package pangpang.controller.member.암호화;
+package pangpang.controller.member.암호화.test;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ public class made2 {
 		System.out.println("pwd : "+pwd);
 		
 		// 솔트
-		String salt = "800996ecdbd5afd8d9f47a9d635120f5ca158417";
+		String salt = "74c7fac5e1dfaae206d4e1b750b772967a58d822";
 				//getRandom(20);
 		System.out.println("salt : "+salt);
 		

@@ -1,4 +1,4 @@
-package pangpang.controller.member.암호화;
+package pangpang.controller.member.암호화.test;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;

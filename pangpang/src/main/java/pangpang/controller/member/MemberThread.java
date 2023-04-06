@@ -1,4 +1,4 @@
-package pangpang.controller.member.암호화;
+package pangpang.controller.member;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import pangpang.controller.member.암호화.ScheduledThread;
 
 /**
  * Servlet implementation class Thread
