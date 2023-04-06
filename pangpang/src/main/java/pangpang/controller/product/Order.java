@@ -92,6 +92,12 @@ public class Order extends HttpServlet {
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int ordermanagement_no = Integer.parseInt(request.getParameter("ordermanagement_no"));
+		int state			   = Integer.parseInt(request.getParameter("state"));
+		
+		boolean result = OrderDao.getInstance().updateState(state, ordermanagement_no);
+		
+		response.getWriter().print(result);		
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

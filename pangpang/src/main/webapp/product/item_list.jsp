@@ -10,7 +10,7 @@
 
 </head>
 <body>
-s
+
 	<%@ include file = "/header.jsp" %>	
 	
 	<div class="container">

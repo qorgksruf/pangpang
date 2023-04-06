@@ -424,7 +424,10 @@ function getOrderList(){
 		success	: (r)=>{
 			console.log(r)
 			let html = ``;
-			r.orderList.forEach((o)=>{
+			if( r.orderList.length == 0){
+				html += `<tr> <th> 주문한 내역이 없습니다. </th> </tr>`
+			}else{
+				r.orderList.forEach((o)=>{
 				 html += `<table class="item">
 				 		<tr>
 							<th width="10%"> 주문번호	  </th> 
@@ -469,9 +472,9 @@ function getOrderList(){
 									</table>`
 																			
 						}// success e
-					}); // ajax e
-					
-			})
+					}); // ajax e	
+				})
+			}
 			document.querySelector('.receiver_info').innerHTML = html;
 		}// success e
 	});	// ajax e
