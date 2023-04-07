@@ -413,7 +413,7 @@ let pageObject = {
 	listsize : 10,
 	mno		 : 0,
 }
-
+getOrderList()
 // 주문 내역 
 function getOrderList(){
 	pageObject.mno = memberInfo.member_no;	

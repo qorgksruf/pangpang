@@ -9,6 +9,15 @@ function openmodal_address(){
 function closemodal_address(){
 	document.querySelector('.modal_wrap_address').style.display='none';
 }
+function openmodal_account(){
+	getPaylist()
+	document.querySelector('.modal_wrap_account').style.display='flex';
+}
+function closemodal_account(){
+	document.querySelector('.modal_wrap_account').style.display='none';
+}
+
+
 let orderlist = JSON.parse(localStorage.getItem("orderlist"));
 //------------------------------------------------------------------------------------- 주문제품 불러오기
 printorder()
@@ -271,6 +280,28 @@ function delivery_address(){
 }
  //------------------------------------------------------------------------------------- 결제
 
+ // 팡팡페이 등록 계좌 목록 모달
+ function getPaylist(){
+      $.ajax({
+		url 	: "/pangpang/member/account",
+		method	: "get",
+		async	: false,
+		success	: (r)=>{
+			console.log(r)
+			let html = ``;
+			
+			r.forEach((o)=>{
+				html +=`<tr>
+							<td>${o.account_bank}	</td>
+							<td>${o.account_number}	</td>
+							<td><button onclick="requestPay(4)"> 선택 </button></td>
+						</tr>`;	
+			})	
+			document.querySelector('.accountlist').innerHTML = html;		
+		}// success e
+	}) // ajax e
+ }
+
   // 회원 식별 번호   
   const IMP = window.IMP;  // 생략 가능
   IMP.init("imp47415848"); // 예: imp00000000a
@@ -278,6 +309,7 @@ function delivery_address(){
   function requestPay(type) {
 	console.log(orderlist)
 	console.log(totalprice)
+	
 	let info = {
 	      pay_method	: "card",
 	      merchant_uid	: "ORD20180131-0000011",  	// 주문번호
@@ -322,7 +354,7 @@ function delivery_address(){
 						if(r=='true'){
 							cartOutAll();
 							alert('주문이 완료되었습니다.')
-							location.href="/pangpang/product/product_list.jsp?cno=1";
+							location.href="/pangpang/product/product_index.jsp";
 						}else{
 							alert('주문이 취소되었습니다.[관리자에게 문의]')
 						}
@@ -346,3 +378,9 @@ function delivery_address(){
 			}// success e
 		}); // ajax e	
 	}// cartOutAll e
+	
+	
+	
+	
+	
+	

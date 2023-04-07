@@ -15,24 +15,16 @@ import pangpang.controller.member.암호화.AES256;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.AccountDto;
 
-/**
- * Servlet implementation class Account
- */
+
 @WebServlet("/member/account")
 public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public Account() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int member_no = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
 		String key = MemberDao.getInstance().getpwd(member_no).substring(0,32);
@@ -55,9 +47,6 @@ public class Account extends HttpServlet {
 		response.getWriter().print(json);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String account_bank = request.getParameter("account_bank");
@@ -77,16 +66,10 @@ public class Account extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
