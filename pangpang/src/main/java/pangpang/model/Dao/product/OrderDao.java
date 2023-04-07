@@ -192,7 +192,7 @@ public class OrderDao extends Dao{
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
-	
+
 	// 주문 상태 변경
 	public boolean updateState(int state , int ordermanagement_no) {
 		String sql = "update ordermanagement set ordermanagement_state = "+state+" where ordermanagement_no = "+ordermanagement_no;

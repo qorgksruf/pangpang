@@ -91,7 +91,7 @@
 					<button type="button" class="modal_btn" onClick="requestPay(1)"> 카드결제		</button>
 					<button type="button" class="modal_btn" onClick="requestPay(2)"> 카카오페이		</button>
 					<button type="button" class="modal_btn" onClick="requestPay(3)"> 토스페이		</button>	
-					<button type="button" class="modal_btn" onClick="requestPay(4)"> 팡팡페이		</button>	
+					<button type="button" class="modal_btn" onClick="openmodal_account()"> 팡팡페이		</button>	
 				</td>
 			</tr>			
 		</table>
@@ -123,7 +123,20 @@
 					
 				</div>	<!-- modal_box e -->
 		</div>	<!-- modal_wrap e -->
-
+		
+		<!-- 팡팡페이 계좌 선택 모달 -->
+		<div class="modal_wrap_account">	
+			<div class="modal_box2">				
+				<h3  class="modal_title"> 팡팡페이 등록 계좌 목록 </h3>		
+				<div class="modal_content">
+					<!-- 검색 결과 리스트 출력 영역 -->
+					<table class="accountlist table">
+						<tr><td> 등록된 계좌가 결과가 없습니다.</td></tr>
+					</table>
+					<button onclick="closemodal_account()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+				</div>				
+			</div>	<!-- modal_box e -->
+		</div>	<!-- modal_wrap e -->
 
 
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>

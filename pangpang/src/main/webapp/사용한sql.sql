@@ -169,15 +169,6 @@ insert into member ( member_id , member_name, member_pwd , member_email , member
 values ( 'bongseong' , '유재석',  '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 ,'2023-04-05 17:25:42');
 
 
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 1 , '경기 안산시 단원구 광덕2로 121' , 1 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 2 , '경기 안산시 단원구 광덕3로 201' , 2 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 3 , '경기 안산시 상록구 한양대학로 80' , 3 ) ;
-insert into ordermanagement ( ordermanagement_state , ordermanagement_address , member_no ) 
-values ( 4 , '경기 안산시 단원구 초지로 128' , 4 ) ;
-
 insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_use_yn,carmanage_start,carmanage_finish)
 values('백1234','gv80','gv80.png','N','2010-01-02','2020-06-11');
 
