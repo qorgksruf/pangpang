@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.content_box{    
+	padding-top: 100px;
+    margin-left: 350px;
+    width: 1200px;
+    font-family: 'Happiness-Sans-Regular';
+}
+.content_box_header{    
+	border-bottom: 3px solid #404040;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.content_box_text{
+	padding-top: 40px;
+}
+.table1 th,.table1 td{
+	height: 40px;
+	line-height: 40px !important;
+    padding: 0px !important;
+    text-align: center;
+}
