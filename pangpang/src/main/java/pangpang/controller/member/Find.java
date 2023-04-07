@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pangpang.controller.member.암호화.AES256;
 import pangpang.controller.member.암호화.GetSalt;
 import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
+import pangpang.model.Dto.member.AccountDto;
 import pangpang.model.Dto.member.SaltDto;
 
 
@@ -65,12 +67,36 @@ public class Find extends HttpServlet {
 			// 최신 솔트 이용하여 암호화 하기
 			String salt = salts.get(salts.size()-1).getSalt();
 			System.out.println(salt);
-			String sha = madesha.sha(updatePwd, salt);
+			String sha2 = madesha.sha(updatePwd, salt);
 			
-			result = MemberDao.getInstance().findpwd( member_name , member_email , member_id , sha );
+			String key1 = MemberDao.getInstance().getpwd(MemberDao.getInstance().getMno(member_id)).substring(0,32);
+			
+			result = MemberDao.getInstance().findpwd( member_name , member_email , member_id , sha2 );
 			System.out.println(result);
-			if(result.equals(sha)) {
+			
+			if(result.equals(sha2)) {
 				result=updatePwd;
+			
+				int member_no = MemberDao.getInstance().getMno(member_id);
+				ArrayList<AccountDto> list = MemberDao.getInstance().getAccount(member_no);
+				System.out.println(list);
+				if(list!=null) { // 회원이 등록한 계좌가 있으면 실행
+					String key2 = sha2.substring(0,32);
+					for(AccountDto a : list) {
+						try {
+							String accountd = AES256.decrypt(key1, a.getAccount_number());
+							//System.out.println(account1);
+							String accounte = AES256.encrypt(key2, accountd);
+							//System.out.println(account2);
+							a.setAccount_number(accounte);
+						} catch (Exception e) {
+							System.out.println(e);
+						}
+					}System.out.println(list);
+					
+					Boolean result2 = MemberDao.getInstance().setAcccount(list);
+					if(!result2) {result="false";};
+				}
 			}
 		}
 		response.getWriter().print( result ); 

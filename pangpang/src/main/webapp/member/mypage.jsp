@@ -94,7 +94,7 @@
 		</div>
 		
 		
-<<<<<<< HEAD
+
 	<!-- 도로명 주소검색 모달 -->
 	<div class="modal_wrap_address">	
 		<div class="modal_box">
@@ -146,10 +146,10 @@
 		</div>
 	</div>
 	
-=======
+
 		
 		
->>>>>>> branch '정소연' of https://github.com/qorgksruf/pangpang
+
 	<script type="text/javascript" src="/pangpang/member/js/mypage.js"></script>
 </body>
 </html>

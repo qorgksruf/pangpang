@@ -40,7 +40,7 @@ public class Account extends HttpServlet {
 		ArrayList<AccountDto> list2 = new ArrayList<>();
 		for(AccountDto a : list) {
 			try {
-				AccountDto dto = new AccountDto(a.getAccount_bank(),AES256.decrypt(key, a.getAccount_number()));
+				AccountDto dto = new AccountDto(a.getAccount_no(),a.getAccount_bank(),AES256.decrypt(key, a.getAccount_number()),a.getMember_no());
 				list2.add(dto);
 			} catch (Exception e) {
 				System.out.println(e);
@@ -88,7 +88,10 @@ public class Account extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int account_no = Integer.parseInt(request.getParameter("account_no"));	
+		boolean result = MemberDao.getInstance().deleteAccount(account_no);
+		response.getWriter().print(result);
+		
 	}
 
 }

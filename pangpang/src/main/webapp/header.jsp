@@ -53,6 +53,9 @@
 			<div class="mainlogo"> <a href="/pangpang/index.jsp"><img width="100px" alt="" src="/pangpang/product/pimg/PANGPANG.png"></a></div>
 			<div class="header">
 				<div class="dropdown">
+					<a href="/pangpang/member/member_info.jsp"><button type="button"> 직원보기 </button></a>
+				</div>
+				<div class="dropdown">
 					<a href="/pangpang/member/member_management.jsp"><button type="button"> 인사관리 </button></a>
 				</div>			
 				<div class="dropdown">

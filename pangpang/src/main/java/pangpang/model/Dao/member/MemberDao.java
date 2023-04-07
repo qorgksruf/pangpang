@@ -268,15 +268,42 @@ public class MemberDao extends Dao{
 	// 17. 계좌 가져오기 
 	public ArrayList<AccountDto> getAccount(int member_no) {
 		ArrayList<AccountDto> list = new ArrayList<>();
-		String sql = "select account_bank,account_number from account where member_no='"+member_no+"';";
+		String sql = "select * from account where member_no='"+member_no+"';";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				AccountDto dto = new AccountDto(rs.getString(1), rs.getString(2));
+				AccountDto dto = new AccountDto(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getInt(4));
 				list.add(dto);
 			}return list;
 		}catch (Exception e) {System.out.println(e);}
 		return null;
+	}
+	
+	// 18. 계좌 수정
+	public boolean setAcccount(ArrayList<AccountDto> list) {
+		String sql = "update account set account_number = ? where account_no = ?;";
+		try {
+			for(AccountDto a : list) {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, a.getAccount_number());
+				ps.setInt(2, a.getAccount_no());
+				ps.executeUpdate();
+			}return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}return false;
+	}
+	
+	// 19. 계좌 삭제
+	public boolean deleteAccount(int account_no) {
+		String sql = "delete from account where account_no="+account_no+";";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}return false;
 	}
 }

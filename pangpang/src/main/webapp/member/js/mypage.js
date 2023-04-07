@@ -389,6 +389,9 @@ function getAccount(){
 						<th class="member_rank1"> 
 							계좌번호
 						</th>
+						<th>
+							비고
+						</th>
 					</tr>`
 			r.forEach((o)=>{
 				html += `<tr>
@@ -396,12 +399,30 @@ function getAccount(){
 							<td class="member_rank1"> 
 								${o.account_number}
 							</td>
+							<td>
+								<button onclick="deleteAccount(${o.account_no})" class="btn" type="button">삭제</button>
+							</td>
 						</tr>`
 			})
 				
 			document.querySelector('.accountTable').innerHTML=html	
 		}
 	})
+}
+
+function deleteAccount(account_no){
+	$.ajax({
+		url : "/pangpang/member/account" ,	// 서블릿 클래스의 @WebServlet("/member")
+		method :"delete" ,			// 메소드 선택
+		data : {"account_no":account_no} ,
+		success : (r)=>{ 
+			console.log(r)
+			if( r == 'true'){
+				alert('계좌 삭제 성공');
+				location.reload();
+			}else{ alert('계좌 삭제 실패') }
+		} // success end 
+	}) // ajax end 
 }
 
 // * pageObject : 현재페이지, 검색, 전송타입 보관된 객체 
@@ -422,6 +443,7 @@ function getOrderList(){
 		method	: "get",
 		data 	: pageObject,
 		success	: (r)=>{
+			console.log('결과1')
 			console.log(r)
 			let html = ``;
 			if( r.orderList.length == 0){
@@ -453,6 +475,7 @@ function getOrderList(){
 					data 	: {"type":-2,"ordermanagement_no":o.ordermanagement_no},
 					async	: false,
 					success	: (r)=>{
+						console.log('결과2')
 						console.log(r)
 						
 						r.list.forEach((o)=>{
