@@ -21,6 +21,25 @@ public class BookcarDto {
 	}
 
 	
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			int carmanage_no, int member_no, String reason, String carmanage_img, String carmanage_number) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.carmanage_no = carmanage_no;
+		this.member_no = member_no;
+		this.reason = reason;
+		this.carmanage_img = carmanage_img;
+		this.carmanage_number = carmanage_number;
+	}
+
+	//빈생성자
+	public BookcarDto() {
+		super();
+	}
+
 	//출력용
 	public BookcarDto(int bookcar_no, String bookcar_yn, int carmanage_no, int member_no) {
 		super();
@@ -30,10 +49,7 @@ public class BookcarDto {
 		this.member_no = member_no;
 	}
 
-	//빈생성자
-	public BookcarDto() {
-		super();
-	}
+
 	
 	public BookcarDto(int bookcar_no, String bookcar_yn) {
 		super();
@@ -41,17 +57,6 @@ public class BookcarDto {
 		this.bookcar_yn = bookcar_yn;
 	}
 
-	//풀생성자
-	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
-			int carmanage_no, int member_no) {
-		super();
-		this.bookcar_no = bookcar_no;
-		this.bookcar_str_date = bookcar_str_date;
-		this.bookcar_end_date = bookcar_end_date;
-		this.bookcar_yn = bookcar_yn;
-		this.carmanage_no = carmanage_no;
-		this.member_no = member_no;
-	}
 
 
 
@@ -74,6 +79,46 @@ public class BookcarDto {
 
 
 	
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			int member_no, String reason) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.member_no = member_no;
+		this.reason = reason;
+	}
+
+
+
+
+
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			String reason) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.reason = reason;
+	}
+
+
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			int member_no, String reason, String carmanage_number, String member_name) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.member_no = member_no;
+		this.reason = reason;
+		this.carmanage_number = carmanage_number;
+		this.member_name = member_name;
+	}
+
+
 	public String getCarmanage_number() {
 		return carmanage_number;
 	}
