@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
-<title>header</title>
+<title> header </title>
 
 	<!-- 모든 페이지 공통 css -->
 	<!-- 부트스트랩  -->
@@ -19,11 +18,34 @@
 
 </head>
 <body>
-
-	<div class="header_top_box">
-		<span class="comp_name"> PANGPANG </span>
-		<span class="inc">.inc</span>
-		<span class="homeicon"> <i class="fas fa-home"></i> </span>
+	
+	<div class="newheader_wrap">
+		<div class="header_top_box">
+			<span class="comp_name"> PANGPANG </span>
+			<span class="inc">.inc</span>
+			<a href="#"> <span class="homeicon"> <i class="fas fa-home"> </i> </span> </a>
+			<a href="#"> <span class="logouticon"> <i class="fas fa-sign-out-alt"> </i> </span> </a>
+			<a href="#"> <span class="usericon"> <i class="fas fa-user"> </i> </span> </a>
+		</div>
+		
+		<div class="side_bar">
+			<div class="main_menu_box">
+				<button class="menu_title top_title" onclick="viewMenu()"> 인사관리 </button>
+				<ul class="main_menu">	
+					<li><a href="#"> 직원정보 보기 </a> </li>
+					<li><a href="#"> 회원관리 </a> </li>
+					<li><a href="#"> 등급관리 </a> </li>
+					<li><a href="#"> 연차관리 </a> </li>
+				</ul>
+			</div>
+			
+			<button class="sidebar_onoff" onclick="sidebar_onoff()"><i class="fas fa-chevron-left"></i></button>
+			
+		</div>
+		
+		
+		
+		
 	</div>
 	
 
