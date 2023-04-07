@@ -7,6 +7,8 @@ public class DrivecarDto {
 	private String drivecar_distance;
 	private String drivecar_parking;
 	private int bookcar_no;
+	private String report_content;
+	
 	
 	//빈생성자
 	public DrivecarDto() {
@@ -23,6 +25,19 @@ public class DrivecarDto {
 		this.drivecar_distance = drivecar_distance;
 		this.drivecar_parking = drivecar_parking;
 		this.bookcar_no = bookcar_no;
+	}
+
+	
+	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, String drivecar_distance,
+			String drivecar_parking, int bookcar_no, String report_content) {
+		super();
+		this.drivecar_no = drivecar_no;
+		this.drivecar_str_date = drivecar_str_date;
+		this.drivecar_end_date = drivecar_end_date;
+		this.drivecar_distance = drivecar_distance;
+		this.drivecar_parking = drivecar_parking;
+		this.bookcar_no = bookcar_no;
+		this.report_content = report_content;
 	}
 
 	public int getDrivecar_no() {
