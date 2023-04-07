@@ -106,6 +106,19 @@ public class BookcarDto {
 
 
 	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			int carmanage_no, int member_no, String reason) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.carmanage_no = carmanage_no;
+		this.member_no = member_no;
+		this.reason = reason;
+	}
+
+
+	public BookcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
 			int member_no, String reason, String carmanage_number, String member_name) {
 		super();
 		this.bookcar_no = bookcar_no;

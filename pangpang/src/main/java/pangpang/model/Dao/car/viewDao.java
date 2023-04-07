@@ -19,12 +19,13 @@ public class viewDao  extends Dao {
 	//나의 과거 배차상태들확인
 	public ArrayList<BookcarDto>recordList(int member_no){
 		ArrayList<BookcarDto>list = new ArrayList<>();
-		String sql="select * from bookcar where member_no= 2;";
+		String sql="select * from bookcar where member_no=? ;";
 		
 		try {
 	         ps=con.prepareStatement(sql);
+	         ps.setInt(1, member_no);
 	         rs=ps.executeQuery();			
-
+	         
 	         while(rs.next()) {
 		         	BookcarDto dto = new BookcarDto(
 		         			rs.getInt(1),
@@ -32,7 +33,8 @@ public class viewDao  extends Dao {
 		         			rs.getString(3),
 		         			rs.getString(4),
 		         			rs.getInt(5),
-		         			rs.getString(6)
+		         			rs.getInt(6),
+		         			rs.getString(7)
 		         			);
 		         	list.add(dto);
 	         }
