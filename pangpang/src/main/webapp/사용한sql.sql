@@ -12,6 +12,7 @@ drop table if exists ordermanagement;
 drop table if exists stockmanagement;
 drop table if exists product;
 drop table if exists category;
+drop table if exists chat;
 drop table if exists account;
 drop table if exists member;
 --  회원페이지 -------------------------------------------------------------------------------
@@ -38,6 +39,15 @@ create table account(
 	foreign key(member_no) references member(member_no) on delete cascade 		-- 멤버 지우면 같이 삭제 
 );
 
+create table chat(
+	chat_no int auto_increment primary key,
+	chat_fmno int,
+    chat_tmno int,
+    chat_msg longtext,
+    chat_date datetime default now(),
+    foreign key(chat_fmno) references member(member_no) on delete cascade,
+    foreign key(chat_tmno) references member(member_no) on delete cascade
+);
 
 -- 제품관리 ---------------------------------------------------------------------------------
 -- 제품 카테고리 테이블
