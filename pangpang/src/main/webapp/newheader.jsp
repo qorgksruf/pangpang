@@ -61,14 +61,34 @@
 			<button class="sidebar_onoff" onclick="sidebar_onoff()"><i class="fas fa-chevron-left"></i></button>
 			
 			<div class="user_profile">
-				
+				<!-- 접속명단 표시 --> 
+				<div class="connectlistbox"> 
+					<!-- 접속명단 1명  표시 --> 
+					<div class="connectbox">
+						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+						<div class="name"> 유재석	</div>
+					</div>
+					<!-- 접속명단 1명  표시 --> 
+					<div class="connectbox">
+						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+						<div class="name"> 유재석	</div>
+					</div>
+					<!-- 접속명단 1명  표시 --> 
+					<div class="connectbox">
+						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+						<div class="name"> 유재석	</div>
+					</div>
+				</div>
+				<!-- 로그인 정보 표시 --> 
+				<div class="loginbox"> 
+					<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+					<div> 강호동 </div>
+				</div>					
 			</div>
 			
+			
 		</div>
-		
-		
-		
-		
+	
 	</div>
 	
 
