@@ -142,7 +142,7 @@ create table drivecar(
 	drivecar_no    			int auto_increment primary key,            	-- 운행일지일련번호 
 	drivecar_str_date 		datetime,                        			-- 운행시작일자
 	drivecar_end_date 		datetime,                        			-- 운행종료일자
-	drivecar_distance 		int,										-- 운행거리
+	drivecar_distance 		varchar(10),										-- 운행거리
 	drivecar_parking 		varchar(50),   								-- 주차위치
 	bookcar_no   			int,     									-- 배차일련번호
 	foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk

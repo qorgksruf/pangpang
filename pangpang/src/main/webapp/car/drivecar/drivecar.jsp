@@ -12,7 +12,10 @@
 	<%@ include file="/header.jsp" %>
 
 
-
+	<%String bookcar_no = request.getParameter("bookcar_no"); %>
+	
+	<input class="bookcar_no" type="hidden" value="<%=bookcar_no%>">
+	
 	<h3>운행일지작성하기</h3>
 	
 	<div class="container">

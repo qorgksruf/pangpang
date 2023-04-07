@@ -50,7 +50,7 @@ function driver(bookcar_no){
 			if(o.bookcar_yn=='Y'){
 				alert("운행일지를 작성하세요")
 				//여기에 운행일지 경로 넣기
-				location.href="/pangpang/car/drivecar/drivecar.jsp"
+				location.href="/pangpang/car/drivecar/drivecar.jsp?bookcar_no=" +bookcar_no
 			}
 		}
 		
@@ -60,11 +60,7 @@ function driver(bookcar_no){
 
 
 
-$(document).ready(function() {
-        $('#summernote').summernote(
-			{ heigth : 700 } 
-		);
-});
+
 
 
 

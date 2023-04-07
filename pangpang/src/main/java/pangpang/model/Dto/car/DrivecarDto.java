@@ -4,7 +4,7 @@ public class DrivecarDto {
 	private int drivecar_no;
 	private String drivecar_str_date;
 	private String drivecar_end_date;
-	private int drivecar_distance;
+	private String drivecar_distance;
 	private String drivecar_parking;
 	private int bookcar_no;
 	
@@ -14,7 +14,7 @@ public class DrivecarDto {
 	}
 	
 	//풀생성자
-	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, int drivecar_distance,
+	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, String drivecar_distance,
 			String drivecar_parking, int bookcar_no) {
 		super();
 		this.drivecar_no = drivecar_no;
@@ -49,11 +49,11 @@ public class DrivecarDto {
 		this.drivecar_end_date = drivecar_end_date;
 	}
 
-	public int getDrivecar_distance() {
+	public String getDrivecar_distance() {
 		return drivecar_distance;
 	}
 
-	public void setDrivecar_distance(int drivecar_distance) {
+	public void setDrivecar_distance(String drivecar_distance) {
 		this.drivecar_distance = drivecar_distance;
 	}
 
