@@ -78,6 +78,7 @@
 						<li><a class="dropdown-item" href="/pangpang/car/carmanagement/carmanagement.jsp">  차량관리	</a></li>	<!-- 신규 사내 차량 등록 -->
 						<li><a class="dropdown-item" href="/pangpang/car/bookcar/bookcar.jsp">  			배차신청	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
 						<li><a class="dropdown-item" href="/pangpang/car/carmanagement/permission.jsp">  			배차허가	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
+						<li><a class="dropdown-item" href="/pangpang/car/bookcar/view.jsp">  			과거기록확인	</a></li>	<!-- 보고서 체계? 사용목적? 게시판 ? -->
 						<li><a class="dropdown-item" href="/pangpang/map/map.jsp"> 							배송지설정	</a></li>	<!-- 지도API 활용한 배송지 경로설정 -->
 						<li><a class="dropdown-item" href="/pangpang/car/drivecar/drivecar.jsp"> 			운영관리	</a></li>	<!-- 차량 운행 내역 --> 
 						<li><a class="dropdown-item" href="#"> 	폐차관리	</a></li>	<!-- 차량 폐기 등록 / 폐기 내역 출력 --> 
