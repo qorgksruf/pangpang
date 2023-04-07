@@ -29,7 +29,7 @@ public class Chatting {
 		
 		if(dto.getMember_rank()>1) {
 			// 접속한 클라이언트소켓 들을 보관 
-			ClientDto clientDto = new ClientDto( session , mid , dto.getMember_name());
+			ClientDto clientDto = new ClientDto( session , mid , dto.getMember_name(), dto.getMember_no());
 			접속명단.add( clientDto  );
 		}
 		// 연결된 클라이언트 소켓를 모든 접속명단 목록 메시지 보내기 

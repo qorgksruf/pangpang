@@ -195,6 +195,34 @@ a{ color: white; text-decoration: none; }
 	width: 100%;
 }
 
+/* ------- 채팅 ------ */
+.chat_content{
+	height: 80%;
+	border: 1px solid black;
+	padding: 20px;
+	overflow: scroll;
+}
+.sendbox{ text-align: right;}
+.receivebox{ text-align: left;}
+.chat_btn{
+	height: 10%;
+	display: flex;
+	margin-top: 10px;
+}
+.chat_btn textarea {
+	width: 80%;
+	resize: none;
+	padding: 10px;
+}
+.chat_btn button{
+	width: 20%;
+	border: none;
+	margin-left: 10px;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
 
 
 

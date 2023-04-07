@@ -59,8 +59,24 @@
 				
 				<!-- 채팅박스 -->
 				<div class="chating_box">
-				
+					<div class="chat_info">
+						<div class="mimgbox">
+							<img src="/pangpang/member/img/default.webp" class="hpimg">
+							<span class="pname"> 유재석[qweqwe] </span>
+						</div>
+						<div>
+							<button onclick="closechatbox()" class="pbadge" type="button"> 닫기 </button>
+						</div>
+					</div>
 					
+					<div class="chat_content">
+						
+					</div>
+					
+					<div class="chat_btn">
+						<textarea class="chatinput" rows="" cols=""></textarea>
+						<button onclick="sendchat()" type="button">전송</button>
+					</div>
 				</div>
 				
 			</div>
