@@ -67,6 +67,7 @@ function sidebar_onoff(){
 	console.log( 'sideber 클릭됨' )
 	if( sidebarYn ){
 		sidebarYn = false;
+		chatboxYn = true;
 		document.querySelector('.side_bar').style.left = "-300px";
 		document.querySelector('.user_profile').style.left = "-300px";
 		document.querySelector('.sidebar_onoff').innerHTML = `<i class="fas fa-chevron-right"></i>`

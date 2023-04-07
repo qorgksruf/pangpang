@@ -93,9 +93,9 @@ a{ color: white; text-decoration: none; }
 .menu_title {
 	margin: 0px;
 	padding : 10px 0px 10px 70px;
-	font-size: 17px;
+	font-size: 16px;
 	color: white;
-	font-family: 'Happiness-Sans-Bold';
+	font-family: 'Happiness-Sans-Regular';
 	background-color: transparent;
 	border: none;
 	width: 100%;
@@ -116,7 +116,7 @@ a{ color: white; text-decoration: none; }
 	color: white;
 	padding-left: 70px;
 	padding-top: 5px;
-	font-size: 13px;
+	font-size: 12px;
 	font-family: 'Happiness-Sans-Regular';
 	background-color: #518f9f;
 }
