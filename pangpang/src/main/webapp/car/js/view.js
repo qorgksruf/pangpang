@@ -57,3 +57,15 @@ function driver(bookcar_no){
 	})
 
 }
+
+
+
+$(document).ready(function() {
+        $('#summernote').summernote(
+			{ heigth : 700 } 
+		);
+});
+
+
+
+

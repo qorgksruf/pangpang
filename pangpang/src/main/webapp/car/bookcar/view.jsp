@@ -12,7 +12,8 @@
 	<%@ include file="/header.jsp" %> 
 
 	<h3>마이페이지</h3>
-
+		
+		
 		
 		<table class="table myrecord">
 		
