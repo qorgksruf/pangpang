@@ -18,7 +18,7 @@ function carList(){
       async:false,
       success:(r)=>{
          console.log('통신');
-         console.log(r);
+         console.log(r); 
          detailview=r;
             let html = `<tr>            
                            <th width="10%"> 번호 </th>
