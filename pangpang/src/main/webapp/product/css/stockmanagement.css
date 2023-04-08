@@ -1,17 +1,21 @@
 @charset "UTF-8";
 
+.pagetitle{
+	margin-top: 70px;	background-color: rgb(41, 72, 80);
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+}
+
 th{
 	background-color: #5697A6;
 	color : white;
 }
-.inputbox td{
-	background-color:#F2F2F2;
-}
 
-.stocklistbox button{
+.stocklistbox button, .searchbtn, .setbtn{
 	width:100px;
 	border: none;
-	background-color: #5697A6;
+	background-color: rgb(41, 72, 80);
 	color:white;
 }
 .stockmanagementtype{
@@ -24,13 +28,28 @@ input[type=text]{
 input[type=datetime-local]{
 	width: 200px;
 }
-.topbox{
+.inputbox td, .topbox{
 	padding: 1%;
 	background-color: #F2F2F2;
 }
-.setbtn{
-	width: 100px;
+select{
+	border:none;
+	background-color: #F2F2F2;	
 }
 .Page{
 	text-align: center;
+}
+
+.droplist td{
+	background-color: #F2F2F2;
+}
+.dropbtnbox{
+	text-align: right;
+}
+.dropbtn{
+	width:100px;
+	border: none;
+	background-color: red;
+	color:white;	
+	padding: 10px;
 }

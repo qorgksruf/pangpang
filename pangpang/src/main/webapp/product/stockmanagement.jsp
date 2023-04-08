@@ -16,7 +16,7 @@
 	
 	<div class="container">
 	
-		<h3> 입력 </h3>
+		<h3 class="pagetitle"> 입력 </h3>
 		<!-- 재고 입력 구역 -->
 		<div class="inputbox">
 			<table class="table table-hover inputtable">
@@ -44,7 +44,7 @@
 			</table>
 		</div>	
 	
-		<h3> 재고 내역 </h3>
+		<h3 class="pagetitle"> 재고 내역 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">

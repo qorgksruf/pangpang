@@ -15,7 +15,7 @@
 	
 	<div class="container">
 	
-		<h3> 품목 관리 </h3>
+		<h3 class="pagetitle"> 품목 관리 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
