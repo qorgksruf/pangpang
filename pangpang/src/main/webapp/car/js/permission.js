@@ -7,8 +7,11 @@ let info={
 	login:memberInfo.member_no
 }
 
+
+
+
+let ptsd='';
 booklist();
-let html='';
 function booklist(){
 	console.log("booklist진입")
 	$.ajax({
@@ -19,6 +22,7 @@ function booklist(){
 		success:(r)=>{
 			console.log("통신성공");
 			console.log(r);
+			ptsd=r;
 			document.querySelector('.booktable').innerHTML='';
 			  let html = `<tr> 
                         <th width="10%"> 번호</th>    
@@ -39,7 +43,7 @@ function booklist(){
                      <td> ${o.bookcar_str_date} </td>
                      <td> ${o.bookcar_end_date} </td>   
                      <td> <button onclick="bookCar(${o.bookcar_no}, 'Y')" type="button">수락</button>
-                         <button onclick="bookCar(${o.bookcar_no}, 'N')" type="button">반려</button> </td>              
+                         <button onclick="bookCar(${o.bookcar_no}, 'N')" type="button">반려</button> 
                   </tr>`             
          })       
          document.querySelector('.booktable').innerHTML=html;
@@ -48,7 +52,21 @@ function booklist(){
 	
 }
 
-let reason='';
+
+function people(bookcar_no,bookcar_yn){
+	ptsd.forEach((o)=>{
+		if(o.bookcar_no==bookcar_no){
+			if(bookcar_yn=="N"){
+		    	reason = prompt("반려사유를 입력해주세요");
+			}else if(bookcar_yn=="Y"){
+				reason= alert("승인되었습니다")	
+			}
+		}
+	})
+}
+
+
+/*let reason='';
 function Reason(bookcar_yn){
 	
 	if(bookcar_yn=="N"){
@@ -56,14 +74,14 @@ function Reason(bookcar_yn){
 	}
 
 
-}
+}*/
 
 
 // 수락/반려 버튼 이벤트
 function bookCar(bookcar_no, bookcar_yn) {
 	console.log("bookCar진입")
-	
-	Reason(bookcar_yn);
+	people(bookcar_no,bookcar_yn);
+	//Reason(bookcar_yn);
 	
 	let bookCarInfo = {
 		bookCar_no: bookcar_no,

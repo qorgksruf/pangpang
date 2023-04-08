@@ -19,7 +19,7 @@
 
 
 		<!-- 배차확인용테이블 -->
-		<table class="table booktable">
+		<table class="table booktable" id="booktable">
 
 		</table> 
 

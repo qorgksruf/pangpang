@@ -67,13 +67,22 @@ public class bookcar extends HttpServlet {
 		String bookcar_yn = request.getParameter("bookCar_yn");
 		System.out.println("bookcar.java doPost bookCar_yn ::: " + bookcar_yn);
 		String reason=request.getParameter("reason");
-			System.out.println("bookcar.java.doPost.reason"+reason);
+		System.out.println("bookcar.java.doPost.reason"+reason);
+		
 		int bookcar_no = Integer.parseInt(request.getParameter("bookCar_no")) ;
 		System.out.println("bookcar.java doPost bookCar_no ::: " + bookcar_no);
+		if(reason==null) {
+			BookcarDao.getInstance().bookcarUpdate2(bookcar_yn, bookcar_no);
+			System.out.println("-- doPost 종료 --");
+		}else {
+			BookcarDao.getInstance().bookcarUpdate(bookcar_yn, bookcar_no,reason);
+			System.out.println("-- doPost 종료 --");
+		}
+
 		
-		BookcarDao.getInstance().bookcarUpdate(bookcar_yn, bookcar_no,reason);
 		
-		System.out.println("-- doPost 종료 --");
+		
+		
 		
 		/*
 		 * String result = BookcarDao.getInstance().bookcarUpdate(bookcar_yn,

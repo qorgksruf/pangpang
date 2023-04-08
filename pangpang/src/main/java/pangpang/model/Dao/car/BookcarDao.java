@@ -156,7 +156,9 @@ public class BookcarDao extends Dao{
 		      }
 		      return list;
 		   }
-		  
+	
+
+		  //배차이력승인시 db 업데이트해주는 로직
 		  public void bookcarUpdate(String bookcar_yn, int bookcar_no,String reason) {
 			  String sql = "UPDATE BOOKCAR SET BOOKCAR_YN = ? , reason = ? WHERE BOOKCAR_NO = ?";
 			  
@@ -176,6 +178,26 @@ public class BookcarDao extends Dao{
 			 return ;
 		  }
 		
-		
+
+		  //배차이력승인시 db 업데이트해주는 로직
+		  public void bookcarUpdate2(String bookcar_yn, int bookcar_no) {
+			  String sql = "UPDATE BOOKCAR SET BOOKCAR_YN = ? WHERE BOOKCAR_NO = ?";
+			  
+			  try {
+				  	ps=con.prepareStatement(sql);
+				  	ps.setString(1, bookcar_yn);
+				  	ps.setInt(2, bookcar_no);
+				  	System.out.println("BookcarDao.java bookcarUpdate sql ::: " + sql);
+				  	ps.executeUpdate();
+					
+				  
+			} catch (Exception e) {
+				System.out.println("bookcarUpdate의 전체출력"+e);
+			}
+			  
+			 return ;
+		  }		  
+		  
+		  
 		
 }
