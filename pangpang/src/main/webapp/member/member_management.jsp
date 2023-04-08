@@ -42,6 +42,10 @@
 					</td>
 				</tr>
 			</table>
+			<!-- 페이징처리 버튼들 -->
+			<div class="pagebox">
+			
+			</div>
 		</div>
 		<button type="button" onclick="start()" class="btn">시작</button>
 	</div>
@@ -97,6 +101,7 @@
 						</td>
 					</tr>
 				</table>
+				
 			</div>
 			<div class="modal_btns">
 				<button class="modal_check btn" type="button" onclick="update()">수정</button>

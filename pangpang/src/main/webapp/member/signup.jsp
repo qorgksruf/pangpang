@@ -9,22 +9,17 @@
 </head>
 <body>
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
-	<div class="signup_wrap container" style="margin-bottom: 50px;">
-		<div class="signup_name h2">
-			회원정보 입력
+	<div class="content_box">
+		<div class="content_box_header">
+			회원가입
 		</div>
-		<form class="signupForm">
-		
-			<!-- 테이블 세트 1개 -->
-			<div class="input_box container">
-				<div class="box_title">
-					<div class="input_title h3">
-						기본입력
-					</div>
-				</div>
-				
-				<div class="input_table_box">
-					<table  class="input_table table table-success table-striped-columns table-bordered">
+		<div class="content_box_text">
+			<form class="signupForm">
+				<!-- 테이블 세트 1개 -->
+				<div class="input_box">
+					<h3> 기본입력 </h3>
+					
+					<table  class="input_table table table1">
 						<tr>
 							<th class="table_mid">
 								<div class="box1">
@@ -35,7 +30,7 @@
 								</div>
 							</th>
 							<td class="table_mid">
-								<input class="name member_name form-control" name="member_name" type="text">
+								<input class="name member_name input1" name="member_name" type="text">
 							</td>
 						</tr>
 						<tr>
@@ -50,7 +45,7 @@
 							<td class="table_mid birth_box">
 								<div style="display: flex;">
 									<div class="birthYear_box">
-										<select class="birthYear form-control">
+										<select class="birthYear input1">
 											<option>선택</option>
 											<option>2004</option>
 											<option>2003</option>
@@ -147,7 +142,7 @@
 										</select>
 									</div>
 									<div class="birthMonth_box">
-										<select class="uiform birthMonth form-control">
+										<select class="uiform birthMonth input1">
 											<option>선택</option>
 											<option>1</option>
 											<option>2</option>
@@ -164,7 +159,7 @@
 										</select>
 									</div>
 									<div class="birthDay_box">
-										<select class="uiform birthDay form-control">
+										<select class="uiform birthDay input1">
 											<option>선택</option>
 											<option>1</option>
 											<option>2</option>
@@ -213,14 +208,14 @@
 								</div>
 							</th>
 							<td class="table_mid">
-								<div class="email_input_box" style="display: flex;">
-									<div class="email_box" style="display: flex;">
-										<input class="email form-control" type="text">
+								<div class="email_input_box" style="display: flex;align-items: center;">
+									<div class="email_box" style="display: flex;align-items: center;">
+										<input class="email input1" type="text">
 										<div class="atsign">@</div>
-										<input class="domain form-control" type="text">
+										<input class="domain input1" type="text">
 									</div>
 									<div class="domain_select_box" >
-										<select onchange="setdomain()" class="domain_select form-control">
+										<select onchange="setdomain()" class="domain_select input1">
 											<option>직접입력</option>
 											<option>naver.com</option>
 											<option>daum.net</option>
@@ -246,16 +241,16 @@
 							<td class="table_end">
 								<div class="email_input_box" style="display: flex;">
 									<div class="domain_select_box" >
-										<select class="number_select form-control">
+										<select class="number_select input1">
 											<option>010</option>
 											<option>016</option>
 											<option>011</option>
 											<option>017</option>
 										</select>
 									</div>
-									<div style="display: flex;">
-										<input class="input1 member_phone1 form-control" name="member_phone" type="text">
-										<input class="input1 member_phone2 form-control" name="member_phone" type="text">
+									<div style="display: flex;align-items: center;">
+										<input class="input1 member_phone1 input1" name="member_phone" type="text">
+										<input class="input1 member_phone2 input1" name="member_phone" type="text">
 									</div>
 								</div>
 							</td>
@@ -270,23 +265,16 @@
 								</div>
 							</th>
 							<td class="table_mid">
-								<span class="member_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button> 
+								<span class="member_address"></span> <button  type="button" class="btn" onclick="openmodal_address()"> 주소 찾기 </button> 
 							</td>
 						</tr>
 					</table>
 				</div>
-			</div>
-			
-			<!-- 테이블 세트 1개 -->
-			<div class="input_box container">
-				<div class="box_title">
-					<div class="input_title h3">
-						웹사이트 비밀번호 입력
-					</div>
-				</div>
 				
-				<div class="input_table_box">
-					<table  class="input_table table table-success table-striped-columns table-bordered">
+				<!-- 테이블 세트 1개 -->
+				<div class="input_box">
+					<h3> 웹사이트 비밀번호 입력 </h3>
+					<table  class="input_table table table1">
 						<tr>
 							<th class="table_mid">
 								<div class="box1">
@@ -296,12 +284,12 @@
 									<span class="confirm red"></span>
 								</div>
 							</th>
-							<td class="table_mid" >
+							<td class="table_mid"  style="display: flex;align-items: center;">
 								<div style="display: flex;">
-									<input maxlength="12px;" class="input1 member_id form-control" name="member_id" type="text">
+									<input maxlength="12px;" class="input1 member_id input1" name="member_id" type="text">
 									<button type="button" class="checkmId btns btn" onclick="idcheck()">아이디 중복확인</button>
 								</div>
-								<span>5~12자  이내 영문 또는 영문/숫자 조합</span>
+								<span style="margin-left: 6px;">5~12자  이내 영문 또는 영문/숫자 조합</span>
 							</td>
 						</tr>
 						<tr>
@@ -314,7 +302,7 @@
 								</div>
 							</th>
 							<td class="table_mid pwd_info_box" >
-								<input maxlength="20px;" class="input1 member_pwd form-control" name="member_pwd" type="password">
+								<input maxlength="20px;" class="input1 member_pwd input1" name="member_pwd" type="password">
 								<span>8~20자  이내 영문/숫자 조합(특수문자 입력 가능)</span>
 							</td>
 						</tr>
@@ -328,16 +316,16 @@
 								</div>
 							</th>
 							<td class="table_end">
-								<input class="input1 member_pwdconfirm form-control" type="password">
+								<input class="input1 member_pwdconfirm input1" type="password">
 							</td>
 						</tr>
 					</table>
-				</div>
-			</div>	
-		</form>	
-      	<div class="signup_btn_box container" style="text-align: center;">
-      		<!-- <a href="/hotel/member/completed.jsp"> --><button onclick="signup()" class="singup_btn btn">가입 신청</button><!-- </a>  -->
-      	</div>
+				</div>	
+			</form>	
+	      	<div class="signup_btn_box container" style="text-align: center;">
+	      		<button onclick="signup()" class="singup_btn btn">가입 신청</button>
+	      	</div>
+		</div>
 	</div>
 	
 	<!-- 도로명 주소검색 모달 -->

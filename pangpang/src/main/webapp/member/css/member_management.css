@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .content_box{    
 	padding-top: 100px;
-    margin-left: 350px;
+    margin-left: 370px;
     width: 1200px;
     font-family: 'Happiness-Sans-Regular';
 }
@@ -30,3 +30,22 @@
 	background-color: #5697A6;
 	color: white !important;
 }
+.pagebtn{
+	border: none;
+    background-color: transparent;
+    font-weight: bold;
+    margin: 15px 10px;
+}
+.pagebox{
+	display: flex;
+    justify-content: center;
+}
+.line1{width: 45px; cursor: pointer;}
+.line2{width: 100px; cursor: pointer;}
+.line3{width: 100px; cursor: pointer;}
+.line4{width: 240px; cursor: pointer;}
+.line5{width: 160px; cursor: pointer;}
+.line6{width: 240px; cursor: pointer;}
+.line7{width: 110px; cursor: pointer;}
+.line8{width: 45px; cursor: pointer;}
+.line9{width: 100px; cursor: pointer;}

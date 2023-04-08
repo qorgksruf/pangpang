@@ -333,7 +333,7 @@ function phonecheck(){
 		checkconfirm[3].innerHTML = 'O'
 		checkconfirm[3].style="color: #f0f7f5 !important"
 	}else{
-		checkconfirm[3].innerHTML = '형식에 맞게 <br>입력해주세요'
+		checkconfirm[3].innerHTML = '형식에 맞게 입력해주세요'
 		checkconfirm[3].style="color: red"
 	}
 }
@@ -363,10 +363,10 @@ function idcheck(){
 						checkconfirm[5].style="color: #f0f7f5 !important"
 					}else{
 						alert('사용 중인 아이디입니다.')
+						return
 					}
 				}
 			})
-			checkconfirm[5].innerHTML = 'O'
 		}else{ 
 			alert('아이디 형식에 맞게 작성하여 주십시오.')
 		}
@@ -381,7 +381,7 @@ function pwdcheck(){
 	let member_id = document.querySelector('.member_id').value
 	
 	if(!pwdj.test(member_pwd)){
-		checkconfirm[6].innerHTML = '형식에 맞게 <br>입력해주세요'
+		checkconfirm[6].innerHTML = '형식에 맞게 입력해주세요'
 		checkconfirm[6].style="color: red"
 	}else if(/(\w)\1\1\1/.test(member_pwd)){
 		checkconfirm[6].innerHTML = '연속된 동일문자 사용불가'

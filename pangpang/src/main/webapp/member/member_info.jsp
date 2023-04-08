@@ -38,6 +38,10 @@
 					<td>등급</td>
 				</tr>
 			</table>
+			<!-- 페이징처리 버튼들 -->
+			<div class="pagebox">
+			
+			</div>
 		</div>
 	</div>
 	<script src="/pangpang/member/js/member_info.js" type="text/javascript"></script>

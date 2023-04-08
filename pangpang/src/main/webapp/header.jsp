@@ -65,7 +65,7 @@
 							<span class="pname"> 유재석[qweqwe] </span>
 						</div>
 						<div>
-							<button onclick="closechatbox()" class="pbadge" type="button"> 닫기 </button>
+							<button onclick="closechatbox()" class="closebtn btn" type="button">X</button>
 						</div>
 					</div>
 					
@@ -94,16 +94,6 @@
 							<div class="name"> 유재석	</div>
 						</div>
 					</button>
-					<!-- 접속명단 1명  표시 -->
-					<div class="connectbox">
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div class="name"> 유재석	</div>
-					</div>
-					<!-- 접속명단 1명  표시 -->
-					<div class="connectbox">
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div class="name"> 유재석	</div>
-					</div>
 				</div>
 				<!-- 로그인 정보 표시 --> 
 				<button type="button" class="loginbox_btn" onclick="login_info_scroll()">

@@ -107,6 +107,11 @@ function chatbox(member_no){
 }
 
 
+function closechatbox(){
+	chatboxYn = true;
+	document.querySelector('.chating_box').style.display = "none";
+}
+
 //---------------------------------------------------------------------------------------------------------------
 /* 채팅창 내용들이 출력되는 상자 */
 let contentbox = document.querySelector('.contentbox')
@@ -114,14 +119,14 @@ let contentbox = document.querySelector('.contentbox')
 let 클라이언트소켓 = null
 
 if( memberInfo.member_id == null ){ // memberInfo : 헤더js 존재하는 객체
-	alert('로그인하고 들어오세요~'); location.href="/pangpang/main.jsp";
+	alert('로그인 필수'); location.href="/pangpang/main.jsp";
 }else{
 	let html = 	`<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
 				<div> ${memberInfo.member_name}[${memberInfo.member_id}]</div>`
 	document.querySelector('.loginbox').innerHTML = html;
 	console.log(memberInfo.member_id)
 	// 1. 클라이언트소켓 생성 과 서버소켓 연결[@OnOpen]
-	클라이언트소켓 = new WebSocket('ws://localhost:8080/pangpang/chatting/'+memberInfo.member_id );	
+	클라이언트소켓 = new WebSocket('ws://172.30.1.63:8080/pangpang/chatting/'+memberInfo.member_id );	
 	// 클라이언트소켓 = new WebSocket('ws://localhost:8080/jspweb/chatting/'+memberInfo.mid );	
 	클라이언트소켓.onopen = function(e){ 서버소켓연결(e) } // 클라이언트소켓 객체에 정의한 함수 대입
 	클라이언트소켓.onmessage = function(e){ 메시지받기(e); }
