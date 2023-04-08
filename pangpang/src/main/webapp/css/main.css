@@ -140,7 +140,7 @@
 }
 .modal_title_box{
 	background-color: #15b8db;
-	width: 100%;
+	width: 490px;
 	height: 40px;
 	display: flex;
 	font-family: 'Happiness-Sans-Regular';
@@ -149,6 +149,7 @@
 	border: 5px solid #15b8db;
 	font-size: 18px;
 	justify-content: space-between;
+	padding: 0 5px;
 }
 .modal_content{
 	width: 400px;
@@ -192,15 +193,15 @@
 .close_findid{
 	display: flex;
     justify-content: center;
-    background-color: #429393;
-    border: 1px solid #429393;
+    background-color: #15b8db;
+    border: 1px solid #15b8db;
 }
 
 .findid_btn, .findpwd_btn{
 	width: 80px;
 	height: 30px;
 	border: none;
-	background-color: #429393;
+	background-color: #15b8db;
 	color: white;
 	font-size: 12px;
 }

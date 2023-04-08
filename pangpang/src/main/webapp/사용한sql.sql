@@ -30,6 +30,7 @@ create table member(
 	member_login 	datetime default now()							-- 최근로그인날짜
 );
 
+select member_no , member_name, member_id,  member_email, member_phone, member_address ,member_birth,member_rank from member where member_rank>0 limit 0 , 3;
 
 create table account(
 	account_no 		int auto_increment primary key,             -- 계좌구분번호    	기본키 자동입력
@@ -159,24 +160,69 @@ create table drivecar(
 ); 
 
 -- 멤버 추가
+insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
+values ('bongseong','김관리','1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e','bongseong@bongseong.com','010-1234-5605','경기도 시흥시 장곡로 53번길 10','2000-01-01',3,'2023-04-05 17:25:42');
 insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
-values ('qweqwe','유재석','12779a78df86e6d163ea083b5a66d7fc967f2d83a57ddf6feaa94e0f99f0b4ce','qwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-05 17:25:42');
+values ('admin','이관리','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','admin@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',3,'2023-04-08 21:52:28');
 insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
-values ('bnmbnm','강호동','a8813b2ab1c29f872fc52fe4d96cf4b9c1cf72f8f025700893aaadf9d70f6727','bnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-05 17:25:42');
+values ('qweqwe','유재석','12779a78df86e6d163ea083b5a66d7fc967f2d83a57ddf6feaa94e0f99f0b4ce','qweqwe@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',2,'2023-04-05 17:25:42');
 insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
-values ('asdads','신동엽','ce425ac0e9bd05c1cf4551603d72834bf4b73ca905caea46fe484bb106db756','asd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2,'2023-04-05 17:25:42');
+values ('bnmbnm','강호동','a8813b2ab1c29f872fc52fe4d96cf4b9c1cf72f8f025700893aaadf9d70f6727','bnmbnm@naver.com','010-2222-2222','안산시 단원구 광덕3로 201','2000-03-23',2,'2023-04-05 17:25:42');
 insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
-values ('zxczxc','민경훈','b2e46a1495fc27aa2973dd8b2b26266e91b0b3154cdddd8cd505f8e57ea69331','zcx@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2,'2023-04-05 17:25:42');
+values ('asdasd','신동엽','ce425ac0e9bd05c1cf4551603d72834bf4b73ca905caea46fe484bb106db756','asdasd@naver.com','010-3333-3333','안산시 단원구 광덕3로 201','2000-06-06',2,'2023-04-05 17:25:42');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('zxczxc','민경훈','b2e46a1495fc27aa2973dd8b2b26266e91b0b3154cdddd8cd505f8e57ea69331','zxczxc@naver.com','010-4444-4444','안산시 단원구 광덕3로 201','2000-08-13',2,'2023-04-05 17:25:42');
 insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
-values ( 'qwe' , '강호동', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'qweqwe@qweqwe.com' , '010-1234-5600' , '경기 안산시 단원구 광덕2로 121' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+values ('qwe','강호동','1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e','qwe@qweqwe.com','010-1234-5600','경기 안산시 단원구 광덕2로 121','2000-01-01',2,'2023-04-05 17:25:42'); 
 insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
-values ( 'asd' , '김희철', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'asdasd@asdasd.com' , '010-1234-5601' , '경기 안산시 단원구 광덕3로 201' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+values ('asd','김희철','1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e','asd@asdasd.com','010-1234-5601','경기 안산시 단원구 광덕3로 201','2000-01-01',2,'2023-04-05 17:25:42'); 
 insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
-values ( 'zxc' , '서장훈', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'zxczxc@zxczxc.com' , '010-1234-5602' , '경기 안산시 상록구 한양대학로 80' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
+values ('zxc','서장훈','1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e','zxc@zxczxc.com','010-1234-5602','경기 안산시 상록구 한양대학로 80','2000-01-01',2,'2023-04-05 17:25:42'); 
 insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
-values ( 'qweasd' , '이상민', '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'qweasd@qweasd.com' , '010-1234-5603' , '경기 안산시 단원구 초지로 128' , '2000-01-01' , 3 ,'2023-04-05 17:25:42'); 
-insert into member ( member_id , member_name, member_pwd , member_email , member_phone , member_address , member_birth , member_rank ,member_login)
-values ( 'bongseong' , '유재석',  '1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e' , 'bongseong@bongseong.com' , '010-1234-5605' , '경기도 시흥시 장곡로 53번길 10' , '2000-01-01' , 2 ,'2023-04-05 17:25:42');
+values ('qweasd','이상민','1efece2e47e2a57fe7eee8bb3a627077a8480f23550a4edc17922a74dcd9417e','qweasd@qweasd.com','010-1234-5603','경기 안산시 단원구 초지로 128','2000-01-01',2,'2023-04-05 17:25:42'); 
+
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('poipoi','유재석','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','poi@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',2,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('oiuoiu','하동훈','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','oiu@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('iuyiuy','정준하','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','iuy@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('uytuyt','신봉선','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','uyt@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('ytrytr','이미주','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','ytr@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('tretre','박진주','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','tre@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('rewrew','이이경','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','rew@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('ewqewq','강호동','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','ewq@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('lkjlkj','이진호','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','lkj@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('kjhkjh','이상민','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','kjh@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('jhgjhg','민경훈','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','jhg@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('hgfhgf','김희철','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','hgf@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('gfdgfd','이수근','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','gfd@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('fdsfds','김영철','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','fds@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('dsadsa','서장훈','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','dsa@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('mnbmnb','이진호','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','mnb@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('nbvnbv','이상민','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','nbv@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('bvcbvc','민경훈','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','bvc@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('vcxvcx','김희철','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','vcx@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
+insert into member(member_id,member_name,member_pwd,member_email,member_phone,member_address,member_birth,member_rank,member_login) 
+values ('cxzcxz','이수근','9f94e5bd7aee424cc367ab38c2cd7349916a696f15edf6ca7ffb41cb7e9e476a','cxz@naver.com','010-1111-1111','안산시 단원구 광덕3로 201','2000-03-23',1,'2023-04-08 21:52:28');
 
 
 insert into carmanage(carmanage_number,carmanage_name,carmanage_img,carmanage_use_yn,carmanage_start,carmanage_finish)

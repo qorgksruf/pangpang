@@ -199,9 +199,9 @@ function dropmember(){
 /* 비밀번호 변경 모달 */
 function onpenUpdatepwdModal( ){
 	let html = `<div class="modal_content2 con2">
-						<table class="modal_table">
+						<table style="width: 350px" class="modal_table">
 							<tr>
-								<th class="modal_table_th">현재 비밀번호</th>
+								<th style="width: 120px" class="modal_table_th">현재 비밀번호</th>
 								<td class="modal_table_td">
 									<input class="input1 member_pwd" type="password">
 								</td>
