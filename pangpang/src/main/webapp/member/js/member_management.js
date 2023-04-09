@@ -187,7 +187,6 @@ function start(){
 	$.ajax({
 		url : "/pangpang/member/thread" ,
 		method : "post" , 
-		//data : { "type":2 , "member_no":member_no } ,
 		success : (r)=>{ 
 			console.log(r)
 		}

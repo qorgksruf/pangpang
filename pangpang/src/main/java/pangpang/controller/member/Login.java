@@ -67,14 +67,10 @@ public class Login extends HttpServlet {
 		// 1. AJAX에게 데이터 요청
 		String member_pwd = request.getParameter("member_pwd");
 		String member_id = request.getParameter("member_id");
-		//System.out.println(member_pwd);
 		// 저장된 솔트 꺼내기
 		ArrayList<SaltDto> salts = GetSalt.getSalt();
-		
 		// 마지막로그인 날짜 가져오기
 		String logindate = MemberDao.getInstance().logindate(member_id);
-		//System.out.println("logindate : "+logindate);
-		
 		// 솔트리스트에서 해당하는 솔트 찾기
 		int cnt = 0;
 		for(int i = 0 ; i<salts.size();i++) {
@@ -84,49 +80,42 @@ public class Login extends HttpServlet {
 			}else if(salts.get(i).getSdate().compareTo(logindate)>0){
 				cnt=i-1;
 				break;
-			}else {
-				cnt=i;
-				break;
-			}
+			}else {cnt=i;break;}
 		}
-		//System.out.println("cnt :"+cnt);
+		// 마지막 로그인 날짜의 솔트를 찾아 입력한 비밀번호를 해시처리
 		String salt = salts.get(cnt).getSalt();
-		//System.out.println(salt);
 		String sha = madesha.sha(member_pwd, salt);
-		//System.out.println("sha : "+sha);
 		
 		// 2. DAO 호출해서 요청데이터를 보내서 결과 얻기 
 		int result = MemberDao.getInstance().login( member_id , sha );
 		//System.out.println("result : "+result);
 		if( result != 0 ) {// 로그인에 성공하면 : 랭크를 들고온다.
+			// 세션에 정보 저장
 			request.getSession().setAttribute( "login", member_id );
 			request.getSession().setAttribute( "rank", result );
-			//System.out.println(salts.get(salts.size()-1).getSalt());
+			// 최신솔트 가져오기
 			String salt2 = salts.get(salts.size()-1).getSalt();
 			if(!salt.equals(salt2)) {// 로그인에 사용한 솔트가 최신이 아니라면 실행
+				// 최신솔트로 다시 암호화해 DB저장
 				String sha2 = madesha.sha(member_pwd, salt2);
-				//System.out.println(sha2);
 				boolean result2 = MemberDao.getInstance().updatepwd(sha2, member_id, sha);
 				if(result2) { // 비밀번호 업데이트에 성공하면 실행
+					// 저장된 계좌번호 꺼내오기
 					int member_no = MemberDao.getInstance().getMno(member_id);
 					ArrayList<AccountDto> list = MemberDao.getInstance().getAccount(member_no);
-					System.out.println(list);
 					if(list!=null) { // 회원이 등록한 계좌가 있으면 실행
+						// 지난번에 사용한 키로 복호화 -> 새로운 키로 암호화
 						String key1 = sha.substring(0,32);
 						String key2 = sha2.substring(0,32);
-						
 						for(AccountDto a : list) {
 							try {
 								String accountd = AES256.decrypt(key1, a.getAccount_number());
-								//System.out.println(account1);
 								String accounte = AES256.encrypt(key2, accountd);
-								//System.out.println(account2);
 								a.setAccount_number(accounte);
 							} catch (Exception e) {
 								System.out.println(e);
 							}
 						}System.out.println(list);
-						
 						result2 = MemberDao.getInstance().setAcccount(list);
 						if(!result2) {result=0;};
 					};
@@ -135,8 +124,6 @@ public class Login extends HttpServlet {
 			// 3. Dao 받은 결과를 AJAX에게 전달 
 			response.getWriter().print(result);
 		}
-		//System.out.println( request.getSession().getAttribute("login"));
-		//System.out.println( request.getSession().getAttribute("rank"));	
 	}
 
 	/**

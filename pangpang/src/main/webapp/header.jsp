@@ -59,7 +59,8 @@
 				
 				<!-- 채팅박스 -->
 				<div class="chating_box">
-					<div class="chat_info">
+				
+					<!-- <div class="chat_info">
 						<div class="mimgbox">
 							<img src="/pangpang/member/img/default.webp" class="hpimg">
 							<span class="pname"> 유재석[qweqwe] </span>
@@ -77,8 +78,7 @@
 						<textarea class="chatinput" rows="" cols=""></textarea>
 						<button onclick="sendchat()" type="button">전송</button>
 					</div>
-				</div>
-				
+				</div> -->
 			</div>
 			
 			<button class="sidebar_onoff" onclick="sidebar_onoff()"><i class="fas fa-chevron-left"></i></button>
