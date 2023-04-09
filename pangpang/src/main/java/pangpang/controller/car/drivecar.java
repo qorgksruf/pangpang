@@ -1,13 +1,19 @@
 package pangpang.controller.car;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import pangpang.model.Dao.car.DrivecarDao;
+import pangpang.model.Dao.member.MemberDao;
+import pangpang.model.Dto.car.DrivecarDto;
 
 /**
  * Servlet implementation class drivecar
@@ -28,8 +34,20 @@ public class drivecar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+				
+	
+		  String mid=(String)request.getSession().getAttribute("login");
+		  System.out.println("drivecar 서블릿 mid확인::::"+mid); int member_no =MemberDao.getInstance().getMno(mid); 
+		 
+		  ArrayList<DrivecarDto>result =
+				  				DrivecarDao.getInstance().drivereportAll(member_no);
+		  System.out.println("bookcar result확인:::"+result);
+		  
+		  ObjectMapper mapper = new ObjectMapper(); String jsonArry=
+		  mapper.writeValueAsString(result); response.setCharacterEncoding("UTF-8");
+		  response.setContentType("application/json");
+		  response.getWriter().print(jsonArry);
+		
 	}
 
 	/**

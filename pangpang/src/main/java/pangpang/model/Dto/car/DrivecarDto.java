@@ -8,13 +8,32 @@ public class DrivecarDto {
 	private String drivecar_parking;
 	private int bookcar_no;
 	private String report_content;
-	
-	
+	private String carmanage_img;
+	private String carmanage_number;
+	private String carmanage_name;
+	private String member_name;
 	//빈생성자
 	public DrivecarDto() {
 		super();
 	}
 	
+	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, String drivecar_distance,
+			String drivecar_parking, int bookcar_no, String report_content, String carmanage_img,
+			String carmanage_number, String carmanage_name, String member_name) {
+		super();
+		this.drivecar_no = drivecar_no;
+		this.drivecar_str_date = drivecar_str_date;
+		this.drivecar_end_date = drivecar_end_date;
+		this.drivecar_distance = drivecar_distance;
+		this.drivecar_parking = drivecar_parking;
+		this.bookcar_no = bookcar_no;
+		this.report_content = report_content;
+		this.carmanage_img = carmanage_img;
+		this.carmanage_number = carmanage_number;
+		this.carmanage_name = carmanage_name;
+		this.member_name = member_name;
+	}
+
 	//풀생성자
 	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, String drivecar_distance,
 			String drivecar_parking, int bookcar_no) {
@@ -28,6 +47,46 @@ public class DrivecarDto {
 	}
 
 	
+	public String getReport_content() {
+		return report_content;
+	}
+
+	public void setReport_content(String report_content) {
+		this.report_content = report_content;
+	}
+
+	public String getCarmanage_img() {
+		return carmanage_img;
+	}
+
+	public void setCarmanage_img(String carmanage_img) {
+		this.carmanage_img = carmanage_img;
+	}
+
+	public String getCarmanage_number() {
+		return carmanage_number;
+	}
+
+	public void setCarmanage_number(String carmanage_number) {
+		this.carmanage_number = carmanage_number;
+	}
+
+	public String getCarmanage_name() {
+		return carmanage_name;
+	}
+
+	public void setCarmanage_name(String carmanage_name) {
+		this.carmanage_name = carmanage_name;
+	}
+
+	public String getMember_name() {
+		return member_name;
+	}
+
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
 	public DrivecarDto(int drivecar_no, String drivecar_str_date, String drivecar_end_date, String drivecar_distance,
 			String drivecar_parking, int bookcar_no, String report_content) {
 		super();

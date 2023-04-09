@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 
 
+	<link href="/pangpang/car/css/drivecar.css" rel="stylesheet">
+
 </head>
 <body>
 	<%@ include file="/header.jsp" %>
@@ -38,9 +40,11 @@
 				<th>보고서내용</th>
 				<th><textarea name="text" class="report_content"></textarea></th>
 			</tr>											
-		</table>			
+		</table>
 		
-	<button onclick="report()">등록</button>
+			
+		
+	<button class="repottbtn" onclick="report()">등록</button>
 	
 	</div>
 

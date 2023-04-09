@@ -19,7 +19,7 @@ public class viewDao  extends Dao {
 	//나의 과거 배차상태들확인
 	public ArrayList<BookcarDto>recordList(int member_no){
 		ArrayList<BookcarDto>list = new ArrayList<>();
-		String sql="select * from bookcar where member_no=? ;";
+		String sql="select bookcar_no, bookcar_str_date, bookcar_end_date, bookcar_yn, carmanage_no, member_no, ifnull(reason, '') from bookcar where member_no=? ;";
 		
 		try {
 	         ps=con.prepareStatement(sql);
