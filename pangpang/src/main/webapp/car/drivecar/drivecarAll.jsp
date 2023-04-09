@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-		<link href="/pangpang/car/css/drivecar.css" rel="stylesheet">
+	
 </head>
 <body>
 	<%@ include file="/header.jsp" %>
 
 	<div class="container">
-	<h2>운행일지총</h2>
+	<h2>운행일지db에 넣어놓기만하면 끝</h2>
 	<table  class="table driveAlltable">
 		
 	</table>
@@ -20,4 +20,4 @@
 
 	<script src="/pangpang/car/js/drivecarAll.js" type="text/javascript"></script>
 </body>
-</html>
+</html> 

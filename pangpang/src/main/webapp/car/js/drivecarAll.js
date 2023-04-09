@@ -28,7 +28,7 @@ function reportAll(){
                      <td> ${o.carmanage_number} </td>
 					 <td> ${o.drivecar_distance} </td>
 					 <td> ${o.drivecar_str_date} </td>
-					 <td> ${o.bookcar_end_date} </td>
+					 <td> ${o.drivecar_end_date} </td>
 					 <td> ${o.drivecar_parking} </td>
 					 <td> ${o.report_content} </td>
                   </tr>`  
