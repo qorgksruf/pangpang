@@ -1,10 +1,35 @@
 @charset "UTF-8";
 
-th{
-	background-color: #eeeeee;
+.pagetitle{
+	margin-top: 70px;
+	background-color: rgb(41, 72, 80);
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+}
+.topbox button , .orderlist button{
+	width: 100px;
+	background-color:rgb(41, 72, 80); 
+	color: white;
+	border: none;
+}
+.topbox select{
+	background-color:#F2F2F2;
+	border: none;	
+}
+.ordermanagement_state{
+	background-color:rgb(41, 72, 80); 
+	color: white;
+	border: none;	
+}
+
+.orderlist th{
+	background-color:rgb(41, 72, 80); 
+	color: white;
 }
 .topbox{
-	margin: 1%;
+	padding: 1%;
+	background-color: #F2F2F2;
 }
 .itembox{
 	display: flex;

@@ -1,5 +1,11 @@
 @charset "UTF-8";
-
+.pagetitle{
+	margin-top: 70px;
+	background-color: rgb(41, 72, 80);
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+}
 /* 상단 메뉴 구역 */
 .topbox{
 	display: flex;
@@ -7,12 +13,15 @@
 	padding : 0px 10px;
 	background-color: #F2F2F2;
 }
+.key{
+	border: none;
+	background-color: #F2F2F2;
+}
 .searchbtn , .registerbtn{
 	width: 100px;
-	background-color: #5697A6;
+	background-color: rgb(41, 72, 80);
 	color: white;
 	border: none;
-	border-radius: 50px;
 	padding :5px;
 	margin: 15px;
 }
@@ -22,15 +31,25 @@
 	width: 100%;
 	margin: 1% auto;
 }
-.updatebtn, .deletebtn{
+.itemlist select{
+	background-color: rgb(41, 72, 80);
+	color: white;	
+	border: none;
+}
+.itemlist th{
+	background-color: rgb(41, 72, 80);
+	color: white;
+}
+
+.updatebtn, .deletebtn, .btns{
 	width: 80px;
-	background-color: #5697A6;
+	background-color: rgb(41, 72, 80);
 	color: white;
 	border: none;
 	align-content: center;
 	font-size: 15px;
 	padding :5px;
-	margin: 5px;
+	margin-left: 20px;
 }
 .Page{
 	text-align: center;

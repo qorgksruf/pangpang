@@ -7,7 +7,7 @@
 	<title> PANGPANG 쇼핑 </title>
 	
 	<!-- 폰트어썸 -->
-	<script src="https://kit.fontawesome.com/ca0196c650.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/ca0196c650.js"></script>
 	<link href="/pangpang/css/main.css" rel="stylesheet">
 	
 </head>

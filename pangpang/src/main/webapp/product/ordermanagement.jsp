@@ -16,7 +16,7 @@
 	
 	<div class="container">
 	
-		<h3> 주문 내역 </h3>
+		<h3 class="pagetitle"> 주문 내역 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">

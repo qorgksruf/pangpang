@@ -251,6 +251,7 @@ a{ color: white; text-decoration: none; }
 }
 .btn:active, .btn:focus {
 outline:none !important;
+<<<<<<< HEAD
 box-shadow:none !important;}
 /* ---- 알림 모달 구역 --------*/
 .msgbox{
@@ -284,3 +285,6 @@ box-shadow:none !important;}
 
 
 
+=======
+box-shadow:none !important;}
+>>>>>>> branch '정소연' of https://github.com/qorgksruf/pangpang

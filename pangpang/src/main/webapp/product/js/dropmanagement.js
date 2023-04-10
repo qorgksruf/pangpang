@@ -17,13 +17,13 @@ function getDropList(){
 							<th> 수량 		</th>
 						</tr>`;
 			if(droplist==null){
-				html += `<tr><td colspan="2"> 금일 폐기 대상이 없습니다. </td></tr>`
+				html += `<tr><td colspan="3"> 금일 폐기 대상이 없습니다. </td></tr>`
 			}else{
 				droplist.forEach((o)=>{
 					html += `<tr>
-								<th> ${o.product_no}</th> 
-								<th> ${o.product_name}</th> 
-								<th> ${o.stockmanagementamount}</th>				
+								<td> ${o.product_no}</td> 
+								<td> ${o.product_name}</td> 
+								<td> ${o.stockmanagementamount}</td>				
 							</tr>`
 				})
 				document.querySelector('.droplist').innerHTML = html ;				
