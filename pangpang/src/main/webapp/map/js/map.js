@@ -51,7 +51,7 @@ function bookcarInfo(){
 						<div class="etc_info_box">
 							<div> 시작 : ${ r.bookcar_str_date } </div>
 							<div> 반납 : ${ r.bookcar_end_date } </div>
-							<div> 기타정보 </div>
+							<div> ${r.reason} </div>
 						</div>`;
 			
 			document.querySelector('.dispatch_main_box').innerHTML = html;
@@ -259,11 +259,11 @@ $(document).ready(function() {
             
             if( count == 1 ){
 	            let html = `<tr>
-						<th> 출발지 </th> <th> 도착지 </th>
-					</tr>
-					<tr>
-						<td> ${toCenterName( this.value ).name} </td> <td> ${toCenterName( this.value ).name} </td>
-					</tr>`;
+								<th> 출발지 </th> <th> 도착지 </th>
+							</tr>
+							<tr>
+								<td> ${toCenterName( this.value ).name} </td> <td> ${toCenterName( this.value ).name} </td>
+							</tr>`;
 	            
 	         	document.querySelector('.s_e_table').innerHTML = html;
 	         

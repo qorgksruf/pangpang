@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,8 +13,18 @@
 
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
 	
-	<div class="container">
 	
+	
+	<div class="container">
+		<div class="weather">
+			<div class="current">
+				<div class="icon"><i class="fas fa-sun"></i></div>
+				<div class="temp_area">
+					
+				</div>
+			</div>
+			
+		</div>
 		
 	</div> <!-- container e -->
 	
