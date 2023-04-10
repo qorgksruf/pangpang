@@ -28,4 +28,8 @@ function cart_drop_down(){
 		document.querySelector('.cart_item').style.display = 'none';
 	}
 	
+
 }
+
+
+

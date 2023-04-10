@@ -12,7 +12,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 	<%@ include file = "/customerheader.jsp" %>	
+=======
+	<%@ include file = "/customerheader.jsp" %>
+>>>>>>> branch 'seongbong' of https://github.com/qorgksruf/pangpang
 	
 	<div class="container">
 		<h3 class="title"> CATEGORY </h3>
@@ -26,7 +30,7 @@
 	
 	<script src="/pangpang/product/js/product_index.js" type="text/javascript"></script>
 	
-	
+	<%@ include file = "/footer.jsp" %>
 	
 </body>
 </html>
