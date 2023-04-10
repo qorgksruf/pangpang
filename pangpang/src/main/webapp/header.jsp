@@ -52,11 +52,11 @@
 				</ul>
 				<button class="menu_title" onclick="viewMenu(4)"> 차량관리 </button>
 				<ul class="main_menu4">	
-					<li><a href="/pangpang/car/carmanagement/carmanagement.jsp"> 보유차량관리 </a> </li>
 					<li><a href="/pangpang/car/bookcar/bookcar.jsp"> 배차신청 </a> </li>
-					<li><a href="/pangpang/car/carmanagement/permission.jsp"> 배차승인/반려 </a> </li>
 					<li><a href="/pangpang/car/bookcar/view.jsp"> 배차 이력확인 </a> </li>
 					<li><a href="/pangpang/map/map.jsp"> 배송지 설정하기 </a> </li>
+					<li><a href="/pangpang/car/carmanagement/carmanagement.jsp"> 보유차량관리 </a> </li>
+					<li><a href="/pangpang/car/carmanagement/permission.jsp"> 배차승인/반려 </a> </li>
 					<li><a href="/pangpang/car/drivecar/drivecarAll.jsp"> 운행일지 </a> </li>
 				</ul>
 				
