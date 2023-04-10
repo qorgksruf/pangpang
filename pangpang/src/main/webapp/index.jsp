@@ -21,16 +21,18 @@
 		<div class="weather">
 			<div class="current">
 				<div class="icon"><i class="fas fa-sun"></i></div>
-				<div class="temp_area">
-					
-				</div>
+				<div class="temp_area"></div>
 			</div>
-			
+		</div>
+		
+		<div class="chart_box">
+		  <canvas id="myChart"></canvas>
 		</div>
 		
 	</div> <!-- container e -->
 	
 	<!-- jquery -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/pangpang/member/js/login.js" type="text/javascript"></script>
 	<script src="/pangpang/js/index.js" type="text/javascript"></script>

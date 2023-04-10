@@ -1,5 +1,4 @@
 get();
-
 function get(){
 	
 	$.ajax({
@@ -17,3 +16,47 @@ function get(){
 	})
 }
 
+
+const ctx = document.getElementById('myChart');
+
+
+
+let date = [];
+let count = [];
+chartPrint();
+function chartPrint(){
+	
+	$.ajax({
+		url : "/pangpang/chart",
+		method : "get",
+		async: false,
+		success : ( r ) => {
+			
+			r.forEach( (o) =>{
+				date.push(o.date);
+				count.push(o.count);
+			})
+			
+		}
+	})
+}
+ 
+ 
+new Chart(ctx, {
+    	type: 'bar',
+    	data: {
+	      	labels: date,
+	      	datasets: [{
+	        	label: '일별 주문량',
+	        	data: count,
+	        	borderWidth: 1
+	      	}]
+    	},
+    	options: {
+      	scales: {
+        	y: {
+          		beginAtZero: true
+        		}
+      		}
+    	}
+	}); 
