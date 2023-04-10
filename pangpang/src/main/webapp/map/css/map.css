@@ -19,7 +19,10 @@
 
 /* h3 설정 */
 .set_title{
-	padding: 0px 20px;
+	padding-right: 20px;
+	margin: 0px;
+	font-weight: bold;
+	font-size: 25px;
 }
 
 
@@ -35,8 +38,7 @@
 }
 .info_top{
 	display: flex;
-	height: 70px;
-	align-items: center;
+	align-items: flex-end;
 }
 .info_top h3{
 	margin-right: 20px;
@@ -209,3 +211,43 @@
 .footer{
 	margin-top: 500px;
 }
+
+.content_box{    
+	padding-top: 100px;
+    margin-left: 370px;
+    width: 1200px;
+    font-family: 'Happiness-Sans-Regular';
+}
+.content_box_header{    
+	border-bottom: 3px solid #404040;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.content_box_text{
+	padding-top: 40px;
+}
+.table1 th,.table1 td{
+	height: 40px;
+	line-height: 40px !important;
+    padding: 0px !important;
+    text-align: center;
+}
+
+.btn{
+	height: 30px;
+	line-height: 30px!important;
+	padding: 0px !important;
+	width: 100px;
+	font-size: 16px !important;
+	margin: 0px;
+	background-color: #5697A6;
+	color: white !important;
+}
+.notice{
+	font-size: 12px;
+}
+
+
+

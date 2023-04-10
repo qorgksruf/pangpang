@@ -11,18 +11,25 @@
 <body>
 	<%@ include file="/header.jsp" %> 
 	
-	<div class="container">
-		<h3>마이페이지</h3>
+	<div class="content_box">
+
+		<div class="content_box_header" >
+				배차 이력확인
+		</div>
+		<div class="content_box_text">
+			<table class="table myrecord table1">
 		
+<<<<<<< HEAD
 		
 		<table class="table myrecord">
 		
 		</table>
 		
+=======
+			</table>	
+	   </div>
+>>>>>>> branch '김지호' of https://github.com/qorgksruf/pangpang
 	</div>
-	
-
-
 
 	<!--jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>   

@@ -60,12 +60,6 @@
 					</td>
 				</tr>
 				<tr>
-					<th  width="10%">등급		 </th> 
-					<td class="member_rank1"> 
-						<input type="text" class="member_rank input1" disabled="disabled">
-					</td>
-				</tr>
-				<tr>
 					<td colspan="2">
 						<button type="button" onclick="update()" class="btn">수정</button>
 						<button type="button" onclick="dropmember()" class="btn">탈퇴</button>
