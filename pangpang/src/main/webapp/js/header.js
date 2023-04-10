@@ -104,15 +104,16 @@ if( memberInfo.member_id == null ){ // memberInfo : 헤더js 존재하는 객체
 	alert('로그인 필수'); location.href="/pangpang/main.jsp";
 }else{
 	let html = 	`<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-				<div> ${memberInfo.member_name}[${memberInfo.member_id}]</div>`
+				<div> ${memberInfo.member_name}[${memberInfo.member_id}]</div>
+				`
 	document.querySelector('.loginbox').innerHTML = html;
 	console.log(memberInfo.member_id)
 	// 1. 클라이언트소켓 생성 과 서버소켓 연결[@OnOpen]
-	클라이언트소켓 = new WebSocket('ws://172.30.1.63:8080/pangpang/chatting/'+memberInfo.member_id );	
+	클라이언트소켓 = new WebSocket('ws://192.168.17.10:8080/pangpang/chatting/'+memberInfo.member_id );	
 	// 클라이언트소켓 = new WebSocket('ws://localhost:8080/jspweb/chatting/'+memberInfo.mid );	
 	클라이언트소켓.onopen = function(e){ 서버소켓연결(e) } // 클라이언트소켓 객체에 정의한 함수 대입
 	클라이언트소켓.onmessage = function(e){ 메시지받기(e); }
-	클라이언트소켓.onclose = function(e){ 연결해제(e) }
+	클라이언트소켓.onclose = function(e){  }
 	클라이언트소켓.onerror = function(e){ alert('문제발생:관리자에게문의'+e) }
 }
 // 2. 클라이언트소켓이 접속했을때 이벤트/함수 정의
@@ -122,12 +123,11 @@ function 서버소켓연결( e ){
  		
 // 4. 서버로부터 메시지가 왔을때 메시지 받기
 function 메시지받기( e ){	// <------  e <----- getBasicRemote().sendText(msg)
-	//console.log( e) ; console.log( e.data ); // e.data : 문자열타입  vs JSON.parse( e.data ) : 객체타입
-	//console.log( JSON.parse( e.data ) ); // 문자열json -> 객체json 형변환 	
-	let data = JSON.parse( e.data );	// 전달받은 메시지 dto 
+		console.log(e)
+	let data = JSON.parse( e.data );// 문자열json -> 객체json 형변환 
 		console.log( data );
 	// 명단[여러개=list/Array] vs 메시지정보[1개=dto/object]
-		// Array 타입 확인 : Array.isArray( 객체 ) : 해당 객체가 배열/리스트이면 true
+	// Array 타입 확인 : Array.isArray( 객체 ) : 해당 객체가 배열/리스트이면 true
 	if( Array.isArray( data ) ){
 		let html ='';
 		data.forEach( (o)=>{
@@ -138,12 +138,24 @@ function 메시지받기( e ){	// <------  e <----- getBasicRemote().sendText(ms
 						<div class="connectbox">
 							<div><img src="/pangpang/member/img/default.webp" class="hpimg" > </div>
 							<div class="name">  ${o.member_name}[${o.member_id}]		</div>
+							<div class="message_alert${o.member_no} message_alert">  </div>
 						</div>
 					</button>
 					`
 			}
 		} );
 		document.querySelector('.connectlistbox').innerHTML = html;
+	}else{
+		if(chatboxYn==true){
+			let msgbox = document.querySelector('.msgbox')
+			msgbox.style.bottom = "0px";
+			setTimeout( ()=>{  
+				 msgbox.style.bottom = "-100px"; 
+			} , 4000)
+			
+			document.querySelector('.message_alert'+data.chat_fmno).innerHTML = `<i class="fas fa-bell"></i>`
+		}
+		getcontent( data.chat_fmno ); // 채팅 받았을때 채팅방내 채팅내용 렌더링
 	}
 }
 
@@ -154,6 +166,7 @@ function chatbox(member_no){
 	console.log(chatboxYn)
 	if( chatboxYn ){
 		chatboxYn = false;
+		document.querySelector('.message_alert'+member_no).innerHTML =''
 		$.ajax({
 			url : "/pangpang/member/info" ,
 			method : "get" , 
@@ -207,7 +220,6 @@ function sendchat(member_no){
 		"chat_msg" : chat_msg
 	}
 	console.log(info)
-	
 	console.log(chat_msg)
 	$.ajax({
 		url : "/pangpang/member/chat" ,
@@ -244,13 +256,6 @@ function getcontent( member_no ){
 	document.querySelector('.chat_content').innerHTML = chathtml;
 }
 
-// 6. 엔터키를 눌렀을때
-function enterkey(){
-	// 만약에 입력한 키 코드가 13[엔터] 이면 메시지전송
-	if( window.event.keyCode == 13 ){
-		보내기();
-	}
-}
 
  
 

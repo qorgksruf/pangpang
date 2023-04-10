@@ -30,7 +30,7 @@ public class MemberChat extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+	/** 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,14 +60,14 @@ public class MemberChat extends HttpServlet {
 		ChatDto dto = new ChatDto(chat_msg, chat_fmno, chat_tmno);	System.out.println( "dto : " + dto );
 		// 3
 		boolean result = ChatDao.getInstance().setChat(dto);
-		/*
-		// 4. 만약에 채팅 등록 성공했으면 tomno 에게 소켓 알림 메시지 보내기
+		
+		//4. 만약에 채팅 등록 성공했으면 tomno 에게 소켓 알림 메시지 보내기
 		if( result ) {
 			// 서버소켓에게 채팅을 받은 유저의 번호와 내용 을 전달 
-			try {Alarm.서버메시지( null ,  받는회원번호+","+쪽지내용 );}
+			try {Chatting.onMessage( null ,  chat_tmno+","+chat_msg+","+chat_fmno);}
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		*/
+		
 		response.getWriter().print(result);
 	}
 

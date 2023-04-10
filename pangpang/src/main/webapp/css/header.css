@@ -252,8 +252,26 @@ a{ color: white; text-decoration: none; }
 .btn:active, .btn:focus {
 outline:none !important;
 box-shadow:none !important;}
-
-
+/* ---- 알림 모달 구역 --------*/
+.msgbox{
+	width: 138px;
+    height: 60px;
+    border: 1px solid #404040;
+    background-color: white;
+    position: fixed;
+    left: 161px;
+   /*  bottom: 0px; */
+    bottom: -100px;
+    z-index: 300;
+    opacity: 0.8;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message_alert{
+	padding-left: 10px;
+}
 
 
 
