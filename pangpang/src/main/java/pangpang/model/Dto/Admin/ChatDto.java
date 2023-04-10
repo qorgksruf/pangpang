@@ -1,11 +1,12 @@
 package pangpang.model.Dto.Admin;
 
 public class ChatDto {
-	private int chat_no;
+	private int chat_no; 
+	private int chat_fmno; //이게 로그인한 사람이면 오른쪽에 표시 아니면 왼쪽에 표시
+    private int chat_tmno; //이게 로그인한 사람이면 왼쪽에 표시 아니면 오른쪽에 표시
 	private String chat_msg;
 	private String chat_date;
-    private int chat_fmno; //보낸사람
-    private int chat_tmno;	//받은사람 로그인한 당사자
+   
     
     private String chat_fmname;
     private String chat_fmid;
@@ -14,22 +15,40 @@ public class ChatDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChatDto(int chat_no, String chat_msg, String chat_date, int chat_fmno, int chat_tmno, String chat_fmname,
+	public ChatDto(int chat_no, int chat_fmno, int chat_tmno, String chat_msg, String chat_date, String chat_fmname,
 			String chat_fmid) {
 		super();
 		this.chat_no = chat_no;
-		this.chat_msg = chat_msg;
-		this.chat_date = chat_date;
 		this.chat_fmno = chat_fmno;
 		this.chat_tmno = chat_tmno;
+		this.chat_msg = chat_msg;
+		this.chat_date = chat_date;
 		this.chat_fmname = chat_fmname;
 		this.chat_fmid = chat_fmid;
 	}
 
+	public ChatDto(int chat_no, int chat_fmno, int chat_tmno, String chat_msg, String chat_date) {
+		super();
+		this.chat_no = chat_no;
+		this.chat_fmno = chat_fmno;
+		this.chat_tmno = chat_tmno;
+		this.chat_msg = chat_msg;
+		this.chat_date = chat_date;
+	}
+
+	public ChatDto(String chat_msg, int chat_fmno, int chat_tmno) {
+		super();
+		this.chat_msg = chat_msg;
+		this.chat_fmno = chat_fmno;
+		this.chat_tmno = chat_tmno;
+	}
+
+	
+
 	@Override
 	public String toString() {
-		return "ChatDto [chat_no=" + chat_no + ", chat_msg=" + chat_msg + ", chat_date=" + chat_date + ", chat_fmno="
-				+ chat_fmno + ", chat_tmno=" + chat_tmno + ", chat_fmname=" + chat_fmname + ", chat_fmid=" + chat_fmid
+		return "ChatDto [chat_no=" + chat_no + ", chat_fmno=" + chat_fmno + ", chat_tmno=" + chat_tmno + ", chat_msg="
+				+ chat_msg + ", chat_date=" + chat_date + ", chat_fmname=" + chat_fmname + ", chat_fmid=" + chat_fmid
 				+ "]";
 	}
 

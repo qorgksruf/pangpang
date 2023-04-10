@@ -144,17 +144,21 @@ a{ color: white; text-decoration: none; }
 
 .onePerson{
 	width: 100%;
-	background-color: transparent;
-	border: none;
+    background-color: transparent;
+    border: none;
+    height: 60px;
 }
 
 .chating_box{
 	background-color: #F2F2F2;
-	width: 400px;
-	height: 600px;
-	position: fixed;
-	left: 300px; bottom: 0px;
-	display: none;
+    width: 400px;
+    height: 600px;
+    position: fixed;
+    left: 300px;
+    bottom: 0px;
+    display: none;
+    padding: 0 10px;
+    border: 1px solid rgb(64 64 64 / 40%);
 }
 
 /* 사이드바 영역 */ /* 사이드바 영역 */ /* 사이드바 영역 */ /* 사이드바 영역 */ /* 사이드바 영역 */ /* 사이드바 영역 */
@@ -162,11 +166,12 @@ a{ color: white; text-decoration: none; }
 
 /***************************************************************/
 .connectlistbox{
-	width : 100%;
-	padding :15px;
-	border: 1px solid #eeeeee;
-	background-color: #F2F2F2;
-	border-bottom: 1px solid #404040;
+	width: 100%;
+    padding: 0 15px;
+    border: 1px solid #eeeeee;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #404040;
+    line-height: 60px;
 	display: none;
 }
 .connectbox{
@@ -183,22 +188,90 @@ a{ color: white; text-decoration: none; }
 	margin-right: 10px;
 }
 .loginbox{
-	display: flex;	
-	padding :15px;
-	background-color: #404040;		
-	color: white;
+	display: flex;
+    padding: 0 15px;
+    height: 100%;
+    line-height: 60px;
+    background-color: #404040;
+    color: white;
 }
 
 .loginbox_btn{
-	border: none;
-	background-color: transparent;
-	width: 100%;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 60px;
 }
 
-
-
-
-
+/* ------- 채팅 ------ */
+.chat_content{
+	height: 450px;
+    border: 1px solid rgb(64 64 64 / 40%);
+    padding: 20px;
+    overflow-y: scroll;
+    background-color: white;
+}
+.sendbox{ text-align: right;}
+.receivebox{ text-align: left;}
+.chat_btn{
+	height: 90px;
+    display: flex;
+    padding: 10px 0px;
+}
+.chat_btn textarea {
+	width: 80%;
+    resize: none;
+    padding: 10px;
+    border: 1px solid rgb(64 64 64 / 40%);
+}
+.chat_btn button{
+	width: 20%;
+    border: none;
+    margin-left: 10px;
+    background-color: #5697A6;
+    color: white;
+    font-weight: bold;
+}
+.chat_info{	
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding-left: 15px;
+}
+.closebtn{
+	background-color: transparent;
+    color: #5697A6;
+    font-size: 19px;
+    padding: 0px;
+    height: 60px;
+    display: flex;
+    padding-top: 5px;
+    margin-right: 7px;
+}
+.btn:active, .btn:focus {
+outline:none !important;
+box-shadow:none !important;}
+/* ---- 알림 모달 구역 --------*/
+.msgbox{
+	width: 138px;
+    height: 60px;
+    border: 1px solid #404040;
+    background-color: white;
+    position: fixed;
+    left: 161px;
+   /*  bottom: 0px; */
+    bottom: -100px;
+    z-index: 300;
+    opacity: 0.8;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message_alert{
+	padding-left: 10px;
+}
 
 
 

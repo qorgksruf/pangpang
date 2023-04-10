@@ -88,10 +88,13 @@ function 메시지받기( e ){	// <------  e <----- getBasicRemote().sendText(ms
 		data.forEach( (o)=>{
 			console.log(o)
 			if(o.member_id!=memberInfo.member_id){
-				html += `<div class="connectbox">
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div class="name"> ${o.member_name}[${o.member_id}]	</div>
-					</div>
+				html += `
+					<button type="button" class="onePerson" onclick="chatbox()">
+						<div class="connectbox">
+							<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+							<div class="name">  ${o.member_name}[${o.member_id}]		</div>
+						</div>
+					</button>
 					`
 			}
 		} );

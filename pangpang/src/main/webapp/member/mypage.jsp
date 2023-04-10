@@ -6,59 +6,63 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/pangpang/member/css/signup.css" rel="stylesheet">
+<link href="/pangpang/member/css/mypage.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file = "/header.jsp" %>	
-	<div class="container">
-	
-		<h3> 회원정보 </h3>
-			<table class="table buyer_info">
+	<div class="content_box">
+		<div class="content_box_header">
+			마이페이지
+		</div>
+		<div class="content_box_text">
+			<h3> 회원정보 </h3>
+			<table class="table buyer_info table1">
 				<tr>
 					<th  width="10%">회원번호		 </th> 
 					<td class="member_no1"> 
-						<input type="text" class="member_no" disabled="disabled">
+						<input type="text" class="member_no input1" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">	이름	 </th> 
 					<td class="member_name1"> 
-						<input type="text" class="member_name">
+						<input type="text" class="member_name input1">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">아이디		 </th> 
 					<td class="member_id1"> 
-						<input type="text" class="member_id" disabled="disabled">
+						<input type="text" class="member_id input1" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">이메일		 </th> 
 					<td class="member_email1"> 
-						<input type="text" class="member_email">
+						<input type="text" class="member_email input1">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">휴대전화</th> 
 					<td class="member_phone1"> 
-						<input type="text" class="member_phone">
+						<input type="text" class="member_phone input1">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">주소		 </th> 
 					<td class="member_address1"> 
-						<span class="member_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button>
+						<span class="member_address"></span> <button  type="button" onclick="openmodal_address()" class="btn"> 주소 찾기 </button>
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">생일		 </th> 
 					<td class="member_birth1"> 
-						<input type="text" class="member_birth">
+						<input type="text" class="member_birth input1">
 					</td>
 				</tr>
 				<tr>
 					<th  width="10%">등급		 </th> 
 					<td class="member_rank1"> 
-						<input type="text" class="member_rank" disabled="disabled">
+						<input type="text" class="member_rank input1" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
@@ -72,30 +76,13 @@
 			</table>
 			
 			<h3> 등록된 계좌 </h3>
-			<table  class="table accountTable">
-				<tr>
-					<th  width="10%">	은행	 </th> 
-					<th class="member_rank1"> 
-						계좌번호
-					</th>
-				</tr>
-				<tr>
-					<td  width="10%">	은행	 </th> 
-					<td class="member_rank1"> 
-						계좌번호
-					</td>
-				</tr>	
+			<table  class="table accountTable table1">
 			</table>
 			
 			<h3> 주문목록 </h3>
-			<table  class="table receiver_info">
-				
-			</table>
+			<table  class="table receiver_info table1"></table>
 		</div>
-		
-		
-
-
+	</div>
 
 	<!-- 도로명 주소검색 모달 -->
 	<div class="modal_wrap_address">	

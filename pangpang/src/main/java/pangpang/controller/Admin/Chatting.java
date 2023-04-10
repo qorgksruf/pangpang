@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.Admin.ClientDto;
 import pangpang.model.Dto.Admin.AccessorDto;
+import pangpang.model.Dto.Admin.ChatDto;
 import pangpang.model.Dto.member.MemberDto;
 
 @ServerEndpoint(value = "/chatting/{mid}")
@@ -29,13 +30,13 @@ public class Chatting {
 		
 		if(dto.getMember_rank()>1) {
 			// 접속한 클라이언트소켓 들을 보관 
-			ClientDto clientDto = new ClientDto( session , mid , dto.getMember_name());
+			ClientDto clientDto = new ClientDto( session , mid , dto.getMember_name(), dto.getMember_no());
 			접속명단.add( clientDto  );
 		}
 		// 연결된 클라이언트 소켓를 모든 접속명단 목록 메시지 보내기 
 		onMessage( session, "enter");
 		
-	}// end 
+	}// end  
 	
 	
 	
@@ -61,7 +62,7 @@ public class Chatting {
 	
 	// 클라이언트 소켓이 메시지를 보냈을때[ 서버가 메시지 받기 ]
 	@OnMessage // [ Session[누가] , String[내용물] ]
-	public void onMessage( Session session , String msg ) throws Exception {
+	public static void onMessage( Session session , String msg ) throws Exception {
 		
 		// 메시지 받는 프로그램[JS] : JSON 으로 형변환 // * Session 객체를 json형식 으로 변환 불가능
 		ObjectMapper mapper = new ObjectMapper();
@@ -75,20 +76,29 @@ public class Chatting {
 				list.add( new AccessorDto( dto.getSession() , null ) ); // 현재 접속된 회원정보 객체 생성
 			}
 			json = mapper.writeValueAsString( list );	// 접속자 명단 객체 여러개 
+			for( ClientDto dto : 접속명단 ) {
+			dto.getSession().getBasicRemote().sendText( json );	
+			}
 		// 1.메시지 
 		}else { 
-			AccessorDto messageDto = new AccessorDto(session, msg);
-			json = mapper.writeValueAsString( messageDto ); // 메시지 보낸 정보 객체1개 
+			// 메시지를 받는 회원번호 
+			int chat_tmno = Integer.parseInt( msg.split(",")[0] );
+			// 메시지를 보낸 회원번호
+			int chat_fmno = Integer.parseInt( msg.split(",")[2] );
+			// 메시지 내용 
+			String chat_msg = msg.split(",")[1];
+			System.out.println(chat_tmno);
+			System.out.println(chat_msg);
+			for( ClientDto dto : 접속명단 ) {
+				// 현재 소켓의 접속된 회원의 회원번호 구하기 
+				int chat_tmno2 =  dto.getMember_no();
+				ChatDto chatDto = new ChatDto(chat_msg, chat_fmno, chat_tmno);
+				json = mapper.writeValueAsString( chatDto );
+				if( chat_tmno2 == chat_tmno ) { // 받는 회원번호가 알림명단에 존재하면
+					dto.getSession().getBasicRemote().sendText( json );
+				}
+			}
 		}
-		
-		// ** 서버가 클라이언트 소켓에게 메시지를 보내기 
-		// 현재 서버소켓과 연결된 클라이언트소켓 모두에게 서버가 받은 내용물 전달 
-		for( ClientDto dto : 접속명단 ) {
-									// json형식[모양]의 타입은 문자열로 전송됨
-										// String a = "10";	숫자형식[모양]의 타입은 문자열
-			dto.getSession().getBasicRemote().sendText( json );	// ---> 클라이언트소켓.onmessage
-		}
-		
 	}// end 
 		
 }

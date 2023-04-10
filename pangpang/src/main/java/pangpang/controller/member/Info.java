@@ -17,6 +17,7 @@ import pangpang.controller.member.암호화.madesha;
 import pangpang.model.Dao.member.MemberDao;
 import pangpang.model.Dto.member.AccountDto;
 import pangpang.model.Dto.member.MemberDto;
+import pangpang.model.Dto.member.PageDto;
 import pangpang.model.Dto.member.SaltDto;
 
 /**
@@ -44,8 +45,32 @@ public class Info extends HttpServlet {
 		ObjectMapper objectMapper = new ObjectMapper();
  		
 		if( type==1 ) {// 회원 리스트 뽑기 
-			ArrayList<MemberDto> result = MemberDao.getInstance().getMemberList();
-			json = objectMapper.writeValueAsString(result);
+			// -------------- 검색 처리 -----------------//
+			// 1. 정렬
+			String list = request.getParameter("list");			
+			int order = Integer.parseInt(request.getParameter("order"));
+			int rank = Integer.parseInt(request.getParameter("rank"));
+			// ------------- page 처리 --------------- //
+			// 1. 현재페이지[요청] , 2.페이지당 표시할게시물수 3.현재페이지[ 게시물시작  ]
+			int page = Integer.parseInt( request.getParameter("page") );
+			int listsize = Integer.parseInt( request.getParameter("listsize") ) ; // 화면에 표시할 게시물수 요청
+			int startrow = (page-1)*listsize; // 해당 페이지에서의 게시물 시작번호 = 검색된 결과의 레코드중 인덱스번호
+			// 프린트 할 총 개수
+			int totalsize = MemberDao.getInstance().gettotalsize(rank);
+			// 페이지 개수
+			int totalpage = totalsize % listsize == 0 ? 	// 만약에 나머지가 0 이면 
+							totalsize/listsize :  totalsize/listsize+1;
+			int btnsize = 5; // 최대 페이징버튼 출력수
+			int startbtn = ( (page-1) / btnsize ) * btnsize +1 ; 
+			int endbtn = startbtn + (btnsize-1);
+			// * 단 마지막버튼수가 총페이지수보다 커지면 마지막버튼수 총페이지수로 대입 
+			if( endbtn > totalpage ) endbtn = totalpage;
+
+			ArrayList<MemberDto> result = MemberDao.getInstance().getMemberList(startrow,listsize,list,order,rank);
+			
+			PageDto dto = new PageDto(page, listsize, startrow, totalsize, totalpage, btnsize, startbtn, endbtn, result);
+			
+			json = objectMapper.writeValueAsString(dto);
 		}else if( type==2 ){ // 회원정보 상세보기
 			// 1. 세션[Object]에 담겨진 회원아이디 호출 
 			int member_no = Integer.parseInt(request.getParameter("member_no"));

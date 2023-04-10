@@ -18,6 +18,9 @@
 
 </head>
 <body>
+	<div class="msgbox">
+		new message
+	</div>
 	
 	<div class="newheader_wrap">
 		<div class="header_top_box">
@@ -60,49 +63,52 @@
 				<!-- 채팅박스 -->
 				<div class="chating_box">
 				
-					
+						<!-- <div class="chat_info">
+							<div class="mimgbox">
+								<img src="/pangpang/member/img/default.webp" class="hpimg">
+								<span class="pname"> 유재석[qweqwe] </span>
+							</div>
+							<div>
+								<button onclick="closechatbox()" class="closebtn btn" type="button">X</button>
+							</div>
+						</div>
+						
+						<div class="chat_content">
+							
+						</div>
+						
+						<div class="chat_btn">
+							<textarea class="chatinput" rows="" cols=""></textarea>
+							<button onclick="sendchat()" type="button">전송</button>
+						</div>
+					</div> -->
 				</div>
 				
-			</div>
-			
-			<button class="sidebar_onoff" onclick="sidebar_onoff()"><i class="fas fa-chevron-left"></i></button>
-			
-			<div class="user_profile">
-			
-				<!-- 접속명단 표시 --> 
-				<div class="connectlistbox"> 
-					<!-- 접속명단 1명  표시 -->
-					<button type="button" class="onePerson" onclick="chatbox()">
-						<div class="connectbox">
+				<button class="sidebar_onoff" onclick="sidebar_onoff()"><i class="fas fa-chevron-left"></i></button>
+				
+				<div class="user_profile">
+				
+					<!-- 접속명단 표시 --> 
+					<div class="connectlistbox"> 
+						<!-- 접속명단 1명  표시 -->
+						<button type="button" class="onePerson" onclick="chatbox()">
+							<div class="connectbox">
+								<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
+								<div class="name"> 유재석	</div>
+							</div>
+						</button>
+					</div>
+					<!-- 로그인 정보 표시 --> 
+					<button type="button" class="loginbox_btn" onclick="login_info_scroll()">
+						<div class="loginbox"> 
 							<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-							<div class="name"> 유재석	</div>
+							<div> 강호동 </div>
 						</div>
 					</button>
-					<!-- 접속명단 1명  표시 -->
-					<div class="connectbox">
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div class="name"> 유재석	</div>
-					</div>
-					<!-- 접속명단 1명  표시 -->
-					<div class="connectbox">
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div class="name"> 유재석	</div>
-					</div>
 				</div>
-				<!-- 로그인 정보 표시 --> 
-				<button type="button" class="loginbox_btn" onclick="login_info_scroll()">
-					<div class="loginbox"> 
-						<div><img src="/jspweb/member/pimg/default.webp" class="hpimg" > </div>
-						<div> 강호동 </div>
-					</div>
-				</button>
 			</div>
-			
-			
 		</div>
-	
-	</div>
-	
+	</div>	
 
 
 

@@ -13,7 +13,7 @@ public class AccessorDto {
 	
 	private String member_id;			// 메시지 보낸회원아이디;
 	private String member_name;
-	
+	private int member_no;
 	
 	
 	public AccessorDto() {
@@ -27,6 +27,7 @@ public class AccessorDto {
 			if( dto.getSession() == session ) {
 				this.member_id = dto.getMember_id();
 				this.member_name = dto.getMember_name();
+				this.member_no = dto.getMember_no();
 			}
 		} // end 
 	}
@@ -34,9 +35,18 @@ public class AccessorDto {
 	
 	
 
+	public int getMember_no() {
+		return member_no;
+	}
+
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
+	}
+
 	@Override
 	public String toString() {
-		return "MessageDto [member_id=" + member_id + ", member_name=" + member_name + "]";
+		return "AccessorDto [member_id=" + member_id + ", member_name=" + member_name + ", member_no=" + member_no
+				+ "]";
 	}
 
 	public String getMember_id() {

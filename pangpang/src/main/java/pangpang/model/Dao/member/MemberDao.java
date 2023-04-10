@@ -91,14 +91,44 @@ public class MemberDao extends Dao{
 		return null;
 	}
 	
-	// 6. 회원 리스트 뽑기
-	public ArrayList<MemberDto> getMemberList() {
-		ArrayList<MemberDto> list = new ArrayList<>();
-		String sql = "select member_no , member_name, member_id,  member_email, "
-				+ "member_phone, member_address ,member_birth,member_rank "
-				+ "from member;";
+	
+	// 6-1. 회원수 뽑기
+	public int gettotalsize(int rank) {
+		String sql = "select count(*) from member where member_rank>"+rank+";";
 		try {
 			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}return 0;
+	}
+	
+	// 6-2. 회원 리스트 뽑기
+	public ArrayList<MemberDto> getMemberList(int startrow,int listsize,String listname,int order,int rank) {
+		ArrayList<MemberDto> list = new ArrayList<>();
+		String sql = "";
+		String order2 = "";
+		if(order==2) {
+			order2 = "asc";
+		}else if(order==3) {
+			order2 = "desc";
+		}
+		if( listname.equals("") && order<=1 ) { // 정렬이 없다.
+			sql = " select member_no , member_name, member_id,  member_email, member_phone, "
+					+ "member_address ,member_birth,member_rank "
+					+ "from member where member_rank>"+rank+" limit ? , ?;";
+		}else { // 검색이 있다.
+			sql = "select member_no , member_name, member_id,  member_email, member_phone, "
+					+ "member_address ,member_birth,member_rank "
+					+ "from member where member_rank>"+rank+" order by "+listname+" "+order2+" limit ? , ?;";
+		}
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , startrow ); 
+			ps.setInt( 2 , listsize);
 			rs = ps.executeQuery();
 			while( rs.next() ) {
 				MemberDto dto = new  MemberDto(rs.getInt(1), rs.getString(2), rs.getString(3), 
@@ -108,7 +138,6 @@ public class MemberDao extends Dao{
 			}return list;
 		}catch (Exception e) {System.out.println(e);} 
 		return list;
-		
 	}
 	
 	// 7. 회원id --> 회원mno 반환
