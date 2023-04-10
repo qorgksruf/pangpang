@@ -12,11 +12,8 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 	<%@ include file = "/customerheader.jsp" %>	
-=======
-	<%@ include file = "/customerheader.jsp" %>
->>>>>>> branch 'seongbong' of https://github.com/qorgksruf/pangpang
+
 	
 	<div class="container">
 		<h3 class="title"> CATEGORY </h3>

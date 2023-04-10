@@ -14,10 +14,10 @@
 
 	<%@ include file = "/header.jsp" %>	
 	
-	<div class="container">
-		<h3  class="pagetitle"> 금일 폐기 대상 목록 </h3>
+	<div class="content_box">
+		<h3  class="content_box_header"> 금일 폐기 대상 목록 </h3>
 		<div class="dropbtnbox">
-			<button class="dropbtn" type="button" onclick="drop()"> 폐기 </button>
+			<button class="dropbtn btn" type="button" onclick="drop()"> 폐기 </button>
 		</div>	
 		
 		<!-- 폐기 대상 출력 구역 -->

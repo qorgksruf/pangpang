@@ -1,35 +1,37 @@
 @charset "UTF-8";
 
-.pagetitle{
-	margin-top: 70px;
-	background-color: rgb(41, 72, 80);
-	color: white;
-	padding: 10px;
-	font-weight: bold;
+.content_box{    
+	padding-top: 100px;
+    margin-left: 370px;
+    width: 1200px;
+    font-family: 'Happiness-Sans-Regular';
 }
-.topbox button , .orderlist button{
-	width: 100px;
-	background-color:rgb(41, 72, 80); 
-	color: white;
-	border: none;
+.content_box_header{    
+	border-bottom: 3px solid #404040;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 10px;
 }
+.btn{
+	height: 30px;
+	line-height: 30px!important;
+	padding: 0px !important;
+	width: 120px;
+	font-size: 16px !important;
+	margin: 0px;
+	background-color: #5697A6;
+	color: white !important;
+}
+
 .topbox select{
-	background-color:#F2F2F2;
 	border: none;	
 }
 .ordermanagement_state{
-	background-color:rgb(41, 72, 80); 
-	color: white;
 	border: none;	
 }
 
-.orderlist th{
-	background-color:rgb(41, 72, 80); 
-	color: white;
-}
 .topbox{
 	padding: 1%;
-	background-color: #F2F2F2;
 }
 .itembox{
 	display: flex;

@@ -33,7 +33,7 @@ let checkboxes = document.querySelectorAll('input[name="cart"]');
 // 회원제 기능
 if(memberInfo == null){
 	alert('회원제 기능입니다. 로그인 후 사용해주세요.');
-	location.href="/pangpang/main.jsp";
+	location.href="/pangpang/product/product_index.jsp";
 }else{
 	getCartList();
 }
@@ -47,9 +47,10 @@ function getCartList(){
 			console.log(r)
 			if( r.length < 1){
 				
-				alert('장바구니가 비었습니다.'); location.href="/pangpang/index.jsp";
+				alert('장바구니가 비었습니다.'); location.href="/pangpang/product/product_index.jsp";
 				
 			}else{
+				
 				totalprice = 0;	
 				let html = '';
 				r.forEach((o)=>{
@@ -83,14 +84,14 @@ function getCartList(){
 					}else{
 						cartList.push(o)	
 						totalprice += (o.product_price*o.cart_amount);
-						html += `<div class="cart_item">
+						html += `<div class="cart_items">
 									<input name="cart" value="${o.product_no}" type="checkbox" onclick="check()" onchange="setPrice(${o.product_no},${o.product_price})" >
 									<img class="cart_img"  src="/pangpang/product/pimg/${o.product_img}" alt="">
 									
 									<div class="product_info">
 										<div class="pname"> ${o.product_name} <span class="stock"> 잔여수량 : ${o.stock+o.product_unit}</span></div>
 										<div class="product_info_bottom"> 
-											<div>
+											<div class="date">
 												${month+"/"+date}(${day})  도착 보장 (서울경기 기준)
 											</div>
 											<div>
@@ -115,6 +116,7 @@ function getCartList(){
 					}
 
 				})
+				console.log(html)
 				document.querySelector('.cartlist').innerHTML = html;
 				
 				// 총 가격 합산 출력 
