@@ -15,11 +15,11 @@
 	
 	<%@ include file="/header.jsp" %>
 	
-	<div class="map_wrap">
+	<div class="content_box ">
 		<div class="main_box">
 			<div class="member_info_box">
 				<div class="member_info_main">
-					<div class="info_top">
+					<div class="info_top content_box_header">
 						
 					</div>
 				</div>
@@ -33,21 +33,25 @@
 			</div>
 			<div class="delivery_info_box">
 				<div>
-					<h3 class="set_title"> 배송정보 </h3>
+					<div class="content_box_header" >
+							배송정보
+					</div>
 					<div class="info_table_box">
-						<table class="table d_info_table">
+						<table class="table d_info_table table1">
 							
 						</table>
 					</div>
 				</div>
 				<div class="selectbtn">
-					<button type="button" onclick="addrSelect()"> 선택완료 </button>
+					<button type="button" onclick="addrSelect()" class="btn"> 선택완료 </button>
 				</div>
 			</div>
 		
 			
 			<div>
-				<h3 class="set_title"> 운행정보 </h3>
+				<div class="content_box_header" >
+					운행정보
+				</div>
 				<div class="set_starting_box">
 					<div class="select_item_box">
 						<h3> 차고지 선택 </h3>
@@ -84,7 +88,7 @@
 			</div>
 			
 			<div class="result_btn_box">
-				<button onclick="setAddress()" type="button"> 경로설정 </button>
+				<button onclick="setAddress()" type="button"  class="btn"> 경로설정 </button>
 			</div>
 		</div>
 		
@@ -100,8 +104,8 @@
 					
 				</div>
 				<div class="modal_btns">
-					<button class="modal_check" onclick="centerAddr()" type="button">확인</button>
-					<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+					<button class="modal_check" onclick="centerAddr()" type="button"  class="btn">확인</button>
+					<button onclick="closeModal()" class="modal_cencel" type="button"  class="btn">닫기</button>
 				</div>
 			</div>
 		</div>

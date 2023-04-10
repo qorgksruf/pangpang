@@ -18,18 +18,18 @@
 	<input type="hidden" class="carmanage_no" value="<%=carmanage_no%>"> 
 	
 	
-<div class="container">
-   <h3>차량관리페이지</h3>
+	<div class="content_box">
 
-   <table class="table carmanage">
-      
-   </table>
-   
-   
-    
- 	등록모달 
-   	<button onclick="onpenModal(1 , 0)" type="button">등록하기</button>
-</div>
+		<div class="content_box_header" >
+				보유차량관리
+		</div>
+		<div class="content_box_text">
+			<button onclick="onpenModal(1 , 0)" type="button"  class="btn" style="margin-bottom: 10px;">등록하기</button>
+		   	<table class="table carmanage table1">
+		      
+		   	</table>
+	   </div>
+	</div>
 	
 
 	<div class="modal_wrap">

@@ -25,13 +25,13 @@ function booklist(){
 			ptsd=r;
 			document.querySelector('.booktable').innerHTML='';
 			  let html = `<tr> 
-                        <th width="10%"> 번호</th>    
-                           <th width="10%"> 사원명 </th>
-                           <th width="10%"> 차일련번호 </th>
-                           <th width="25%"> 차이미지 </th>
-                           <th width="10%"> 배차시작날짜 </th>
-                           <th width="10%"> 배차종료날짜 </th>
-                           <th width="25%"> 비고 </th>
+							<th width="5%"> 번호</th>    
+							<th width="10%"> 사원명 </th>
+							<th width="10%"> 차일련번호 </th>
+							<th width="25%"> 차이미지 </th>
+							<th width="15%"> 배차시작날짜 </th>
+							<th width="15%"> 배차종료날짜 </th>
+							<th width="20%"> 비고 </th>
                      </tr>`
             r.forEach((o, i)=>{
                html +=`                  
@@ -42,8 +42,8 @@ function booklist(){
                      <td> <img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
                      <td> ${o.bookcar_str_date} </td>
                      <td> ${o.bookcar_end_date} </td>   
-                     <td> <button onclick="bookCar(${o.bookcar_no}, 'Y')" type="button">수락</button>
-                         <button onclick="bookCar(${o.bookcar_no}, 'N')" type="button">반려</button> 
+                     <td> <button onclick="bookCar(${o.bookcar_no}, 'Y')" type="button" class="btn">수락</button>
+                         <button onclick="bookCar(${o.bookcar_no}, 'N')" type="button" class="btn">반려</button> 
                   </tr>`             
          })       
          document.querySelector('.booktable').innerHTML=html;

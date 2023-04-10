@@ -155,6 +155,7 @@ create table drivecar(
 	drivecar_distance 		varchar(10),										-- 운행거리
 	drivecar_parking 		varchar(50),   								-- 주차위치
 	bookcar_no   			int,     									-- 배차일련번호
+	report_content         varchar(50),                        -- 운행내용
 	foreign key (bookcar_no) references bookcar(bookcar_no)   			-- 배차일련번호  fk
 ); 
 

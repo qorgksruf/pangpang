@@ -30,7 +30,7 @@ function record(){
                      <td> ${i+1}</td>
                      <td> ${o.bookcar_str_date} </td>
                      <td> ${o.bookcar_end_date} </td>
-                     <td><button onclick="driver(${o.bookcar_no})">${o.bookcar_yn}</button></td>
+                     <td><button onclick="driver(${o.bookcar_no})" class="btn">${o.bookcar_yn}</button></td>
 					 <td> ${o.reason} </td>
                   </tr>`  
 						
