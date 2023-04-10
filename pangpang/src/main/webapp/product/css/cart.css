@@ -1,11 +1,16 @@
 @charset "UTF-8";
 
-
+.title{
+	font-size:30px;
+	font-weight: bold;
+	padding: 1%;
+}
 .top_menu{
 	display: flex;
 	justify-content: space-between;
 	border-top:1px solid #8e8e8e; 
 	padding: 15px 30px;
+	font-size:13px;
 	font-weight: bold;
 	background-color: #F2F2F2;	
 }
@@ -14,9 +19,10 @@
 	display: flex;
 	padding: 15px;
 }
-.cart_item{
+.cart_items{
 	display: flex;
 	padding: 15px;
+	justify-content: space-between;
 }
 .cart_img{
 	width: 100px;
@@ -41,6 +47,10 @@
 }
 .product_price{
 	margin-right: 35px;
+	font-size: 13px;
+}
+.date{
+	font-size: 13px;
 }
 .pprice{
 	width: 100px;
@@ -56,7 +66,7 @@
 }
 .mini_mark{
 	color: brown;
-	font-size: 10px;
+	font-size: 12px;
 }
 .product_info_bottom{
 	display:flex;
@@ -69,6 +79,7 @@
 	text-align: right;
 }
 .ad{
+	font-size:13px;
 	border: 1px solid #8e8e8e;
 	background-color: white;
 	padding: 10px;
@@ -90,12 +101,14 @@
 	border: none;
 	margin-left: 5px;
 	border-radius: 15px;
+	font-size: 16px;
 }
 .extra_info_box{
 	display: flex;
 	justify-content: space-between;
 	align-content:center;
 	padding: 2%;
+	font-size: 13px;
 }
 .pangpangbtn{
 	width: 200px;
@@ -103,10 +116,13 @@
 	border: 1px solid #39cdec;
 	background-color: white;
 	border-radius: 15px;
+	font-size: 16px;
+	font-weight: bold;
 }
 .order_price{
 	border: 1px solid #8e8e8e;
 	padding: 15px 30px;
+	font-size:16px;
 	font-weight: bold;
 	background-color: #F2F2F2;
 	text-align: center;

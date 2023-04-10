@@ -18,9 +18,9 @@ function carchoice(){
                            <th width="10%"> 차량번호 </th>
                            <th width="10%"> 차량이름 </th>
                            <th width="10%"> 차량이미지</th>>
-                           <th width="10%"> 비고 </th>
+                           <th width="10%"> 비고 </th>                   
+                      </tr>`
                      
-                     </tr>`
             r.forEach((o,i)=>{
                html +=`                  
                   <tr>
@@ -28,10 +28,16 @@ function carchoice(){
                      <td style="display: none;"> ${o.carmanage_no} </td>
                      <td> ${o.carmanage_number} </td>
                      <td> ${o.carmanage_name} </td>
+<<<<<<< HEAD
                      <td><img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
                      <td> <button onclick="choice(${o.carmanage_no})" type="button"  class="btn">선택하기</button></td>     
+=======
+                     <td> <img src="/pangpang/car/img/${o.carmanage_img == null ? 'default.png' : o.carmanage_img}" width="100%"> </td>
+                     <td> <button onclick="choice(${o.carmanage_no})" type="button"> 선택하기 </button> </td>     
+>>>>>>> branch '정소연' of https://github.com/qorgksruf/pangpang
                   </tr>`               
             })         
+            
             document.querySelector('.carchoice').innerHTML = html;   
       }
       

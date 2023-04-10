@@ -13,9 +13,9 @@
 
 	<%@ include file = "/header.jsp" %>	
 	
-	<div class="container">
+	<div class="content_box">
 	
-		<h3 class="pagetitle"> 품목 관리 </h3>
+		<h3 class="content_box_header"> 품목 관리 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
@@ -24,10 +24,10 @@
 					<option value="p.product_name"> 제품이름 </option>
 				</select>
 				<input  class="keyword" type="text">
-				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
+				<button class="searchbtn btn" onclick="search()" type="button"> 검색 </button>
 			</div>
 			<div>
-				<button class="registerbtn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
+				<button class="registerbtn btn" onclick="openmodal_R()" type="button"> 제품 등록 </button>
 			</div>
 		</div>
 		<!-- 품목 출력 구역 -->
@@ -79,8 +79,8 @@
 						<input type="text" 	   name="product_discount"  class="product_discount">		
 					</div>
 					<div class="modalbtnbox">
-						 <button onclick="item_register()" class="modal_cancel btns" type="button"> 등록 </button>	
-		  				 <button onclick="closemodal_R()"   class="modal_cancel btns" type="button"> 닫기 </button>
+						 <button onclick="item_register()" class="modal_cancel btn" type="button"> 등록 </button>	
+		  				 <button onclick="closemodal_R()"   class="modal_cancel btn" type="button"> 닫기 </button>
 					</div>
 				</form>
 				

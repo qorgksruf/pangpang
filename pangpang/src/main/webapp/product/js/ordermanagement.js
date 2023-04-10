@@ -54,7 +54,7 @@ function getOrderList(page){
 							} </td>
 							<td> ${o.ordermanagement_address} 	</td>
 							<td> ${o.member_id} 			  	</td>
-							<td> <button onclick="openmodal(${ o.ordermanagement_no})" type="button"> 상세보기 </button></td>
+							<td> <button onclick="openmodal(${ o.ordermanagement_no})" class="btn" type="button"> 상세보기 </button></td>
 							<td> 
 								<select class="ordermanagement_state_change${o.ordermanagement_no}">
 									<option value="1">  결제확인중  </option>

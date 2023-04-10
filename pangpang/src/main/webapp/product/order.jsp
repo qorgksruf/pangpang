@@ -12,13 +12,13 @@
 </head>
 <body>
 
-	<%@ include file = "/header.jsp" %>	
+	<%@ include file = "/customerheader.jsp" %>		
 	
 	<div class="container">
 
-		<h3> 주문/결제 </h3>
+		<h3 class="title"> 주문/결제 </h3>
 		
-		<h3> 구매제품정보 </h3>
+		<h3 class="title2"> 구매제품정보 </h3>
 		<table class="table buyproduct_info">
 			<tr>
 				<th width="10%"> 제품이름 </th> 
@@ -41,7 +41,7 @@
 			</tr>
 		</table>		
 		
-		<h3> 구매자정보 </h3>
+		<h3 class="title2"> 구매자정보 </h3>
 		<table class="table buyer_info">
 			<tr>
 				<th  width="10%">이름		 </th> 
@@ -55,13 +55,14 @@
 				<th  width="10%">휴대폰 번호 </th> 
 				<td > 
 					<span class="member_phone">  010-1111-1111 </span> <br>
-					<span> 	* 쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다.  				<br>
+					<span class="add_info"> 	
+							* 쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다.  				<br>
 							* 인증 번호를 못 받았다면 번호 차단 및 스팸 설정을 확인해 주세요. 	</span>
 				</td>
 			</tr>			
 		</table>
 		
-		<h3> 받는사람정보  <span class="Rinfo"><button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button></span> </h3>
+		<h3 class="title2"> 받는사람정보  <span class="Rinfo"><button class="updatebtn btn" onclick="update_recieverinfo()" type="button"> 수정 </button></span> </h3>
 		<table  class="table receiver_info">
 			<tr>
 				<th width="10%"> 이름	  </th> 
@@ -83,20 +84,22 @@
 			</tr>				
 		</table>
 		
-		<h3>  결제정보  </h3>
+		<h3 class="title2">  결제정보  </h3>
 		<table  class="table payment_info">
 			<tr>
 				<th  width="10%"> 결제방법  </th> 
 				<td> 
-					<button type="button" class="modal_btn" onClick="requestPay(1)"> 카드결제		</button>
-					<button type="button" class="modal_btn" onClick="requestPay(2)"> 카카오페이		</button>
-					<button type="button" class="modal_btn" onClick="requestPay(3)"> 토스페이		</button>	
-					<button type="button" class="modal_btn" onClick="openmodal_account()"> 팡팡페이		</button>	
+					<button type="button" class="modal_btn btn" onClick="requestPay(1)"> 카드결제		</button>
+					<button type="button" class="modal_btn btn" onClick="requestPay(2)"> 카카오페이		</button>
+					<button type="button" class="modal_btn btn" onClick="requestPay(3)"> 토스페이		</button>	
+					<button type="button" class="modal_btn btn" onClick="openmodal_account()"> 팡팡페이		</button>	
 				</td>
 			</tr>			
 		</table>
 
 	</div> <!-- container e -->
+
+	<%@ include file = "/footer.jsp" %>
 
 		<!-- 도로명 주소검색 모달 -->
 		<div class="modal_wrap_address">	

@@ -12,11 +12,11 @@
 </head>
 <body>
 	
-	<%@ include file = "/header.jsp" %>	
+	<%@ include file = "/customerheader.jsp" %>		
 	
 	<div class="container">
 
-		<h3> 장바구니 </h3>
+		<h3 class="title"> 장바구니 </h3>
 		
 		<div class="cart_wrap"> 
 		
@@ -59,6 +59,8 @@
 		</div> <!-- cart_wrap e -->
 		
 	</div> <!-- container e -->
+	
+	<%@ include file = "/footer.jsp" %>
 	
 	<script src="/pangpang/product/js/cart.js" type="text/javascript"></script>
 	

@@ -12,8 +12,8 @@
 </head>
 <body>
 
+	<%@ include file = "/customerheader.jsp" %>	
 
-	<%@ include file = "/customerheader.jsp" %>
 	
 	<div class="container">
 		<h3 class="title"> CATEGORY </h3>
