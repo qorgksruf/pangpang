@@ -42,6 +42,11 @@
 					<div class="login_btn_box">
 						<button type="button" class="login_btn" onclick="login()"> 로그인 </button>
 					</div>
+					
+					<div class="nologin">
+						<a href="/pangpang/product/product_index.jsp"> 비로그인으로 둘러보기 > </a>
+					</div>
+					
 				</div>
 			</div>
 		</div>

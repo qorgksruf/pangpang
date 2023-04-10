@@ -12,11 +12,9 @@
 </head>
 <body>
 
-<<<<<<< HEAD
+
 	<%@ include file = "/customerheader.jsp" %>		<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
-=======
-	<%@ include file = "/customerheader.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
->>>>>>> branch 'seongbong' of https://github.com/qorgksruf/pangpang
+
 
 	<%
 		// 1. jsp 이용한 http url 변수 호출

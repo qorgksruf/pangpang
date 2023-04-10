@@ -32,8 +32,8 @@ function record(){
                      <td> ${o.bookcar_end_date} </td>
                      <td><button onclick="driver(${o.bookcar_no})">${o.bookcar_yn}</button></td>
 					 <td> ${o.reason} </td>
-                  </tr>`  
-						
+                  </tr>`
+
 			})
 			document.querySelector('.myrecord').innerHTML=html;
       }//success e

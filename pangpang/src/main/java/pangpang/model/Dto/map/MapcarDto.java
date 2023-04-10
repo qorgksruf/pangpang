@@ -10,6 +10,7 @@ public class MapcarDto {
 	private int carmanage_no;
     private int member_no;
     // 추가필드
+    private String reason;
     private String carmanage_number;
     private String carmanage_name;
     private String carmanage_img;
@@ -31,6 +32,23 @@ public class MapcarDto {
 		this.carmanage_name = carmanage_name;
 		this.carmanage_img = carmanage_img;
 	}
+	
+	public MapcarDto(int bookcar_no, String bookcar_str_date, String bookcar_end_date, String bookcar_yn,
+			int carmanage_no, int member_no, String reason, String carmanage_number, String carmanage_name,
+			String carmanage_img) {
+		super();
+		this.bookcar_no = bookcar_no;
+		this.bookcar_str_date = bookcar_str_date;
+		this.bookcar_end_date = bookcar_end_date;
+		this.bookcar_yn = bookcar_yn;
+		this.carmanage_no = carmanage_no;
+		this.member_no = member_no;
+		this.reason = reason;
+		this.carmanage_number = carmanage_number;
+		this.carmanage_name = carmanage_name;
+		this.carmanage_img = carmanage_img;
+	}
+
 	
 	// 3. 메소드
 	public int getBookcar_no() {
@@ -103,6 +121,14 @@ public class MapcarDto {
 
 	public void setCarmanage_img(String carmanage_img) {
 		this.carmanage_img = carmanage_img;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	@Override

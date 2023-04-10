@@ -37,7 +37,7 @@ public class MapDao extends Dao {
 				return new MapcarDto( 
 						rs.getInt(1), rs.getString(2), rs.getString(3), 
 						rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7) , 
-						rs.getString(8) , rs.getString(9) );
+						rs.getString(8) , rs.getString(9) , rs.getString(10) );
 			}
 			
 		} catch (Exception e) {

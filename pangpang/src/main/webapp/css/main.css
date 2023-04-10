@@ -113,6 +113,14 @@
 	border: none;
 }
 
+.nologin{
+	margin-top: 30px;
+}
+.nologin a{
+	text-decoration: none;
+	color: #a5a5a5;
+	font-size: 13px;
+}
 
 /* 아이디찾기 모달 */
 /* 모달 배경 만들기 */
