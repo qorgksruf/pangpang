@@ -1,15 +1,10 @@
 @charset "UTF-8";
 
 .pagetitle{
-	margin-top: 70px;	background-color: rgb(41, 72, 80);
-	color: white;
+	margin-top: 70px;
+	border-bottom : 3px solid rgb(41, 72, 80);
 	padding: 10px;
 	font-weight: bold;
-}
-
-th{
-	background-color: #5697A6;
-	color : white;
 }
 
 .stocklistbox button, .searchbtn, .setbtn{
@@ -18,10 +13,7 @@ th{
 	background-color: rgb(41, 72, 80);
 	color:white;
 }
-.stockmanagementtype{
-	background-color: #5697A6;
-	border: none;
-}
+
 input[type=text]{
 	width: 80px;
 }
@@ -30,11 +22,9 @@ input[type=datetime-local]{
 }
 .inputbox td, .topbox{
 	padding: 1%;
-	background-color: #F2F2F2;
 }
 select{
 	border:none;
-	background-color: #F2F2F2;	
 }
 .Page{
 	text-align: center;

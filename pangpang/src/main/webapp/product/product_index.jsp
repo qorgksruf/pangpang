@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<%@ include file = "/header.jsp" %>	
+	<%@ include file = "/customerheader.jsp" %>	
 	
 	<div class="container">
 		<h3 class="title"> CATEGORY </h3>
