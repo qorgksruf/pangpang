@@ -17,7 +17,7 @@ function carchoice(){
                            <th width="10%"> 번호 </th>
                            <th width="10%"> 차량번호 </th>
                            <th width="10%"> 차량이름 </th>
-                           <th width="10%"> 차량이미지</th>>
+                           <th width="10%"> 차량이미지</th>
                            <th width="10%"> 비고 </th>                   
                       </tr>`
                      

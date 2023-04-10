@@ -21,7 +21,7 @@ function record(){
                            <th width="10%"> 번호 </th>
                            <th width="10%"> 운행시작일자 </th>
                            <th width="10%"> 운행종료일자 </th>
-                           <th width="10%"> 운행허가상태</th>>
+                           <th width="10%"> 운행허가상태</th>
                            <th class="reason" width="10%"> 비고 </th>						
 						</tr>`
 			r.forEach((o,i)=>{
