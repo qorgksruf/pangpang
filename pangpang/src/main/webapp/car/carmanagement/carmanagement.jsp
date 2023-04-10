@@ -18,8 +18,7 @@
 	<input type="hidden" class="carmanage_no" value="<%=carmanage_no%>"> 
 	
 	
-
-	
+<div class="container">
    <h3>차량관리페이지</h3>
 
    <table class="table carmanage">
@@ -30,6 +29,9 @@
     
  	등록모달 
    	<button onclick="onpenModal(1 , 0)" type="button">등록하기</button>
+</div>
+	
+
 	<div class="modal_wrap">
 	<!-- 	<div class="modal_box">
 			<h3 class="modal_title">

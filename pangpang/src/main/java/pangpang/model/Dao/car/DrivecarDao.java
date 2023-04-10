@@ -58,6 +58,7 @@ public class DrivecarDao extends Dao {
 	  try {
 		  ps=con.prepareStatement(sql);
 		  ps.setInt(1, member_no);
+		  //ps.setString(2, carmanage_img);
 		  rs=ps.executeQuery(); 
 		  while(rs.next()) {
 		  DrivecarDto dto = new DrivecarDto(

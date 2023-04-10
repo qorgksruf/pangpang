@@ -13,10 +13,10 @@
 
 		<%@ include file="/header.jsp" %> 
 		
-				<h3>배차관리페이지</h3>
+				
 		
 		<div class="container">
-				
+			<h3>배차관리페이지</h3>
 			
  			<table class="table carchoice">
 			
@@ -32,12 +32,7 @@
 				
 				
 		</div>
-<!-- 
-		배차확인용테이블
-		<table class="table booktable">
-
-		</table> 
-		 -->
+		
 		
 	<!--jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>   

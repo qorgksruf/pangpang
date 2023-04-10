@@ -10,14 +10,18 @@
 	<link href="/pangpang/car/css/bookcar.css" rel="stylesheet">
 <body>
 	<%@ include file="/header.jsp" %> 
-
-	<h3>마이페이지</h3>
+	
+	<div class="container">
+		<h3>마이페이지</h3>
 		
 		
 		
 		<table class="table myrecord">
 		
 		</table>
+	</div>
+	
+
 
 
 	<!--jquery -->

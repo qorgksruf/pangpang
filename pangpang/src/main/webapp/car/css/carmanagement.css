@@ -2,8 +2,12 @@
 
 .carmanagement {
 	text-align: center;
+	
 }
 
+.carmanage{
+	margin-top: 100px;
+}
 .carmanage_finish{
 	display: none;
 }

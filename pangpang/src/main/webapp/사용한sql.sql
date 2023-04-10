@@ -413,5 +413,3 @@ values ('2023-03-26',2,'GOMGOM',-6,7000,3);
 insert into carmanage ( carmanage_number , carmanage_name ,  carmanage_use_yn )
 values ( '69우1146' , '말리부' , 'Y' ) ;
 
-insert into bookcar ( bookcar_str_date , bookcar_end_date , bookcar_yn , carmanage_no , member_no )
-values ( now() , null , 'Y' , 1 , 5 ) ;

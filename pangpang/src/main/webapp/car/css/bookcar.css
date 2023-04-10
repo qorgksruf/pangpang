@@ -1,9 +1,15 @@
 @charset "UTF-8";
 
-.container{
-	display: flex;
-}
+
 
 #booktable{
 	margin: 150px;
+}
+
+.carchoice{
+	margin-top: 100px;
+}
+
+.myrecord{
+	margin-top: 100px;
 }
