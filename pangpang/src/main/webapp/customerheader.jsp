@@ -10,11 +10,11 @@
 	<!-- 모든 페이지 공통 css -->
 	<!-- 부트스트랩  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
 
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-	
+
 	<!-- 아이콘  -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<!-- 사용자정의   -->
@@ -48,12 +48,12 @@
 						<div class="text">마이팡팡</div>
 					</div>
 				</a>
-				<button type="button" onclick="cart_drop_down()"> 
+				<a href="/pangpang/product/cart.jsp" class="mypangpang"> 
 					<div class="cart_icon">
 						<div class="icon"><i class="fas fa-shopping-cart"></i></div>
 						<div class="text">장바구니</div>
 					</div>
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>

@@ -14,9 +14,9 @@
 
 	<%@ include file = "/header.jsp" %>	
 	
-	<div class="container">
+	<div class="content_box">
 	
-		<h3 class="pagetitle"> 입력 </h3>
+		<h3 class="content_box_header"> 입력 </h3>
 		<!-- 재고 입력 구역 -->
 		<div class="inputbox">
 			<table class="table table-hover inputtable">
@@ -39,12 +39,12 @@
 					<td> <input class="stock_amount_input" 	type="text"> </td>
 					<td> <input class="stock_price_input" 	type="text"> </td>
 					<td> <input class="drop_date_input" 	type="datetime-local"> </td>
-					<td> <button class="setbtn" onclick="setStock()" type="button"> 등록 </button> </td>
+					<td> <button class="setbtn btn" onclick="setStock()" type="button"> 등록 </button> </td>
 				</tr>				
 			</table>
 		</div>	
 	
-		<h3 class="pagetitle"> 재고 내역 </h3>
+		<h3 class="content_box_header"> 재고 내역 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
@@ -54,7 +54,7 @@
 					<option value="stockmanagementcompany"> 대상업체 	</option>
 				</select>
 				<input  class="keyword" type="text">
-				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
+				<button class="searchbtn btn" onclick="search()" type="button"> 검색 </button>
 			</div>
 		</div>
 		

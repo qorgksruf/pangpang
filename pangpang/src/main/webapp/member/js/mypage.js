@@ -136,7 +136,7 @@ function getMember(){
 			document.querySelector('.member_no').value = r.member_no;
 			document.querySelector('.member_phone').value = r.member_phone;
 			//document.querySelector('.member_pwd').value = r.member_pwd;
-			document.querySelector('.member_rank').value = r.member_rank;
+			//document.querySelector('.member_rank').value = r.member_rank;
 			document.querySelector('.member_birth').value = r.member_birth;
 			getAccount()
 			getOrderList()
@@ -450,7 +450,7 @@ function getOrderList(){
 				html += `<tr> <th> 주문한 내역이 없습니다. </th> </tr>`
 			}else{
 				r.orderList.forEach((o)=>{
-				 html += `<table class="item">
+				 html += `<table class="item table table1">
 				 		<tr>
 							<th width="10%"> 주문번호	  </th> 
 							<td >  ${o.ordermanagement_no} </td>

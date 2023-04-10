@@ -30,7 +30,7 @@ public class ChatDao extends Dao{
 		ArrayList<ChatDto> list = new ArrayList<>();
 		
 		String sql = " select * from chat where "
-					+ " ( ( chat_fmno = ? and chat_tmno = ? ) or  (chat_fmno = ? and chat_tmno = ? ) )";
+					+ " ( ( chat_fmno = ? and chat_tmno = ? ) or  (chat_fmno = ? and chat_tmno = ? ) ) order by chat_no";
 		
 		try {
 			ps = con.prepareStatement(sql);	

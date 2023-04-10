@@ -32,8 +32,8 @@ function getItemList(page){
 							<td> <img src="/pangpang/product/pimg/${o.product_img}" width="50px" height="50px"> </td> <td> ${o.product_name}  </td> 	
 							<td> ${o.product_option} </td> 	<td> ${o.product_unit} </td> <td> ${o.product_count} </td>	
 							<td>
-								<button class="updatebtn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
-								<button class="deletebtn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>
+								<button class="updatebtn btn" onclick="openmodal_U(${o.product_no})" type="button"> 수정 </button>
+								<button class="deletebtn btn" onclick="openmodal_D(${o.product_no})" type="button"> 삭제 </button>
 							</td>		
 						</tr>`;
 			})			
@@ -146,8 +146,8 @@ function openmodal_U(product_no){
 	}) // ajax e
 
 	// 
-	let html = `<button onclick="item_update(${product_no})" class="modal_cancel btns" type="button"> 수정 </button>	
-			   	<button onclick="closemodal_U()"  class="modal_cancel btns" type="button"> 닫기 </button>`;
+	let html = `<button onclick="item_update(${product_no})" class="modal_cancel btn" type="button"> 수정 </button>	
+			   	<button onclick="closemodal_U()"  class="modal_cancel btn" type="button"> 닫기 </button>`;
 	document.querySelector('.modalbtnbox_U').innerHTML = html;
 	document.querySelector('.modalupdate').style.display='flex';
 
@@ -162,8 +162,8 @@ function openmodal_D(product_no){
 				<h3  class="modal_title">   해당 품목의 삭제를 진행하시겠습니까? </h3>		
 				<div class="modal_content">
 				<div class="modalbtnbox">
-					<button onclick="item_delete(${product_no})" class="modal_cancel btns" type="button"> 삭제 </button>	
-					<button onclick="closemodal_D()"   class="modal_cancel btns" type="button"> 닫기 </button>
+					<button onclick="item_delete(${product_no})" class="modal_cancel btn" type="button"> 삭제 </button>	
+					<button onclick="closemodal_D()"   class="modal_cancel btn" type="button"> 닫기 </button>
 				</div>					
 				</div>`
 	document.querySelector('.modal_box_delete').innerHTML = html;			

@@ -9,15 +9,17 @@
 /* 사이드바 출력 구역 */
 .list-group{
 	width: 200px;
+	font-family: 'Happiness-Sans-Title';
+	font-size: 16px;
 }
 .list-group-item.active{
-	background-color: #79DCF2 !important;
-	border-color: #79DCF2 !important;
+	color : rgb(16, 139, 165)!important;
+	background-color: white !important;
+	border: 1px solid rgb(16, 139, 165) !important;
 }
 /* 제품 목록 출력 구역*/
 .product_view_wrap{
 	width: 100%;
-	border: 1px solid black;
 	display: flex;
 	justify-content:space-between;
 	flex-wrap: wrap;
@@ -37,7 +39,8 @@
 .product_info{
 	width: 100%;
 	margin: 1%;
-	text-align: left;	
+	text-align: left;
+	font-size: 16px;	
 }
 .pname{
 	font-family: 'Happiness-Sans-Bold';
@@ -62,7 +65,7 @@
 .date{
 	margin: 3%;
 	font-weight: bold;
-	color: #5697A6;
+	color:rgb(16, 139, 165);
 }
 .amount{
 	margin: 0px 50px; 
@@ -77,11 +80,12 @@
 	margin: 2%;
 }
 .cartbtn{
-	width: 80px;
-	border: none;
+	width: 100px;
+	border:none;
 	color: white;
-	background-color: #79DCF2;
+	background-color:rgb(16, 139, 165);;
 	padding: 2%;	
+	font-weight: bo
 }
 .extra_info{
 	font-size:10px;
@@ -91,7 +95,7 @@
 }
 .pangpang{
 	width: 100%;
-	border: 1px solid #79DCF2;
+	border: 1px solid rgb(16, 139, 165);
 	background-color: white;
 	padding: 2%;
 	margin: 2%;

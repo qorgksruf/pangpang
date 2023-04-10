@@ -78,7 +78,7 @@ function getProductList(cno){
 		async	: false,
 		success	: (r)=>{
 			console.log(r)
-			let html = '';						
+			let html = `<h3 class="category_name"> ${r.itemList[0].category_name}</h3>`;						
 			r.itemList.forEach((o)=>{
 				
 				if(o.product_count == 0){

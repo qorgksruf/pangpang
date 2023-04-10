@@ -2,7 +2,9 @@
 
 .title{
 	text-align: center;
-	margin-top: 5%;
+	margin-top: 2%;
+	font-family: 'Happiness-Sans-Bold';
+	font-size: 30px;
 }
 /* 카테고리 목록 출력 구역 */
 .category_wrap{
@@ -22,5 +24,11 @@
 }
 .category img{
 	width: 100%;
-	height: 150px;
+	height: 200px;
+}
+.cname{
+	text-align: center;
+	margin-top: 2%;
+    font-family: 'Happiness-Sans-Title';
+	font-size: 20px;	
 }

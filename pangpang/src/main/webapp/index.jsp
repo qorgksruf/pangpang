@@ -1,6 +1,4 @@
-<%@page import="org.jsoup.select.Elements"%>
-<%@page import="org.jsoup.Jsoup"%>
-<%@page import="org.jsoup.nodes.Document"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

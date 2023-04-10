@@ -11,18 +11,18 @@
 <body>
 	<%@ include file="/header.jsp" %> 
 	
-	<div class="container">
-		<h3>마이페이지</h3>
-		
-		
-		<table class="table myrecord">
-		
-		</table>
-		
-	</div>
+	<div class="content_box">
+
+		<div class="content_box_header" >
+				배차 이력확인
+		</div>
+		<div class="content_box_text">
+			<table class="table myrecord table1">
 	
+			</table>	
+	   </div>
 
-
+	</div>
 
 	<!--jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>   

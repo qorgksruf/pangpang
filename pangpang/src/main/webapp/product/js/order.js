@@ -89,7 +89,7 @@ function update_recieverinfo(){
 		 </tr>						
 		 <tr>
 			<th width="10%"> 배송주소 </th> 
-			<td><span class="delivery_address"></span> <button  type="button" onclick="openmodal_address()"> 주소 찾기 </button> </td>
+			<td><span class="delivery_address"></span> <button class="btn" type="button" onclick="openmodal_address()"> 주소 찾기 </button> </td>
 		 </tr>
 		 <tr>
 			<th width="10%"> 배송요청사항  </th> 
@@ -104,8 +104,8 @@ function update_recieverinfo(){
 	
 	// 버튼 변경 [수정] => [완료]/[취소]	 
 	document.querySelector('.Rinfo').innerHTML 
-	= `	<button class="updatebtn" onclick="update_recieverinfo_complete()" type="button"> 완료 </button>
-		<button class="updatebtn" onclick="update_recieverinfo_cancle()"   type="button"> 취소 </button>` 
+	= `	<button class="updatebtn btn" onclick="update_recieverinfo_complete()" type="button"> 완료 </button>
+		<button class="updatebtn btn" onclick="update_recieverinfo_cancle()"   type="button"> 취소 </button>` 
 		
 	document.querySelector('.receiver_name').value 			= memberInfo.member_name;
 	document.querySelector('.receiver_phone').value   		= memberInfo.member_phone;
@@ -138,7 +138,7 @@ function update_recieverinfo_complete(){
 				<td class="delivery_option"> ${delivery_option==1?'기본: 문앞':delivery_option==2?'경비실':'무인택배보관함'} </td>
 			</tr>`
 	document.querySelector('.Rinfo').innerHTML 
-		= `<button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 			
+		= `<button class="updatebtn btn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 			
 }
 // 수정 취소시 기존 로그인 회원 정보 재호출
 function update_recieverinfo_cancle(){
@@ -162,7 +162,7 @@ function update_recieverinfo_cancle(){
 			</tr>`
 			
 	document.querySelector('.Rinfo').innerHTML 
-		= `<button class="updatebtn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 
+		= `<button class="updatebtn btn" onclick="update_recieverinfo()" type="button"> 수정 </button>` 
 		
 	getMemberInfo()
 }
@@ -294,7 +294,7 @@ function delivery_address(){
 				html +=`<tr>
 							<td>${o.account_bank}	</td>
 							<td>${o.account_number}	</td>
-							<td><button onclick="requestPay(4)"> 선택 </button></td>
+							<td><button onclick="requestPay(4)" class="modal_btn btn"> 선택 </button></td>
 						</tr>`;	
 			})	
 			document.querySelector('.accountlist').innerHTML = html;		

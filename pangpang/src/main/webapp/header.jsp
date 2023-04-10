@@ -28,7 +28,7 @@
 			<span class="inc">.inc</span>
 			<a href="/pangpang/index.jsp"> <span class="homeicon"> <i class="fas fa-home"> </i> </span> </a>
 			<a href="/pangpang/member/logout.jsp"> <span class="logouticon"> <i class="fas fa-sign-out-alt"> </i> </span> </a>
-			<a href="/pangpang/member/mypage.jsp"> <span class="usericon"> <i class="fas fa-user"> </i> </span> </a>
+			<a href="/pangpang/member/mypage2.jsp"> <span class="usericon"> <i class="fas fa-user"> </i> </span> </a>
 		</div>
 		
 		<div class="side_bar">
@@ -57,7 +57,7 @@
 					<li><a href="/pangpang/car/carmanagement/permission.jsp"> 배차승인/반려 </a> </li>
 					<li><a href="/pangpang/car/bookcar/view.jsp"> 배차 이력확인 </a> </li>
 					<li><a href="/pangpang/map/map.jsp"> 배송지 설정하기 </a> </li>
-					<li><a href="/pangpang/car/drivecar/drivecar.jsp"> 운행관리 </a> </li>
+					<li><a href="/pangpang/car/drivecar/drivecarAll.jsp"> 운행일지 </a> </li>
 				</ul>
 				
 				<!-- 채팅박스 -->

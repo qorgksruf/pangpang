@@ -18,34 +18,34 @@
 	
 	<input class="bookcar_no" type="hidden" value="<%=bookcar_no%>">
 	
-	<h3>운행일지작성하기</h3>
-	
-	<div class="container">
-		<table class="table drivetable">
-			<tr>
-				<th>작성일자</th>
-				<th><input type="text" class="reportday"></th>
+	<div class="content_box">
 
-			</tr>
-			<tr>
-				<th>행선지</th>
-				<th><input type="text" class="drivecar_distance"></th>
-
-			</tr>
-			<tr>
-				<th>운행목적</th>
-				<th><input type="text" class="purpose"></th>
-			</tr>
-			<tr>
-				<th>보고서내용</th>
-				<th><textarea name="text" class="report_content"></textarea></th>
-			</tr>											
-		</table>
-		
-			
-		
-	<button class="repottbtn" onclick="report()">등록</button>
+		<div class="content_box_header" >
+				운행일지작성하기
+		</div>
+		<div class="content_box_text">
+			<table class="table drivetable table1">
+				<tr>
+					<th>작성일자</th>
+					<th><input type="text" class="reportday input1"></th>
 	
+				</tr>
+				<tr>
+					<th>행선지</th>
+					<th><input type="text" class="drivecar_distance input1"></th>
+	
+				</tr>
+				<tr>
+					<th>운행목적</th>
+					<th><input type="text" class="purpose input1"></th>
+				</tr>
+				<tr>
+					<th>보고서내용</th>
+					<th><textarea name="text" class="report_content input2"></textarea></th>
+				</tr>											
+			</table>
+			<button class="repottbtn btn" onclick="report()">등록</button>
+	   </div>
 	</div>
 
 

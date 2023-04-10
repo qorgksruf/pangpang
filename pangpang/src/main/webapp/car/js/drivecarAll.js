@@ -5,6 +5,7 @@ function reportAll(){
 	$.ajax({
 		 url:"/pangpang/drivecar",
 		 method:"get",
+		 data:{"type":2},
 		 success:(r)=>{
 			 console.log("통신");
 			 console.log(r);

@@ -14,9 +14,9 @@
 
 	<%@ include file = "/header.jsp" %>	
 	
-	<div class="container">
+	<div class="content_box">
 	
-		<h3 class="pagetitle"> 주문 내역 </h3>
+		<h3 class="content_box_header"> 주문 내역 </h3>
 		<!-- 상단 메뉴 구역 -->
 		<div class="topbox"> 
 			<div class="searchbox">
@@ -25,7 +25,7 @@
 					<option value="ordermanagement_date"> 주문일자 </option>
 				</select>
 				<input  class="keyword" type="text">
-				<button class="searchbtn" onclick="search()" type="button"> 검색 </button>
+				<button class="searchbtn btn" onclick="search()" type="button"> 검색 </button>
 			</div>
 		</div>
 		<!-- 주문 내역 출력 구역 -->
@@ -53,7 +53,7 @@
 												
 					</table>
 				</div>
-				<button onclick="closemodal()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+				<button onclick="closemodal()" class="modal_cancel btn" type="button"> 닫기 </button>
 			</div>				
 		</div>	<!-- modal_box e -->
 	</div>	<!-- modal_wrap e -->

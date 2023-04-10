@@ -9,7 +9,7 @@
 <link href="/pangpang/member/css/mypage.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file = "/header.jsp" %>	
+	<%@ include file = "/customerheader.jsp" %>	
 	<div class="content_box">
 		<div class="content_box_header">
 			마이페이지
@@ -60,12 +60,6 @@
 					</td>
 				</tr>
 				<tr>
-					<th  width="10%">등급		 </th> 
-					<td class="member_rank1"> 
-						<input type="text" class="member_rank input1" disabled="disabled">
-					</td>
-				</tr>
-				<tr>
 					<td colspan="2">
 						<button type="button" onclick="update()" class="btn">수정</button>
 						<button type="button" onclick="dropmember()" class="btn">탈퇴</button>
@@ -80,7 +74,7 @@
 			</table>
 			
 			<h3> 주문목록 </h3>
-			<table  class="table receiver_info table1"></table>
+			<div  class="receiver_info"></div>
 		</div>
 	</div>
 

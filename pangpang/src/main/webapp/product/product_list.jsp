@@ -13,8 +13,9 @@
 <body>
 
 
+
 	<%@ include file = "/customerheader.jsp" %>		<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
-	
+
 	<%
 		// 1. jsp 이용한 http url 변수 호출
 		String cno = request.getParameter("cno");
@@ -37,6 +38,8 @@
 			</div> <!-- product_wrap e -->
 		</div>
 	</div> <!-- container e -->
+	
+	<%@ include file = "/footer.jsp" %>
 
 	<script src="/pangpang/product/js/product_list.js" type="text/javascript"></script>
 

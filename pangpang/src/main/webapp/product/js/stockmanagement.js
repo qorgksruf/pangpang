@@ -56,7 +56,7 @@ function getstockList(page){
 								<td> ${ o.stockmanagementamount} 	</td>
 								<td> ${ o.product_price} 			</td>
 								<td> ${ o.stockmanagementenddate==null?'':o.stockmanagementenddate} </td>
-								<td> <button onclick="deleteStock(${o.stockmanagementno})" type="button"> 삭제 </button>	</td>
+								<td> <button onclick="deleteStock(${o.stockmanagementno})" class="btn" type="button"> 삭제 </button>	</td>
 							</tr>`;	
 				});			
 			}			
