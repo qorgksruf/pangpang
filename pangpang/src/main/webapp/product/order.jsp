@@ -136,7 +136,7 @@
 					<table class="accountlist table">
 						<tr><td> 등록된 계좌가 결과가 없습니다.</td></tr>
 					</table>
-					<button onclick="closemodal_account()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+					<button onclick="closemodal_account()" class="modal_cancel modal_btn btn" type="button"> 닫기 </button>
 				</div>				
 			</div>	<!-- modal_box e -->
 		</div>	<!-- modal_wrap e -->

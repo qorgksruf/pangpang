@@ -9,7 +9,7 @@
 <link href="/pangpang/member/css/mypage.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file = "/header.jsp" %>	
+	<%@ include file = "/customerheader.jsp" %>	
 	<div class="content_box">
 		<div class="content_box_header">
 			마이페이지
@@ -74,7 +74,7 @@
 			</table>
 			
 			<h3> 주문목록 </h3>
-			<table  class="table receiver_info table1"></table>
+			<div  class="receiver_info"></div>
 		</div>
 	</div>
 

@@ -73,8 +73,15 @@
 					</td>
 				</tr>
 			</table>
-			
 		</div>
+		<div class="content_box_header" >
+				운행일지
+		</div>
+		<div class="content_box_text">
+			<table class="table driveAlltable table1">
+					
+			</table>
+	   </div>
 	</div>
 
 	<!-- 도로명 주소검색 모달 -->
@@ -120,6 +127,6 @@
 		
 		
 
-	<script type="text/javascript" src="/pangpang/member/js/mypage.js"></script>
+	<script type="text/javascript" src="/pangpang/member/js/mypage2.js"></script>
 </body>
 </html>

@@ -294,7 +294,7 @@ function delivery_address(){
 				html +=`<tr>
 							<td>${o.account_bank}	</td>
 							<td>${o.account_number}	</td>
-							<td><button onclick="requestPay(4)"> 선택 </button></td>
+							<td><button onclick="requestPay(4)" class="modal_btn btn"> 선택 </button></td>
 						</tr>`;	
 			})	
 			document.querySelector('.accountlist').innerHTML = html;		

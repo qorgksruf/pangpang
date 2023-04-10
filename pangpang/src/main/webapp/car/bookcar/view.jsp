@@ -18,17 +18,10 @@
 		</div>
 		<div class="content_box_text">
 			<table class="table myrecord table1">
-		
-<<<<<<< HEAD
-		
-		<table class="table myrecord">
-		
-		</table>
-		
-=======
+	
 			</table>	
 	   </div>
->>>>>>> branch '김지호' of https://github.com/qorgksruf/pangpang
+
 	</div>
 
 	<!--jquery -->

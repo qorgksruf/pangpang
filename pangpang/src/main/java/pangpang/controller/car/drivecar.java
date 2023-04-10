@@ -48,20 +48,35 @@ public class drivecar extends HttpServlet {
 		 * //5.동일한 첨부파일명이 존재하면 뒤에 숫자 붙여짐 그래서 판별함 ); String carmanage_img =
 		 * multi.getFilesystemName("carmanage_img");
 		 */
+		int type = Integer.parseInt(request.getParameter("type"));
 		
-		  String mid=(String)request.getSession().getAttribute("login");
-		  System.out.println("drivecar 서블릿 mid확인::::"+mid); 
-		  int member_no =MemberDao.getInstance().getMno(mid); 
+		if(type==1) {
+			 String mid=(String)request.getSession().getAttribute("login");
+			  System.out.println("drivecar 서블릿 mid확인::::"+mid); 
+			  int member_no =MemberDao.getInstance().getMno(mid); 
+			 
+			  ArrayList<DrivecarDto>result =
+					  				DrivecarDao.getInstance().drivereportAll(member_no);
+			  System.out.println("bookcar result확인:::"+result);
+			  
+			  ObjectMapper mapper = new ObjectMapper();
+			  String jsonArry= mapper.writeValueAsString(result);
+			  response.setCharacterEncoding("UTF-8");
+			  response.setContentType("application/json");
+			  response.getWriter().print(jsonArry);
+		}else if(type==2) {
+			ArrayList<DrivecarDto>result =
+	  				DrivecarDao.getInstance().drivereportAll2();
+					System.out.println("bookcar result확인:::"+result);
+					
+					ObjectMapper mapper = new ObjectMapper();
+					String jsonArry= mapper.writeValueAsString(result);
+					response.setCharacterEncoding("UTF-8");
+					response.setContentType("application/json");
+					response.getWriter().print(jsonArry);
+		}
+		
 		 
-		  ArrayList<DrivecarDto>result =
-				  				DrivecarDao.getInstance().drivereportAll(member_no);
-		  System.out.println("bookcar result확인:::"+result);
-		  
-		  ObjectMapper mapper = new ObjectMapper();
-		  String jsonArry= mapper.writeValueAsString(result);
-		  response.setCharacterEncoding("UTF-8");
-		  response.setContentType("application/json");
-		  response.getWriter().print(jsonArry);
 		
 	}
 

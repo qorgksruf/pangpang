@@ -177,7 +177,7 @@ function drop(member_no){
 			console.log(r)
 			if(r=="true"){
 				alert('회원탈퇴 성공')
-				getmemberlist()
+				getmemberlist(1)
 			}
 		}
 	})
