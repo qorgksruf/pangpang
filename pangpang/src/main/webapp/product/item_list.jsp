@@ -12,7 +12,13 @@
 <body>
 
 	<%@ include file = "/header.jsp" %>	
-	
+	<script type="text/javascript">
+		// 권한제어 
+		if( memberInfo.member_rank != 3 ){
+			alert('접급할 수 없는 권한입니다.'); 
+			location.href="/pangpang/index.jsp";
+		} 
+	</script>
 	<div class="content_box">
 	
 		<h3 class="content_box_header"> 품목 관리 </h3>

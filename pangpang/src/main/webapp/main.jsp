@@ -9,7 +9,7 @@
 	<!-- 폰트어썸 -->
 	<script src="https://kit.fontawesome.com/ca0196c650.js"></script>
 	<link href="/pangpang/css/main.css" rel="stylesheet">
-	
+	 
 </head>
 <body>
 	
@@ -60,7 +60,7 @@
 				<span>아이디 찾기</span> 
 				<button type="button" onclick="closeFindidModal()" class="close_findid">X</button>
 			</div>
-			<div class="findid_box resultbox">
+			<div class="findid_box resultbox ">
 			</div>	
 		</div>
 	</div>
@@ -71,7 +71,7 @@
 				<span>비밀번호 찾기</span> 
 				<button type="button" onclick="closeFindpwdModal()" class="close_findid">X</button>
 			</div>
-			<div class="findpwd_box resultbox">
+			<div class="findpwd_box resultbox ">
 			</div>
 		</div>
 	</div>

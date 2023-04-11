@@ -36,7 +36,7 @@ function onpenFindidModal( ){
 						</table>
 					</div>
 					<div class="modal_btns">
-						<button onclick="findid()" class="findid_btn" type="button">확인</button>
+						<button onclick="findid()" class="findid_btn modal_btns" type="button">확인</button>
 					</div>`
 	document.querySelector('.findid_box').innerHTML=html
 	document.querySelector('.findid_box').style = ''
@@ -71,7 +71,7 @@ function onpenFindpwdModal( ){
 						</table>
 					</div>
 					<div class="modal_btns">
-						<button onclick="findpwd()" class="findpwd_btn" type="button">확인</button>
+						<button onclick="findpwd()" class="findpwd_btn modal_btns" type="button">확인</button>
 					</div>`
 	document.querySelector('.findpwd_box').innerHTML=html
 	document.querySelector('.findpwd_box').style = ''
