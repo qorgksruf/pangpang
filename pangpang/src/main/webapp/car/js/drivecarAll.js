@@ -5,13 +5,12 @@ function reportAll(){
 	$.ajax({
 		 url:"/pangpang/drivecar",
 		 method:"get",
-		 data:{"type":2},
+		 data:{"type":1},
 		 success:(r)=>{
 			 console.log("통신");
 			 console.log(r);
 				let html=`<tr>
                            <th width="10%"> 번호 </th>
-                           <th width="10%"> 차량이미지</th>
                            <th width="10%"> 차량이름 </th>
                            <th width="10%"> 일련번호</th>
                            <th width="10%"> 행선지</th>	
@@ -24,7 +23,6 @@ function reportAll(){
                html +=`                  
                   <tr>
                      <td> ${i+1}</td>
-                     <td> ${o.carmanage_img} </td>
                      <td> ${o.carmanage_name} </td>
                      <td> ${o.carmanage_number} </td>
 					 <td> ${o.drivecar_distance} </td>
