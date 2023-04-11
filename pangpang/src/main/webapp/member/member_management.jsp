@@ -10,6 +10,14 @@
 </head>
 <body>
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
+	<script type="text/javascript">
+		// 권한제어 
+		if( memberInfo.member_rank != 3 ){
+			alert('접급할 수 없는 권한입니다.'); 
+			location.href="/pangpang/index.jsp";
+		} 
+	</script>
+	
 	<div class="content_box">
 		<div class="content_box_header">
 			회원관리

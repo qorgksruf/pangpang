@@ -30,7 +30,7 @@ function report(){
 			if(r=='true'){
 					alert('글쓰기성공');
 					//location.href="/jspweb/board/list.jsp?cno="+document.querySelector('.cno').value;
-					location.href="/pangpang/car/drivecar/drivecarAll.jsp?bookcar_no=" +bookcar_no
+					location.href="/pangpang/member/mypage2.jsp"
 			}else{
 				 alert('글쓰기실패');
 			}

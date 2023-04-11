@@ -1,3 +1,8 @@
+// 등급제한
+if( memberInfo.member_rank != 3 ){
+	alert('접근 불가능한 등급입니다.');	location.href="/pangpang/index.jsp";
+}
+
 console.log('drop js')
 
 

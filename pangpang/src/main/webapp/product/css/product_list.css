@@ -27,7 +27,7 @@
 	height:1000px;
 	align-content: flex-start;
 	display: flex;
-	justify-content:space-between;
+	justify-content:flex-start;
 	flex-wrap: wrap;
 	margin: 2%;
 	
@@ -38,6 +38,7 @@
 	margin: 1%;
 	text-align: center;
 	opacity:60%;
+	margin-right: 43px;
 }
 .soldoutmark{
 	margin: 2%;
@@ -48,6 +49,7 @@
 	width: 20%;
 	margin: 1%;
 	text-align: center;
+	margin-right: 43px;
 }
 .item:hover {
 	opacity: 60%;

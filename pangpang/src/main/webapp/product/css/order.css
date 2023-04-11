@@ -83,7 +83,7 @@ th{
 .modal_content{
 	margin: 5%;
 	font-size: 15px;
-	overflow: auto;
+	/* overflow: auto; */
 }
 .modal_content input {
 	width: 70%;
