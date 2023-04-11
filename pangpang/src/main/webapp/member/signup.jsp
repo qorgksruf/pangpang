@@ -8,7 +8,7 @@
 	<link href="/pangpang/member/css/signup.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
+	<%@ include file = "/customerheader.jsp" %>	
 	<div class="content_box">
 		<div class="content_box_header">
 			회원가입
@@ -336,7 +336,7 @@
 			<div class="modal_content">
 				<div class="address_search">
 					<input type="text" class="keyword">
-					<button type="button" class="modal_btn" onClick="getAddress()"> 주소검색</button>					
+					<button type="button" class="modal_btn btn" onClick="getAddress()"> 주소검색</button>					
 				</div>
 				<!-- 검색 결과 리스트 출력 영역 -->
 				<div id="list" class="resultbox">
@@ -347,13 +347,13 @@
 					상세주소
 					<input class="address_detail_input" type="text">
 				</div>
-				<button onclick="delivery_address()"   class="modal_cancel modal_btn" type="button"> 입력 </button>
-				<button onclick="closemodal_address()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+				<button onclick="delivery_address()"   class="modal_cancel modal_btn btn" type="button"> 입력 </button>
+				<button onclick="closemodal_address()" class="modal_cancel modal_btn btn" type="button"> 닫기 </button>
 			</div>
 				
 			</div>	<!-- modal_box e -->
 	</div>	<!-- modal_wrap e -->
-	
+	<%@ include file = "/footer.jsp" %>
 	<script src="/pangpang/member/js/signup.js" type="text/javascript"></script>
 </body>
 </html>
