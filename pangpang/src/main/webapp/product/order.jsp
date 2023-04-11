@@ -102,30 +102,30 @@
 	<%@ include file = "/footer.jsp" %>
 
 		<!-- 도로명 주소검색 모달 -->
-		<div class="modal_wrap_address">	
-				<div class="modal_box">
-				
-				<h3  class="modal_title"> 도로명 주소검색 </h3>		
-				<div class="modal_content">
-					<div class="address_search">
-						<input type="text" class="keyword">
-						<button type="button" class="modal_btn" onClick="getAddress()"> 주소검색</button>					
-					</div>
-					<!-- 검색 결과 리스트 출력 영역 -->
-					<div id="list" class="resultbox">
-						검색 결과가 없습니다.					
-					</div>
-					<div class="address_select"> 선택주소 <span class="address_select_input"> </span></div>
-					<div class="address_detail">
-						상세주소
-						<input class="address_detail_input" type="text">
-					</div>
-					<button onclick="delivery_address()"   class="modal_cancel modal_btn" type="button"> 입력 </button>
-					<button onclick="closemodal_address()" class="modal_cancel modal_btn" type="button"> 닫기 </button>
+	<div class="modal_wrap_address">	
+			<div class="modal_box">
+			
+			<h3  class="modal_title"> 도로명 주소검색 </h3>		
+			<div class="modal_content">
+				<div class="address_search">
+					<input type="text" class="keyword">
+					<button type="button" class="modal_btn btn" onClick="getAddress()"> 주소검색</button>					
 				</div>
-					
-				</div>	<!-- modal_box e -->
-		</div>	<!-- modal_wrap e -->
+				<!-- 검색 결과 리스트 출력 영역 -->
+				<div id="list" class="resultbox">
+					검색 결과가 없습니다.					
+				</div>
+				<div class="address_select"> 선택주소 <span class="address_select_input"> </span></div>
+				<div class="address_detail">
+					상세주소
+					<input class="address_detail_input" type="text">
+				</div>
+				<button onclick="delivery_address()"   class="modal_cancel modal_btn btn" type="button"> 입력 </button>
+				<button onclick="closemodal_address()" class="modal_cancel modal_btn btn" type="button"> 닫기 </button>
+			</div>
+				
+			</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
 		
 		<!-- 팡팡페이 계좌 선택 모달 -->
 		<div class="modal_wrap_account">	

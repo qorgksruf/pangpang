@@ -240,7 +240,7 @@ a{ color: white; text-decoration: none; }
     padding-left: 15px;
 }
 .closebtn{
-	background-color: transparent;
+	background-color: transparent !important;
     color: #5697A6 !important;
     font-size: 19px!important;
     /* padding: 0px!important; */
