@@ -51,7 +51,7 @@ function bookcarInfo(){
 						<div class="etc_info_box">
 							<div> 시작 : ${ r.bookcar_str_date } </div>
 							<div> 반납 : ${ r.bookcar_end_date } </div>
-							<div> ${r.reason == null ? '오늘도 안전운전하세요 👍👍' : r.reason } <div>
+							<div> ${ r.reason == null ? '오늘도 안전운전하세요 👍👍' : r.reason } <div>
 						</div>`;
 			
 			document.querySelector('.dispatch_main_box').innerHTML = html;
