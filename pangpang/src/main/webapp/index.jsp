@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="weather">
 			<div class="current">
-				<div class="icon"><i class="fas fa-sun"></i></div>
+				<div class="icon"><i class="fas fa-wind"></i></div>
 				<div class="temp_area"></div>
 			</div>
 		</div>
