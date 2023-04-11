@@ -28,7 +28,7 @@
 							<input type="text" class="input_box member_id">
 						</div>
 					</div>
-					<div class="pwd_box">
+					<div class="pwd_box"> 
 						<div class="login_input_box"> 
 							<span><i class="fas fa-key"></i></span>
 							<input type="password" class="input_box member_pwd">
