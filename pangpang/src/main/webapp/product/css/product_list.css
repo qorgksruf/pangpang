@@ -64,7 +64,19 @@
 	font-size: 15px;
 	margin: 2%;
 }
-
+.price1{
+	font-weight: bold;
+	font-size: 13px;	
+	text-decoration: line-through;
+}
+.price2{
+	font-weight: bold;	
+}
+.discount{
+	color: red;
+	font-weight: bold;
+	font-size: 13px;	
+}
 .mini_logo{
 	width: 18px;
 	height: 18px;

@@ -100,8 +100,7 @@ function setStock(){
 	let stockmanagementenddate= document.querySelector('.drop_date_input').value;
 	let product_price= document.querySelector('.stock_price_input').value;
 	let product_no= document.querySelector('.product_no_input').value;
-	
-	if(stockmanagementtype==null){alert('제품번호를 입력해주세요.'); return;}
+
 	if(stockmanagementcompany==null){alert('업체를 입력해주세요.'); return;}
 	if(stockmanagementamount==null){alert('수량을 입력해주세요.'); return;}
 	if(stockmanagementdate==null){alert('실행일자를 입력해주세요.'); return;}

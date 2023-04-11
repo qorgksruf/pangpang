@@ -91,13 +91,29 @@ function getProductList(cno){
 							</div>`;
 					
 				}else{
-					html += `<div class="item"> 
+					if(o.product_discount != 0){
+						html += `<div class="item"> 
 									<div class="pimg"> <a href="/pangpang/product/product_view.jsp?cno=${cno}&pno=${o.product_no}">
 									<img class="product_img" alt="" src="/pangpang/product/pimg/${o.product_img} "> </a> </div>
 									<div class="pname"> 	${o.product_name}  </div>
-									<div class="price"> 	${o.product_price.toLocaleString()}원 <img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span  class="mini_mark">팡팡배송</span></div>
+									
+									
+									<div class="price1"> 	${o.product_price.toLocaleString()}원   </div>
+									<div class="price2"> 	<span class="discount">${o.product_discount}%</span> ${(o.product_price*(1-o.product_discount/100)).toLocaleString()}원 
+									<img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span  class="mini_mark">팡팡배송</span></div>
 									<div class="date"> 		${month+"/"+date}(${day})  도착 보장	</div>
 							</div>`;
+					}else{
+						html += `<div class="item"> 
+									<div class="pimg"> <a href="/pangpang/product/product_view.jsp?cno=${cno}&pno=${o.product_no}">
+									<img class="product_img" alt="" src="/pangpang/product/pimg/${o.product_img} "> </a> </div>
+									<div class="pname"> 	${o.product_name}  </div>
+									<div class="price2"> ${o.product_price.toLocaleString()}원 
+									<img class="mini_logo"alt="" src="/pangpang/product/pimg/PANG.png"><span  class="mini_mark">팡팡배송</span></div>
+									<div class="date"> 		${month+"/"+date}(${day})  도착 보장	</div>
+							</div>`;						
+					}
+
 				}
 				
 
