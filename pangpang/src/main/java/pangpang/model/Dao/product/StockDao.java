@@ -90,13 +90,13 @@ public class StockDao extends Dao{
 	}
 	
 	// 폐기 대상 출력 
-	public ArrayList<StockDto> getDropList(String date) {
+	public ArrayList<StockDto> getDropList(String date, String date2) {
 		ArrayList<StockDto> list = new ArrayList<>();
 		String sql = "select product_no pno, (select product_name from product where product_no = pno) pname,"
-				+ "((select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '"+date+"' and product_no = pno)"
-				+ "+(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '"+date+"' and product_no = pno)"
-				+ "+(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 3 and stockmanagementdate    < '"+date+"' and product_no = pno)) dropamount "
-				+ "from stockmanagement group by product_no;";
+				+ " ((select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 1 and stockmanagementenddate < '"+date+"' and product_no = pno)"
+				+ " +(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 2 and stockmanagementdate    < '"+date+"' and product_no = pno)"
+				+ " +(select ifnull(sum(stockmanagementamount),0) from stockmanagement where stockmanagementtype = 3 and stockmanagementdate    < '"+date2+"' and product_no = pno)) dropamount"
+				+ " from stockmanagement group by product_no;";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

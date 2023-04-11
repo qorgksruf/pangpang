@@ -3,6 +3,7 @@ package pangpang.controller.product;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,14 @@ public class Drop extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(today);
 		
-		ArrayList<StockDto> list = StockDao.getInstance().getDropList(date); System.out.println(list);
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(today);
+	    cal.add(Calendar.DATE, +1);
+		
+		String date2 = sdf.format(cal.getTime()); System.out.println(date2);
+		
+		
+		ArrayList<StockDto> list = StockDao.getInstance().getDropList(date, date2); System.out.println(list);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonarray = mapper.writeValueAsString(list);
@@ -45,10 +53,17 @@ public class Drop extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Date today = new Date();
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(today);
 		
-		ArrayList<StockDto> list = StockDao.getInstance().getDropList(date);
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(today);
+	    cal.add(Calendar.DATE, +1);
+		
+		String date2 = sdf.format(cal.getTime());
+	    	    
+		ArrayList<StockDto> list = StockDao.getInstance().getDropList(date, date2);
 		
 		boolean result = StockDao.getInstance().drop(list);
 		
